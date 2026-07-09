@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Buyer's Agency — Spanish AfterLife</title>
+  <meta name="description" content="Full buyer's agency for North Americans purchasing property in the Valencia Community. We represent you — not the seller. In-person viewings, Spanish negotiation, due diligence, and post-completion support.">
+  <link rel="canonical" href="https://spanishafterlife.com/real-estate" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta: #C4693A;
+      --linen: #F5EFE4;
+      --olive: #3D4C2E;
+      --saffron: #E8B86D;
+      --slate: #4A6C82;
+      --stone: #9E9488;
+      --white: #FFFFFF;
+      --linen-dark: #EDE6D8;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--olive);
+      background: var(--linen);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; font-weight: 500; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--olive); padding: 0 2rem; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600;
+      color: var(--linen); text-decoration: none; letter-spacing: 0.02em; line-height: 1.1;
+    }
+
+    .nav-logo span {
+      display: block; font-weight: 400; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone);
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: var(--stone); text-decoration: none; font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--linen); }
+
+    .nav-links .nav-cta {
+      background: var(--terracotta); color: var(--white); padding: 0.45rem 1.1rem;
+      border-radius: 2px; font-size: 0.72rem; letter-spacing: 0.1em; transition: background 0.2s;
+    }
+
+    .nav-links .nav-cta:hover { background: #b05a30; color: var(--white); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--linen); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--olive); padding: 1.5rem 2rem 2rem; z-index: 99;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu a {
+      display: block; color: var(--stone); text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--linen); }
+    .mobile-menu .mob-cta {
+      display: block; margin-top: 1rem; background: var(--terracotta);
+      color: var(--white); text-align: center; padding: 0.75rem; border-radius: 2px;
+    }
+
+    /* ── PAGE HEADER — SLATE THEME FOR RE ── */
+    .page-header {
+      margin-top: 64px;
+      background: var(--slate);
+      padding: 5rem 2rem 4.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 90% 20%, rgba(232,184,109,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 90%, rgba(61,76,46,0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .page-header-inner { max-width: 860px; margin: 0 auto; position: relative; }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--saffron);
+      margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--saffron);
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.6rem, 6vw, 4.2rem); color: var(--linen);
+      font-weight: 500; margin-bottom: 1.25rem; font-style: italic;
+    }
+
+    .page-header h1 em { font-style: normal; color: var(--saffron); }
+
+    .page-header-desc {
+      font-size: 1.05rem; color: rgba(245,239,228,0.75);
+      max-width: 560px; line-height: 1.75; font-weight: 300;
+    }
+
+    .header-callout {
+      display: inline-block;
+      margin-top: 2.5rem;
+      border: 1px solid rgba(232,184,109,0.4);
+      padding: 1rem 1.5rem;
+      color: var(--saffron);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+    .section-inner.wide { max-width: 1080px; }
+
+    .section-label {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--terracotta); margin-bottom: 1rem;
+    }
+
+    .section-heading { font-size: clamp(1.9rem, 4vw, 2.8rem); color: var(--olive); margin-bottom: 1.5rem; }
+    .section-heading em { font-style: italic; color: var(--terracotta); }
+
+    .lede { font-size: 1.1rem; color: var(--olive); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
+
+    p { margin-bottom: 1.25rem; color: var(--olive); }
+    p:last-child { margin-bottom: 0; }
+
+    .bg-linen { background: var(--linen); }
+    .bg-white { background: var(--white); }
+    .bg-linen-dark { background: var(--linen-dark); }
+    .bg-olive { background: var(--olive); }
+
+    /* ── COMMISSION CALLOUT ── */
+    .commission-block {
+      background: var(--slate);
+      padding: 2.5rem 3rem;
+      margin: 2.5rem 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .commission-block::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 30%; height: 100%;
+      background: radial-gradient(ellipse at right, rgba(232,184,109,0.1) 0%, transparent 70%);
+    }
+
+    .commission-block .eyebrow { color: rgba(245,239,228,0.5); }
+    .commission-block .eyebrow::before { background: rgba(245,239,228,0.3); }
+
+    .commission-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--linen); font-weight: 500; font-style: italic;
+      margin-bottom: 1rem; position: relative;
+    }
+
+    .commission-block p {
+      color: rgba(245,239,228,0.75); font-size: 0.95rem; font-weight: 300;
+      line-height: 1.75; position: relative; margin-bottom: 0.75rem;
+    }
+
+    /* ── INCLUDES LIST ── */
+    .includes-group { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--linen-dark); }
+    .includes-group:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .includes-group-label {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--slate); margin-bottom: 1.25rem;
+    }
+
+    .includes-list { list-style: none; display: grid; gap: 0.9rem; margin-top: 1rem; }
+
+    .includes-list li {
+      display: grid; grid-template-columns: 20px 1fr;
+      gap: 0.75rem; font-size: 0.95rem; color: var(--olive); line-height: 1.65;
+    }
+
+    .includes-list li::before { content: '—'; color: var(--slate); font-weight: 300; margin-top: 0.05rem; }
+    .includes-list li strong { font-weight: 500; }
+
+    /* ── PROPERTY TYPES GRID ── */
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      margin-top: 2.5rem;
+      background: var(--linen-dark);
+    }
+
+    .property-card {
+      background: var(--white);
+      padding: 2rem;
+    }
+
+    .property-type {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.6rem;
+    }
+
+    .property-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 500; color: var(--olive); margin-bottom: 0.6rem;
+    }
+
+    .property-desc { font-size: 0.88rem; color: var(--stone); line-height: 1.65; font-weight: 300; }
+
+    /* ── GEOGRAPHY ── */
+    .geo-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .geo-item { padding: 1.5rem; background: var(--white); }
+
+    .geo-label {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem;
+    }
+
+    .geo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 500; color: var(--olive); margin-bottom: 0.4rem;
+    }
+
+    .geo-desc { font-size: 0.85rem; color: var(--stone); line-height: 1.6; }
+
+    /* ── PROCESS ── */
+    .process-steps { display: grid; gap: 0; margin-top: 3rem; }
+
+    .process-step { display: grid; grid-template-columns: 60px 1fr; gap: 0; position: relative; }
+
+    .process-step::after {
+      content: ''; position: absolute;
+      left: 29px; top: 44px; bottom: 0;
+      width: 1px; background: var(--linen-dark);
+    }
+
+    .process-step:last-child::after { display: none; }
+
+    .step-dot {
+      position: absolute; left: 22px; top: 8px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--slate); z-index: 2;
+    }
+
+    .step-content { padding: 0 0 2.5rem 1rem; }
+
+    .step-content h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--olive); margin-bottom: 0.4rem;
+    }
+
+    .step-content p { font-size: 0.9rem; color: var(--stone); line-height: 1.65; margin: 0; }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 2.5rem; }
+    .faq-item { border-bottom: 1px solid var(--linen-dark); }
+
+    .faq-question {
+      width: 100%; background: none; border: none; padding: 1.5rem 0;
+      text-align: left; cursor: pointer; display: flex;
+      justify-content: space-between; align-items: flex-start; gap: 1rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+      font-weight: 500; color: var(--olive); line-height: 1.3;
+    }
+
+    .faq-icon {
+      flex-shrink: 0; width: 20px; height: 20px; border: 1px solid var(--stone);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--stone);
+      transition: all 0.2s; margin-top: 0.15rem; font-weight: 300;
+    }
+
+    .faq-item.open .faq-icon { background: var(--slate); border-color: var(--slate); color: var(--white); }
+    .faq-answer { display: none; padding: 0 0 1.5rem 0; font-size: 0.95rem; color: var(--olive); line-height: 1.75; font-weight: 300; }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--terracotta); padding: 5rem 2rem; }
+    .cta-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .cta-inner .eyebrow { color: rgba(255,255,255,0.6); justify-content: center; }
+    .cta-inner .eyebrow::before { background: rgba(255,255,255,0.4); }
+
+    .cta-inner h2 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white); font-weight: 500; font-style: italic; margin-bottom: 1rem;
+    }
+
+    .cta-inner p { color: rgba(255,255,255,0.82); font-size: 1rem; font-weight: 300; line-height: 1.75; margin-bottom: 2rem; }
+
+    .btn {
+      display: inline-block; padding: 0.9rem 2.2rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      border-radius: 2px; transition: all 0.2s; cursor: pointer; border: none;
+    }
+
+    .btn-white { background: var(--white); color: var(--terracotta); }
+    .btn-white:hover { background: var(--linen); }
+
+    .btn-outline-white {
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.5); margin-left: 1rem;
+    }
+
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+    .cta-subtext { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--olive); padding: 3rem 2rem; }
+
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 2rem; flex-wrap: wrap;
+    }
+
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--linen); line-height: 1.2; }
+    .footer-logo span { display: block; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-top: 0.2rem; }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: var(--stone); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--linen); }
+
+    .footer-copy { width: 100%; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.75rem; color: var(--stone); letter-spacing: 0.05em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .geo-list { grid-template-columns: 1fr; }
+      .btn-outline-white { margin-left: 0; margin-top: 0.75rem; display: block; text-align: center; }
+      section { padding: 3.5rem 1.25rem; }
+      .commission-block { padding: 2rem; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+    }
+      .footer-signup { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 3rem 2rem; }
+    .fs-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .fs-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #F5EFE4; font-style: italic; margin-bottom: 0.4rem; font-weight: 500; }
+    .fs-text p { font-size: 0.92rem; color: #9E9488; margin: 0; font-weight: 300; }
+    .fs-form .fs-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .fs-form input[type=email] { flex: 1; min-width: 200px; padding: 0.8rem 1rem; border: 1px solid rgba(245,239,228,0.25); background: rgba(245,239,228,0.06); color: #F5EFE4; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; border-radius: 2px; }
+    .fs-form input[type=email]::placeholder { color: #9E9488; }
+    .fs-form input[type=email]:focus { outline: none; border-color: #E8B86D; }
+    .fs-form button { padding: 0.8rem 1.5rem; background: #C4693A; color: #fff; border: none; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+    .fs-form button:hover { background: #b05a30; }
+    .fs-consent { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.8rem; font-size: 0.74rem; color: #9E9488; line-height: 1.5; }
+    .fs-consent input { margin-top: 0.2rem; accent-color: #C4693A; }
+    .fs-consent a { color: #E8B86D; }
+    @media (max-width: 768px) { .fs-inner { grid-template-columns: 1fr; } }
+  
+    /* New wordmark — Spanish regular, AfterLife semibold, single tone */
+    .nav-logo{font-weight:400}
+    .nav-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .footer-logo{font-weight:400}
+    .footer-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .lm-logo{font-weight:400}
+    .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+  </style>
+  <!-- Mailchimp connected site -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Spanish <strong>AfterLife</strong> <span>Valencia Community, Spain</span></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/fullafterlife">The Full AfterLife</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+      <li><a href="/real-estate" class="active">Real Estate</a></li>
+      <li><a href="/private-client">Private Client</a></li>
+      <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/fullafterlife">The Full AfterLife</a>
+    <a href="/immigration">Immigration</a>
+    <a href="/real-estate" class="active">Real Estate</a>
+    <a href="/private-client">Private Client</a>
+    <a href="/building-my-life-in-spain">Building My Life in Spain</a>
+    <a href="/#contact" class="mob-cta">Get Started</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">Real Estate Buyer's Agency</div>
+      <h1>We represent <em>you.</em><br>Not the seller.</h1>
+      <p class="page-header-desc">Full buyer's agency for North Americans purchasing property in the Valencia Community — from brief to escritura. In-person viewings, Spanish negotiation, legal coordination, and post-completion support.</p>
+      <div class="header-callout">No buyer fee. Commission funded by the vendor's agent at completion.</div>
+    </div>
+  </header>
+
+  <!-- HOW IT WORKS -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">How it works</div>
+      <h2 class="section-heading">Your interests.<br><em>Our job.</em></h2>
+      <p class="lede">In Spain, the buyer's agent is paid from the vendor's commission at completion. This is standard practice, and we are transparent about it — because the alternative would be a strange way to start a relationship built on trust.</p>
+      <p>What matters is this: we represent you. The Spanish estate agent represents the seller. Our job is to find you the right property at the right price, close the transaction cleanly, and have you tell everyone you know what the experience was like. That alignment only works if you are genuinely well-served.</p>
+      <p>We live in the Valencia Community and know this market from the inside — what a property presents as versus what it actually is to live in, how Spanish agents work, how they negotiate, and where foreign buyers consistently lose ground. We represent you as your buyer's agent, alongside vetted local professionals and a Spanish property lawyer, and we close those gaps.</p>
+
+      <div class="commission-block">
+        <div class="eyebrow">On the commission structure</div>
+        <div class="commission-headline">Transparent because we have nothing to hide.</div>
+        <p>The estate agent commission in Spain is traditionally paid by the seller — typically 3–5% of the purchase price. Where a buyer's agent is involved, that commission is split. You do not pay an additional fee on top of the purchase price.</p>
+        <p>Our buyer's agency fee is 2–3% of the purchase price, funded from the vendor's agent's commission at completion. This is disclosed to all parties. It is standard, legal, and transparent. Our incentive is your outcome — not the sale of a specific property.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">What's included</div>
+      <h2 class="section-heading">Brief to keys.<br><em>All of it.</em></h2>
+
+      <div class="includes-group">
+        <div class="includes-group-label">Discovery and brief</div>
+        <ul class="includes-list">
+          <li><div><strong>Property brief consultation — 60 minutes.</strong> We establish lifestyle requirements, location preferences, non-negotiables, and budget range. We also tell you what your budget actually buys in each target area — based on current market, not aspirational marketing. No surprises later.</div></li>
+          <li><div><strong>Market orientation.</strong> What is happening in the Valencia Community right now. Where values are moving. Which areas are seeing North American demand and why. Where the value still exists.</div></li>
+          <li><div><strong>Lifestyle mapping.</strong> We match your stated priorities — beach access, golf proximity, rural quiet, urban amenity, food culture, travel connectivity — against the specific geography of what's available at your price point.</div></li>
+        </ul>
+      </div>
+
+      <div class="includes-group">
+        <div class="includes-group-label">Search and sourcing</div>
+        <ul class="includes-list">
+          <li><div><strong>Full inventory access</strong> — listed properties plus off-market opportunities through our on-the-ground network in the Valencia Community.</div></li>
+          <li><div><strong>Curated shortlist.</strong> You receive properties that actually fit your brief. Not everything in the database. We filter before you see it.</div></li>
+          <li><div><strong>Virtual viewing package.</strong> Before you fly, we send video walkthroughs of shortlisted properties so you arrive having already eliminated the majority of the options. One trip to close, instead of three trips to look.</div></li>
+        </ul>
+      </div>
+
+      <div class="includes-group">
+        <div class="includes-group-label">In-person viewings</div>
+        <ul class="includes-list">
+          <li><div><strong>We are physically present at every viewing</strong> — no third-party agents, no translation chaos, no one in the room with a different agenda.</div></li>
+          <li><div><strong>Post-viewing assessment.</strong> Honest, property by property. What we would buy, what we wouldn't, and why. In writing.</div></li>
+          <li><div>Second viewings coordinated where needed, including with our renovation contacts for properties requiring work.</div></li>
+        </ul>
+      </div>
+
+      <div class="includes-group">
+        <div class="includes-group-label">Offer through completion</div>
+        <ul class="includes-list">
+          <li><div><strong>Offer strategy.</strong> We know what has been sitting, what has moved fast, and what the vendor will actually accept before you put a number on paper.</div></li>
+          <li><div><strong>Price negotiation.</strong> Conducted in Spanish, by someone who understands how Spanish agents price, how they present offers to vendors, and where there is room that the headline figure doesn't show.</div></li>
+          <li><div><strong>Arras contract coordination.</strong> We introduce and brief our real estate lawyer partner. You engage the lawyer directly — they work for you. We coordinate the timing and attend the signing.</div></li>
+          <li><div><strong>Due diligence.</strong> Title search, registered encumbrances, community debt review, pending community works assessments, IBI payment history, and cadastral value verification. We do not skip this regardless of how clean a property appears.</div></li>
+          <li><div><strong>ITP calculation.</strong> Impuesto de Transmisiones Patrimoniales — transfer tax. We prepare you for the full acquisition cost picture, including ITP, notary fees, and legal fees, before you commit to anything.</div></li>
+          <li><div><strong>Notary — escritura pública.</strong> We attend. So do you. The lawyer attends. The keys change hands.</div></li>
+        </ul>
+      </div>
+
+      <div class="includes-group">
+        <div class="includes-group-label">After the keys</div>
+        <ul class="includes-list">
+          <li><div>Utility transfers — electricity, water, gas, internet. Account transfers and new registrations handled correctly in the right sequence.</div></li>
+          <li><div>Community administrator introduction and fee briefing</div></li>
+          <li><div>Gestoria referral for ongoing administrative needs — vehicle registration, annual tax filings, NIE renewals</div></li>
+          <li><div>Renovation and trade contractor referrals — architects, project managers, builders, interior teams. Vetted, with track record in the region.</div></li>
+          <li><div><strong>90-day direct access</strong> for the questions that come up when you are living in a new property in a new country.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTY TYPES -->
+  <section class="bg-linen">
+    <div class="section-inner wide">
+      <div class="section-label">What we work across</div>
+      <h2 class="section-heading">Every type of property.<br><em>One standard of service.</em></h2>
+      <div class="property-grid">
+        <div class="property-card">
+          <div class="property-type">City</div>
+          <div class="property-name">Valencia apartments</div>
+          <p class="property-desc">Centro Histórico, Ruzafa, El Cabanyal, Benimaclet. Strong rental potential and urban lifestyle infrastructure. The most dynamic property market in Spain right now.</p>
+        </div>
+        <div class="property-card">
+          <div class="property-type">Coastal</div>
+          <div class="property-name">Apartments and penthouses</div>
+          <p class="property-desc">Denia, Jávea, Oliva, Cullera, Gandia. Direct beach access or short walk. Marina locations. The Costa Blanca North at prices that still make sense.</p>
+        </div>
+        <div class="property-card">
+          <div class="property-type">Village</div>
+          <div class="property-name">Townhouses</div>
+          <p class="property-desc">Old town properties in coastal towns and inland villages. Character, community, lower price per m². Often the best value in the most liveable locations.</p>
+        </div>
+        <div class="property-card">
+          <div class="property-type">Private</div>
+          <div class="property-name">Villas</div>
+          <p class="property-desc">Detached, pool, private gardens. Typically 3–5 bedrooms. Coastal belt and inland Valencia. The property most North American clients eventually buy.</p>
+        </div>
+        <div class="property-card">
+          <div class="property-type">Rural</div>
+          <div class="property-name">Fincas</div>
+          <p class="property-desc">Rural estates with land — olive, almond, citrus. Often 5,000m² to several hectares. Equestrian potential, guest accommodation, complete privacy. The Vall d'Albaida offers exceptional value.</p>
+        </div>
+        <div class="property-card">
+          <div class="property-type">Opportunity</div>
+          <div class="property-name">Renovation projects</div>
+          <p class="property-desc">Significant discount against finished comparables. We have the contractor network to make these viable. For buyers with appetite and the right guidance, the best returns in the market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEOGRAPHY -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">Where we work</div>
+      <h2 class="section-heading">The Valencia Community.<br><em>From coast to inland.</em></h2>
+      <p>Our on-the-ground network, market knowledge, and contractor relationships are concentrated in the Valencia Community. This is where we live, and where we know the difference between what a neighbourhood presents as and what it actually is to live in.</p>
+      <div class="geo-list">
+        <div class="geo-item">
+          <div class="geo-label">Primary</div>
+          <div class="geo-name">Valencia City</div>
+          <p class="geo-desc">Spain's third city. World-class food culture, extraordinary architecture, direct beach access, and a cost of living that makes Toronto and Vancouver look like a different planet.</p>
+        </div>
+        <div class="geo-item">
+          <div class="geo-label">Primary</div>
+          <div class="geo-name">Jávea &amp; Denia</div>
+          <p class="geo-desc">The sophisticated end of the Costa Blanca. International community, serious restaurant culture, sailing, exceptional beaches, and property values that have room to grow.</p>
+        </div>
+        <div class="geo-item">
+          <div class="geo-label">Primary</div>
+          <div class="geo-name">Oliva, Cullera, Gandia</div>
+          <p class="geo-desc">Direct beach access at significantly lower price points than Jávea. Strong communities, excellent infrastructure, less international noise. The coast that serious buyers are discovering.</p>
+        </div>
+        <div class="geo-item">
+          <div class="geo-label">Primary</div>
+          <div class="geo-name">Inland Valencia</div>
+          <p class="geo-desc">Ontinyent, the Vall d'Albaida, and surrounding comarca. Fincas, land, olive groves, silence. The most significant value in the Valencia Community for buyers seeking space and rural character.</p>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--stone);">Secondary coverage by arrangement: Costa Blanca South, Barcelona area, Andalusia. If your target is outside our primary geography, tell us at the eligibility call. We'll be honest about where we can serve you fully.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">The sequence</div>
+      <h2 class="section-heading">How a property search<br><em>actually works here.</em></h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Property brief — 60 minutes</h4>
+            <p>Lifestyle requirements, location priorities, non-negotiables, budget. We tell you what your budget buys in each area. No aspirational marketing.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Market orientation and shortlist</h4>
+            <p>We build a curated shortlist against your brief. You receive the properties worth seeing — not the full database.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Virtual viewing package</h4>
+            <p>Video walkthroughs of shortlisted properties before you fly. You eliminate 80% of the options before you land. One trip to close, not three trips to look.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>In-person viewings — we are there</h4>
+            <p>Every viewing, in person, with us. Post-viewing assessments in writing. Honest about what we wouldn't buy.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Offer strategy and negotiation</h4>
+            <p>In Spanish. Based on what has moved and what hasn't. We know where there is room before you put a number forward.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Arras contract and due diligence</h4>
+            <p>Legal partner engaged. Title, encumbrances, community debts, IBI history, ITP calculation. All reviewed before you commit.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Escritura — notary — keys</h4>
+            <p>We attend. The lawyer attends. The transaction completes correctly.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>90 days post-completion</h4>
+            <p>Utilities, community, contractors, gestoria. Direct access for whatever comes up. Things come up.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">Common questions</div>
+      <h2 class="section-heading">What people<br><em>ask first.</em></h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Why do I need a buyer's agent? Can't I just use the Spanish estate agent?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">The Spanish estate agent represents the seller. That is their job and their legal position. They have no professional obligation to tell you about structural issues, community debts, pending IBI, deferred community works, or overpriced comparable sales. In many cases they will not volunteer this information. We are on your side of the transaction. Our commission comes from the vendor's agent fee pool at completion — standard in Spain. What you get is full professional representation in a foreign market, in a foreign language, in a legal system that works differently from Canada or the US.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How does the commission structure work exactly?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">In Spain, the estate agent commission is traditionally paid by the seller — typically 3–5% of the purchase price. Where there is a buyer's agent, that commission is shared from the vendor's agent's fee. You do not pay an additional buyer's fee on top of the purchase price. Our buyer's agency fee is 2–3% of the purchase price, funded from the vendor's agent's commission at completion. This is disclosed to all parties and is standard practice.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            We speak Spanish — do we still need a buyer's agent?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Speaking Spanish and understanding how Spanish real estate transactions work are different skills. We are not selling translation. We are selling market knowledge, sourcing network, negotiation leverage built on local relationships, due diligence coordination, and deep first-hand knowledge of this specific market. If you negotiate without us, you negotiate against an agent who does this every day, in their home market, in their language, with vendors they know personally.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What are the additional costs beyond the purchase price?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">As a general guide: ITP (transfer tax) ranges from 8–10% depending on the Valencia Community property type and buyer situation; notary fees typically 0.5–1%; legal fees for real estate lawyer typically 1–1.5%. We calculate your specific acquisition cost picture before you commit to an arras — no surprises at completion. Our buyer's agency commission is covered by the vendor's agent, so it does not appear as an additional cost to you.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can you help with renovation?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">We do not manage renovation projects as a primary service. We have a vetted network of architects, project managers, and builders across our geography. For properties requiring significant work, we provide contractor introductions and honest advice on realistic budgets and timelines. The renovation relationship is yours to manage — we help you start it correctly.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            We want to rent before buying. Can you help?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Sensible. Long-term rental sourcing is not a standalone service, but for clients who want to rent in Spain before purchasing, we advise on rental markets and what to expect in each area as context for the eventual purchase decision. We recommend that clients spend time in their target location before committing — it is good advice and we are not afraid to give it even when it delays a transaction.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="eyebrow">Start the search</div>
+      <h2>Tell us what you're<br>looking for.</h2>
+      <p>The property brief is where it starts — 60 minutes to understand your lifestyle, your priorities, and what your budget actually buys in the Valencia Community. No obligation. No database dump. An honest conversation.</p>
+      <div>
+        <a href="/#contact" class="btn btn-white">Book a property brief</a>
+        <a href="/immigration" class="btn btn-outline-white">View immigration service</a>
+      </div>
+      <p class="cta-subtext">No buyer fee. Commission funded by vendor's agent at completion.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-signup">
+      <div class="fs-inner">
+        <div class="fs-text">
+          <h4>Your Complete Guide to Retiring in Spain</h4>
+          <p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
+        </div>
+        <form class="fs-form" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+          <div class="fs-row">
+            <input type="email" name="EMAIL" placeholder="Your email address" required>
+            <button type="submit">Send me the guide</button>
+          </div>
+          <label class="fs-consent"><input type="checkbox" name="consent" required> Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</label>
+          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
+        </form>
+      </div>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-logo">Spanish <strong>AfterLife</strong> <span>Valencia Community, Spain</span></div>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/fullafterlife">The Full AfterLife</a></li>
+        <li><a href="/immigration">Immigration</a></li>
+        <li><a href="/real-estate">Real Estate</a></li>
+        <li><a href="/private-client">Private Client</a></li>
+        <li><a href="/building-my-life-in-spain">Building My Life in Spain</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 LJ Koch Group Inc. · Spanish AfterLife · Why wait for the AfterLife?</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-icon').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.querySelector('.faq-icon').textContent = '−';
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

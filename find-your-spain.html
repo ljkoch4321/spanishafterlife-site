@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Could Spain Be Your Answer? — Spanish AfterLife</title>
+  <meta name="description" content="Four questions, two minutes. Tell us what you're looking for and we'll show you whether Spain — and which version of it — is the answer for you.">
+  <link rel="canonical" href="https://spanishafterlife.com/find-your-spain">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Could Spain Be Your Answer? — Spanish AfterLife">
+  <meta property="og:description" content="Four questions, two minutes. Find out whether Spain is the answer for you.">
+  <meta property="og:image" content="https://spanishafterlife.com/hero.png">
+  <meta property="og:url" content="https://spanishafterlife.com/find-your-spain">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --terracotta: #C4693A; --linen: #F5EFE4; --olive: #3D4C2E; --saffron: #E8B86D;
+      --slate: #4A6C82; --stone: #9E9488; --white: #FFFFFF; --linen-dark: #EDE6D8;
+    }
+    html { font-size: 18px; scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--olive); background: var(--linen); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; font-weight: 500; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--olive); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--linen); text-decoration: none; letter-spacing: 0.02em; line-height: 1.1; }
+    .nav-logo span { display: block; font-weight: 400; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+    .nav-links { display: flex; gap: 1.7rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--stone); text-decoration: none; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--linen); }
+    .nav-links .nav-cta { background: var(--terracotta); color: var(--white); padding: 0.45rem 1.1rem; border-radius: 2px; font-size: 0.72rem; letter-spacing: 0.1em; transition: background 0.2s; }
+    .nav-links .nav-cta:hover { background: #b05a30; color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--linen); transition: all 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--olive); padding: 1.5rem 2rem 2rem; z-index: 99; border-top: 1px solid rgba(255,255,255,0.08); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: var(--stone); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--linen); }
+    .mobile-menu .mob-cta { display: block; margin-top: 1rem; background: var(--terracotta); color: var(--white); text-align: center; padding: 0.75rem; border-radius: 2px; }
+
+    /* FUNNEL STAGE */
+    .stage { min-height: 100vh; padding: 64px 1.5rem 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--olive); }
+    .stage::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 78% 25%, rgba(196,105,58,0.16) 0%, transparent 55%), radial-gradient(ellipse at 18% 85%, rgba(74,108,130,0.13) 0%, transparent 55%); pointer-events: none; }
+    .panel { position: relative; width: 100%; max-width: 680px; padding: 2.5rem 0 4rem; }
+
+    .progress { display: flex; gap: 0.4rem; margin-bottom: 2.5rem; }
+    .progress .pip { height: 3px; flex: 1; background: rgba(245,239,228,0.18); border-radius: 2px; transition: background 0.3s; }
+    .progress .pip.done { background: var(--terracotta); }
+    .progress .pip.current { background: var(--saffron); }
+
+    .screen { display: none; animation: fade 0.45s ease both; }
+    .screen.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    .q-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron); margin-bottom: 1rem; }
+    .q-prompt { font-size: clamp(1.8rem, 5vw, 2.7rem); color: var(--linen); font-style: italic; margin-bottom: 2rem; }
+    .q-prompt em { font-style: normal; color: var(--saffron); }
+
+    .options { display: grid; gap: 0.85rem; }
+    .opt { text-align: left; background: rgba(245,239,228,0.05); border: 1px solid rgba(245,239,228,0.18); color: var(--linen); padding: 1.1rem 1.35rem; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 1rem; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .opt:hover { border-color: var(--terracotta); background: rgba(196,105,58,0.12); transform: translateX(3px); }
+    .opt .opt-label { font-weight: 400; }
+    .opt .opt-sub { display: block; font-size: 0.78rem; color: var(--stone); margin-top: 0.15rem; }
+    .opt .arr { color: var(--terracotta); opacity: 0; transition: opacity 0.18s; font-size: 1.1rem; }
+    .opt:hover .arr { opacity: 1; }
+
+    .controls { display: flex; align-items: center; gap: 1.25rem; margin-top: 2rem; }
+    .back-btn { background: none; border: none; color: var(--stone); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: color 0.2s; }
+    .back-btn:hover { color: var(--linen); }
+    .step-count { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+
+    /* INTRO */
+    .intro h1 { font-size: clamp(2.4rem, 7vw, 4rem); color: var(--linen); font-style: italic; margin-bottom: 1.25rem; }
+    .intro h1 em { font-style: normal; color: var(--saffron); }
+    .intro p { color: var(--stone); font-size: 1.05rem; font-weight: 300; max-width: 520px; margin-bottom: 2.25rem; }
+    .start-btn { display: inline-block; background: var(--terracotta); color: var(--white); border: none; padding: 1rem 2.4rem; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .start-btn:hover { background: #b05a30; }
+    .intro .tiny { display: block; margin-top: 1rem; font-size: 0.75rem; color: var(--stone); letter-spacing: 0.05em; }
+
+    /* RESULT */
+    .result .r-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron); margin-bottom: 1rem; }
+    .result h2 { font-size: clamp(2rem, 5.5vw, 3rem); color: var(--linen); font-style: italic; margin-bottom: 1.5rem; }
+    .result h2 em { font-style: normal; color: var(--saffron); }
+    .result p { color: rgba(245,239,228,0.88); font-weight: 300; font-size: 1.05rem; margin-bottom: 1.25rem; }
+    .result .geo-note { color: var(--stone); font-size: 0.98rem; }
+    .r-buys { margin: 1.75rem 0; padding: 1.4rem 1.6rem; background: rgba(245,239,228,0.06); border-left: 3px solid var(--terracotta); border-radius: 2px; }
+    .r-buys .lbl { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--saffron); display: block; margin-bottom: 0.4rem; }
+    .r-buys p { color: var(--linen); font-size: 1rem; margin: 0; font-weight: 400; }
+    .r-cta-head { color: var(--linen); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin: 2rem 0 1.25rem; }
+    .r-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-terra { background: var(--terracotta); color: var(--white); }
+    .btn-terra:hover { background: #b05a30; }
+    .btn-outline { background: transparent; color: var(--linen); border: 1px solid rgba(245,239,228,0.4); }
+    .btn-outline:hover { border-color: var(--linen); background: rgba(245,239,228,0.06); }
+    .r-news { margin-top: 1.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap; max-width: 440px; }
+    .r-news input { flex: 1; min-width: 200px; padding: 0.8rem 1rem; border: 1px solid rgba(245,239,228,0.25); background: rgba(245,239,228,0.06); color: var(--linen); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; border-radius: 2px; }
+    .r-news input::placeholder { color: var(--stone); }
+    .r-news input:focus { outline: none; border-color: var(--saffron); }
+    .r-news button { padding: 0.8rem 1.3rem; background: var(--terracotta); color: #fff; border: none; border-radius: 2px; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+    .r-restart { margin-top: 2rem; }
+    .r-restart button { background: none; border: none; color: var(--stone); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.06em; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .r-restart button:hover { color: var(--linen); }
+
+    @media (max-width: 920px) { .nav-links { display: none; } .hamburger { display: flex; } }
+  
+    /* New wordmark — Spanish regular, AfterLife semibold, single tone */
+    .nav-logo{font-weight:400}
+    .nav-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .footer-logo{font-weight:400}
+    .footer-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .lm-logo{font-weight:400}
+    .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+  </style>
+  <!-- Mailchimp connected site -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Spanish <strong>AfterLife</strong> <span>Valencia Community, Spain</span></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/fullafterlife">The Full AfterLife</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+      <li><a href="/real-estate">Real Estate</a></li>
+      <li><a href="/private-client">Private Client</a></li>
+      <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mm').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mm">
+    <a href="/">Home</a>
+    <a href="/fullafterlife">The Full AfterLife</a>
+    <a href="/immigration">Immigration</a>
+    <a href="/real-estate">Real Estate</a>
+    <a href="/private-client">Private Client</a>
+    <a href="/building-my-life-in-spain">Building My Life in Spain</a>
+    <a href="/#contact" class="mob-cta">Get Started</a>
+  </div>
+
+  <div class="stage">
+    <div class="panel">
+      <div class="progress" id="progress" style="visibility:hidden"></div>
+
+      <!-- INTRO -->
+      <div class="screen intro active" id="screen-intro">
+        <h1>What are you <em>actually</em> looking for?</h1>
+        <p>Four questions, about two minutes. Tell us what's pulling you, and we'll show you whether Spain is the answer — and which version of it fits your situation.</p>
+        <button class="start-btn" onclick="FUNNEL.start()">Start &rarr;</button>
+        <span class="tiny">No email required to see your result.</span>
+      </div>
+
+      <!-- QUESTION -->
+      <div class="screen" id="screen-q">
+        <div class="q-eyebrow" id="q-eyebrow"></div>
+        <div class="q-prompt" id="q-prompt"></div>
+        <div class="options" id="q-options"></div>
+        <div class="controls">
+          <button class="back-btn" id="q-back" onclick="FUNNEL.back()">&larr; Back</button>
+          <span class="step-count" id="q-count"></span>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="screen result" id="screen-result">
+        <div class="r-eyebrow">Your result</div>
+        <h2 id="r-title"></h2>
+        <p id="r-lead"></p>
+        <p class="geo-note" id="r-geo"></p>
+        <div class="r-buys">
+          <span class="lbl">What that buys you</span>
+          <p id="r-buys"></p>
+        </div>
+        <div class="r-cta-head" id="r-cta-head"></div>
+        <div class="r-actions" id="r-actions"></div>
+        <div id="r-news-wrap"></div>
+        <div class="r-restart"><button onclick="FUNNEL.restart()">Start over</button></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  const FUNNEL = (function(){
+    const QS = [
+      { id:'motivation', eyebrow:'Question 1 of 4', prompt:"What's pulling you toward a change?", options:[
+        { v:'cashout',    label:"I'm ready to cash out and start the next chapter" },
+        { v:'lifestyle',  label:"Better weather and quality of life in retirement" },
+        { v:'value',      label:"A life I can actually afford" },
+        { v:'comparison', label:"I'm comparing options — Mexico, Portugal, Spain" },
+      ]},
+      { id:'geo', eyebrow:'Question 2 of 4', prompt:"Where are you <em>now?</em>", options:[
+        { v:'ca',       label:"Canada" },
+        { v:'us_sun',   label:"United States", sub:"Sun Belt — Arizona, California, Florida, Texas" },
+        { v:'us_north', label:"United States", sub:"Northern or high-tax state — NY, Illinois, etc." },
+        { v:'other',    label:"Somewhere else" },
+      ]},
+      { id:'budget', eyebrow:'Question 3 of 4', prompt:"What could you put toward a home in Spain?", options:[
+        { v:'low',  label:"Under €200K", sub:"Coastal apartment or inland village house" },
+        { v:'mid',  label:"€200K – €500K", sub:"The sweet spot" },
+        { v:'high', label:"€500K and up", sub:"Villa, estate, or prime coast" },
+        { v:'none', label:"Renting first, or not sure yet" },
+      ]},
+      { id:'timeline', eyebrow:'Question 4 of 4', prompt:"And <em>when?</em>", options:[
+        { v:'asap',      label:"As soon as it makes sense" },
+        { v:'year',      label:"Within a year" },
+        { v:'twoyr',     label:"One to two years out" },
+        { v:'exploring', label:"Just exploring for now" },
+      ]},
+    ];
+
+    const state = {};
+    let idx = 0; // which question
+
+    const el = id => document.getElementById(id);
+    function show(screen){
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      el(screen).classList.add('active');
+    }
+    function renderProgress(step){ // step: 0..3 current question, or 4 = result
+      const p = el('progress'); p.style.visibility = 'visible'; p.innerHTML='';
+      for(let i=0;i<4;i++){
+        const pip = document.createElement('div');
+        pip.className = 'pip' + (i<step ? ' done' : (i===step ? ' current' : ''));
+        p.appendChild(pip);
+      }
+    }
+    function renderQuestion(){
+      const q = QS[idx];
+      el('q-eyebrow').textContent = q.eyebrow;
+      el('q-prompt').innerHTML = q.prompt;
+      const box = el('q-options'); box.innerHTML='';
+      q.options.forEach(o=>{
+        const b = document.createElement('button');
+        b.className='opt';
+        b.innerHTML = '<span><span class="opt-label">'+o.label+'</span>'+(o.sub?'<span class="opt-sub">'+o.sub+'</span>':'')+'</span><span class="arr">&rarr;</span>';
+        b.onclick = ()=>choose(q.id, o.v);
+        box.appendChild(b);
+      });
+      el('q-count').textContent = (idx+1)+' / 4';
+      el('q-back').style.visibility = idx===0 ? 'hidden' : 'visible';
+      renderProgress(idx);
+      show('screen-q');
+      window.scrollTo(0,0);
+    }
+    function choose(id, val){ state[id]=val; if(idx<QS.length-1){ idx++; renderQuestion(); } else { renderResult(); } }
+    function back(){ if(idx>0){ idx--; renderQuestion(); } else { show('screen-intro'); el('progress').style.visibility='hidden'; } }
+    function start(){ idx=0; renderQuestion(); }
+    function restart(){ for(const k in state) delete state[k]; idx=0; show('screen-intro'); el('progress').style.visibility='hidden'; window.scrollTo(0,0); }
+
+    // ---- result composition ----
+    const MOT = {
+      cashout:    { t:"You're ready to <em>cash out.</em>", p:"You've decided the life you built now costs more than it gives back. In Spain, that equity converts into the things it can't buy where you are — health, weather, and time, spent while you still have all three." },
+      lifestyle:  { t:"You want the reward years <em>to feel like it.</em>", p:"Three hundred days of sun, food worth staying in for, and a pace that still remembers what leisure is for. Spain hands you that on an ordinary Tuesday — not just on holiday." },
+      value:      { t:"You want a life you can <em>actually afford.</em>", p:"What's out of reach where you are is ownable here. Spain is one of the last places in the developed world where a genuinely good life is still priced like one." },
+      comparison: { t:"You're weighing your options — <em>smart.</em>", p:"Against Mexico or Portugal, Spain tends to win where it counts: world-class healthcare, real safety, a clear legal residency path, and the sheer range of life on offer — coast, city, or quiet country." },
+    };
+    const GEO = {
+      ca:      "As a Canadian, you've probably looked at Mexico too. The difference Spain makes: EU-grade healthcare, a clear legal residency route, and a place you cash out into — not settle for.",
+      us_sun:  "You already chose warm. Spain offers the pleasant version of it — Mediterranean, not desert summers or hurricane season — with the culture, walkability, and travel your current address never came with, at a fraction of the property cost.",
+      us_north:"Most people in your shoes move to Florida or Arizona. Spain is the upgrade on that plan: the same exit from winter, but with European food, culture, and a continent two hours away — often for less than a Sun Belt condo.",
+      other:   "Wherever you're starting from, Spain's combination of value, climate, and access to the rest of Europe is what makes the decision land.",
+    };
+    const BUY = {
+      low:  "Around €200,000 buys a coastal apartment or an inland village house — owned outright, no mortgage. Many in your position pair this with the Non-Lucrative Visa and never look back.",
+      mid:  "€200,000 to €500,000 is the sweet spot: a beachfront apartment, a terraced townhouse with a roof terrace, or a finca with land and olive groves.",
+      high: "From €500,000 you're choosing between a villa with a pool, an equestrian estate, or a prime-coast property — the kind of thing that would cost three times as much in the market you're leaving.",
+      none: "No rush to buy. Plenty of people start by renting a season to find their corner of the coast — we sort the residency either way, and the property when you're ready.",
+    };
+
+    function ctaUrl(){
+      const q = new URLSearchParams({from:'funnel', m:state.motivation||'', g:state.geo||'', b:state.budget||'', t:state.timeline||''});
+      return '/?'+q.toString()+'#contact';
+    }
+
+    function renderResult(){
+      renderProgress(4);
+      el('r-title').innerHTML = MOT[state.motivation].t;
+      el('r-lead').textContent = MOT[state.motivation].p;
+      el('r-geo').textContent = GEO[state.geo];
+      el('r-buys').textContent = BUY[state.budget];
+
+      const soon = (state.timeline==='asap' || state.timeline==='year');
+      const explore = (state.timeline==='exploring');
+      const buying = (state.budget!=='none');
+      const actions = el('r-actions');
+      const newsWrap = el('r-news-wrap');
+      actions.innerHTML=''; newsWrap.innerHTML='';
+
+      function addBtn(href, label, cls){ const a=document.createElement('a'); a.href=href; a.className='btn '+cls; a.textContent=label; actions.appendChild(a); }
+
+      if(explore){
+        el('r-cta-head').textContent = "Still exploring? That's exactly the right time to start reading.";
+        addBtn('/building-my-life-in-spain', 'Read Building My Life in Spain', 'btn-terra');
+        addBtn(ctaUrl(), 'Book a call when ready', 'btn-outline');
+        newsWrap.innerHTML = '<form class="r-news" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID" method="post" target="_blank" novalidate>'
+          + '<input type="email" name="EMAIL" placeholder="Email me what\'s worth reading" required>'
+          + '<input type="hidden" name="_subject" value="Funnel — explorer subscriber">'
+          + '<button type="submit">Keep me posted</button>'
+          + '<label style="flex-basis:100%;display:flex;gap:0.5rem;align-items:flex-start;margin-top:0.6rem;font-size:0.72rem;color:var(--stone);line-height:1.5"><input type="checkbox" name="consent" required style="margin-top:0.15rem;accent-color:var(--terracotta)"> I agree to receive emails and accept the <a href="/privacy" style="color:var(--saffron)">Privacy Policy</a>.</label>'
+          + '<div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>'
+          + '</form>';
+      } else if(soon && buying){
+        el('r-cta-head').textContent = "The timing is now. Here's the fastest honest path.";
+        addBtn(ctaUrl(), 'Book your free call', 'btn-terra');
+        addBtn('/fullafterlife', 'See The Full AfterLife', 'btn-outline');
+      } else if(buying){
+        el('r-cta-head').textContent = "You've got runway. Worth getting the foundation right early.";
+        addBtn(ctaUrl(), 'Book your free call', 'btn-terra');
+        addBtn('/immigration', 'How immigration works', 'btn-outline');
+      } else {
+        el('r-cta-head').textContent = "Residency first, property when you're ready.";
+        addBtn(ctaUrl(), 'Book your free call', 'btn-terra');
+        addBtn('/immigration', 'How immigration works', 'btn-outline');
+      }
+      show('screen-result');
+      window.scrollTo(0,0);
+    }
+
+    return { start, back, restart, _state:state };
+  })();
+  </script>
+</body>
+</html>

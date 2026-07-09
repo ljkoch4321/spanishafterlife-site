@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Full AfterLife — Spanish AfterLife</title>
+  <meta name="description" content="The whole move handled as one engagement: residency, property, banking, and settlement. Immigration concierge plus full buyer's agency for Canadians and Americans retiring in Spain's Valencia Community.">
+  <link rel="canonical" href="https://spanishafterlife.com/fullafterlife">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Full AfterLife — Spanish AfterLife">
+  <meta property="og:description" content="From the decision to the keys. The whole move handled as one engagement, by one team.">
+  <meta property="og:image" content="https://spanishafterlife.com/hero.png">
+  <meta property="og:url" content="https://spanishafterlife.com/fullafterlife">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- GA4: paste measurement ID below to activate
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta: #C4693A;
+      --linen: #F5EFE4;
+      --olive: #3D4C2E;
+      --saffron: #E8B86D;
+      --slate: #4A6C82;
+      --stone: #9E9488;
+      --white: #FFFFFF;
+      --linen-dark: #EDE6D8;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--olive); background: var(--linen); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; font-weight: 500; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--olive); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--linen); text-decoration: none; letter-spacing: 0.02em; line-height: 1.1; }
+    .nav-logo span { display: block; font-weight: 400; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+    .nav-links { display: flex; gap: 1.7rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--stone); text-decoration: none; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--linen); }
+    .nav-links .nav-cta { background: var(--terracotta); color: var(--white); padding: 0.45rem 1.1rem; border-radius: 2px; font-size: 0.72rem; letter-spacing: 0.1em; transition: background 0.2s; }
+    .nav-links .nav-cta:hover { background: #b05a30; color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--linen); transition: all 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--olive); padding: 1.5rem 2rem 2rem; z-index: 99; border-top: 1px solid rgba(255,255,255,0.08); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: var(--stone); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--linen); }
+    .mobile-menu .mob-cta { display: block; margin-top: 1rem; background: var(--terracotta); color: var(--white); text-align: center; padding: 0.75rem; border-radius: 2px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header { margin-top: 64px; background: var(--olive); padding: 5rem 2rem 4.5rem; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(196,105,58,0.14) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(74,108,130,0.1) 0%, transparent 50%); pointer-events: none; }
+    .page-header-inner { max-width: 860px; margin: 0 auto; position: relative; }
+    .eyebrow { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+    .eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--terracotta); }
+    .page-header h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); color: var(--linen); font-weight: 500; margin-bottom: 1.25rem; font-style: italic; }
+    .page-header h1 em { font-style: normal; color: var(--saffron); }
+    .page-header-desc { font-size: 1.05rem; color: var(--stone); max-width: 580px; line-height: 1.75; font-weight: 300; }
+    .header-prices { display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .header-price-item { border-left: 2px solid var(--terracotta); padding-left: 1rem; }
+    .header-price-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); font-weight: 400; }
+    .header-price-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--linen); font-weight: 500; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+    .section-inner.wide { max-width: 1080px; }
+    .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1rem; }
+    .section-heading { font-size: clamp(1.9rem, 4vw, 2.8rem); color: var(--olive); margin-bottom: 1.5rem; }
+    .section-heading em { font-style: italic; color: var(--terracotta); }
+    .lede { font-size: 1.15rem; color: var(--olive); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
+    p { margin-bottom: 1.25rem; color: var(--olive); }
+    p:last-child { margin-bottom: 0; }
+    .bg-linen { background: var(--linen); }
+    .bg-white { background: var(--white); }
+    .bg-linen-dark { background: var(--linen-dark); }
+    .bg-olive { background: var(--olive); }
+    .bg-slate { background: var(--slate); }
+
+    /* ── COMBINES (two linked cards) ── */
+    .combine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; margin-top: 3rem; border: 1.5px solid var(--linen-dark); }
+    .combine-card { background: var(--white); padding: 2.5rem; display: flex; flex-direction: column; text-decoration: none; transition: background 0.2s; }
+    .combine-card:hover { background: var(--linen); }
+    .combine-card.slate { background: var(--slate); }
+    .combine-card.slate:hover { background: #3f5f74; }
+    .combine-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.75rem; }
+    .combine-card.slate .combine-tag { color: var(--saffron); }
+    .combine-card h3 { font-size: 1.6rem; color: var(--olive); margin-bottom: 0.85rem; }
+    .combine-card.slate h3 { color: var(--white); }
+    .combine-card p { font-size: 0.95rem; line-height: 1.7; color: var(--stone); flex: 1; }
+    .combine-card.slate p { color: rgba(255,255,255,0.82); }
+    .combine-link { margin-top: 1.5rem; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); display: inline-flex; align-items: center; gap: 0.45rem; }
+    .combine-card.slate .combine-link { color: var(--saffron); }
+    .combine-link span { transition: transform 0.2s; }
+    .combine-card:hover .combine-link span { transform: translateX(4px); }
+    .combine-plus { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--terracotta); margin: 1.75rem 0 0; }
+
+    /* ── MONEY / TRANSPARENCY ── */
+    .money-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+    .money-col h3 { font-size: 1.4rem; color: var(--olive); margin-bottom: 0.75rem; }
+    .money-col .amt { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--terracotta); line-height: 1; margin-bottom: 0.75rem; }
+    .money-col ul { list-style: none; }
+    .money-col li { font-size: 0.92rem; color: var(--olive); padding: 0.5rem 0 0.5rem 1.4rem; position: relative; line-height: 1.6; }
+    .money-col li::before { content: ''; position: absolute; left: 0; top: 0.95rem; width: 8px; height: 1px; background: var(--terracotta); }
+    .trust-note { margin-top: 2.5rem; padding: 1.75rem 2rem; background: var(--linen); border-left: 3px solid var(--slate); font-size: 0.95rem; line-height: 1.75; color: var(--olive); }
+
+    /* ── SEQUENCE ── */
+    .seq { margin-top: 2.5rem; }
+    .seq-step { display: grid; grid-template-columns: 64px 1fr; gap: 1.25rem; padding: 1.4rem 0; border-top: 1px solid var(--linen-dark); align-items: baseline; }
+    .seq-step:last-child { border-bottom: 1px solid var(--linen-dark); }
+    .seq-n { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--terracotta); font-weight: 500; }
+    .seq-step h4 { font-size: 1.2rem; color: var(--olive); margin-bottom: 0.2rem; }
+    .seq-step p { font-size: 0.92rem; color: var(--stone); margin: 0; }
+
+    /* ── BECKHAM NOTE ── */
+    .beckham { background: var(--slate); }
+    .beckham .section-label { color: var(--saffron); }
+    .beckham .section-heading { color: var(--white); }
+    .beckham .section-heading em { color: var(--saffron); }
+    .beckham p { color: rgba(255,255,255,0.85); font-weight: 300; }
+    .beckham .window { display: inline-block; margin-top: 1rem; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--saffron); border: 1px solid rgba(232,184,109,0.4); padding: 0.5rem 1rem; border-radius: 2px; }
+
+    /* ── FOUNDER ── */
+    .founder-line { font-size: 1.05rem; line-height: 1.8; color: var(--olive); font-weight: 300; }
+    .founder-line strong { font-weight: 500; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--terracotta); padding: 5rem 2rem; }
+    .cta-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .cta-inner .eyebrow { color: rgba(255,255,255,0.6); justify-content: center; }
+    .cta-inner .eyebrow::before { background: rgba(255,255,255,0.4); }
+    .cta-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); color: var(--white); font-weight: 500; font-style: italic; margin-bottom: 1rem; }
+    .cta-inner p { color: rgba(255,255,255,0.82); font-size: 1rem; font-weight: 300; line-height: 1.75; margin-bottom: 2rem; }
+    .btn { display: inline-block; padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-white { background: var(--white); color: var(--terracotta); }
+    .btn-white:hover { background: var(--linen); }
+    .btn-outline-white { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.5); margin-left: 1rem; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+    .cta-subtext { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--olive); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--linen); line-height: 1.2; }
+    .footer-logo span { display: block; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-top: 0.2rem; }
+    .footer-links { display: flex; gap: 1.75rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: var(--stone); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--linen); }
+    .footer-copy { width: 100%; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.75rem; color: var(--stone); letter-spacing: 0.05em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 920px) { .nav-links { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 768px) {
+      .combine-grid { grid-template-columns: 1fr; }
+      .money-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .seq-step { grid-template-columns: 48px 1fr; gap: 1rem; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+      .footer-links { gap: 1.25rem; }
+      .btn-outline-white { margin-left: 0; margin-top: 0.75rem; display: block; text-align: center; }
+      section { padding: 3.5rem 1.25rem; }
+    }
+      .footer-signup { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 3rem 2rem; }
+    .fs-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .fs-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #F5EFE4; font-style: italic; margin-bottom: 0.4rem; font-weight: 500; }
+    .fs-text p { font-size: 0.92rem; color: #9E9488; margin: 0; font-weight: 300; }
+    .fs-form .fs-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .fs-form input[type=email] { flex: 1; min-width: 200px; padding: 0.8rem 1rem; border: 1px solid rgba(245,239,228,0.25); background: rgba(245,239,228,0.06); color: #F5EFE4; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; border-radius: 2px; }
+    .fs-form input[type=email]::placeholder { color: #9E9488; }
+    .fs-form input[type=email]:focus { outline: none; border-color: #E8B86D; }
+    .fs-form button { padding: 0.8rem 1.5rem; background: #C4693A; color: #fff; border: none; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+    .fs-form button:hover { background: #b05a30; }
+    .fs-consent { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.8rem; font-size: 0.74rem; color: #9E9488; line-height: 1.5; }
+    .fs-consent input { margin-top: 0.2rem; accent-color: #C4693A; }
+    .fs-consent a { color: #E8B86D; }
+    @media (max-width: 768px) { .fs-inner { grid-template-columns: 1fr; } }
+  
+    /* New wordmark — Spanish regular, AfterLife semibold, single tone */
+    .nav-logo{font-weight:400}
+    .nav-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .footer-logo{font-weight:400}
+    .footer-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .lm-logo{font-weight:400}
+    .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+  </style>
+  <!-- Mailchimp connected site -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      Spanish <strong>AfterLife</strong>
+      <span>Valencia Community, Spain</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/fullafterlife" class="active">The Full AfterLife</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+      <li><a href="/real-estate">Real Estate</a></li>
+      <li><a href="/private-client">Private Client</a></li>
+      <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/fullafterlife" class="active">The Full AfterLife</a>
+    <a href="/immigration">Immigration</a>
+    <a href="/real-estate">Real Estate</a>
+    <a href="/private-client">Private Client</a>
+    <a href="/building-my-life-in-spain">Building My Life in Spain</a>
+    <a href="/#contact" class="mob-cta">Get Started</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">The Full AfterLife</div>
+      <h1>From the decision<br>to the <em>keys.</em></h1>
+      <p class="page-header-desc">The whole move — residency, property, banking, settlement — handled as one engagement, by one team, from the day you decide to the first morning you wake up here.</p>
+      <div class="header-prices">
+        <div class="header-price-item">
+          <div class="header-price-label">Immigration — fixed fee from</div>
+          <div class="header-price-amount">&euro;3,500</div>
+        </div>
+        <div class="header-price-item">
+          <div class="header-price-label">Buyer's agency</div>
+          <div class="header-price-amount">Seller-funded</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT THIS IS -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">What this is</div>
+      <h2 class="section-heading">One relationship. <em>Start to finish.</em></h2>
+      <p class="lede">Most people moving to Spain end up assembling a committee: a gestor, an immigration lawyer, a real estate agent who works for the seller, a property lawyer, a bank, and a translator. Six relationships, none of whom talk to each other, in a language you are still learning, across a timeline nobody owns.</p>
+      <p>The Full AfterLife is the alternative. We hold the whole thing. Your residency and your property run as one coordinated engagement — same team, same timeline, one point of contact who already knows your file when you call. The legal work is done by vetted partner firms, but you never get handed off. You deal with us, throughout.</p>
+      <p>It is the way we would have wanted it done. So it is the way we built it.</p>
+    </div>
+  </section>
+
+  <!-- WHAT IT COMBINES -->
+  <section class="bg-white">
+    <div class="section-inner wide">
+      <div class="section-label">What it combines</div>
+      <h2 class="section-heading">Two services. <em>No seam between them.</em></h2>
+      <div class="combine-grid">
+        <a href="/immigration" class="combine-card">
+          <div class="combine-tag">Immigration Concierge</div>
+          <h3>Your legal right to live here.</h3>
+          <p>Non-Lucrative Visa, NIE, empadronamiento, CaixaBank, Beckham Law, tax registration. Eligibility through arrival, managed on your behalf — legal partner fee included.</p>
+          <span class="combine-link">See how immigration works <span>&rarr;</span></span>
+        </a>
+        <a href="/real-estate" class="combine-card slate">
+          <div class="combine-tag">Buyer's Agency</div>
+          <h3>The market you don't know yet.</h3>
+          <p>Full buyer's representation across the Valencia Community. We work for you, not the seller — and the commission is paid by the seller's side, so representation costs you nothing on top of the purchase.</p>
+          <span class="combine-link">See how property works <span>&rarr;</span></span>
+        </a>
+      </div>
+      <p class="combine-plus">+</p>
+    </div>
+  </section>
+
+  <!-- HOW THE MONEY WORKS -->
+  <section class="bg-linen-dark">
+    <div class="section-inner">
+      <div class="section-label">How the money works</div>
+      <h2 class="section-heading">No surprises. <em>We disclose all of it.</em></h2>
+      <div class="money-grid">
+        <div class="money-col">
+          <h3>Immigration</h3>
+          <div class="amt">&euro;3,500 <span style="font-size:1.1rem;color:var(--stone);">/ &euro;5,500 couple</span></div>
+          <ul>
+            <li>A fixed fee, agreed before we start. No hourly billing, no creep.</li>
+            <li>The legal partner fee (&euro;1,500 per applicant) is inside that price, not on top of it.</li>
+            <li>Certified translations passed through at cost — exactly what the translator charges, zero markup.</li>
+          </ul>
+        </div>
+        <div class="money-col">
+          <h3>Property</h3>
+          <div class="amt">Seller-funded</div>
+          <ul>
+            <li>Buyer's representation is funded by the standard commission paid on the seller's side — typically 2&ndash;3% of the price.</li>
+            <li>It costs you nothing beyond the purchase itself and your own conveyancing lawyer.</li>
+            <li>Your property lawyer and the notary are paid directly by you, at their own published rates.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="trust-note">
+        <strong>Why we tell you this.</strong> The commission that funds your representation is real, and we would rather you hear it from us than wonder about it later. An agent paid by the seller has a quiet incentive to close. An agent paid the same regardless of which property you choose does not. We have arranged it the second way on purpose — and we are happy to walk you through every euro of it on the call.
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SEQUENCE -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">The sequence</div>
+      <h2 class="section-heading">What actually happens, <em>in order.</em></h2>
+      <div class="seq">
+        <div class="seq-step"><div class="seq-n">01</div><div><h4>Strategy call</h4><p>Eligibility, finances, property goals, timeline. Free, and honest — if Spain isn't right for you, we say so.</p></div></div>
+        <div class="seq-step"><div class="seq-n">02</div><div><h4>Visa application</h4><p>Document brief, pre-submission review, and the formal NLV application managed through our legal partner.</p></div></div>
+        <div class="seq-step"><div class="seq-n">03</div><div><h4>NIE &amp; banking</h4><p>Your foreigner's tax number and a working CaixaBank account — the two keys everything else turns on.</p></div></div>
+        <div class="seq-step"><div class="seq-n">04</div><div><h4>Property search</h4><p>We brief the market to your criteria, shortlist, and view with you — fincas, coast, city, or all three.</p></div></div>
+        <div class="seq-step"><div class="seq-n">05</div><div><h4>Offer &amp; arras</h4><p>We negotiate and your lawyer drafts the arras contract. Title and charges checked before a euro moves.</p></div></div>
+        <div class="seq-step"><div class="seq-n">06</div><div><h4>Notary &amp; escritura</h4><p>The public deed is signed before a notary, ITP is coordinated, and the property is yours.</p></div></div>
+        <div class="seq-step"><div class="seq-n">07</div><div><h4>Settlement</h4><p>Empadronamiento, utilities, residency card, the practical first weeks — and a few introductions.</p></div></div>
+        <div class="seq-step"><div class="seq-n">08</div><div><h4>The first morning</h4><p>You wake up here, and realise you got the timing exactly right.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BECKHAM -->
+  <section class="beckham">
+    <div class="section-inner">
+      <div class="section-label">A note on tax</div>
+      <h2 class="section-heading">Beckham Law has a <em>window.</em></h2>
+      <p>Spain's special expatriate regime — a flat 24% on Spanish-source income up to a generous ceiling — can be elected only inside a six-month window after you register with Spanish social security. Miss it and it is gone; there is no second application. For a Full AfterLife engagement, the question of whether it fits your situation is on the table from the first call, not discovered at month four when the door is already closing.</p>
+      <p>It is available as a &euro;2,500-per-person add-on, and it is included outright in the Private Client engagement.</p>
+      <span class="window">Six months · one election · no appeal</span>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">Why we built this</div>
+      <p class="founder-line">Our founder made the move personally — from Mexico to Spain, through the tourist-visa years, the Digital Nomad Visa, and Spanish residency — <strong>before</strong> building Spanish AfterLife. The seams in this process are not theoretical to us. We know where a move like this gets handed off, dropped, or lost in translation, because we have lived in the bureaucracy ourselves. The visa and tax work we run for you is handled with vetted legal partners. The Full AfterLife exists to close the gaps.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="eyebrow">Start here</div>
+      <h2>Find out if Spain<br>is right for you.</h2>
+      <p>A free 45-minute call. We cover your visa eligibility, what your equity buys here, the property that fits, and a realistic timeline. No pitch — if Spain isn't the right move for you, you'll hear that too.</p>
+      <div>
+        <a href="/#contact" class="btn btn-white">Book your free call</a>
+        <a href="/private-client" class="btn btn-outline-white">Or meet The Private Client</a>
+      </div>
+      <p class="cta-subtext">No charge. No obligation. No pitch.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-signup">
+      <div class="fs-inner">
+        <div class="fs-text">
+          <h4>Your Complete Guide to Retiring in Spain</h4>
+          <p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
+        </div>
+        <form class="fs-form" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+          <div class="fs-row">
+            <input type="email" name="EMAIL" placeholder="Your email address" required>
+            <button type="submit">Send me the guide</button>
+          </div>
+          <label class="fs-consent"><input type="checkbox" name="consent" required> Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</label>
+          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
+        </form>
+      </div>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        Spanish <strong>AfterLife</strong>
+        <span>Valencia Community, Spain</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/fullafterlife">The Full AfterLife</a></li>
+        <li><a href="/immigration">Immigration</a></li>
+        <li><a href="/real-estate">Real Estate</a></li>
+        <li><a href="/private-client">Private Client</a></li>
+        <li><a href="/building-my-life-in-spain">Building My Life in Spain</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 LJ Koch Group Inc. · Spanish AfterLife · Why wait for the AfterLife?</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
