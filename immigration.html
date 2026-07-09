@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immigration Concierge — Spanish AfterLife</title>
+  <meta name="description" content="Non-Lucrative Visa, NIE, empadronamiento, and full arrival settlement for Canadians and Americans retiring in Spain. The immigration concierge service built by someone who's done it.">
+  <link rel="canonical" href="https://spanishafterlife.com/immigration" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta: #C4693A;
+      --linen: #F5EFE4;
+      --olive: #3D4C2E;
+      --saffron: #E8B86D;
+      --slate: #4A6C82;
+      --stone: #9E9488;
+      --white: #FFFFFF;
+      --linen-dark: #EDE6D8;
+    }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--olive);
+      background: var(--linen);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.15;
+      font-weight: 500;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--olive);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--linen);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--stone);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--linen); }
+
+    .nav-links .nav-cta {
+      background: var(--terracotta);
+      color: var(--white);
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      transition: background 0.2s;
+    }
+
+    .nav-links .nav-cta:hover { background: #b05a30; color: var(--white); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--linen);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--olive);
+      padding: 1.5rem 2rem 2rem;
+      z-index: 99;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu a {
+      display: block;
+      color: var(--stone);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--linen); }
+
+    .mobile-menu .mob-cta {
+      display: block;
+      margin-top: 1rem;
+      background: var(--terracotta);
+      color: var(--white);
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 2px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      margin-top: 64px;
+      background: var(--olive);
+      padding: 5rem 2rem 4.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 80% 50%, rgba(196,105,58,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(74,108,130,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .page-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      color: var(--linen);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .page-header h1 em {
+      font-style: normal;
+      color: var(--saffron);
+    }
+
+    .page-header-desc {
+      font-size: 1.05rem;
+      color: var(--stone);
+      max-width: 560px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .header-prices {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .header-price-item {
+      border-left: 2px solid var(--terracotta);
+      padding-left: 1rem;
+    }
+
+    .header-price-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+      font-weight: 400;
+    }
+
+    .header-price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--linen);
+      font-weight: 500;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+
+    .section-inner { max-width: 860px; margin: 0 auto; }
+
+    .section-inner.wide { max-width: 1080px; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      color: var(--olive);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--olive);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    p { margin-bottom: 1.25rem; color: var(--olive); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── ALTERNATING BACKGROUNDS ── */
+    .bg-linen { background: var(--linen); }
+    .bg-white { background: var(--white); }
+    .bg-linen-dark { background: var(--linen-dark); }
+    .bg-olive { background: var(--olive); }
+    .bg-slate { background: var(--slate); }
+
+    /* ── PACKAGES ── */
+    .package-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      margin-top: 3rem;
+      border: 1.5px solid var(--linen-dark);
+    }
+
+    .package-card {
+      background: var(--white);
+      padding: 2.5rem;
+    }
+
+    .package-card.featured {
+      background: var(--olive);
+    }
+
+    .package-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.75rem;
+    }
+
+    .package-card.featured .package-tag { color: var(--saffron); }
+
+    .package-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 500;
+      color: var(--olive);
+      margin-bottom: 0.5rem;
+    }
+
+    .package-card.featured .package-name { color: var(--linen); }
+
+    .package-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      margin-bottom: 1.25rem;
+    }
+
+    .package-card.featured .package-price { color: var(--saffron); }
+
+    .package-desc {
+      font-size: 0.9rem;
+      color: var(--stone);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .package-card.featured .package-desc { color: rgba(245,239,228,0.75); }
+
+    .package-note {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--slate);
+      font-style: italic;
+    }
+
+    .package-card.featured .package-note { color: var(--saffron); opacity: 0.8; }
+
+    /* ── INCLUDES LIST ── */
+    .includes-section { margin-top: 3rem; }
+
+    .includes-group {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--linen-dark);
+    }
+
+    .includes-group:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .includes-group-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 1.25rem;
+    }
+
+    .includes-group h3 {
+      font-size: 1.5rem;
+      color: var(--olive);
+      margin-bottom: 1rem;
+    }
+
+    .includes-list {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .includes-list li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--olive);
+      line-height: 1.6;
+    }
+
+    .includes-list li::before {
+      content: '—';
+      color: var(--terracotta);
+      font-weight: 300;
+      margin-top: 0.05rem;
+    }
+
+    .includes-list li strong { font-weight: 500; }
+
+    /* ── BECKHAM FEATURE ── */
+    .beckham-block {
+      background: var(--olive);
+      padding: 3rem;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .beckham-block::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 40%;
+      height: 100%;
+      background: radial-gradient(ellipse at right center, rgba(196,105,58,0.15) 0%, transparent 70%);
+    }
+
+    .beckham-block .eyebrow { color: var(--saffron); }
+    .beckham-block .eyebrow::before { background: var(--saffron); }
+
+    .beckham-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--linen);
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .beckham-stat {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 600;
+      color: var(--saffron);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .beckham-stat-label {
+      font-size: 0.8rem;
+      color: var(--stone);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.75rem;
+      position: relative;
+    }
+
+    .beckham-block p {
+      color: rgba(245,239,228,0.8);
+      font-size: 0.95rem;
+      font-weight: 300;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .beckham-price {
+      display: inline-block;
+      border: 1px solid var(--saffron);
+      color: var(--saffron);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      padding: 0.4rem 1rem;
+      margin-top: 1rem;
+      position: relative;
+    }
+
+    .beckham-warning {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: rgba(196,105,58,0.15);
+      border-left: 2px solid var(--terracotta);
+      font-size: 0.85rem;
+      color: var(--linen);
+      font-weight: 400;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* ── ADD-ONS TABLE ── */
+    .addons-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    .addons-table th {
+      background: var(--slate);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.25rem;
+      text-align: left;
+    }
+
+    .addons-table td {
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--linen-dark);
+      vertical-align: top;
+      color: var(--olive);
+    }
+
+    .addons-table tr:last-child td { border-bottom: none; }
+    .addons-table tr:nth-child(even) td { background: var(--white); }
+
+    .addon-name {
+      font-weight: 500;
+      color: var(--olive);
+      white-space: nowrap;
+    }
+
+    .addon-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--terracotta);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: grid;
+      gap: 0;
+      margin-top: 3rem;
+      counter-reset: steps;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      position: relative;
+    }
+
+    .process-step::after {
+      content: '';
+      position: absolute;
+      left: 39px;
+      top: 52px;
+      bottom: 0;
+      width: 1px;
+      background: var(--linen-dark);
+    }
+
+    .process-step:last-child::after { display: none; }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--linen-dark);
+      padding-top: 0.1rem;
+      text-align: center;
+      line-height: 1;
+      z-index: 1;
+      position: relative;
+    }
+
+    .step-dot {
+      position: absolute;
+      left: 31px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      z-index: 2;
+    }
+
+    .step-content {
+      padding: 0 0 2.5rem 1rem;
+    }
+
+    .step-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--olive);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--stone);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 2.5rem; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--linen-dark);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.5rem 0;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--olive);
+      line-height: 1.3;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--stone);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--stone);
+      transition: all 0.2s;
+      margin-top: 0.15rem;
+      font-weight: 300;
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: var(--white);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 0 1.5rem 0;
+      font-size: 0.95rem;
+      color: var(--olive);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── PRICING SUMMARY ── */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    .pricing-table th {
+      background: var(--olive);
+      color: var(--linen);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      text-align: left;
+    }
+
+    .pricing-table td {
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--linen-dark);
+      color: var(--olive);
+    }
+
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr:nth-child(odd) td { background: var(--white); }
+
+    .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .price-note {
+      font-size: 0.8rem;
+      color: var(--stone);
+      font-style: italic;
+      margin-top: 0.75rem;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--terracotta);
+      padding: 5rem 2rem;
+    }
+
+    .cta-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-inner .eyebrow { color: rgba(255,255,255,0.6); justify-content: center; }
+    .cta-inner .eyebrow::before { background: rgba(255,255,255,0.4); }
+
+    .cta-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .cta-inner p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--terracotta);
+    }
+
+    .btn-white:hover { background: var(--linen); }
+
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.5);
+      margin-left: 1rem;
+    }
+
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    .cta-subtext {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--olive);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--linen);
+      line-height: 1.2;
+    }
+
+    .footer-logo span {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-top: 0.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--stone);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--linen); }
+
+    .footer-copy {
+      width: 100%;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.75rem;
+      color: var(--stone);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .package-grid { grid-template-columns: 1fr; }
+
+      .process-step { grid-template-columns: 60px 1fr; }
+      .step-dot { left: 22px; }
+      .process-step::after { left: 29px; }
+
+      .addons-table { font-size: 0.85rem; }
+      .addons-table th, .addons-table td { padding: 0.75rem; }
+
+      .pricing-table th, .pricing-table td { padding: 0.75rem 1rem; }
+
+      .beckham-block { padding: 2rem; }
+
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+      .footer-links { gap: 1.25rem; }
+
+      .btn-outline-white { margin-left: 0; margin-top: 0.75rem; display: block; text-align: center; }
+
+      section { padding: 3.5rem 1.25rem; }
+    }
+      .footer-signup { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 3rem 2rem; }
+    .fs-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .fs-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #F5EFE4; font-style: italic; margin-bottom: 0.4rem; font-weight: 500; }
+    .fs-text p { font-size: 0.92rem; color: #9E9488; margin: 0; font-weight: 300; }
+    .fs-form .fs-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .fs-form input[type=email] { flex: 1; min-width: 200px; padding: 0.8rem 1rem; border: 1px solid rgba(245,239,228,0.25); background: rgba(245,239,228,0.06); color: #F5EFE4; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; border-radius: 2px; }
+    .fs-form input[type=email]::placeholder { color: #9E9488; }
+    .fs-form input[type=email]:focus { outline: none; border-color: #E8B86D; }
+    .fs-form button { padding: 0.8rem 1.5rem; background: #C4693A; color: #fff; border: none; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+    .fs-form button:hover { background: #b05a30; }
+    .fs-consent { display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 0.8rem; font-size: 0.74rem; color: #9E9488; line-height: 1.5; }
+    .fs-consent input { margin-top: 0.2rem; accent-color: #C4693A; }
+    .fs-consent a { color: #E8B86D; }
+    @media (max-width: 768px) { .fs-inner { grid-template-columns: 1fr; } }
+  
+    /* New wordmark — Spanish regular, AfterLife semibold, single tone */
+    .nav-logo{font-weight:400}
+    .nav-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .footer-logo{font-weight:400}
+    .footer-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+    .lm-logo{font-weight:400}
+    .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
+  </style>
+  <!-- Mailchimp connected site -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      Spanish <strong>AfterLife</strong>
+      <span>Valencia Community, Spain</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/fullafterlife">The Full AfterLife</a></li>
+      <li><a href="/immigration" class="active">Immigration</a></li>
+      <li><a href="/real-estate">Real Estate</a></li>
+      <li><a href="/private-client">Private Client</a></li>
+      <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/fullafterlife">The Full AfterLife</a>
+    <a href="/immigration" class="active">Immigration</a>
+    <a href="/real-estate">Real Estate</a>
+    <a href="/private-client">Private Client</a>
+    <a href="/building-my-life-in-spain">Building My Life in Spain</a>
+    <a href="/#contact" class="mob-cta">Get Started</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">Immigration Concierge</div>
+      <h1>From eligible<br>to <em>arrived.</em></h1>
+      <p class="page-header-desc">The Non-Lucrative Visa, NIE, empadronamiento, bank account, and full arrival settlement — managed by someone who has been through every step of this process in Spain.</p>
+      <div class="header-prices">
+        <div class="header-price-item">
+          <div class="header-price-label">Single applicant</div>
+          <div class="header-price-amount">€3,500</div>
+        </div>
+        <div class="header-price-item">
+          <div class="header-price-label">Couple</div>
+          <div class="header-price-amount">€5,500</div>
+        </div>
+        <div class="header-price-item">
+          <div class="header-price-label">Eligibility call</div>
+          <div class="header-price-amount">No charge</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT THIS IS -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">What this is</div>
+      <h2 class="section-heading">The NLV is well-designed.<br><em>And regularly mishandled.</em></h2>
+      <p class="lede">The Non-Lucrative Visa is Spain's residency path for financially independent people who don't need to work here. Wrong apostilles. Wrong financial documentation for the wrong consulate. Police checks from the wrong jurisdiction. Proof of income that doesn't match what the application requires. We have seen all of it.</p>
+      <p>We have also moved to Spain ourselves — the tourist-visa years, the residency application, the NIE, the paperwork that never quite matches the checklist. Your Non-Lucrative Visa application is prepared with a vetted immigration law firm that does this every day; what we add is having lived through Spanish residency and knowing where the process actually bends.</p>
+      <p>This package takes you from eligibility assessment to NIE in hand. Legal work is handled by our vetted Spanish immigration law partner, whose fees are included in the price. You deal with us. One relationship, beginning to end.</p>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">The packages</div>
+      <h2 class="section-heading">Choose your <em>engagement</em></h2>
+      <div class="package-grid">
+        <div class="package-card">
+          <div class="package-tag">Single applicant</div>
+          <div class="package-name">The Arrival</div>
+          <div class="package-price">€3,500</div>
+          <p class="package-desc">Full immigration concierge for one applicant. Eligibility assessment through NIE, empadronamiento, bank account, and 90 days of post-arrival support. Legal partner fees included.</p>
+          <p class="package-note">Legal partner fee (€1,500 value) included.</p>
+        </div>
+        <div class="package-card featured">
+          <div class="package-tag">Couple</div>
+          <div class="package-name">The Arrival — Two</div>
+          <div class="package-price">€5,500</div>
+          <p class="package-desc">Everything in The Arrival, for two people moving together. Both applicants managed as one coordinated case — one timeline, one point of contact. Legal fees for both included.</p>
+          <p class="package-note">Legal partner fees for both applicants (€3,000 value) included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">What's included</div>
+      <h2 class="section-heading">Every step. <em>Properly.</em></h2>
+
+      <div class="includes-section">
+        <div class="includes-group">
+          <div class="includes-group-label">Before you apply</div>
+          <ul class="includes-list">
+            <li><div><strong>Eligibility consultation — 90 minutes, video.</strong> We assess your financial profile, income and pension structure, existing ties to Spain, and consulate jurisdiction. You leave this call knowing exactly where you stand, what you need, and what your realistic timeline looks like.</div></li>
+            <li><div><strong>Application roadmap.</strong> A written document specific to your consulate, your situation, and your target arrival date. Not a template. Your roadmap.</div></li>
+            <li><div><strong>Document requirements brief.</strong> Comprehensive, country-specific, with detailed notes on common failure points. What to request, from which authorities, apostilled correctly, translated correctly, formatted correctly.</div></li>
+            <li><div><strong>Pre-submission document review.</strong> We check everything before it goes anywhere near a consulate. If something is wrong, it gets fixed before it becomes a rejection.</div></li>
+          </ul>
+        </div>
+
+        <div class="includes-group">
+          <div class="includes-group-label">The legal work</div>
+          <ul class="includes-list">
+            <li><div><strong>Full NLV application management</strong> through our vetted Spanish immigration law partner. Not a referral — a coordinated engagement we manage on your behalf.</div></li>
+            <li><div><strong>Legal representation fee included</strong> — €1,500 per applicant. This is the partner's fee for managing the formal application. It is inside the package price, not an addition to it.</div></li>
+            <li><div><strong>Translations at cost, zero markup.</strong> Certified legal translations are passed through at exactly what the translator charges. We do not make margin on this.</div></li>
+          </ul>
+        </div>
+
+        <div class="includes-group">
+          <div class="includes-group-label">On arrival in Spain</div>
+          <ul class="includes-list">
+            <li><div><strong>NIE coordination.</strong> Número de Identificación de Extranjero — the number that precedes everything. Bank account, property purchase, utility contracts, tax registration. Without it, nothing moves. We coordinate this properly.</div></li>
+            <li><div><strong>Empadronamiento registration.</strong> Municipal registration at your Spanish address. Required for healthcare access, banking in some circumstances, and residency renewal. Often overlooked. Never by us.</div></li>
+            <li><div><strong>Spanish bank account opening.</strong> CaixaBank, with direct introduction and process walkthrough. We know the steps, the documentation, and what gets flagged at the branch.</div></li>
+          </ul>
+        </div>
+
+        <div class="includes-group">
+          <div class="includes-group-label">First 90 days</div>
+          <ul class="includes-list">
+            <li><div>Private healthcare registration guidance — selecting and registering with a provider that serves English-speaking clients effectively</div></li>
+            <li><div>Utility account setup briefing — electricity, water, gas, internet. What you need, in what order.</div></li>
+            <li><div>Driving licence exchange overview — when it applies, which licences qualify, how to initiate</div></li>
+            <li><div>Hacienda orientation — what registration you'll need and when</div></li>
+            <li><div><strong>90-day direct access.</strong> Questions answered by us. Not a ticketing system.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BECKHAM LAW -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">Add-on — strongly recommended</div>
+      <h2 class="section-heading">The decision most people<br><em>make too late.</em></h2>
+      <p class="lede">The Beckham Law election is one of the most significant financial decisions you will make in your first six months in Spain. The window is six months from the date you register as a Spanish tax resident. Miss it and the option is gone permanently.</p>
+
+      <div class="beckham-block">
+        <div class="eyebrow">Beckham Law</div>
+        <div class="beckham-stat">24%</div>
+        <div class="beckham-stat-label">Flat rate on Spanish-source income for six years — vs. progressive rates reaching 47% under standard residency</div>
+        <h3>One decision. Six years.<br>Potentially six figures.</h3>
+        <p>Under standard Spanish tax rules, residents pay progressive income tax on worldwide income. Under Beckham Law, new residents pay a flat 24% on Spanish-source income only. Foreign income — pensions, rental income from properties retained abroad, investment income held outside Spain — is generally excluded from Spanish taxation during the six-year period.</p>
+        <p>For a client with combined household income of €80,000 — pension, investment draw, rental income from a retained Canadian or US property — the difference between Beckham and standard residency taxation over six years can exceed €60,000. Often significantly more.</p>
+        <p>We coordinate the election through our tax law partner, who handles the Modelo 149 filing and advises on the income structuring questions that arise before and during the election period.</p>
+        <div class="beckham-price">€2,500 per person</div>
+        <div class="beckham-warning">If you have passive income at any level that makes a 24% flat rate interesting, this conversation needs to happen before you submit your NLV application — not after you have registered as a tax resident.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">Additional services</div>
+      <h2 class="section-heading">Everything else<br><em>you might need.</em></h2>
+      <table class="addons-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Fee</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="addon-name">Beckham Law election</span></td>
+            <td><span class="addon-price">€2,500 / person</span></td>
+            <td>Modelo 149 filing via tax law partner. Includes coordination and partner engagement. See above.</td>
+          </tr>
+          <tr>
+            <td><span class="addon-name">Tax registration — Modelo 030</span></td>
+            <td><span class="addon-price">€750 / person</span></td>
+            <td>Hacienda registration. Required for certain property transactions and compliance after year one. Coordinated with law partner.</td>
+          </tr>
+          <tr>
+            <td><span class="addon-name">Additional adult applicant</span></td>
+            <td><span class="addon-price">€2,000 / person</span></td>
+            <td>Full NLV support, legal partner engagement, NIE coordination, and arrival settlement. Legal fee included.</td>
+          </tr>
+          <tr>
+            <td><span class="addon-name">Document translations</span></td>
+            <td><span class="addon-price">At cost</span></td>
+            <td>Passed through at exactly what the certified translator charges. Zero markup.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">The sequence</div>
+      <h2 class="section-heading">How it <em>actually works.</em></h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number"></div>
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Eligibility call — No charge</h4>
+            <p>60 minutes. We assess your financial profile, visa eligibility, and target timeline. We tell you honestly whether Spain works for your situation. If it does, you leave knowing exactly what the next step is.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number"></div>
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Package confirmation</h4>
+            <p>You choose your package. We confirm scope, timeline, and next steps in writing.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number"></div>
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Document brief issued</h4>
+            <p>Country-specific, consulate-specific, with notes on what goes wrong and how to avoid it. You gather what's needed. We review everything before a single page goes to anyone.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number"></div>
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Legal partner engagement</h4>
+            <p>Our immigration law partner manages the formal NLV application. We coordinate throughout. You have one point of contact.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number"></div>
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>Visa issued</h4>
+            <p>Your visa arrives. Your arrival timeline is now real. We move to the Spain-side coordination.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number"></div>
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>NIE, empadronamiento, bank account</h4>
+            <p>Coordinated on arrival. In the right order, with the right documentation. No surprises at the appointment.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number"></div>
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <h4>90 days of post-arrival support</h4>
+            <p>Healthcare, utilities, driving licence, Hacienda. Questions answered as they arise. Direct access throughout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING SUMMARY -->
+  <section class="bg-linen">
+    <div class="section-inner">
+      <div class="section-label">Pricing summary</div>
+      <h2 class="section-heading">Transparent by <em>design.</em></h2>
+      <p>The legal partner fee is €1,500 per applicant. It is inside the package price, not added to it. Translations are passed through at cost. There are no hidden charges.</p>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th style="text-align:right;">Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The Arrival — single applicant</td>
+            <td class="price-amount">€3,500</td>
+          </tr>
+          <tr>
+            <td>The Arrival — Two — couple</td>
+            <td class="price-amount">€5,500</td>
+          </tr>
+          <tr>
+            <td>Beckham Law election</td>
+            <td class="price-amount">€2,500 / person</td>
+          </tr>
+          <tr>
+            <td>Tax registration — Modelo 030</td>
+            <td class="price-amount">€750 / person</td>
+          </tr>
+          <tr>
+            <td>Additional adult applicant</td>
+            <td class="price-amount">€2,000 / person</td>
+          </tr>
+          <tr>
+            <td>Document translations</td>
+            <td class="price-amount">At cost</td>
+          </tr>
+          <tr>
+            <td>Eligibility call</td>
+            <td class="price-amount">No charge</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="price-note">All fees in euros. Legal partner fees included in package pricing. Real estate legal fees, notary fees, and consulate fees are paid directly by the client as separate engagements. VAT applicability subject to business registration structure.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white">
+    <div class="section-inner">
+      <div class="section-label">Common questions</div>
+      <h2 class="section-heading">What people<br><em>ask first.</em></h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What is the Non-Lucrative Visa?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Spain's residency visa for financially independent people — typically retirees, people drawing passive income, or early retirees with sufficient pension or investment income. You are not permitted to work in Spain under this visa, but you may receive pension income, investment income, and dividends from assets held abroad. It is the correct vehicle for the vast majority of North Americans retiring to Spain.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What financial requirements does the NLV have?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">The Spanish consulate requires evidence of sufficient passive income to support yourself without working in Spain. The threshold is set by the Spanish government and reviewed periodically. As a general reference point, it has historically been approximately €27,000–€30,000 per year for a single applicant, with additional amounts per dependent — but this changes, and your specific consulate may have additional documentation requirements. We confirm the current figure and how to document your income correctly at the eligibility call.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I work in Spain on this visa?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">No. The Non-Lucrative Visa is for people who do not need to work in Spain. You may receive income from sources abroad — pensions, investment accounts, rental income from retained properties. You may not take employment or active business income from Spanish sources. If you are planning to work remotely for a non-Spanish company, the Digital Nomad Visa is a more appropriate vehicle — we can advise on this at the eligibility call, though it falls outside our primary service area.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What if my NLV application is refused?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">It is uncommon when the application is properly prepared. Refusals typically result from documentation errors, financial threshold presentation issues, or consulate-specific requirements that were not anticipated — the kinds of problems our pre-submission review is designed to catch before the application is filed. If a refusal does occur, we work with our legal partner to understand the grounds and advise on the correct response, whether that is an appeal, a reapplication, or an alternative approach. We do not walk away at the first obstacle.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            When should I start this process?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Earlier than you think. The NLV process — from document gathering to consulate appointment to visa issuance — typically takes four to six months depending on your consulate and jurisdiction. If you have a target arrival date in mind, work backwards from it. The eligibility call is the right starting point and costs nothing. You do not need to be ready to proceed immediately to book one.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can't I just hire a Spanish gestor?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">A gestor processes paperwork. We manage the outcome. The legal partner fee is included in our package — so the advisory and coordination layer costs a single applicant €2,000 above that. That covers eligibility assessment, full document brief, pre-submission review, NIE coordination, empadronamiento, bank account opening, and 90 days of post-arrival support from someone who has personally been through this process in Spain. If you want to save that €2,000 and manage everything else yourself, you can. Many people have tried.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="eyebrow">Start here</div>
+      <h2>Find out if Spain<br>is right for you.</h2>
+      <p>This isn't a sales call. It's an eligibility assessment — 60 minutes to understand your financial profile, your timeline, and whether the Non-Lucrative Visa is the right path for your situation. If Spain works for you, you'll know it by the end of the call.</p>
+      <div>
+        <a href="/#contact" class="btn btn-white">Book your eligibility call</a>
+        <a href="/real-estate" class="btn btn-outline-white">View real estate service</a>
+      </div>
+      <p class="cta-subtext">No charge. No obligation. No pitch.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-signup">
+      <div class="fs-inner">
+        <div class="fs-text">
+          <h4>Your Complete Guide to Retiring in Spain</h4>
+          <p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
+        </div>
+        <form class="fs-form" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+          <div class="fs-row">
+            <input type="email" name="EMAIL" placeholder="Your email address" required>
+            <button type="submit">Send me the guide</button>
+          </div>
+          <label class="fs-consent"><input type="checkbox" name="consent" required> Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</label>
+          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
+        </form>
+      </div>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        Spanish <strong>AfterLife</strong>
+        <span>Valencia Community, Spain</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/fullafterlife">The Full AfterLife</a></li>
+        <li><a href="/immigration">Immigration</a></li>
+        <li><a href="/real-estate">Real Estate</a></li>
+        <li><a href="/private-client">Private Client</a></li>
+        <li><a href="/building-my-life-in-spain">Building My Life in Spain</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 LJ Koch Group Inc. · Spanish AfterLife · Why wait for the AfterLife?</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-icon').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.querySelector('.faq-icon').textContent = '−';
+      }
+    }
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
