@@ -1,0 +1,29 @@
+name: Deploy to Cloudflare Pages
+
+# Pushes to main deploy to production (custom domains spanishafterlife.com +
+# www). The Pages project "spanish-afterlife" is direct-upload; this Action
+# uploads the repo as a production deployment. Requires one repo secret:
+#   CLOUDFLARE_API_TOKEN  (Account > Cloudflare Pages > Edit)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pages-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Cloudflare Pages (production)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: d6d2d8b5a9f263c661f21fd9f50b7fc2
+          command: pages deploy . --project-name=spanish-afterlife --branch=main --commit-dirty=true
