@@ -574,7 +574,48 @@
     .guide-consent input { margin-top:0.2rem; accent-color:#C4693A; }
     .guide-consent a { color:#E8B86D; }
     .guide-note { font-size:0.75rem; color:rgba(245,239,228,0.5); margin-top:1rem; letter-spacing:0.02em; }
-</style>
+
+    /* ── PILLAR TILES: dim photo until hover; click opens overview modal ── */
+    .pv-bg { filter: brightness(0.40) saturate(0.85); transition: transform 6s ease, filter 0.55s ease; }
+    .pv-item:hover .pv-bg, .pv-item:focus-visible .pv-bg { filter: brightness(1) saturate(1); }
+    .pv-item { cursor: pointer; }
+    .pv-item:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+    .pv-desc { color: rgba(255,255,255,0.88); }
+    .pv-full { display: none; }
+    /* affordance: '+' cue on hover/focus */
+    .pv-overlay::after {
+      content: '+'; position: absolute; top: 1rem; right: 1.1rem;
+      width: 26px; height: 26px; border: 1px solid rgba(255,255,255,0.55); border-radius: 50%;
+      color: #fff; font-size: 0.95rem; line-height: 1; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+    .pv-item:hover .pv-overlay::after, .pv-item:focus-visible .pv-overlay::after { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .pv-bg { transition: none; }
+      .pv-item:hover .pv-bg { transform: none; }
+    }
+
+    /* ── PILLAR MODAL ── */
+    .pv-modal[hidden] { display: none; }
+    .pv-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.25rem; }
+    .pv-modal-backdrop { position: absolute; inset: 0; background: rgba(20,18,14,0.72); backdrop-filter: blur(3px); }
+    .pv-modal-panel {
+      position: relative; background: var(--linen); color: var(--stone);
+      max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto;
+      padding: 2.5rem 2.25rem; border-radius: 2px; box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+    }
+    .pv-modal-num { font-family: var(--serif); font-size: 0.75rem; color: var(--terra); letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem; }
+    .pv-modal-title { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--olive); line-height: 1.15; margin-bottom: 1.25rem; }
+    .pv-modal-body p { font-size: 0.98rem; line-height: 1.8; color: var(--stone); margin-bottom: 1rem; }
+    .pv-modal-body p:last-child { margin-bottom: 0; }
+    .pv-modal-close {
+      position: absolute; top: 0.75rem; right: 0.9rem; background: none; border: 0;
+      font-size: 1.9rem; line-height: 1; color: var(--stone); cursor: pointer; padding: 0.25rem 0.5rem; opacity: 0.65;
+    }
+    .pv-modal-close:hover, .pv-modal-close:focus-visible { opacity: 1; }
+    @media (max-width: 600px) { .pv-modal-panel { padding: 2rem 1.35rem; } }
+
+  </style>
 
   <!-- ══════════════════════════════════════════════════════════
        MOBILE STYLESHEET — separate from the desktop CSS above.
@@ -780,111 +821,123 @@
     </div>
     <div class="pillars-visual reveal">
 
-            <div class="pv-item pv-c1">
+            <div class="pv-item pv-c1" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">01</span>
           <div class="pv-title">The Property</div>
           <div class="pv-desc">Fincas with olive groves, or beachfront access. At prices unavailable in the market you're leaving.</div>
+          <div class="pv-full"><p>Start with the arithmetic, because it is the part people refuse to believe until they see it. A budget that buys a dated three-bedroom on a busy road in Toronto or Denver buys something else entirely on this coast — a finca with olive trees and a well, a villa with a pool and a terrace facing the sea, a townhouse in a village where the church bell still keeps time.</p><p>The variety is the point. Inland you get land: almond groves, dry-stone terraces, room for horses, silence. On the coast you get light and water. In the cities, stone buildings with high ceilings and balconies designed for standing on.</p><p>What changes is not only the price. It is what a home is for. Houses here are built around the outside — the terrace, the shade, the long table. You stop thinking of the garden as maintenance and start thinking of it as the room you live in eight months a year.</p><p>We are not going to pretend the buying process is simple, or that every listing is honest. It is neither. That is precisely why you do not do it alone.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c2">
+      <div class="pv-item pv-c2" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">02</span>
           <div class="pv-title">The Table</div>
           <div class="pv-desc">Food culture, markets, bodegas, the three-hour lunch. Valencia is the birthplace of paella.</div>
+          <div class="pv-full"><p>Valencia is the birthplace of paella, and locals will tell you — at length, and with feeling — that most of what is served under that name elsewhere is a fraud. That intensity tells you what you need to know. Food here is not a lifestyle choice. It is the organising principle of the day.</p><p>The market comes first. Not a farmers' market as an event, but a covered hall open six mornings a week, where the same woman has sold you tomatoes for three years and will tell you honestly when they are not worth buying. Fish landed that morning. Cheese from a valley you can drive to.</p><p>Then the lunch. The menú del día — three courses, bread, wine included — served at two, finished at four, and nobody is checking a watch.</p><p>Then the bodega, where the wine has no label because it never needed one, and where the conversation is the product.</p><p>You will eat better here without trying, and spend less doing it. Not because you are being frugal — because the whole culture is built to make good food ordinary.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c3">
+      <div class="pv-item pv-c3" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">03</span>
           <div class="pv-title">The Course</div>
           <div class="pv-desc">Golf 300 days a year. Mediterranean landscape. A fraction of what you pay at home.</div>
+          <div class="pv-full"><p>Three hundred playable days a year. That is the number that reorganises your calendar.</p><p>Golf on this coast is not the guarded, waitlisted, four-figure-initiation ritual it has become in North America. It is a Tuesday morning. Courses run from championship layouts along the Costa Blanca to inland tracks cut through pine and limestone, with the sierra behind and the Mediterranean glinting somewhere off the fourth tee.</p><p>The money is the obvious part. What you pay for a season at home covers rather more than a season here, and there is no committee to satisfy first.</p><p>But the real change is frequency. When play is affordable and the weather cooperates ten months a year, golf stops being an expedition you plan around and becomes something you do because it is Thursday and the light is good. Your handicap will notice.</p><p>And it is social infrastructure. The fourball is how you meet the neighbours — the Dutch couple, the retired Madrileño, the Brit who has been here twenty years and knows which builder to avoid. That is worth more than the green fee.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c4">
+      <div class="pv-item pv-c4" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">04</span>
           <div class="pv-title">The Paddle</div>
           <div class="pv-desc">Padel as social infrastructure. Spain's own sport. How community is built here.</div>
+          <div class="pv-full"><p>If you want to understand how Spain actually makes friends, look at a padel court.</p><p>It is Spain's sport in everything but origin — courts behind the supermarket, courts at the club, courts lit until midnight in towns of four thousand people. It is played in fours, always. The glass walls keep the ball alive, which means rallies last, which means beginners are not humiliated and good players are not bored. You can be competent in a month.</p><p>That accessibility is the entire point. Tennis takes years before it is fun with strangers. Padel takes an afternoon. And because it is four people it is inherently social: you rotate partners, you lose to someone's father-in-law, and you end up at the bar afterwards because that is simply what happens next.</p><p>For anyone arriving without a network — which is everyone, at first — this is the fastest route into one. Not an expat meetup. A standing Wednesday game with three people who will, within a year, be the ones you call when the boiler breaks.</p><p>Community here is not something you find. It is something you play your way into.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c5">
+      <div class="pv-item pv-c5" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">05</span>
           <div class="pv-title">The Club</div>
           <div class="pv-desc">Beach clubs, Mediterranean sea, the long unhurried afternoon. This is Tuesday now.</div>
+          <div class="pv-full"><p>This is the part that takes longest to believe: it is not a holiday.</p><p>The beach club on a Tuesday in June — the sea forty steps away, the umbrella, the plate of something grilled, the second coffee that turns into a long conversation — is not a treat you saved for. It is a Tuesday. You did the morning's work. You will do more later. This is the middle of the day, and this is what the middle of the day looks like here.</p><p>North American life has one setting for leisure: earned, scheduled, and slightly guilty. Two weeks, booked in advance, defended against work. Then back. The Mediterranean does not organise itself that way. The afternoon is not a reward. It is a part of the day that belongs to you.</p><p>It takes most people about six months to stop feeling like they are getting away with something.</p><p>The sea helps. It is warm from June to October, calm most mornings, and close enough that going in stops being an occasion. You will swim more in your first year here than in the previous decade — not because you decided to, but because it is there.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c6">
+      <div class="pv-item pv-c6" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">06</span>
           <div class="pv-title">The Horses</div>
           <div class="pv-desc">Equestrian estates, Andalusian horse culture, trail riding, polo. The working finca.</div>
+          <div class="pv-full"><p>Spain has one of the oldest continuous horse cultures in Europe, and it is not a museum piece.</p><p>The Pura Raza Española — the Andalusian — was bred here for war and haute école, and the bloodlines are still working. You will see them at the ferias, in the doma vaquera ring, and on the tracks that run inland from the coast into the sierra. There are estates where the arena came before the swimming pool.</p><p>For a rider, the practical facts matter more than the romance. Livery costs a fraction of what it does in Ontario or California. Land is buyable — a finca with stabling, a school, and hectares to hack out over is not a fantasy budget here. Trail riding runs for hours without crossing a road. Polo has a serious foothold on the coast.</p><p>And if you have never ridden, this is a plausible place to start, at an age when starting anywhere else would feel absurd.</p><p>The working finca — horses, olives, a few dogs, a long dusty track to the gate — is one of the few genuine versions of the good life left in Europe. It is also, here, purchasable.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c7">
+      <div class="pv-item pv-c7" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">07</span>
           <div class="pv-title">The Continent</div>
           <div class="pv-desc">Two hours to Paris, Madrid, Rome, Lisbon. Spain is not a country — it's a base.</div>
+          <div class="pv-full"><p>Spain is not a country you move to. It is a base you operate from.</p><p>Two hours in the air puts you in Paris, Rome, Lisbon, Marrakech, Zurich. A short hop puts you in Madrid or Barcelona for lunch. The AVE will do Valencia to Madrid faster than most people commute, and the train leaves from the middle of one city and arrives in the middle of the other — no airport, no queue, no ritual humiliation.</p><p>The consequence is a different relationship with travel. It stops being The Trip — the annual, expensive, meticulously planned Europe holiday you fly eight hours to reach. It becomes a Thursday flight and a Sunday return, booked on Tuesday, for the price of dinner.</p><p>Friends visit differently too. Your children in London are a ninety-minute flight away, not a transatlantic production. That distance is the thing people underestimate most when they run the numbers on leaving.</p><p>You did not move away from the world. From where you were, the world was eight hours and a time-zone hangover in every direction. From here, it is a morning.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c8">
+      <div class="pv-item pv-c8" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">08</span>
           <div class="pv-title">The Canvas</div>
           <div class="pv-desc">Picasso, Dalí, Goya, Velázquez. Gaudí to the Alhambra. Beauty as infrastructure.</div>
+          <div class="pv-full"><p>Velázquez, Goya, Picasso, Dalí, Miró, Sorolla. One country. And the Prado is a Tuesday afternoon, not a pilgrimage.</p><p>What is difficult to convey to someone who has not lived with it is that beauty here is infrastructure, not attraction. The Alhambra is the obvious case — and it is simply in Granada, where people live. But it is also the church at the end of your street with a retablo in it. The Roman theatre they found under the car park in Cartagena. Gaudí's work in Barcelona, still functioning as apartments, still lived in.</p><p>Nothing is roped off into a cultural district. It is load-bearing. The old town is where the bakery is.</p><p>The practical effect is on your default. When culture requires a plane, a hotel and four hundred euros, you consume it twice a year. When it is fifteen minutes away and costs less than parking, you go on a wet Wednesday because you feel like it — and you go back, and you start to actually know things.</p><p>That is a different life, not a better holiday.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c9">
+      <div class="pv-item pv-c9" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">09</span>
           <div class="pv-title">The Land</div>
           <div class="pv-desc">Pyrenees to Andalusia. National parks, dramatic coastline, serious hiking.</div>
+          <div class="pv-full"><p>People arrive with a picture of Spain as a coastline. It is a mistake that lasts about a month.</p><p>This is one of the most mountainous countries in Europe. The Pyrenees hold snow into summer. The Picos de Europa are limestone walls with bears in the valleys. Inland from the Valencia coast the sierras go up hard and dry within forty minutes of the sea — gorges, dry riverbeds, villages of stone at the top of switchbacks.</p><p>Sixteen national parks. Wetlands with flamingos an hour from the city. A high central plateau that looks like nowhere else in Europe.</p><p>For anyone who takes the outdoors seriously, the geography is the argument. You can be walking a serious ridge by nine and swimming in the Mediterranean by four. That combination — real mountains and warm sea, in the same day, without a flight — exists in very few places, and none of them are cheap.</p><p>The weather cooperates. There is no season when the hills are closed. In February, when your old life is scraping a windscreen, you will be at eight hundred metres in shirtsleeves, wondering how long you believed the alternative was normal.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c10">
+      <div class="pv-item pv-c10" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">10</span>
           <div class="pv-title">The Sail</div>
           <div class="pv-desc">Mediterranean sailing at its most refined. Palma, the Balearics, unspoiled harbours.</div>
+          <div class="pv-full"><p>The Mediterranean rewards people who are not in a hurry.</p><p>From this coast the Balearics are an overnight passage. Ibiza, Formentera, and then Menorca — which is the one that matters: calas you reach only from the water, sand the colour of bone, and anchorages where the loudest thing is your own halyard. Palma is one of the great sailing cities in the world, with the yards, the chandlery and the crews to prove it.</p><p>The practical case is strong. Mooring costs a fraction of what a berth commands in Florida or the Med's fashionable pockets. The season is long — you are sailing in April and still out in late October. The winds are honest: reliable thermals in the afternoon, calm mornings, and a coastline with enough shelter that you are rarely committed.</p><p>And you do not have to own anything. Charter is mature here, clubs are welcoming, and crew spots on a Wednesday evening race are found by turning up.</p><p>It is the same principle as everything else on this list. The thing you did twice a year, expensively, becomes the thing you do on a Saturday because the forecast is good.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c11">
+      <div class="pv-item pv-c11" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">11</span>
           <div class="pv-title">The Rhythm</div>
           <div class="pv-desc">Flamenco, jazz in Barcelona, live music in every plaza. The culture doesn't perform — it lives.</div>
+          <div class="pv-full"><p>The culture does not perform. It lives.</p><p>Flamenco is the example everyone reaches for, and the tourist version — the dinner show, the fixed price, the eight-thirty seating — is the least interesting thing about it. The real article is in a room in Andalusia at midnight, largely by accident, and it is not comfortable listening. It was never meant to be entertainment. It is closer to testimony.</p><p>But the point is broader than flamenco. Barcelona has a serious jazz scene. Valencia funds bands the way other places fund football — the town brass band is a genuine institution, and the standard is startling. Every plaza has music in it by ten in summer, unbilled and unadvertised, because someone brought a guitar.</p><p>Then the fiestas: Fallas, Semana Santa, the village saint's day that shuts everything for three days and involves fireworks at an hour that will genuinely alarm you. These are not put on for visitors. They would happen if no one came.</p><p>You are not an audience here. That takes adjusting to. Eventually you stop watching, someone hands you a drink, and you are simply in it.</p></div>
         </div>
       </div>
 
-      <div class="pv-item pv-c12">
+      <div class="pv-item pv-c12" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="pv-bg" style="background-image:url('https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&q=80')"></div>
         <div class="pv-overlay">
           <span class="pv-num">12</span>
           <div class="pv-title">The Ride</div>
           <div class="pv-desc">Coll de Rates at sunrise, gravel through the inland sierras, the climbs pro teams winter on. Road, gravel, mountain — straight from the door.</div>
+          <div class="pv-full"><p>Ask a pro where they winter. A lot of the answers are within an hour of here.</p><p>The Coll de Rates is the famous one — a steady, beautifully surfaced climb out of the Jalón valley that shows up in more training blocks than almost any road in Europe. But the reason teams come is not one climb. It is that you can ride from the door, in January, in shorts, on tarmac better than what you left, past almond blossom, with a café at the top that expects you.</p><p>Inland the gravel goes on for as long as you have legs — dry riverbeds, service tracks through the sierras, hours without a car. The mountain biking is technical and empty. The road network is quiet because the villages emptied decades ago and the roads stayed.</p><p>Drivers give you room. That is not a small thing; it is the single most common observation from riders who move here.</p><p>Road, gravel, mountain — no roof rack, no drive, no season. Straight from the door, three hundred days a year. Most people who come here to ride do not go back.</p></div>
         </div>
       </div>
 
@@ -1477,5 +1530,66 @@
       });
     })();
   </script>
+
+  <div class="pv-modal" id="pvModal" role="dialog" aria-modal="true" aria-labelledby="pvModalTitle" hidden>
+    <div class="pv-modal-backdrop" data-pv-close></div>
+    <div class="pv-modal-panel">
+      <button class="pv-modal-close" type="button" aria-label="Close overview" data-pv-close>&times;</button>
+      <span class="pv-modal-num" id="pvModalNum"></span>
+      <h3 class="pv-modal-title" id="pvModalTitle"></h3>
+      <div class="pv-modal-body" id="pvModalBody"></div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var modal = document.getElementById('pvModal');
+    if (!modal) return;
+    var numEl = document.getElementById('pvModalNum'),
+        titleEl = document.getElementById('pvModalTitle'),
+        bodyEl = document.getElementById('pvModalBody'),
+        closeBtn = modal.querySelector('.pv-modal-close'),
+        lastFocus = null;
+
+    function openModal(item) {
+      var full = item.querySelector('.pv-full');
+      if (!full) return;
+      lastFocus = item;
+      numEl.textContent = item.querySelector('.pv-num').textContent;
+      titleEl.textContent = item.querySelector('.pv-title').textContent;
+      bodyEl.innerHTML = full.innerHTML;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('.pv-item'), function (item) {
+      item.addEventListener('click', function () { openModal(item); });
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); openModal(item); }
+      });
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target.hasAttribute('data-pv-close')) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+    // keep focus inside the panel while open
+    modal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var f = modal.querySelectorAll('button');
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    });
+  })();
+  </script>
+
 </body>
 </html>
