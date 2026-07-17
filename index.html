@@ -602,18 +602,29 @@
     .pv-modal-panel {
       position: relative; background: var(--linen); color: var(--stone);
       max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto;
-      padding: 2.5rem 2.25rem; border-radius: 2px; box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+      padding: 0; border-radius: 2px; box-shadow: 0 24px 70px rgba(0,0,0,0.35);
     }
+    .pv-modal-img {
+      width: 100%; height: 230px; background-size: cover; background-position: center;
+      background-color: var(--olive); flex-shrink: 0;
+    }
+    .pv-modal-content { padding: 2rem 2.25rem 2.5rem; }
     .pv-modal-num { font-family: var(--serif); font-size: 0.75rem; color: var(--terra); letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem; }
     .pv-modal-title { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--olive); line-height: 1.15; margin-bottom: 1.25rem; }
     .pv-modal-body p { font-size: 0.98rem; line-height: 1.8; color: var(--stone); margin-bottom: 1rem; }
     .pv-modal-body p:last-child { margin-bottom: 0; }
     .pv-modal-close {
-      position: absolute; top: 0.75rem; right: 0.9rem; background: none; border: 0;
-      font-size: 1.9rem; line-height: 1; color: var(--stone); cursor: pointer; padding: 0.25rem 0.5rem; opacity: 0.65;
+      position: absolute; top: 0.85rem; right: 0.85rem; z-index: 2;
+      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.45); border: 0; border-radius: 50%;
+      font-size: 1.5rem; line-height: 1; color: #fff; cursor: pointer; padding: 0; opacity: 0.85;
+      transition: opacity 0.25s ease, background 0.25s ease;
     }
-    .pv-modal-close:hover, .pv-modal-close:focus-visible { opacity: 1; }
-    @media (max-width: 600px) { .pv-modal-panel { padding: 2rem 1.35rem; } }
+    .pv-modal-close:hover, .pv-modal-close:focus-visible { opacity: 1; background: rgba(0,0,0,0.72); }
+    @media (max-width: 600px) {
+      .pv-modal-content { padding: 1.6rem 1.35rem 2rem; }
+      .pv-modal-img { height: 170px; }
+    }
 
   </style>
 
@@ -1535,9 +1546,12 @@
     <div class="pv-modal-backdrop" data-pv-close></div>
     <div class="pv-modal-panel">
       <button class="pv-modal-close" type="button" aria-label="Close overview" data-pv-close>&times;</button>
-      <span class="pv-modal-num" id="pvModalNum"></span>
-      <h3 class="pv-modal-title" id="pvModalTitle"></h3>
-      <div class="pv-modal-body" id="pvModalBody"></div>
+      <div class="pv-modal-img" id="pvModalImg" aria-hidden="true"></div>
+      <div class="pv-modal-content">
+        <span class="pv-modal-num" id="pvModalNum"></span>
+        <h3 class="pv-modal-title" id="pvModalTitle"></h3>
+        <div class="pv-modal-body" id="pvModalBody"></div>
+      </div>
     </div>
   </div>
 
@@ -1548,6 +1562,7 @@
     var numEl = document.getElementById('pvModalNum'),
         titleEl = document.getElementById('pvModalTitle'),
         bodyEl = document.getElementById('pvModalBody'),
+        imgEl = document.getElementById('pvModalImg'),
         closeBtn = modal.querySelector('.pv-modal-close'),
         lastFocus = null;
 
@@ -1555,6 +1570,8 @@
       var full = item.querySelector('.pv-full');
       if (!full) return;
       lastFocus = item;
+      var bg = item.querySelector('.pv-bg');
+      if (bg && imgEl) imgEl.style.backgroundImage = window.getComputedStyle(bg).backgroundImage;
       numEl.textContent = item.querySelector('.pv-num').textContent;
       titleEl.textContent = item.querySelector('.pv-title').textContent;
       bodyEl.innerHTML = full.innerHTML;
