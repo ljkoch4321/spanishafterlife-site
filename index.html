@@ -253,7 +253,6 @@
       background-position: center;
       transition: transform 6s ease;
     }
-    .pv-item:hover .pv-bg { transform: scale(1.06); }
     .pv-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.1) 55%);
@@ -350,7 +349,6 @@
       background-position: center;
       transition: transform 6s ease;
     }
-    .place-card:hover .place-bg { transform: scale(1.05); }
     .place-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(15,22,10,0.9) 0%, rgba(15,22,10,0.15) 60%);
@@ -577,7 +575,7 @@
 
     /* ── PILLAR TILES: dim photo until hover; click opens overview modal ── */
     .pv-bg { filter: brightness(0.40) saturate(0.85); transition: transform 6s ease, filter 0.55s ease; }
-    .pv-item:hover .pv-bg, .pv-item:focus-visible .pv-bg { filter: brightness(1) saturate(1); }
+    .pv-item:focus-visible .pv-bg { filter: brightness(1) saturate(1); }
     .pv-item { cursor: pointer; }
     .pv-item:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
     .pv-desc { color: rgba(255,255,255,0.88); }
@@ -589,7 +587,7 @@
       color: #fff; font-size: 0.95rem; line-height: 1; display: flex; align-items: center; justify-content: center;
       opacity: 0; transition: opacity 0.35s ease;
     }
-    .pv-item:hover .pv-overlay::after, .pv-item:focus-visible .pv-overlay::after { opacity: 1; }
+    .pv-item:focus-visible .pv-overlay::after { opacity: 1; }
     @media (prefers-reduced-motion: reduce) {
       .pv-bg { transition: none; }
       .pv-item:hover .pv-bg { transform: none; }
@@ -597,7 +595,7 @@
 
     /* ── PLACE CARDS (#places): same dim-until-hover treatment as the pillars ── */
     .place-bg { filter: brightness(0.42) saturate(0.85); transition: transform 6s ease, filter 0.55s ease; }
-    .place-card:hover .place-bg, .place-card:focus-visible .place-bg { filter: brightness(1) saturate(1); }
+    .place-card:focus-visible .place-bg { filter: brightness(1) saturate(1); }
     .place-desc { color: rgba(255,255,255,0.88); }
     @media (prefers-reduced-motion: reduce) {
       .place-bg { transition: none; }
@@ -614,10 +612,31 @@
       color: #fff; font-size: 0.95rem; line-height: 1; display: flex; align-items: center; justify-content: center;
       opacity: 0; transition: opacity 0.35s ease;
     }
-    .place-card:hover .place-overlay::after, .place-card:focus-visible .place-overlay::after { opacity: 1; }
+    .place-card:focus-visible .place-overlay::after { opacity: 1; }
     .places-region {
       max-width: 66ch; margin: 1.25rem auto 0; font-size: 0.92rem; line-height: 1.75;
       color: var(--stone); opacity: 0.85;
+    }
+
+
+    /* ── TOUCH FIX ──
+       iOS consumes the first tap applying :hover when hover styles alter the
+       element, so tiles needed two taps to open. Gate ALL hover behind a real
+       pointer; touch devices then fire click on the first tap. */
+    @media (hover: hover) and (pointer: fine) {
+      .pv-item:hover .pv-bg { filter: brightness(1) saturate(1); transform: scale(1.06); }
+      .pv-item:hover .pv-overlay::after { opacity: 1; }
+      .place-card:hover .place-bg { filter: brightness(1) saturate(1); transform: scale(1.05); }
+      .place-card:hover .place-overlay::after { opacity: 1; }
+    }
+    @media (hover: none) {
+      /* no hover on touch: keep the tap affordance permanently visible */
+      .pv-overlay::after, .place-overlay::after { opacity: 0.9; }
+      .pv-item:active .pv-bg, .place-card:active .place-bg { filter: brightness(0.75) saturate(1); }
+    }
+    /* must follow the hover block so the motion preference still wins */
+    @media (prefers-reduced-motion: reduce) {
+      .pv-item:hover .pv-bg, .place-card:hover .place-bg { transform: none; }
     }
 
     /* ── PILLAR MODAL ── */
