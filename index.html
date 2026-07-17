@@ -595,6 +595,15 @@
       .pv-item:hover .pv-bg { transform: none; }
     }
 
+    /* ── PLACE CARDS (#places): same dim-until-hover treatment as the pillars ── */
+    .place-bg { filter: brightness(0.42) saturate(0.85); transition: transform 6s ease, filter 0.55s ease; }
+    .place-card:hover .place-bg, .place-card:focus-visible .place-bg { filter: brightness(1) saturate(1); }
+    .place-desc { color: rgba(255,255,255,0.88); }
+    @media (prefers-reduced-motion: reduce) {
+      .place-bg { transition: none; }
+      .place-card:hover .place-bg { transform: none; }
+    }
+
     /* ── PILLAR MODAL ── */
     .pv-modal[hidden] { display: none; }
     .pv-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.25rem; }
