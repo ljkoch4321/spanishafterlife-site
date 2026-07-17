@@ -604,6 +604,22 @@
       .place-card:hover .place-bg { transform: none; }
     }
 
+
+    .place-card { cursor: pointer; }
+    .place-card:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+    .place-full { display: none; }
+    .place-overlay::after {
+      content: '+'; position: absolute; top: 1rem; right: 1.1rem;
+      width: 26px; height: 26px; border: 1px solid rgba(255,255,255,0.55); border-radius: 50%;
+      color: #fff; font-size: 0.95rem; line-height: 1; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+    .place-card:hover .place-overlay::after, .place-card:focus-visible .place-overlay::after { opacity: 1; }
+    .places-region {
+      max-width: 66ch; margin: 1.25rem auto 0; font-size: 0.92rem; line-height: 1.75;
+      color: var(--stone); opacity: 0.85;
+    }
+
     /* ── PILLAR MODAL ── */
     .pv-modal[hidden] { display: none; }
     .pv-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.25rem; }
@@ -1044,42 +1060,47 @@
       <span class="eyebrow">Where We Work</span>
       <h2>The Valencia Community</h2>
       <p class="deck">We are based here. We know what each area gives you and what it asks of you.</p>
+      <p class="places-region">Our region runs the length of the Valencia Community and south into Murcia. Beyond the four areas below we work throughout Alicante — Altea, Calpe, Benidorm, Moraira, Altea la Vella — and across the smaller coastal and inland towns in between. These four are where most clients land; they are not the limit.</p>
     </div>
     <div class="places-grid reveal">
-      <div class="place-card pc-1">
+      <div class="place-card pc-1" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="place-bg" style="background-image:url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=85')"></div>
         <div class="place-overlay">
           <div class="place-tag">City Life</div>
           <div class="place-name">Valencia City</div>
           <p class="place-desc">Spain's third city. Birthplace of paella. World-class food scene, extraordinary architecture, beach tram from the centre. Europe's most underrated city.</p>
           <span class="place-price">From <span class="cur" data-eur="180000">€180,000</span></span>
+          <div class="place-full"><p>Spain's third city, and the one that keeps getting overlooked in favour of Madrid and Barcelona. That is the opportunity.</p><p>The shape of it is unusual. The river was diverted after the 1957 flood and the old bed became a nine-kilometre park that runs through the middle of the city — you can cross Valencia end to end under the trees, on foot or by bike, without meeting a car. It ends at the Ciutat de les Arts i les Ciències.</p><p>The barrios each behave differently. Ruzafa is where the design crowd went. El Carmen is the medieval quarter, narrow and loud. The Eixample is where you find the tall ceilings and the wrought-iron balconies. And the beach is on a tram line from the centre, which is not true of most Mediterranean cities.</p><p>What it asks of you: you are trading the garden for the street. Flats, not fincas. Summer nights are noisy, parking is a negotiation, and August in the city is genuinely hot.</p><p>What it gives you: an international airport, a serious food culture, and a life you can live without a car.</p></div>
         </div>
       </div>
-      <div class="place-card pc-2">
+      <div class="place-card pc-2" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="place-bg" style="background-image:url('https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=85')"></div>
         <div class="place-overlay">
           <div class="place-tag">Costa Blanca North</div>
           <div class="place-name">Jávea &amp; Denia</div>
           <p class="place-desc">The most sophisticated stretch of coastline in Spain. Sailing culture, serious restaurants, deep community. Where people who've done the research end up.</p>
           <span class="place-price">From <span class="cur" data-eur="280000">€280,000</span></span>
+          <div class="place-full"><p>This is the most sophisticated stretch of coast in Spain, and the prices reflect it — this is the top of our range.</p><p>Montgó sits between the two towns: a limestone mass that is a natural park, which is why the coastline here was never carpeted the way places further south were. Jávea has the arenal, the port, and the old town, and they function almost as three separate villages. Dénia has the castle, the ferry to the Balearics, and a food scene serious enough that UNESCO named it a Creative City of Gastronomy.</p><p>The community is the real asset. It is deep, international and long-established — Dutch, German, British, Scandinavian, and increasingly North American. Sailing is central. So is the fact that people here mostly chose it after looking at everywhere else first.</p><p>What it asks of you: money, and patience in August, when the population multiplies and the roads know it.</p><p>What it gives you: the version of the coast that people who did the research end up choosing — and rarely leave. If you only have one weekend to look, spend it here.</p></div>
         </div>
       </div>
-      <div class="place-card pc-3">
+      <div class="place-card pc-3" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="place-bg" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85')"></div>
         <div class="place-overlay">
           <div class="place-tag">Unspoiled Coast</div>
           <div class="place-name">Oliva &amp; Cullera</div>
           <p class="place-desc">Where the coastline hasn't been overdeveloped. Extraordinary beaches, local pace, genuine value &mdash; and where our founder lives, in Oliva Nova.</p>
           <span class="place-price">From <span class="cur" data-eur="180000">€180,000</span></span>
+          <div class="place-full"><p>The coast that did not get built. That is the entire proposition.</p><p>Between Oliva and Cullera the development ran out before it ruined anything. You get dune systems, pine behind the sand, and beaches wide enough that August never feels like August. Oliva Nova has the golf and the marina; behind it the town is still a Valencian town that happens to be near the sea, rather than a resort with a town attached.</p><p>The value gap with Jávea is real and it is not a quality gap. It is a fashion gap. You are an hour further from the Costa Blanca's centre of gravity and the market prices that in.</p><p>This is also where our founder lives, in Oliva Nova — so the local knowledge here is not researched, it is daily.</p><p>What it asks of you: a car, some Spanish, and comfort with a quieter winter. The international infrastructure is thinner than in Jávea.</p><p>What it gives you: the Mediterranean at a pace and a price the famous stretches stopped offering twenty years ago.</p></div>
         </div>
       </div>
-      <div class="place-card pc-4">
+      <div class="place-card pc-4" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="place-bg" style="background-image:url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=85')"></div>
         <div class="place-overlay">
           <div class="place-tag">Finca Country</div>
           <div class="place-name">Inland — Ontinyent</div>
           <p class="place-desc">The best-kept secret in European real estate. Fincas with olive groves at prices that bear no relation to the coast. Real Spain, for buyers seeking space and quiet.</p>
           <span class="place-price">From <span class="cur" data-eur="120000">€120,000</span></span>
+          <div class="place-full"><p>Go forty minutes inland and the arithmetic changes completely.</p><p>Ontinyent sits in the Vall d'Albaida, ringed by sierra. This is finca country — olive and almond terraces, dry-stone walls, farmhouses with thick walls and courtyards, and land in quantities that make no sense on the coast. Budgets that buy an apartment near the sea buy a house with hectares here.</p><p>It is a working Spanish town, not an expat one. There is a textile industry, a Thursday market, and a football club people care about. The sierra behind it is walking and cycling country that most visitors never see.</p><p>What it asks of you — and this is the honest part — is commitment. You will need a car. You will need Spanish, because English will not carry you. You are forty-five minutes from the coast and over an hour from an airport. The winter nights are properly cold, and an old finca is a project, not a purchase.</p><p>What it gives you: land, silence, and a life that is unmistakably Spanish rather than international. For the right person it is the only answer. For the wrong person it is a lonely mistake — and we will tell you which you are.</p></div>
         </div>
       </div>
     </div>
@@ -1575,14 +1596,15 @@
         closeBtn = modal.querySelector('.pv-modal-close'),
         lastFocus = null;
 
-    function openModal(item) {
-      var full = item.querySelector('.pv-full');
+    function openModal(item, cfg) {
+      cfg = cfg || { eyebrow: '.pv-num', title: '.pv-title', bg: '.pv-bg', full: '.pv-full' };
+      var full = item.querySelector(cfg.full);
       if (!full) return;
       lastFocus = item;
-      var bg = item.querySelector('.pv-bg');
+      var bg = item.querySelector(cfg.bg);
       if (bg && imgEl) imgEl.style.backgroundImage = window.getComputedStyle(bg).backgroundImage;
-      numEl.textContent = item.querySelector('.pv-num').textContent;
-      titleEl.textContent = item.querySelector('.pv-title').textContent;
+      numEl.textContent = item.querySelector(cfg.eyebrow).textContent;
+      titleEl.textContent = item.querySelector(cfg.title).textContent;
       bodyEl.innerHTML = full.innerHTML;
       modal.hidden = false;
       document.body.style.overflow = 'hidden';
@@ -1594,10 +1616,16 @@
       if (lastFocus) lastFocus.focus();
     }
 
-    Array.prototype.forEach.call(document.querySelectorAll('.pv-item'), function (item) {
-      item.addEventListener('click', function () { openModal(item); });
-      item.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); openModal(item); }
+    var CARD_TYPES = [
+      { sel: '.pv-item',    eyebrow: '.pv-num',    title: '.pv-title',   bg: '.pv-bg',    full: '.pv-full' },
+      { sel: '.place-card', eyebrow: '.place-tag', title: '.place-name', bg: '.place-bg', full: '.place-full' }
+    ];
+    CARD_TYPES.forEach(function (cfg) {
+      Array.prototype.forEach.call(document.querySelectorAll(cfg.sel), function (item) {
+        item.addEventListener('click', function () { openModal(item, cfg); });
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); openModal(item, cfg); }
+        });
       });
     });
     modal.addEventListener('click', function (e) {
