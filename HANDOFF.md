@@ -108,9 +108,40 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
    Cloudflare's managed robots.txt / "AI Crawl Control" feature in the dashboard
    (a toggle, not an API change — cannot be flipped programmatically). Affects
    AI-answer visibility only, not normal Google/Bing SEO.
-5. **Performance (reported, not done).** All CSS/JS inline + unminified; Google
-   Fonts render-blocking; `hero.png` (~300 KB) and `guide-cover.png` (~258 KB)
-   are WebP/compression candidates.
+5. **Performance — first pass DONE & live.** See "Performance model" below for
+   what changed and the rules that come with it. Still open, deliberately:
+   (a) the 14 pillar/place tile photos are hot-linked from `images.unsplash.com`
+   (third-party, uncached, unoptimised) — they go away as owner photos arrive;
+   (b) no `favicon.ico` exists, so every page load takes a 404;
+   (c) CSS/JS are still inline and unminified — **leave it that way** unless a
+   build step is introduced; minifying by hand saves a few KB gzipped and makes
+   these hand-authored files much harder to edit.
+
+## Performance model (added in the perf pass — don't undo these)
+
+- **No image may be base64-inlined into the HTML.** The hero used to be a 306 KB
+  JPEG inside a `data:` URI in the homepage CSS, which alone made `index.html`
+  524 KB raw / 340 KB gzipped, all of it render-blocking. It is now
+  `/hero-bg.{webp,jpg}` with a 1100px mobile variant (`/hero-bg-1100.*`) behind
+  `@media (max-width: 760px)`. `index.html` is 117 KB raw / 29 KB gzipped.
+- **The WebP pattern.** For `<img>`, use `<picture>` with a WebP `<source>` and
+  the original as the `<img>` fallback. For CSS backgrounds, write the plain
+  `url()` fallback FIRST and an `image-set(... type('image/webp') ...)`
+  immediately after — browsers too old for `image-set`/`type()` discard the
+  second declaration and keep the JPEG. Always ship both files.
+- **Keep the hero preloads in sync.** The two `rel="preload" as="image"` tags in
+  `index.html`'s `<head>` are `media`-scoped so each viewport preloads exactly
+  one variant. If you change the hero filenames or the 760px breakpoint, change
+  them there too or the page silently downloads the wrong image twice.
+- **`hero.png` is the `og:image`, not a page asset.** Nothing renders it. Leave
+  it as PNG-named JPEG; social scrapers have that URL cached.
+- **Fonts are self-hosted in `/fonts/` — do not re-add Google Fonts.** They are
+  variable woff2s (one file per family+style, latin + latin-ext, unicode-range
+  gated), with the `@font-face` blocks inlined in each page's `<style>`. To
+  change a weight, widen the `font-weight` range — do not add a file. `_headers`
+  pins `/fonts/*` to a one-year immutable cache; **do not extend that to
+  images**, which get replaced at the same filename.
+- New images: ~1600px wide, strip EXIF, JPEG q82 + a `cwebp -q 80` sibling.
 
 ## Guardrails
 
