@@ -112,11 +112,7 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
    what changed and the rules that come with it. Still open, deliberately:
    (a) the 14 pillar/place tile photos are hot-linked from `images.unsplash.com`
    (third-party, uncached, unoptimised) — they go away as owner photos arrive;
-   (b) **no favicon exists and no page declares one**, so every browser asks for
-   `/favicon.ico` and — because of the soft-404 behaviour — gets served the
-   entire 120 KB homepage as the icon, on every fresh visit. Fixing this needs a
-   design call from the owner (crop the wordmark? a monogram?), then a 32px +
-   180px PNG and a `<link rel="icon">` on all 14 pages;
+   (b) ~~favicon~~ **done** — see Performance model;
    (c) CSS/JS are still inline and unminified — **leave it that way** unless a
    build step is introduced; minifying by hand saves a few KB gzipped and makes
    these hand-authored files much harder to edit.
@@ -145,6 +141,14 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
   change a weight, widen the `font-weight` range — do not add a file. `_headers`
   pins `/fonts/*` to a one-year immutable cache; **do not extend that to
   images**, which get replaced at the same filename.
+- **Favicon exists now — keep it that way.** Before, no page declared an icon,
+  so every browser requested `/favicon.ico`, hit the soft-404, and was served
+  the whole 120 KB homepage as the icon on every fresh visit. There is now a
+  gold sun on an olive tile: `favicon.svg` (source of truth, hand-written),
+  `favicon.ico` (16/32/48), `apple-touch-icon.png` (180px, deliberately
+  **square** — iOS applies its own rounded mask, so a pre-rounded icon would
+  get double-rounded). All 14 pages link all three. If you redraw it, redraw
+  the SVG first and regenerate the raster sizes from the same geometry.
 - New images: ~1600px wide, strip EXIF, JPEG q82 + a `cwebp -q 80` sibling.
 
 ## Guardrails
