@@ -112,7 +112,11 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
    what changed and the rules that come with it. Still open, deliberately:
    (a) the 14 pillar/place tile photos are hot-linked from `images.unsplash.com`
    (third-party, uncached, unoptimised) — they go away as owner photos arrive;
-   (b) no `favicon.ico` exists, so every page load takes a 404;
+   (b) **no favicon exists and no page declares one**, so every browser asks for
+   `/favicon.ico` and — because of the soft-404 behaviour — gets served the
+   entire 120 KB homepage as the icon, on every fresh visit. Fixing this needs a
+   design call from the owner (crop the wordmark? a monogram?), then a 32px +
+   180px PNG and a `<link rel="icon">` on all 14 pages;
    (c) CSS/JS are still inline and unminified — **leave it that way** unless a
    build step is introduced; minifying by hand saves a few KB gzipped and makes
    these hand-authored files much harder to edit.
