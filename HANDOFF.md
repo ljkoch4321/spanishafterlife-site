@@ -1,7 +1,8 @@
 # HANDOFF — spanishafterlife.com maintenance
 
-> Internal doc for whoever (human or agent) picks up work on this site. Not
-> served (excluded via `.assetsignore`). Assumes no prior context.
+> Internal doc for whoever (human or agent) picks up work on this site. Lives in
+> the repo but is NOT deployed — the deploy workflow copies the site into a clean
+> `_site/` dir and excludes this file (see Deploy model). Assumes no prior context.
 
 ## The site / stack
 
@@ -23,11 +24,18 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
 
 ## Deploy model — READ CAREFULLY
 
-- Production branch is **`main`**. `.github/workflows/deploy.yml` runs
-  `wrangler pages deploy . --project-name=spanish-afterlife --branch=main` on
-  every push to `main`. Repo secret `CLOUDFLARE_API_TOKEN` is already
-  configured; the account ID is hardcoded in the workflow. `.assetsignore`
-  keeps `.git`/`.github`/docs out of the upload.
+- Production branch is **`main`**. `.github/workflows/deploy.yml` runs on every
+  push to `main`: it `rsync`s the repo into a clean `_site/` dir (excluding
+  `.git`, `.github`, `.gitignore`, `README.md`, `HANDOFF.md`) then runs
+  `wrangler pages deploy _site --project-name=spanish-afterlife --branch=main`.
+  Repo secret `CLOUDFLARE_API_TOKEN` is already configured; the account ID is
+  hardcoded in the workflow. (Note: `.assetsignore` is NOT honoured by this
+  Pages project — that's why deploys go through the `_site` copy. If you add a
+  new non-site file to the repo root that shouldn't be public, add it to the
+  rsync `--exclude` list.)
+- Cloudflare Pages serves `index.html` for unknown paths and returns **200**
+  (a soft-404), so requesting a non-existent path shows the homepage rather than
+  a real 404. Pre-existing behaviour; a `404.html` could be added if desired.
 - **Therefore: pushing to `main` deploys straight to the LIVE site**,
   automatically, within ~1 minute. Treat `git push origin main` as "publish."
 - **Preview without touching prod** (if `wrangler` is authenticated on this
