@@ -1,0 +1,6 @@
+# Cloudflare Pages response headers.
+# Fonts are content-stable and referenced by fixed filenames — cache them hard.
+# Deliberately NOT applied to images: place/hero photos get replaced at the same
+# filename, and an immutable cache would strand visitors on the old one.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
