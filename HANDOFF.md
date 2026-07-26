@@ -56,6 +56,14 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
 
 ## Current state (all live in production as of this handoff)
 
+- **Google Analytics (GA4) — active site-wide.** Property `G-0D870F788P`.
+  The standard gtag snippet sits in `<head>` (right after `<meta charset>`) on
+  all 14 pages. It replaced a dormant commented-out `GA_MEASUREMENT_ID`
+  placeholder that had never fired. **Caveat the original author flagged and it
+  still stands:** there is **no cookie-consent banner**, and GA4 drops
+  cookies / sends data to Google on load — for EU/UK visitors that is a
+  GDPR/ePrivacy consent gap. The business is Spain-based, so if you get EU
+  traffic, add a consent gate (or GA Consent Mode) and a line in `privacy.html`.
 - **SEO foundation — done & live.** Self-referencing non-www extension-less
   canonicals, per-page titles/meta, Organization + Person JSON-LD, OG/Twitter
   cards, `sitemap.xml` (13 non-www URLs), `robots.txt`. **Do not regress these.**
