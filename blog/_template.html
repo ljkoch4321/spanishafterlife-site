@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════════
+  BLOG POST TEMPLATE — Spanish AfterLife
+  This file is NOT deployed (excluded in .github/workflows/deploy.yml).
+
+  TO ADD A POST:
+   1. Copy this file to  blog/<slug>.html   (slug = lowercase-hyphenated,
+      e.g. blog/opening-a-spanish-bank-account.html → lives at
+      https://spanishafterlife.com/blog/opening-a-spanish-bank-account)
+   2. Replace every {{PLACEHOLDER}} below (search for "{{").
+   3. Paste the writer's copy into <div class="post-body"> using the
+      elements shown in the DEMO body — p, h2, h3, blockquote, ul/ol,
+      <figure>, <div class="callout">. Delete the demo, keep the shape.
+   4. Add the post's card + link on /building-my-life-in-spain (see HANDOFF).
+   5. Add a <url> for it in sitemap.xml.
+  Do NOT invent visa/tax/price figures — publish only the writer's numbers.
+  ════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D870F788P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0D870F788P');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} | Spanish AfterLife</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="canonical" href="https://spanishafterlife.com/blog/{{SLUG}}">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:url" content="https://spanishafterlife.com/blog/{{SLUG}}">
+  <meta property="og:image" content="https://spanishafterlife.com/{{OG_IMAGE}}">
+  <meta property="article:published_time" content="{{DATE_ISO}}">
+  <meta property="article:author" content="LJ Koch">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+  <meta name="twitter:image" content="https://spanishafterlife.com/{{OG_IMAGE}}">
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-garamond-normal-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-normal-latin.woff2" crossorigin />
+  <link rel="stylesheet" href="/blog/blog.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{TITLE}}",
+    "description": "{{META_DESCRIPTION}}",
+    "image": "https://spanishafterlife.com/{{OG_IMAGE}}",
+    "datePublished": "{{DATE_ISO}}",
+    "dateModified": "{{DATE_ISO}}",
+    "author": { "@type": "Person", "name": "LJ Koch", "url": "https://spanishafterlife.com/about" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Spanish AfterLife",
+      "logo": { "@type": "ImageObject", "url": "https://spanishafterlife.com/logo.png" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spanishafterlife.com/blog/{{SLUG}}" }
+  }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      Spanish <strong>AfterLife</strong>
+      <span>Valencia Community, Spain</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/fullafterlife">The Full AfterLife</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+      <li><a href="/real-estate">Real Estate</a></li>
+      <li><a href="/building-my-life-in-spain">Journal</a></li>
+      <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/fullafterlife">The Full AfterLife</a>
+    <a href="/immigration">Immigration</a>
+    <a href="/real-estate">Real Estate</a>
+    <a href="/private-client">Private Client</a>
+    <a href="/building-my-life-in-spain" class="active">Journal</a>
+    <a href="/#contact" class="mob-cta">Get Started</a>
+  </div>
+
+  <!-- POST HEADER -->
+  <header class="post-header">
+    <div class="post-header-inner">
+      <div class="eyebrow">{{CATEGORY}}</div>
+      <h1>{{TITLE}}</h1>
+      <div class="post-meta">
+        <span class="by">LJ Koch</span>
+        <span class="dot"></span>
+        <time datetime="{{DATE_ISO}}">{{DATE_DISPLAY}}</time>
+        <span class="dot"></span>
+        <span>{{READING_TIME}} min read</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- OPTIONAL HERO IMAGE — delete this <figure> if the post has none -->
+  <figure class="post-hero">
+    <img src="/{{HERO_IMAGE}}" alt="{{HERO_ALT}}" width="960" height="540">
+    <figcaption>{{HERO_CAPTION}}</figcaption>
+  </figure>
+
+  <!-- POST BODY -->
+  <div class="post-wrap">
+    <article class="post-body">
+
+      <!-- ▼▼▼ DEMO CONTENT — replace everything between these markers ▼▼▼ -->
+      <p class="post-lead">Optional italic standfirst: one or two sentences that set up the piece and pull the reader in. Delete this line if you don't want one.</p>
+
+      <p>Standard paragraph. Body copy uses this size and rhythm. Links look like <a href="/real-estate">this internal link</a>. Use <strong>bold</strong> for emphasis and <em>italics</em> where the writer intends them.</p>
+
+      <h2>A section heading, with an <em>accent</em></h2>
+      <p>Another paragraph under the section heading.</p>
+
+      <blockquote>A pull quote for the line worth remembering. Keep it short.</blockquote>
+
+      <h3>A smaller sub-heading</h3>
+      <ul>
+        <li>A bulleted point.</li>
+        <li>Another point.</li>
+      </ul>
+
+      <div class="callout"><strong>Key fact.</strong> Use this box for a figure or a takeaway the writer wants to stand out. Only real, writer-supplied numbers here.</div>
+
+      <figure>
+        <img src="/hero.png" alt="Descriptive alt text">
+        <figcaption>An in-body image with a caption.</figcaption>
+      </figure>
+
+      <p>Closing paragraph.</p>
+      <!-- ▲▲▲ END DEMO CONTENT ▲▲▲ -->
+
+    </article>
+  </div>
+
+  <!-- POST FOOTER -->
+  <div class="post-end">
+    <a href="/building-my-life-in-spain" class="post-back">← All journal entries</a>
+    <div class="author-card">
+      <div>
+        <div class="a-name">LJ Koch</div>
+        <p class="a-bio">Founder of Spanish AfterLife. Made the move from Canada to Spain by way of Mexico, and now guides North Americans through immigration and property on the Valencia coast. <a href="/about" style="color:var(--terracotta)">Read his story →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="news">
+    <div class="news-inner">
+      <div class="eyebrow">The list</div>
+      <h2>Be the first to read them.</h2>
+      <p>One email when something worth your time goes up. The guides, the profiles, the honest bits. Nothing else, and nothing sold.</p>
+      <form class="news-form" id="newsForm" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+        <input type="email" name="EMAIL" placeholder="Your email address" required>
+        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
+        <button type="submit">Keep me posted</button>
+      </form>
+      <label class="news-consent"><input type="checkbox" name="consent" form="newsForm" required> I agree to receive emails from Spanish AfterLife and accept the <a href="/privacy">Privacy Policy</a>.</label>
+      <p class="news-note">No spam. Unsubscribe whenever. We never share your address.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        Spanish <strong>AfterLife</strong>
+        <span>Valencia Community, Spain</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/fullafterlife">The Full AfterLife</a></li>
+        <li><a href="/immigration">Immigration</a></li>
+        <li><a href="/real-estate">Real Estate</a></li>
+        <li><a href="/private-client">Private Client</a></li>
+        <li><a href="/building-my-life-in-spain">Journal</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 LJ Koch Group Inc. · Spanish AfterLife · Why wait for the AfterLife?</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

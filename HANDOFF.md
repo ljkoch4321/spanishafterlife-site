@@ -159,6 +159,40 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
   the SVG first and regenerate the raster sizes from the same geometry.
 - New images: ~1600px wide, strip EXIF, JPEG q82 + a `cwebp -q 80` sibling.
 
+## Blog / Journal
+
+The blog is called **"Building My Life in Spain — A Founder's Journal."**
+
+- **Index:** `building-my-life-in-spain.html` (route `/building-my-life-in-spain`,
+  already linked in every nav + footer). It lists category cards and an
+  "editorial slate" of article cards. Posts are written by an outside content
+  writer and pasted in — **we build the machinery, not the copy.**
+- **Posts live at `/blog/<slug>`** — file `blog/<slug>.html`, served
+  extensionless by Cloudflare Pages. Slugs are lowercase-hyphenated.
+- **Shared stylesheet `blog/blog.css`** styles every post (fonts, nav, footer,
+  long-form typography). This is a deliberate exception to the site's
+  inline-CSS pattern: with many near-identical posts, one shared file means a
+  restyle is a single edit. The index keeps its own inline CSS.
+- **Template `blog/_template.html`** — the starting point for every post. It is
+  **excluded from deploy** (rsync `--exclude` in `deploy.yml`), so it is never
+  public. Each post has its own `BlogPosting` JSON-LD, canonical, OG/Twitter
+  tags, GA snippet, and the shared nav/footer.
+
+### To add a post
+1. `cp blog/_template.html blog/<slug>.html`.
+2. Replace every `{{PLACEHOLDER}}` (search `{{`): title, meta description, slug,
+   OG image, ISO + display dates, reading time, category, hero image/alt/caption.
+3. Paste the writer's copy into `<article class="post-body">`, replacing the
+   DEMO block, using the shown elements (`p`, `h2`, `h3`, `blockquote`,
+   `ul`/`ol`, `<figure>`, `.callout`, `.post-lead`). Delete the hero `<figure>`
+   if the post has no lead image.
+4. On `building-my-life-in-spain.html`, flip that article's card from a
+   `<div class="article">` to `<a class="article" href="/blog/<slug>">` and swap
+   the "In production" badge for a date (there's a worked example in an HTML
+   comment right above the `slate-grid`).
+5. Add a `<url>` for `/blog/<slug>` to `sitemap.xml`.
+6. **Do not invent visa/tax/price figures** — publish only the writer's numbers.
+
 ## Guardrails
 
 - **Do not invent** prices, tax figures, visa thresholds, or property-market

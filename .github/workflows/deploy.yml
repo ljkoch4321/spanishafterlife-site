@@ -37,6 +37,7 @@ jobs:
             --exclude='.assetsignore' \
             --exclude='README.md' \
             --exclude='HANDOFF.md' \
+            --exclude='blog/_template.html' \
             ./ _site/
 
       - name: Deploy to Cloudflare Pages (production)
