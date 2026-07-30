@@ -621,6 +621,22 @@
     .reveal { opacity:0; transform:translateY(18px); transition:opacity 0.7s ease,transform 0.7s ease; }
     .reveal.on { opacity:1; transform:none; }
 
+      /* From the journal */
+    .journal { background: var(--linen); }
+    .journal .eyebrow { color: var(--terra); margin-bottom: 1.25rem; }
+    .journal h2 { color: var(--olive); margin-bottom: 1rem; }
+    .journal .deck { color: var(--stone); max-width: 55ch; margin-bottom: 3rem; font-size: 1.05rem; }
+    .journal-feature { display: block; background: #fff; border: 1px solid var(--grey); padding: 2.25rem 2.25rem; text-decoration: none; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; max-width: 760px; }
+    .journal-feature:hover { border-color: var(--terra); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(46,58,32,0.1); }
+    .jf-meta { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem; }
+    .jf-cat { font-family: var(--sans); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); }
+    .jf-date { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+    .journal-feature h3 { font-size: clamp(1.5rem, 3.5vw, 2rem); color: var(--olive); margin-bottom: 0.7rem; }
+    .journal-feature p { font-size: 0.98rem; line-height: 1.65; color: var(--stone); margin: 0 0 1.1rem; }
+    .jf-more { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); }
+    .journal-all { display: inline-block; margin-top: 1.75rem; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); text-decoration: none; border-bottom: 1px solid rgba(46,58,32,0.25); padding-bottom: 2px; }
+    .journal-all:hover { color: var(--terra); border-color: var(--terra); }
+
       /* Lead magnet — the guide */
     .guide-cta { background:#3D4C2E; color:#F5EFE4; }
     .guide-wrap { max-width:1080px; margin:0 auto; display:grid; gap:2.5rem; align-items:center; }
@@ -1292,6 +1308,28 @@
   </section>
 
   <!-- 07b. THE GUIDE -->
+  <!-- 07b. FROM THE JOURNAL -->
+  <section class="journal section" id="journal">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">From the journal</span>
+        <h2>Building my life in Spain.</h2>
+        <p class="deck">The honest field notes &mdash; visas, property, money, and the day-to-day of actually moving here. Written from the Valencia coast, not from abroad.</p>
+      </div>
+      <a class="journal-feature reveal" href="/building-my-life-in-spain/non-lucrative-vs-digital-nomad-visa-spain">
+        <div class="jf-meta">
+          <span class="jf-cat">Visa &amp; Money</span>
+          <span class="jf-date">Jul 2026</span>
+        </div>
+        <h3>Non-Lucrative vs Digital Nomad Visa: which Spain route?</h3>
+        <p>The two routes onto Spanish residency, how they differ, and who each one really suits &mdash; the shape of the choice before the numbers.</p>
+        <span class="jf-more">Read the piece &rarr;</span>
+      </a>
+      <div class="reveal"><a class="journal-all" href="/building-my-life-in-spain">All journal entries &rarr;</a></div>
+    </div>
+  </section>
+
+  <!-- 08. THE GUIDE -->
   <section class="guide-cta section" id="guide">
     <div class="guide-wrap">
       <div class="guide-visual">
