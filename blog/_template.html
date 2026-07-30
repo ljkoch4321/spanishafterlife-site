@@ -5,9 +5,11 @@
   This file is NOT deployed (excluded in .github/workflows/deploy.yml).
 
   TO ADD A POST:
-   1. Copy this file to  blog/<slug>.html   (slug = lowercase-hyphenated,
-      e.g. blog/opening-a-spanish-bank-account.html → lives at
-      https://spanishafterlife.com/blog/opening-a-spanish-bank-account)
+   1. Copy this file to  building-my-life-in-spain/<slug>.html   (slug =
+      lowercase-hyphenated). Posts live UNDER the journal hub, e.g.
+      building-my-life-in-spain/opening-a-spanish-bank-account.html →
+      https://spanishafterlife.com/building-my-life-in-spain/opening-a-spanish-bank-account
+      (Shared stylesheet stays at /blog/blog.css — that's just the asset path.)
    2. Replace every {{PLACEHOLDER}} below (search for "{{").
    3. Paste the writer's copy into <div class="post-body"> using the
       elements shown in the DEMO body — p, h2, h3, blockquote, ul/ol,
@@ -34,11 +36,11 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="description" content="{{META_DESCRIPTION}}">
-  <link rel="canonical" href="https://spanishafterlife.com/blog/{{SLUG}}">
+  <link rel="canonical" href="https://spanishafterlife.com/building-my-life-in-spain/{{SLUG}}">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{{TITLE}}">
   <meta property="og:description" content="{{META_DESCRIPTION}}">
-  <meta property="og:url" content="https://spanishafterlife.com/blog/{{SLUG}}">
+  <meta property="og:url" content="https://spanishafterlife.com/building-my-life-in-spain/{{SLUG}}">
   <meta property="og:image" content="https://spanishafterlife.com/{{OG_IMAGE}}">
   <meta property="article:published_time" content="{{DATE_ISO}}">
   <meta property="article:author" content="LJ Koch">
@@ -64,7 +66,7 @@
       "name": "Spanish AfterLife",
       "logo": { "@type": "ImageObject", "url": "https://spanishafterlife.com/logo.png" }
     },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spanishafterlife.com/blog/{{SLUG}}" }
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://spanishafterlife.com/building-my-life-in-spain/{{SLUG}}" }
   }
   </script>
 </head>

@@ -167,19 +167,29 @@ The blog is called **"Building My Life in Spain — A Founder's Journal."**
   already linked in every nav + footer). It lists category cards and an
   "editorial slate" of article cards. Posts are written by an outside content
   writer and pasted in — **we build the machinery, not the copy.**
-- **Posts live at `/blog/<slug>`** — file `blog/<slug>.html`, served
-  extensionless by Cloudflare Pages. Slugs are lowercase-hyphenated.
-- **Shared stylesheet `blog/blog.css`** styles every post (fonts, nav, footer,
-  long-form typography). This is a deliberate exception to the site's
-  inline-CSS pattern: with many near-identical posts, one shared file means a
-  restyle is a single edit. The index keeps its own inline CSS.
+- **Posts live at `/building-my-life-in-spain/<slug>`** — file
+  `building-my-life-in-spain/<slug>.html`, served extensionless by Cloudflare
+  Pages, as a topic cluster nested under the journal hub. (The hub file
+  `building-my-life-in-spain.html` and the same-named directory coexist fine:
+  `/building-my-life-in-spain` serves the .html, `/building-my-life-in-spain/<slug>`
+  serves from the directory. There is no `building-my-life-in-spain/index.html`.)
+  Slugs are lowercase-hyphenated. First live post:
+  `non-lucrative-vs-digital-nomad-visa-spain`. **NB:** an earlier draft of this
+  doc said posts live at `/blog/<slug>` — that was superseded; only the shared
+  CSS lives under `/blog/`.
+- **Shared stylesheet `/blog/blog.css`** styles every post (fonts, nav, footer,
+  long-form typography, comparison tables, callouts). Deliberate exception to
+  the site's inline-CSS pattern: with many near-identical posts, one shared file
+  means a restyle is a single edit. Kept at the `/blog/` path as a plain asset
+  location even though posts now live under `/building-my-life-in-spain/`. The
+  journal index keeps its own inline CSS.
 - **Template `blog/_template.html`** — the starting point for every post. It is
   **excluded from deploy** (rsync `--exclude` in `deploy.yml`), so it is never
   public. Each post has its own `BlogPosting` JSON-LD, canonical, OG/Twitter
   tags, GA snippet, and the shared nav/footer.
 
 ### To add a post
-1. `cp blog/_template.html blog/<slug>.html`.
+1. `cp blog/_template.html building-my-life-in-spain/<slug>.html`.
 2. Replace every `{{PLACEHOLDER}}` (search `{{`): title, meta description, slug,
    OG image, ISO + display dates, reading time, category, hero image/alt/caption.
 3. Paste the writer's copy into `<article class="post-body">`, replacing the

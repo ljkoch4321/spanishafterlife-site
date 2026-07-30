@@ -117,8 +117,19 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .post-hero figcaption { margin-top: 0.7rem; font-size: 0.8rem; color: var(--stone); text-align: center; }
 
 /* callout / key-fact box (optional) */
-.post-body .callout { background: var(--linen); border-left: 3px solid var(--terracotta); padding: 1.25rem 1.5rem; margin: 2rem 0; font-size: 0.98rem; line-height: 1.7; }
+.post-body .callout { background: var(--linen); border-left: 3px solid var(--terracotta); padding: 1.25rem 1.5rem; margin: 2.5rem 0; font-size: 0.98rem; line-height: 1.7; }
 .post-body .callout strong { color: var(--olive); }
+.post-body .callout p { margin: 0 0 0.8rem; font-size: inherit; line-height: inherit; }
+.post-body .callout p:last-child { margin-bottom: 0; }
+.post-body .callout a { color: var(--terracotta); border-bottom: 1px solid rgba(196,105,58,0.4); text-decoration: none; }
+
+/* ── COMPARISON TABLE ── */
+.post-table-wrap { overflow-x: auto; margin: 2.5rem 0; -webkit-overflow-scrolling: touch; }
+.post-table-wrap table { margin: 0; }
+.post-body table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 540px; }
+.post-body th, .post-body td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--linen-dark); vertical-align: top; line-height: 1.55; color: var(--olive); }
+.post-body thead th { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terracotta); border-bottom: 2px solid var(--terracotta); }
+.post-body tbody th { font-weight: 600; width: 22%; }
 
 /* ── POST FOOTER: back link + author ── */
 .post-end { max-width: 720px; margin: 0 auto; padding: 0 2rem 4.5rem; }
