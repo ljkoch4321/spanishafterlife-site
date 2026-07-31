@@ -125,6 +125,33 @@ Valencia Community. Founder: **LJ Koch**; legal entity **LJ Koch Group Inc.**
    build step is introduced; minifying by hand saves a few KB gzipped and makes
    these hand-authored files much harder to edit.
 
+## Email capture & automation (migrated OFF Mailchimp → MailerLite)
+
+Mailchimp was dropped because automations moved behind its paid tier. All signup
+forms now post to a Cloudflare Pages Function; capture + the nurture sequence run
+on **MailerLite's free tier**.
+
+- **Function:** `functions/api/subscribe.js` (Cloudflare Pages Function, served at
+  `/api/subscribe`). Receives the form POST, adds/upserts the subscriber to a
+  MailerLite group via `connect.mailerlite.com/api/subscribers` (joining the group
+  fires the automation), then 303-redirects. Never blocks the visitor if MailerLite
+  is unreachable. Honeypot field is `website`; bad emails are dropped silently.
+- **Env vars (Cloudflare Pages → Settings → Environment variables, Prod + Preview):**
+  `MAILERLITE_API_KEY`, `ML_GROUP_GUIDE`, `ML_GROUP_NEWSLETTER`. Until these are set,
+  forms still work — they just redirect to the thank-you pages without capturing.
+- **Forms (15 total):** each posts to `/api/subscribe` with hidden `intent`
+  (`guide` | `newsletter`) + `source` fields. `intent=guide` → guide/prospect group
+  → `/thank-you` (instant PDF download). `intent=newsletter` → newsletter group →
+  `/subscribed`. The Formspree contact form (`#cform` on index) is unrelated and
+  untouched (still needs its own `YOUR_FORM_ID` filled in).
+- **Automation to mirror in MailerLite** (trigger: joins guide group): Email 1
+  Guide Delivery (immediate) → 3-day delay → Email 2 Day-3 Lifestyle → 4-day delay
+  → Email 3 Day-7 Process → 7-day delay → Email 4 Day-14 Decision → exit.
+- The Mailchimp connected-site tracking script (`chimpstatic.com/mcjs`) was removed
+  from all 14 pages. Do not re-add it.
+- Guide PDF lives at `/spain-retirement-guide.pdf` (repo root) and is linked from
+  `/thank-you` and inside Email 1.
+
 ## Performance model (added in the perf pass — don't undo these)
 
 - **No image may be base64-inlined into the HTML.** The hero used to be a 306 KB

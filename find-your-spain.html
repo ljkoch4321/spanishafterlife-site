@@ -180,8 +180,6 @@
     .lm-logo{font-weight:400}
     .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
   </style>
-  <!-- Mailchimp connected site -->
-  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
 </head>
 <body>
 
@@ -362,13 +360,16 @@
         el('r-cta-head').textContent = "Still exploring? That's exactly the right time to start reading.";
         addBtn('/building-my-life-in-spain', 'Read Building My Life in Spain', 'btn-terra');
         addBtn(ctaUrl(), 'Book a call when ready', 'btn-outline');
-        newsWrap.innerHTML = '<form class="r-news" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID" method="post" target="_blank" novalidate>'
+        newsWrap.innerHTML = '<form class="r-news" action="/api/subscribe" method="post" novalidate>'
           + '<input type="email" name="EMAIL" placeholder="Email me what\'s worth reading" required>'
           + '<input type="hidden" name="_subject" value="Funnel — explorer subscriber">'
           + '<button type="submit">Keep me posted</button>'
           + '<label style="flex-basis:100%;display:flex;gap:0.5rem;align-items:flex-start;margin-top:0.6rem;font-size:0.72rem;color:var(--stone);line-height:1.5"><input type="checkbox" name="consent" required style="margin-top:0.15rem;accent-color:var(--terracotta)"> I agree to receive emails and accept the <a href="/privacy" style="color:var(--saffron)">Privacy Policy</a>.</label>'
-          + '<div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>'
-          + '</form>';
+          + '<div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" value=""></div>'
+          + '
+        <input type="hidden" name="intent" value="newsletter">
+        <input type="hidden" name="source" value="find-your-spain:r-news">
+      </form>';
       } else if(soon && buying){
         el('r-cta-head').textContent = "The timing is now. Here's the fastest honest path.";
         addBtn(ctaUrl(), 'Book your free call', 'btn-terra');

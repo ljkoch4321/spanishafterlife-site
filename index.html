@@ -831,8 +831,6 @@
     .compare-card, .how-step, .svc, .form-box { padding-left: 1.25rem; padding-right: 1.25rem; }
     .section { padding: 2.75rem 1rem; }
   </style>
-  <!-- Mailchimp connected site -->
-  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1342,14 +1340,17 @@
         <div class="guide-eyebrow">The free guide</div>
         <h2>Your Complete Guide to <em>Retiring in Spain</em></h2>
         <p>The visa, the property, and the honest cost of the life &mdash; the numbers most people never run. Written from the Valencia coast, not from abroad.</p>
-        <form class="guide-form" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+        <form class="guide-form" action="/api/subscribe" method="post" novalidate>
           <div class="guide-row">
             <input type="email" name="EMAIL" placeholder="Your email address" required>
             <button type="submit">Send me the guide</button>
           </div>
           <label class="guide-consent"><input type="checkbox" name="consent" required> Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</label>
-          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
-        </form>
+          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" value=""></div>
+        
+        <input type="hidden" name="intent" value="guide">
+        <input type="hidden" name="source" value="index:guide-form">
+      </form>
         <p class="guide-note">Free. No obligation. Straight to your inbox.</p>
       </div>
     </div>
@@ -1454,14 +1455,17 @@
           <h4>Your Complete Guide to Retiring in Spain</h4>
           <p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
         </div>
-        <form class="hs-form" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+        <form class="hs-form" action="/api/subscribe" method="post" novalidate>
           <div class="hs-row">
             <input type="email" name="EMAIL" placeholder="Your email address" required>
             <button type="submit">Send me the guide</button>
           </div>
           <label class="hs-consent"><input type="checkbox" name="consent" required> Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</label>
-          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
-        </form>
+          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" value=""></div>
+        
+        <input type="hidden" name="intent" value="guide">
+        <input type="hidden" name="source" value="index:hs-form">
+      </form>
       </div>
       <div class="footer-bottom">
         <p>© 2025 Spanish AfterLife / LJ Koch Group Inc. All rights reserved.</p>

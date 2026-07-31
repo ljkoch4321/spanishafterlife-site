@@ -961,8 +961,6 @@
     .lm-logo{font-weight:400}
     .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
   </style>
-  <!-- Mailchimp connected site -->
-  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
 </head>
 <body>
 
@@ -1357,14 +1355,17 @@
           <h4>Your Complete Guide to Retiring in Spain</h4>
           <p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
         </div>
-        <form class="fs-form" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+        <form class="fs-form" action="/api/subscribe" method="post" novalidate>
           <div class="fs-row">
             <input type="email" name="EMAIL" placeholder="Your email address" required>
             <button type="submit">Send me the guide</button>
           </div>
           <label class="fs-consent"><input type="checkbox" name="consent" required> Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</label>
-          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
-        </form>
+          <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" value=""></div>
+        
+        <input type="hidden" name="intent" value="guide">
+        <input type="hidden" name="source" value="immigration:fs-form">
+      </form>
       </div>
     </div>
     <div class="footer-inner">

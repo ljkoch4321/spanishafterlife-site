@@ -228,8 +228,6 @@
     .lm-logo{font-weight:400}
     .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
   </style>
-  <!-- Mailchimp connected site -->
-  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
 </head>
 <body>
 
@@ -386,10 +384,13 @@
       <div class="eyebrow">The list</div>
       <h2>Be the first to read them.</h2>
       <p>One email when something worth your time goes up. The guides, the profiles, the honest bits. Nothing else, and nothing sold.</p>
-      <form class="news-form" id="newsForm" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+      <form class="news-form" id="newsForm" action="/api/subscribe" method="post" novalidate>
         <input type="email" name="EMAIL" placeholder="Your email address" required>
-        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
+        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" value=""></div>
         <button type="submit">Keep me posted</button>
+      
+        <input type="hidden" name="intent" value="newsletter">
+        <input type="hidden" name="source" value="building-my-life-in-spain:news-form">
       </form>
       <label style="display:flex;gap:0.5rem;align-items:flex-start;max-width:460px;margin:0.85rem auto 0;font-size:0.74rem;color:var(--stone);line-height:1.5;text-align:left"><input type="checkbox" name="consent" form="newsForm" required style="margin-top:0.2rem;accent-color:var(--terracotta)"> I agree to receive emails from Spanish AfterLife and accept the <a href="/privacy" style="color:var(--saffron)">Privacy Policy</a>.</label>
       <p class="news-note">No spam. Unsubscribe whenever. We never share your address.</p>

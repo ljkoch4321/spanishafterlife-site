@@ -257,8 +257,6 @@
     .lm-logo{font-weight:400}
     .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
   </style>
-  <!-- Mailchimp connected site -->
-  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5f38614f6ed20bbb07e53befd/02422f4400e9d42e12f4caf9e.js");</script>
 </head>
 <body>
   <div class="lm-stage">
@@ -284,11 +282,13 @@
         <div class="lm-form-wrap">
           <h2>Send me the guide</h2>
           <p class="sub">Enter your email and it's on its way. No cost, no obligation.</p>
-          <form action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+          <form action="/api/subscribe" method="post" novalidate>
             <div class="lm-field"><input type="text" name="FNAME" placeholder="First name (optional)"></div>
             <div class="lm-field"><input type="email" name="EMAIL" placeholder="Your email address" required></div>
             <label class="lm-consent"><input type="checkbox" name="consent" required> Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</label>
-            <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
+            <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" value=""></div>
+            <input type="hidden" name="intent" value="guide">
+            <input type="hidden" name="source" value="guide:lm-form">
             <button type="submit" class="lm-submit">Send me the guide &rarr;</button>
           </form>
           <p class="lm-trust">Written by LJ Koch, who made the move from Mexico to Spain &mdash; the tourist-visa years, the Digital Nomad Visa, and Spanish residency &mdash; and now lives on the Valencia coast. We'll never share your address.</p>

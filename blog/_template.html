@@ -171,10 +171,13 @@
       <div class="eyebrow">The list</div>
       <h2>Be the first to read them.</h2>
       <p>One email when something worth your time goes up. The guides, the profiles, the honest bits. Nothing else, and nothing sold.</p>
-      <form class="news-form" id="newsForm" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+      <form class="news-form" id="newsForm" action="/api/subscribe" method="post" novalidate>
         <input type="email" name="EMAIL" placeholder="Your email address" required>
-        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value=""></div>
+        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" value=""></div>
         <button type="submit">Keep me posted</button>
+      
+        <input type="hidden" name="intent" value="newsletter">
+        <input type="hidden" name="source" value="_template:news-form">
       </form>
       <label class="news-consent"><input type="checkbox" name="consent" form="newsForm" required> I agree to receive emails from Spanish AfterLife and accept the <a href="/privacy">Privacy Policy</a>.</label>
       <p class="news-note">No spam. Unsubscribe whenever. We never share your address.</p>
