@@ -68,6 +68,33 @@ export async function onRequestGet({ request, env }) {
       }
     }
 
+    // When ?cleanup=1, delete every test subscriber I created (diag-*@example.com
+    // and any +ml/+real/+news/+nl/+mltest tagged address).
+    if (url.searchParams.get('cleanup') === '1') {
+      const isTest = (e) =>
+        /^diag-\d+@example\.com$/i.test(e) ||
+        /\+(ml|real|news|nl|mltest)/i.test(e);
+      const deleted = [];
+      try {
+        const lr = await fetch('https://connect.mailerlite.com/api/subscribers?limit=100', {
+          headers: { Authorization: 'Bearer ' + env.MAILERLITE_API_KEY, Accept: 'application/json' },
+        });
+        const j = JSON.parse(await lr.text());
+        for (const s of j.data || []) {
+          if (isTest(s.email)) {
+            const dr = await fetch('https://connect.mailerlite.com/api/subscribers/' + s.id, {
+              method: 'DELETE',
+              headers: { Authorization: 'Bearer ' + env.MAILERLITE_API_KEY, Accept: 'application/json' },
+            });
+            deleted.push({ email: s.email, status: dr.status });
+          }
+        }
+        out.cleanup = { deleted };
+      } catch (e) {
+        out.cleanup = { error: e && e.message, deleted };
+      }
+    }
+
     // When ?post=1, replicate the real subscriber write and surface the raw
     // MailerLite response so we can see exactly why it fails.
     if (url.searchParams.get('post') === '1') {
