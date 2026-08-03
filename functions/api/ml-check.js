@@ -42,6 +42,31 @@ export async function onRequestGet({ request, env }) {
     } catch (e) {
       out.mailerlite = { error: e && e.message };
     }
+
+    // When ?post=1, replicate the real subscriber write and surface the raw
+    // MailerLite response so we can see exactly why it fails.
+    if (url.searchParams.get('post') === '1') {
+      const gid = String(env.ML_GROUP_GUIDE || '').match(/(\d{6,})(?!.*\d)/);
+      const payload = {
+        email: 'diag-' + Date.now() + '@example.com',
+        status: 'active',
+        groups: gid ? [gid[1]] : [],
+      };
+      try {
+        const pr = await fetch('https://connect.mailerlite.com/api/subscribers', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + env.MAILERLITE_API_KEY,
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+        out.postTest = { sent: payload, status: pr.status, ok: pr.ok, body: (await pr.text()).slice(0, 800) };
+      } catch (e) {
+        out.postTest = { sent: payload, error: e && e.message };
+      }
+    }
   }
 
   return new Response(JSON.stringify(out, null, 2), {
