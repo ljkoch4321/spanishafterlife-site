@@ -19,6 +19,13 @@
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
+// Tolerate a group value that was pasted as a full dashboard URL by pulling out
+// the last long run of digits (the numeric group id).
+function cleanGroupId(v) {
+  const m = String(v || '').match(/(\d{6,})(?!.*\d)/);
+  return m ? m[1] : '';
+}
+
 function seeOther(origin, path) {
   return new Response(null, { status: 303, headers: { Location: origin + path } });
 }
@@ -54,7 +61,7 @@ export async function onRequestPost({ request, env }) {
   // tag the URL so we could surface a message later if we want.
   if (!EMAIL_RE.test(email)) return seeOther(origin, redirectTo + '?e=email');
 
-  const groupId = intent === 'newsletter' ? env.ML_GROUP_NEWSLETTER : env.ML_GROUP_GUIDE;
+  const groupId = cleanGroupId(intent === 'newsletter' ? env.ML_GROUP_NEWSLETTER : env.ML_GROUP_GUIDE);
   const payload = { email, status: 'active' };
   const fields = {};
   if (name) fields.name = name;
