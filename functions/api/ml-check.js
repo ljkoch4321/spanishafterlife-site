@@ -43,6 +43,31 @@ export async function onRequestGet({ request, env }) {
       out.mailerlite = { error: e && e.message };
     }
 
+    // When ?lookup=<email>, fetch that subscriber and show which groups it's in.
+    const lookup = url.searchParams.get('lookup');
+    if (lookup) {
+      try {
+        const lr = await fetch('https://connect.mailerlite.com/api/subscribers/' + encodeURIComponent(lookup), {
+          headers: { Authorization: 'Bearer ' + env.MAILERLITE_API_KEY, Accept: 'application/json' },
+        });
+        const lt = await lr.text();
+        try {
+          const j = JSON.parse(lt);
+          const d = j.data || {};
+          out.lookup = {
+            email: d.email,
+            status: lr.status,
+            groups: (d.groups || []).map((g) => ({ id: g.id, name: g.name })),
+            fields: d.fields ? { name: d.fields.name, source: d.fields.source } : null,
+          };
+        } catch (_) {
+          out.lookup = { status: lr.status, body: lt.slice(0, 400) };
+        }
+      } catch (e) {
+        out.lookup = { error: e && e.message };
+      }
+    }
+
     // When ?post=1, replicate the real subscriber write and surface the raw
     // MailerLite response so we can see exactly why it fails.
     if (url.searchParams.get('post') === '1') {
