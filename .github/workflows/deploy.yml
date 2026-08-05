@@ -34,6 +34,7 @@ jobs:
             --exclude='.github' \
             --exclude='_site' \
             --exclude='.gitignore' \
+            --exclude='.claude' \
             --exclude='.assetsignore' \
             --exclude='README.md' \
             --exclude='HANDOFF.md' \
