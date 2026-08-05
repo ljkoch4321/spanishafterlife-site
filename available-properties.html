@@ -328,31 +328,85 @@
         <span style="font-size:0.85rem;color:rgba(255,255,255,0.75);border-left:2px solid #D4A043;padding-left:1rem">🏆 Best Real Estate Website in Spain</span>
       </div>
 
-      <!-- Villa inventory card -->
-      <div style="background:#FFFFFF;padding:2.5rem;border-top:3px solid #C4693A;margin-bottom:3px" class="reveal">
-        <span style="font-family:var(--sans,Inter,sans-serif);font-size:0.64rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#3A5A6E;display:block;margin-bottom:0.6rem">Current Availability</span>
-        <h3 style="color:#2E3A20;margin-bottom:1rem">New-Build Villas — Altaona Resort</h3>
-        <p style="color:#5A5248;font-size:0.93rem;line-height:1.75;margin-bottom:1.75rem">Mediterranean-style villas designed around longevity, wellbeing and active living. Private pools, natural surroundings, underfloor heating, Italian kitchens — set within an 18-hole golf resort with full sports and wellness facilities, and Murcia city under 20 minutes away.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.75rem">
-          <div style="padding:1.25rem;background:#F5EFE4;border-left:2px solid #C4693A">
-            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#C4693A;line-height:1">€443,500</div>
-            <div style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#5A5248;margin-top:0.3rem">Oasis Altaona — from</div>
-          </div>
-          <div style="padding:1.25rem;background:#F5EFE4;border-left:2px solid #C4693A">
-            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;color:#C4693A;line-height:1">€503,000</div>
-            <div style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:#5A5248;margin-top:0.3rem">Las Vistas Altaona — from</div>
-          </div>
+      <style>
+        .pl-card{background:#FFFFFF;padding:2.5rem;border-top:3px solid #C4693A}
+        .pl-note{font-size:0.82rem;color:#8a7f70;line-height:1.7;max-width:72ch;margin-bottom:0.5rem}
+        .pl-dev{margin-top:2.5rem}
+        .pl-dev-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.4rem;border-bottom:2px solid #C4693A;padding-bottom:0.5rem}
+        .pl-dev-head h4{font-family:'Cormorant Garamond',Georgia,serif;color:#2E3A20;font-size:1.4rem;font-weight:500}
+        .pl-dev-head span{font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:#8a7f70}
+        .pl-desc{font-size:0.9rem;color:#5A5248;line-height:1.7;margin:0.9rem 0 1.1rem;max-width:74ch}
+        .pl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+        table.pl{width:100%;border-collapse:collapse;min-width:520px;font-size:0.9rem}
+        table.pl th{text-align:left;font-family:var(--sans,Inter,sans-serif);font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#8a7f70;padding:0.8rem 0.75rem 0.55rem;border-bottom:1px solid #EDE6D8}
+        table.pl td{padding:0.7rem 0.75rem;border-bottom:1px solid #EDE6D8;color:#3D4C2E}
+        table.pl tr:last-child td{border-bottom:none}
+        table.pl td.model{font-weight:600;color:#2E3A20}
+        table.pl td.price{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:#C4693A;white-space:nowrap}
+        table.pl th.r,table.pl td.price{text-align:right}
+        .pl-cta{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem}
+      </style>
+      <!-- Live price list (Altaona resort) -->
+      <div class="pl-card reveal">
+        <span style="font-family:var(--sans,Inter,sans-serif);font-size:0.64rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#3A5A6E;display:block;margin-bottom:0.6rem">The Altaona Price List</span>
+        <h3 style="color:#2E3A20;margin-bottom:1rem">Four villa collections, one resort</h3>
+        <p class="pl-note">Every home is a new-build within the gated Altaona golf &amp; wellness resort, with a private pool, garden, aerothermal heating and air-conditioning, underfloor heating and an Italian kitchen (Energy Rating A). Figures are &ldquo;from&rdquo; starting prices &mdash; <strong>updated live and subject to availability</strong>. Ask us for the current plot list, floor plans and a branded brochure on any model below.</p>
+        <div class="pl-dev">
+          <div class="pl-dev-head"><h4>Oasis Altaona</h4><span>From €443,500 · 2–4 bed · delivery Q2–Q3 2026</span></div>
+          <p class="pl-desc">Light-filled contemporary villas in the heart of the resort — bright two- to four-bedroom homes, each with a private pool, terrace and premium finishes. The accessible entry into resort life.</p>
+          <div class="pl-wrap"><table class="pl">
+            <thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th class="r">From</th></tr></thead>
+            <tbody>
+            <tr><td class="model">Arin</td><td>2 / 2</td><td>143.6</td><td>470–498</td><td class="price">€443,500</td></tr>
+            <tr><td class="model">Arin L</td><td>2–4 / 2–3</td><td>167.6–174</td><td>583–596</td><td class="price">€614,000</td></tr>
+            <tr><td class="model">Nara</td><td>3 / 3</td><td>204</td><td>525</td><td class="price">€646,000</td></tr>
+            <tr><td class="model">Nara XL</td><td>3 / 3</td><td>213.3</td><td>551</td><td class="price">€689,000</td></tr>
+            <tr><td class="model">Arava</td><td>4 / 3</td><td>231.1</td><td>561</td><td class="price">€744,000</td></tr>
+            </tbody>
+          </table></div>
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem">
-          <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3A5A6E;background:rgba(58,90,110,0.1);padding:0.3rem 0.75rem">18-hole Golf Resort</span>
-          <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3A5A6E;background:rgba(58,90,110,0.1);padding:0.3rem 0.75rem">Private Pool</span>
-          <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3A5A6E;background:rgba(58,90,110,0.1);padding:0.3rem 0.75rem">WOW Wellness Centre</span>
-          <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3A5A6E;background:rgba(58,90,110,0.1);padding:0.3rem 0.75rem">Longevity Design</span>
-          <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3A5A6E;background:rgba(58,90,110,0.1);padding:0.3rem 0.75rem">BREEAM Certified</span>
-          <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3A5A6E;background:rgba(58,90,110,0.1);padding:0.3rem 0.75rem">20 min to Murcia City</span>
+        <div class="pl-dev">
+          <div class="pl-dev-head"><h4>Las Vistas Altaona</h4><span>From €513,500 · 3 bed · final Phase II release</span></div>
+          <p class="pl-desc">Single-storey villas that frame long views across the resort, the golf course and the Murcian sierra — larger plots and generous open-plan living.</p>
+          <div class="pl-wrap"><table class="pl">
+            <thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th class="r">From</th></tr></thead>
+            <tbody>
+            <tr><td class="model">Serenity</td><td>3 / 2</td><td>211.5</td><td>359–432</td><td class="price">€513,500</td></tr>
+            <tr><td class="model">Balance</td><td>3 / 2</td><td>222.1</td><td>434–454</td><td class="price">€544,000</td></tr>
+            </tbody>
+          </table></div>
         </div>
-        <a href="https://taolis.com" target="_blank" rel="noopener" style="display:inline-block;padding:0.9rem 2rem;background:#C4693A;color:#fff;font-family:var(--sans,Inter,sans-serif);font-size:0.74rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-right:1rem;transition:background 0.22s" onmouseover="this.style.background='#2E3A20'" onmouseout="this.style.background='#C4693A'">Explore Altaona</a>
-        <a href="/#contact" style="display:inline-block;padding:0.9rem 2rem;background:transparent;color:#2E3A20;font-family:var(--sans,Inter,sans-serif);font-size:0.74rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;border:1.5px solid #2E3A20;transition:all 0.22s" onmouseover="this.style.background='#2E3A20';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#2E3A20'">Ask Us About This Development</a>
+        <div class="pl-dev">
+          <div class="pl-dev-head"><h4>Villas Santolina</h4><span>From €964,000 · 3–4 bed · full 1,000 m² plots</span></div>
+          <p class="pl-desc">Bold modern architecture on full 1,000 m² plots — floor-to-ceiling glass flowing to a large private pool and garden.</p>
+          <div class="pl-wrap"><table class="pl">
+            <thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th class="r">From</th></tr></thead>
+            <tbody>
+            <tr><td class="model">Campo</td><td>4 / 4</td><td>246</td><td>1,000</td><td class="price">€964,000</td></tr>
+            <tr><td class="model">Horizon</td><td>3 / 3</td><td>294</td><td>1,000</td><td class="price">€984,000</td></tr>
+            <tr><td class="model">Aqua</td><td>4 / 4</td><td>305</td><td>1,000–1,115</td><td class="price">€1,101,500</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div class="pl-dev">
+          <div class="pl-dev-head"><h4>Villas Fairway</h4><span>From €816,000 · 3–5 bed · frontline golf</span></div>
+          <p class="pl-desc">The resort's signature collection: larger, architect-led villas on the most exclusive frontline-golf plots, up to 770 m².</p>
+          <div class="pl-wrap"><table class="pl">
+            <thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th class="r">From</th></tr></thead>
+            <tbody>
+            <tr><td class="model">Breeze</td><td>3 / 3</td><td>200</td><td>793</td><td class="price">€816,000</td></tr>
+            <tr><td class="model">Swing</td><td>4 / 4</td><td>300</td><td>1,000</td><td class="price">€1,007,000</td></tr>
+            <tr><td class="model">Drive</td><td>4 / 4</td><td>435</td><td>1,000</td><td class="price">€1,103,000</td></tr>
+            <tr><td class="model">Eagle</td><td>4 / 4</td><td>575</td><td>1,900</td><td class="price">€1,690,500</td></tr>
+            <tr><td class="model">Woods</td><td>4 / 4</td><td>645</td><td>2,100</td><td class="price">€1,991,000</td></tr>
+            <tr><td class="model">Birdie</td><td>5 / 5</td><td>770</td><td>2,500</td><td class="price">€3,625,000</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div class="pl-cta">
+          <a href="/#contact" style="display:inline-block;padding:0.9rem 2rem;background:#C4693A;color:#fff;font-family:var(--sans,Inter,sans-serif);font-size:0.74rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">Request the full price list</a>
+          <a href="https://taolis.com" target="_blank" rel="noopener" style="display:inline-block;padding:0.9rem 2rem;background:transparent;color:#2E3A20;font-family:var(--sans,Inter,sans-serif);font-size:0.74rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;border:1.5px solid #2E3A20">Explore Altaona</a>
+        </div>
       </div>
 
       <!-- WOW Hotel card -->
