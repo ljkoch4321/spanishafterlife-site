@@ -144,9 +144,11 @@ on **MailerLite's free tier**.
   → `/thank-you` (instant PDF download). `intent=newsletter` → newsletter group →
   `/subscribed`. The Formspree contact form (`#cform` on index) is unrelated and
   untouched (still needs its own `YOUR_FORM_ID` filled in).
-- **Automation to mirror in MailerLite** (trigger: joins guide group): Email 1
-  Guide Delivery (immediate) → 3-day delay → Email 2 Day-3 Lifestyle → 4-day delay
-  → Email 3 Day-7 Process → 7-day delay → Email 4 Day-14 Decision → exit.
+- **Automation — BUILT AND ACTIVE** in MailerLite (trigger: joins guide group):
+  Email 1 Guide Delivery (immediate) → 3-day delay → Email 2 Day-3 Lifestyle →
+  4-day delay → Email 3 Day-7 Process → 7-day delay → Email 4 Day-14 Decision →
+  exit. Verified end-to-end 2026-08-06: live form submit → subscriber lands in
+  the guide group → Email 1 delivered.
 - The Mailchimp connected-site tracking script (`chimpstatic.com/mcjs`) was removed
   from all 14 pages. Do not re-add it.
 - Guide PDF lives at `/spain-retirement-guide.pdf` (repo root) and is linked from
