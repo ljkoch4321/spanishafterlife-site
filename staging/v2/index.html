@@ -1,0 +1,332 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><script>document.documentElement.className='js';</script>
+<title>Spanish AfterLife — STAGING v2 (ERA flow)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3F3EC;--ink:#17233B;--stone:#5C5648;--ink-soft:rgba(23,35,59,.6);--cream-soft:rgba(243,243,236,.66);
+--line:rgba(23,35,59,.15);--line-d:rgba(243,243,236,.18);
+--serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
+--ease:cubic-bezier(.16,1,.3,1);--pad:clamp(1.25rem,5vw,6rem)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:340;letter-spacing:-.02em;line-height:1.02}
+h1{font-size:clamp(3rem,9vw,7rem)} h2{font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.05}
+h3{font-size:clamp(1.4rem,2.6vw,2.2rem);letter-spacing:-.015em}
+p{max-width:58ch} a{color:inherit;text-decoration:none}
+.ovl{font-family:var(--sans);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.24em;color:var(--ink-soft)}
+.script{font-family:var(--script)}
+section{position:relative}
+.pad{padding:clamp(5rem,13vh,11rem) var(--pad)} .wrap{max-width:1440px;margin:0 auto}
+.dark{background:var(--ink);color:var(--cream)} .dark .ovl{color:var(--cream-soft)} .dark p{color:var(--cream-soft)}
+.rline{display:block;overflow:hidden} .rline>span{display:block}
+.js .rline>span{transform:translateY(110%);transition:transform 1s var(--ease)}
+.in .rline>span,.rline.in>span{transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media(prefers-reduced-motion:reduce){.js .reveal,.js .rline>span{opacity:1!important;transform:none!important;filter:none!important;transition:none}}
+
+/* media + reveals */
+.media,.place-media{position:relative;overflow:hidden}
+.hero .media,.chapter .media{position:absolute;inset:0}
+.media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform}
+.js .img-reveal .media-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
+.img-reveal.in .media-img{clip-path:inset(0 0 0 0)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
+padding:1.15rem var(--pad);mix-blend-mode:difference;color:#fff}
+.brand{font-family:var(--serif);font-size:1.15rem} .brand b{font-weight:400}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;opacity:.9}
+.nav-links a:hover{opacity:.5}
+.nav-cta{border:1px solid rgba(255,255,255,.5);padding:.5rem 1.05rem;border-radius:100px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:1.5px;background:#fff}
+.menu{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;
+justify-content:center;padding:var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);pointer-events:none}
+.menu.open{clip-path:inset(0 0 0 0);pointer-events:auto}
+.menu a{font-family:var(--serif);font-size:clamp(2rem,9vw,3.4rem);padding:.3rem 0}
+.menu-sig{font-family:var(--script);font-size:2rem;margin-top:2rem;opacity:.7}
+
+/* hero */
+.hero{height:100svh;min-height:600px;position:relative;overflow:hidden;display:flex;align-items:center;color:var(--cream)}
+.hero .media-img{inset:-6% 0}
+.hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(23,35,59,.72) 0%,rgba(23,35,59,.42) 45%,rgba(23,35,59,.2) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.hero h1{max-width:14ch} .hero h1 em{font-style:italic;font-weight:300}
+.hero-sub{margin-top:1.4rem;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(243,243,236,.9);max-width:34ch}
+.hero-cta{margin-top:2.2rem;display:inline-flex;gap:.6rem;align-items:center;background:var(--cream);color:var(--ink);
+padding:1rem 1.9rem;border-radius:100px;font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;
+transition:background .5s,color .5s;border:1px solid var(--cream)}
+.hero-cta:hover{background:transparent;color:var(--cream)}
+.scroll-cue{position:absolute;left:50%;bottom:2rem;transform:translateX(-50%);z-index:2;color:var(--cream-soft);
+font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.scroll-cue::after{content:"";width:1px;height:38px;background:linear-gradient(var(--cream),transparent);animation:cue 2s var(--ease) infinite}
+@keyframes cue{0%{opacity:0;transform:scaleY(0);transform-origin:top}40%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
+
+/* full-bleed chapter */
+.chapter{height:100svh;min-height:540px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--cream);text-align:center}
+.chapter .media-img{inset:-12% 0}
+.chapter::after{content:"";position:absolute;inset:0;background:rgba(23,35,59,.44);z-index:1}
+.chapter h2{position:relative;z-index:2;max-width:18ch;padding:0 var(--pad);font-weight:300;text-shadow:0 2px 50px rgba(23,35,59,.4)}
+.chapter .script{display:block;font-size:1.3em;font-weight:400}
+
+/* section intro */
+.head{max-width:22ch;margin-bottom:clamp(2.5rem,6vh,4.5rem)}
+.head .ovl{display:block;margin-bottom:1.2rem}
+
+/* pillar switcher */
+.switch-track{height:calc(12 * 40vh + 100vh)}
+.switch-sticky{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:38% 1fr;overflow:hidden}
+.sw-list{align-self:center;padding:0 var(--pad);display:flex;flex-direction:column;gap:.05rem}
+.sw-head{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-soft);margin-bottom:1.5rem}
+.sw-tab{background:none;border:0;text-align:left;cursor:pointer;display:flex;gap:1rem;align-items:baseline;padding:.42rem 0;
+color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:var(--serif)}
+.sw-tab .sw-idx{font-family:var(--sans);font-size:.68rem;color:var(--cream-soft)}
+.sw-tab .sw-name{font-size:clamp(1.2rem,2.1vw,1.9rem);transition:transform .5s var(--ease)}
+.sw-tab.active{opacity:1}.sw-tab.active .sw-name{transform:translateX(12px)}
+.sw-stage{position:relative;background:#111a2c}
+.sw-panel{position:absolute;inset:0;opacity:0;transition:opacity .8s var(--ease)}
+.sw-panel.active{opacity:1}
+.sw-panel .media-img{inset:0;transition:transform 1.2s var(--ease)}
+.sw-panel.active .media-img{transform:scale(1.05)}
+.sw-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(17,26,44,.9))}
+.sw-copy{position:absolute;z-index:2;left:0;bottom:0;padding:clamp(1.5rem,4vw,3.5rem);color:var(--cream)}
+.sw-c-idx{font-size:.66rem;letter-spacing:.2em;color:var(--cream-soft)}
+.sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:rgba(243,243,236,.82)}
+
+/* numbers */
+.toggle{display:inline-flex;position:relative;border:1px solid var(--line-d);border-radius:100px;padding:4px;background:rgba(243,243,236,.04)}
+.toggle button{position:relative;z-index:1;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.7rem;
+text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);padding:.65rem 1.4rem;border-radius:100px;transition:color .5s}
+.toggle button.on{color:var(--ink)} .toggle .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--cream);border-radius:100px;transition:transform .55s var(--ease)}
+.toggle.us .knob{transform:translateX(100%)}
+.n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:22ch;margin:2rem 0 3rem;min-height:3.6em}
+.ncols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem)}
+.ncol .ovl{display:block;margin-bottom:1.4rem}
+.nrow{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line-d);align-items:baseline}
+.nk{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cream-soft)}
+.nv{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.4;color:var(--cream)}
+.ncol.leave .nv{color:rgba(243,243,236,.6)}
+
+/* places */
+.place{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center;padding:clamp(2.5rem,6vh,5rem) 0;border-top:1px solid var(--line)}
+.place:first-of-type{border-top:0}
+.place:nth-child(even) .place-media{order:2}
+.place-media{aspect-ratio:4/3}
+.place-body h3{margin:.6rem 0 .9rem} .place-body p{color:var(--stone);max-width:34ch}
+.place-price{font-family:var(--serif);font-size:1.2rem;margin-top:1.4rem;display:inline-block;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
+
+/* services */
+.svc{display:grid;grid-template-columns:1fr auto;gap:1rem 2rem;align-items:center;padding:clamp(1.8rem,3.8vh,3rem) 0;border-top:1px solid var(--line);transition:padding-left .5s var(--ease)}
+.svc:hover{padding-left:1rem}
+.svc-t{display:flex;flex-direction:column;gap:.5rem} .svc-t h3{font-size:clamp(1.6rem,3vw,2.6rem)}
+.svc-fee{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
+.svc p{grid-column:1;color:var(--stone)} .svc-go{grid-row:1/3;font-size:1.6rem;font-family:var(--serif)}
+
+/* steps */
+.steps{display:grid;gap:0} .step{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,3rem);padding:1.6rem 0;border-top:1px solid var(--line-d);align-items:baseline}
+.step-n{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--cream-soft)} .step p{color:rgba(243,243,236,.7)}
+
+/* guide + contact */
+.guide{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,5vw,5rem);align-items:center}
+.guide-media{aspect-ratio:4/5}
+.guide-body h2{margin-bottom:1rem} .guide-body p{color:rgba(243,243,236,.82)}
+.gform{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;max-width:480px}
+.gform input{flex:1;min-width:200px;background:transparent;border:0;border-bottom:1px solid var(--line-d);color:var(--cream);padding:.85rem .2rem;font-family:var(--sans);font-size:1rem}
+.gform input::placeholder{color:var(--cream-soft)} .gform input:focus{outline:none;border-color:var(--cream)}
+.gbtn{background:var(--cream);color:var(--ink);border:0;border-radius:100px;padding:.9rem 1.7rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
+.micro{font-size:.76rem;color:var(--cream-soft);margin-top:1rem}
+.contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.contact h2{margin-bottom:1.2rem} .contact .lead{color:var(--stone);max-width:32ch}
+.cform{display:grid;gap:1.3rem}.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field label{font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);font-weight:600}
+.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1px solid var(--line);padding:.7rem 0;font-family:var(--sans);font-size:1rem;color:var(--ink);border-radius:0}
+.field textarea{resize:vertical;min-height:80px} .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.cbtn{justify-self:start;background:var(--ink);color:var(--cream);border:0;border-radius:100px;padding:1rem 1.9rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
+
+/* footer + badge */
+.foot{padding:clamp(3rem,7vh,6rem) var(--pad) 2.5rem;background:var(--ink);color:var(--cream)}
+.foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:2.5rem;border-bottom:1px solid var(--line-d)}
+.foot-sig{font-family:var(--script);font-size:clamp(2rem,5vw,3.2rem)}
+.foot-nav{display:flex;gap:1.5rem;flex-wrap:wrap} .foot-nav a{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--cream-soft)}
+.foot-bot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;font-size:.7rem;color:var(--cream-soft)}
+#badge{position:fixed;left:1rem;bottom:1rem;z-index:90;background:#B4643C;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .8rem;border-radius:4px}
+
+@media(max-width:900px){
+ .nav-links{display:none}.burger{display:flex}
+ .switch-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr}.switch-track{height:calc(12 * 26vh + 100vh)}
+ .sw-list{flex-direction:row;overflow-x:auto;gap:1.1rem;padding:1rem var(--pad);background:#111a2c;scrollbar-width:none}
+ .sw-list::-webkit-scrollbar{display:none}.sw-head{display:none}.sw-tab{flex:0 0 auto}.sw-tab.active .sw-name{transform:none}
+ .ncols,.place,.place:nth-child(even) .place-media,.guide,.contact,.frow{grid-template-columns:1fr}
+ .place:nth-child(even) .place-media{order:0}.n-intro{min-height:auto}.svc{grid-template-columns:1fr auto}
+}
+</style></head><body>
+<div id="badge">Staging v2 · ERA flow</div>
+<nav class="nav"><a class="brand" href="#top"><b>Spanish</b> AfterLife</a>
+<div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How</a><a class="nav-cta" href="#contact">Start Here</a></div>
+<button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
+
+<header class="hero" id="top">
+  <!-- OVERLAY ANCHOR: hero media/video layer mounts here -->
+  <div class="media "><div class="media-img" data-par="0.04" style="background-image:url('/hero.png')"></div></div>
+  <div class="hero-in">
+    <h1><span class="rline"><span>Your best years.</span></span><span class="rline"><span><em>Starting now.</em></span></span></h1>
+    <p class="hero-sub reveal">Early retirement on Spain's Mediterranean coast.</p>
+    <a class="hero-cta reveal" href="#contact">Start here <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</header>
+
+<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2000&q=80')"></div></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
+
+<section class="switch dark" id="life">
+  <div class="switch-track"><div class="switch-sticky">
+    <div class="sw-list"><div class="sw-head">Twelve reasons this is the right move</div><button class="sw-tab" data-i="0"><span class="sw-idx">01</span><span class="sw-name">The Property</span></button>
+<button class="sw-tab" data-i="1"><span class="sw-idx">02</span><span class="sw-name">The Table</span></button>
+<button class="sw-tab" data-i="2"><span class="sw-idx">03</span><span class="sw-name">The Course</span></button>
+<button class="sw-tab" data-i="3"><span class="sw-idx">04</span><span class="sw-name">The Paddle</span></button>
+<button class="sw-tab" data-i="4"><span class="sw-idx">05</span><span class="sw-name">The Club</span></button>
+<button class="sw-tab" data-i="5"><span class="sw-idx">06</span><span class="sw-name">The Horses</span></button>
+<button class="sw-tab" data-i="6"><span class="sw-idx">07</span><span class="sw-name">The Continent</span></button>
+<button class="sw-tab" data-i="7"><span class="sw-idx">08</span><span class="sw-name">The Canvas</span></button>
+<button class="sw-tab" data-i="8"><span class="sw-idx">09</span><span class="sw-name">The Land</span></button>
+<button class="sw-tab" data-i="9"><span class="sw-idx">10</span><span class="sw-name">The Sail</span></button>
+<button class="sw-tab" data-i="10"><span class="sw-idx">11</span><span class="sw-name">The Rhythm</span></button>
+<button class="sw-tab" data-i="11"><span class="sw-idx">12</span><span class="sw-name">The Ride</span></button></div>
+    <div class="sw-stage"><div class="sw-panel" data-i="0"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">01 / 12</span><h3>The Property</h3><p>Fincas and beachfront, at impossible prices.</p></div></div>
+<div class="sw-panel" data-i="1"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">02 / 12</span><h3>The Table</h3><p>Markets, bodegas, the three-hour lunch.</p></div></div>
+<div class="sw-panel" data-i="2"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">03 / 12</span><h3>The Course</h3><p>Golf, three hundred days a year.</p></div></div>
+<div class="sw-panel" data-i="3"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">04 / 12</span><h3>The Paddle</h3><p>Padel — how community is built here.</p></div></div>
+<div class="sw-panel" data-i="4"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">05 / 12</span><h3>The Club</h3><p>The long, unhurried afternoon.</p></div></div>
+<div class="sw-panel" data-i="5"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">06 / 12</span><h3>The Horses</h3><p>Equestrian estates and working fincas.</p></div></div>
+<div class="sw-panel" data-i="6"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">07 / 12</span><h3>The Continent</h3><p>Two hours to Paris, Rome, Lisbon.</p></div></div>
+<div class="sw-panel" data-i="7"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">08 / 12</span><h3>The Canvas</h3><p>Picasso to Gaudí. Beauty everywhere.</p></div></div>
+<div class="sw-panel" data-i="8"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">09 / 12</span><h3>The Land</h3><p>Mountains, coast, serious hiking.</p></div></div>
+<div class="sw-panel" data-i="9"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">10 / 12</span><h3>The Sail</h3><p>The Balearics, unspoiled harbours.</p></div></div>
+<div class="sw-panel" data-i="10"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">11 / 12</span><h3>The Rhythm</h3><p>Flamenco, jazz, music in every plaza.</p></div></div>
+<div class="sw-panel" data-i="11"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">12 / 12</span><h3>The Ride</h3><p>Road, gravel, mountain — from your door.</p></div></div></div>
+  </div></div>
+</section>
+
+<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=2000&q=80')"></div></div><h2><span class="rline"><span>This is</span></span><span class="rline"><span>Tuesday now.</span></span></h2></section>
+
+<section class="numbers dark pad" id="numbers"><div class="wrap">
+  <div class="head"><span class="ovl">The Numbers</span><h2 class="reveal">What your equity actually buys</h2></div>
+  <div class="toggle" id="tg" role="tablist"><span class="knob"></span><button data-c="ca">Canada</button><button data-c="us">United States</button></div>
+  <p class="n-intro" id="nintro"></p>
+  <div class="ncols">
+    <div class="ncol reveal"><span class="ovl">What's waiting — Spain</span><div class="nrow"><span class="nk">Property</span><span class="nv">€400K buys a beachfront villa with a pool.</span></div>
+<div class="nrow"><span class="nk">Tax</span><span class="nv">Investment income taxed at 19–23%.</span></div>
+<div class="nrow"><span class="nk">Weather</span><span class="nv">300 days of sun.</span></div></div>
+    <div class="ncol leave reveal"><span class="ovl">What you're leaving</span><div id="leave"></div></div>
+  </div>
+</div></section>
+
+<section class="places pad" id="places"><div class="wrap">
+  <div class="head"><span class="ovl">Where We Work</span><h2 class="reveal">The Valencia Community</h2></div>
+  <article class="place">
+   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/javea-denia.jpg')"></div></div>
+   <div class="place-body reveal"><span class="ovl">Costa Blanca North</span><h3>Jávea &amp; Denia</h3><p>The most sophisticated stretch of the coast.</p><span class="place-price">From €280,000</span></div>
+ </article>
+<article class="place">
+   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1600&q=85')"></div></div>
+   <div class="place-body reveal"><span class="ovl">City Life</span><h3>Valencia City</h3><p>Europe's most underrated city.</p><span class="place-price">From €180,000</span></div>
+ </article>
+<article class="place">
+   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/oliva-cullera.jpg')"></div></div>
+   <div class="place-body reveal"><span class="ovl">Unspoiled Coast</span><h3>Oliva &amp; Cullera</h3><p>The coast that never got overbuilt.</p><span class="place-price">From €180,000</span></div>
+ </article>
+<article class="place">
+   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1600&q=85')"></div></div>
+   <div class="place-body reveal"><span class="ovl">Finca Country</span><h3>Inland — Ontinyent</h3><p>Olive groves at inland prices.</p><span class="place-price">From €120,000</span></div>
+ </article>
+</div></section>
+
+<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=2000&q=80')"></div></div><h2 class="script">Why wait for the AfterLife?</h2></section>
+
+<section class="services pad" id="how"><div class="wrap">
+  <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">One relationship, start to finish</h2></div>
+  <a class="svc reveal" href="/immigration"><div class="svc-t"><h3>Immigration Concierge</h3><span class=svc-fee>From €3,500</span></div><p>Your legal right to live here, handled.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
+<a class="svc reveal" href="/real-estate"><div class="svc-t"><h3>Real Estate</h3><span class=svc-fee>€200K – €1.5M+</span></div><p>Full buyer's agency. We represent you.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
+<a class="svc reveal" href="/fullafterlife"><div class="svc-t"><h3>The Full AfterLife</h3></div><p>Residency and property, run as one engagement.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
+<a class="svc reveal" href="/private-client"><div class="svc-t"><h3>The Private Client</h3></div><p>The founder, embedded from day one.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
+  <div class="steps" style="margin-top:clamp(3rem,7vh,5rem)"><div class="step reveal"><span class="step-n">01</span><div><h3>Strategy Call</h3><p>Eligibility, structure, timeline. Free.</p></div></div>
+<div class="step reveal"><span class="step-n">02</span><div><h3>Immigration</h3><p>NLV, NIE, banking. Done properly.</p></div></div>
+<div class="step reveal"><span class="step-n">03</span><div><h3>Property</h3><p>We represent you, not the seller.</p></div></div>
+<div class="step reveal"><span class="step-n">04</span><div><h3>Settlement</h3><p>Keys in hand. Your AfterLife begins.</p></div></div></div>
+</div></section>
+
+<section class="dark pad" id="guide"><div class="wrap guide">
+  <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/guide-cover.png')"></div></div>
+  <div class="guide-body reveal">
+    <h2>The honest cost of moving to Spain</h2>
+    <p>The visa, the property, the real numbers — written from the coast, not from abroad.</p>
+    <form class="gform" id="gform" novalidate><input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email"><button class="gbtn" type="submit">Send me the guide</button></form>
+    <p class="micro">Free. No obligation. Straight to your inbox.</p>
+  </div>
+</div></section>
+
+<section class="pad" id="contact"><div class="wrap contact">
+  <div class="reveal"><h2>Find out if Spain is<br>right for you.</h2><p class="lead">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you — honestly.</p></div>
+  <form class="cform" id="cform" novalidate>
+    <div class="frow"><div class="field"><label>First Name</label><input name="first_name" required></div><div class="field"><label>Email</label><input type="email" name="email" required></div></div>
+    <div class="field"><label>Where are you based?</label><select name="location"><option value="">Select country / province / state</option>
+<option>Ontario</option>
+<option>British Columbia</option>
+<option>Alberta</option>
+<option>Quebec</option>
+<option>Other Canadian province</option>
+<option>California</option>
+<option>New York</option>
+<option>Washington</option>
+<option>Illinois</option>
+<option>Texas</option>
+<option>Florida</option>
+<option>Other US state</option></select></div>
+    <div class="field"><label>Anything that would help us prepare</label><textarea name="message" placeholder="Budget, timeline, areas of interest..."></textarea></div>
+    <button class="cbtn" type="submit">Book my free call</button>
+  </form>
+</div></section>
+
+<footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
+<div class="foot-nav"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How</a><a href="#contact">Start Here</a></div></div>
+<div class="foot-bot"><span>© 2025 LJ Koch Group Inc. · Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>
+
+<script>const NUMDATA={"ca": {"intro": "The client selling a $1.5M Toronto semi arrives in Spain with genuinely transformative purchasing power.", "rows": [["Property", "$1.5M buys a semi-detached. No land. No pool."], ["Tax", "Up to 53% marginal in Ontario and B.C."], ["Weather", "Five tolerable months."]]}, "us": {"intro": "The client selling a $1.5M Bay Area bungalow arrives in Spain with genuinely transformative purchasing power.", "rows": [["Property", "$1.5M buys a mid-century ranch, far from the coast."], ["Tax", "Up to 37% federal — plus 13.3% in California."], ["Weather", "Five tolerable months."]]}};</script><script>
+const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.style.overflow=o?'hidden':'';});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';}));
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+let smooth=fine&&!reduce,target=scrollY,current=scrollY,raf=null;
+const maxS=()=>document.documentElement.scrollHeight-innerHeight;
+function loop(){current+=(target-current)*.09;if(Math.abs(target-current)<.4)current=target;scrollTo(0,current);tick();if(current!==target)raf=requestAnimationFrame(loop);else raf=null;}
+const kick=()=>{if(raf===null)raf=requestAnimationFrame(loop);};
+if(smooth){
+ addEventListener('wheel',e=>{if(e.target.closest('.sw-list,.menu'))return;e.preventDefault();target=Math.max(0,Math.min(maxS(),target+e.deltaY));kick();},{passive:false});
+ addEventListener('keydown',e=>{const m={PageDown:innerHeight*.9,PageUp:-innerHeight*.9,ArrowDown:120,ArrowUp:-120,' ':innerHeight*.9,Home:-1e9,End:1e9};if(!(e.key in m))return;if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;e.preventDefault();target=Math.max(0,Math.min(maxS(),e.key==='Home'?0:e.key==='End'?maxS():target+m[e.key]));kick();});
+ addEventListener('scroll',()=>{if(raf===null){current=target=scrollY;tick();}},{passive:true});
+}else addEventListener('scroll',tick,{passive:true});
+const goto=y=>{if(smooth){target=Math.max(0,Math.min(maxS(),y));kick();}else scrollTo({top:y,behavior:'smooth'});};
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const el=document.querySelector(a.getAttribute('href'));if(!el)return;e.preventDefault();goto(el.getBoundingClientRect().top+scrollY);}));
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
+const par=[...document.querySelectorAll('[data-par]')];
+const track=document.querySelector('.switch-track'),tabs=[...document.querySelectorAll('.sw-tab')],panels=[...document.querySelectorAll('.sw-panel')];
+let cur=-1;const setP=i=>{if(i===cur)return;cur=i;tabs.forEach((t,n)=>t.classList.toggle('active',n===i));panels.forEach((p,n)=>p.classList.toggle('active',n===i));};setP(0);
+function tick(){const y=scrollY;
+ for(const el of par){const r=el.getBoundingClientRect();const s=parseFloat(el.dataset.par);el.style.transform='translate3d(0,'+(-(r.top+r.height/2-innerHeight/2)*s).toFixed(1)+'px,0)';}
+ if(track){const r=track.getBoundingClientRect();const tot=track.offsetHeight-innerHeight;const p=Math.min(1,Math.max(0,-r.top/tot));setP(Math.min(tabs.length-1,Math.floor(p*tabs.length)));}}
+tabs.forEach((t,i)=>t.addEventListener('click',()=>{const tot=track.offsetHeight-innerHeight;goto(track.getBoundingClientRect().top+scrollY+(i+.5)/tabs.length*tot);}));
+tick();addEventListener('resize',tick);
+const tg=document.getElementById('tg'),ni=document.getElementById('nintro'),lv=document.getElementById('leave'),D=NUMDATA;
+function setC(c){tg.classList.toggle('us',c==='us');tg.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.c===c));ni.textContent=D[c].intro;lv.innerHTML=D[c].rows.map(r=>`<div class="nrow"><span class="nk">${r[0]}</span><span class="nv">${r[1]}</span></div>`).join('');}
+tg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setC(b.dataset.c)));setC('ca');
+document.getElementById('gform').addEventListener('submit',e=>{e.preventDefault();/* TODO: Mailchimp list-manage subscribe endpoint */console.log('[STAGING v2] guide signup',{email:e.target.EMAIL.value});alert('STAGING — logged to console.');});
+document.getElementById('cform').addEventListener('submit',e=>{e.preventDefault();/* TODO: Formspree endpoint */console.log('[STAGING v2] consult',Object.fromEntries(new FormData(e.target)));alert('STAGING — logged to console.');});
+</script>
+</body></html>
