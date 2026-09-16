@@ -69,9 +69,8 @@ font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;display:flex;flex
 /* full-bleed chapter */
 .chapter{height:100svh;min-height:540px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--cream);text-align:center}
 .chapter .media-img{inset:-12% 0}
-.chapter::after{content:"";position:absolute;inset:0;background:rgba(23,35,59,.44);z-index:1}
-.chapter h2{position:relative;z-index:2;max-width:18ch;padding:0 var(--pad);font-weight:300;text-shadow:0 2px 50px rgba(23,35,59,.4)}
-.chapter .script{display:block;font-size:1.3em;font-weight:400}
+.chapter::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(23,35,59,.5) 0%,rgba(23,35,59,.7) 100%);z-index:1}
+.chapter h2{position:relative;z-index:2;max-width:16ch;padding:0 var(--pad);font-weight:360;font-size:clamp(2.9rem,7.5vw,6rem);line-height:1.02;text-shadow:0 4px 44px rgba(0,0,0,.5)}
 
 /* section intro */
 .head{max-width:22ch;margin-bottom:clamp(2.5rem,6vh,4.5rem)}
@@ -119,12 +118,24 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .place-body h3{margin:.6rem 0 .9rem} .place-body p{color:var(--stone);max-width:34ch}
 .place-price{font-family:var(--serif);font-size:1.2rem;margin-top:1.4rem;display:inline-block;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
 
-/* services */
-.svc{display:grid;grid-template-columns:1fr auto;gap:1rem 2rem;align-items:center;padding:clamp(1.8rem,3.8vh,3rem) 0;border-top:1px solid var(--line);transition:padding-left .5s var(--ease)}
-.svc:hover{padding-left:1rem}
-.svc-t{display:flex;flex-direction:column;gap:.5rem} .svc-t h3{font-size:clamp(1.6rem,3vw,2.6rem)}
-.svc-fee{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
-.svc p{grid-column:1;color:var(--stone)} .svc-go{grid-row:1/3;font-size:1.6rem;font-family:var(--serif)}
+/* services — alternating image rows */
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center;padding:clamp(2.5rem,6vh,5rem) 0;border-top:1px solid var(--line)}
+.srow:first-of-type{border-top:0}
+.srow:nth-child(even) .srow-media{order:2}
+.srow-media{aspect-ratio:4/3}
+.srow-body h3{font-size:clamp(1.9rem,3.4vw,3rem);margin:.7rem 0 1rem}
+.srow-body p{color:var(--stone);max-width:40ch}
+.srow-foot{display:flex;gap:1.6rem;align-items:center;margin-top:1.5rem;flex-wrap:wrap}
+.srow-fee{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
+.srow-link{display:inline-flex;gap:.5rem;align-items:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:.3rem;transition:gap .4s var(--ease)}
+.srow-link:hover{gap:1rem}
+/* process — full-bleed split: image + steps */
+.process{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}
+.process-media{position:relative;overflow:hidden}.process-media .media-img{inset:0}
+.process-body{padding:clamp(3rem,8vh,7rem) var(--pad);display:flex;flex-direction:column;justify-content:center}
+.process-body .head{margin-bottom:clamp(2rem,5vh,3.5rem)}
+.process .step:first-child{border-top:0}
+.contact-media{aspect-ratio:3/4}
 
 /* steps */
 .steps{display:grid;gap:0} .step{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,3rem);padding:1.6rem 0;border-top:1px solid var(--line-d);align-items:baseline}
@@ -161,8 +172,8 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  .switch-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr}.switch-track{height:calc(12 * 26vh + 100vh)}
  .sw-list{flex-direction:row;overflow-x:auto;gap:1.1rem;padding:1rem var(--pad);background:#111a2c;scrollbar-width:none}
  .sw-list::-webkit-scrollbar{display:none}.sw-head{display:none}.sw-tab{flex:0 0 auto}.sw-tab.active .sw-name{transform:none}
- .ncols,.place,.place:nth-child(even) .place-media,.guide,.contact,.frow{grid-template-columns:1fr}
- .place:nth-child(even) .place-media{order:0}.n-intro{min-height:auto}.svc{grid-template-columns:1fr auto}
+ .ncols,.place,.place:nth-child(even) .place-media,.guide,.contact,.frow,.srow,.process{grid-template-columns:1fr}
+ .place:nth-child(even) .place-media{order:0}.srow:nth-child(even) .srow-media{order:0}.n-intro{min-height:auto}.process-media{aspect-ratio:4/3;min-height:60vh}
 }
 </style></head><body>
 <div id="badge">Staging v2 · ERA flow</div>
@@ -247,19 +258,38 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  </article>
 </div></section>
 
-<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=2000&q=80')"></div></div><h2 class="script">Why wait for the AfterLife?</h2></section>
+<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=2000&q=80')"></div></div><h2><span class="rline"><span>Why wait for</span></span><span class="rline"><span>the AfterLife?</span></span></h2></section>
 
 <section class="services pad" id="how"><div class="wrap">
-  <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">One relationship, start to finish</h2></div>
-  <a class="svc reveal" href="/immigration"><div class="svc-t"><h3>Immigration Concierge</h3><span class=svc-fee>From €3,500</span></div><p>Your legal right to live here, handled.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
-<a class="svc reveal" href="/real-estate"><div class="svc-t"><h3>Real Estate</h3><span class=svc-fee>€200K – €1.5M+</span></div><p>Full buyer's agency. We represent you.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
-<a class="svc reveal" href="/fullafterlife"><div class="svc-t"><h3>The Full AfterLife</h3></div><p>Residency and property, run as one engagement.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
-<a class="svc reveal" href="/private-client"><div class="svc-t"><h3>The Private Client</h3></div><p>The founder, embedded from day one.</p><span class="svc-go" aria-hidden="true">&rarr;</span></a>
-  <div class="steps" style="margin-top:clamp(3rem,7vh,5rem)"><div class="step reveal"><span class="step-n">01</span><div><h3>Strategy Call</h3><p>Eligibility, structure, timeline. Free.</p></div></div>
+  <div class="head"><span class="ovl">What we do</span><h2 class="reveal">The firm that makes<br>the move happen</h2></div>
+  <article class="srow">
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/hero.png')"></div></div>
+   <div class="srow-body reveal"><span class="ovl">Residency</span><h3>Immigration Concierge</h3><p>Your legal right to live in Spain, handled end to end — visa, NIE, banking, tax registration.</p><div class="srow-foot"><span class="srow-fee">From €3,500</span><a class="srow-link" href="/immigration">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+ </article>
+<article class="srow">
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80')"></div></div>
+   <div class="srow-body reveal"><span class="ovl">Property</span><h3>Real Estate</h3><p>Full buyer's agency across the Valencia Community. We represent you, never the seller.</p><div class="srow-foot"><span class="srow-fee">€200K – €1.5M+</span><a class="srow-link" href="/real-estate">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+ </article>
+<article class="srow">
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/oliva-cullera.jpg')"></div></div>
+   <div class="srow-body reveal"><span class="ovl">Everything</span><h3>The Full AfterLife</h3><p>Residency and property run as a single engagement — from the first call to the keys.</p><div class="srow-foot"><a class="srow-link" href="/fullafterlife">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+ </article>
+<article class="srow">
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/javea-denia.jpg')"></div></div>
+   <div class="srow-body reveal"><span class="ovl">Bespoke</span><h3>The Private Client</h3><p>The founder personally embedded from day one. Every call, every decision, beside you.</p><div class="srow-foot"><a class="srow-link" href="/private-client">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+ </article>
+</div></section>
+
+<section class="process dark" id="process">
+  <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="background-image:url('/hero.png')"></div></div>
+  <div class="process-body">
+    <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">One relationship,<br>start to finish</h2></div>
+    <div class="steps"><div class="step reveal"><span class="step-n">01</span><div><h3>Strategy Call</h3><p>Eligibility, structure, timeline. Free.</p></div></div>
 <div class="step reveal"><span class="step-n">02</span><div><h3>Immigration</h3><p>NLV, NIE, banking. Done properly.</p></div></div>
 <div class="step reveal"><span class="step-n">03</span><div><h3>Property</h3><p>We represent you, not the seller.</p></div></div>
 <div class="step reveal"><span class="step-n">04</span><div><h3>Settlement</h3><p>Keys in hand. Your AfterLife begins.</p></div></div></div>
-</div></section>
+  </div>
+</section>
 
 <section class="dark pad" id="guide"><div class="wrap guide">
   <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/guide-cover.png')"></div></div>
@@ -271,8 +301,11 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   </div>
 </div></section>
 
-<section class="pad" id="contact"><div class="wrap contact">
-  <div class="reveal"><h2>Find out if Spain is<br>right for you.</h2><p class="lead">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you — honestly.</p></div>
+<section class="pad" id="contact"><div class="wrap">
+  <div class="head"><span class="ovl">Start Here</span><h2 class="reveal">Find out if Spain is right for you.</h2></div>
+  <div class="contact">
+  <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/javea-denia.jpg')"></div></div>
+  <p class="lead" style="margin-top:1.6rem">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you — honestly.</p></div>
   <form class="cform" id="cform" novalidate>
     <div class="frow"><div class="field"><label>First Name</label><input name="first_name" required></div><div class="field"><label>Email</label><input type="email" name="email" required></div></div>
     <div class="field"><label>Where are you based?</label><select name="location"><option value="">Select country / province / state</option>
