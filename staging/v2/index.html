@@ -31,6 +31,7 @@ section{position:relative}
 .media,.place-media{position:relative;overflow:hidden}
 .hero .media,.chapter .media{position:absolute;inset:0}
 .media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform}
+video.media-img{width:100%;height:100%;object-fit:cover}
 .js .img-reveal .media-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
 .img-reveal.in .media-img{clip-path:inset(0 0 0 0)}
 
@@ -184,7 +185,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 
 <header class="hero" id="top">
   <!-- OVERLAY ANCHOR: hero media/video layer mounts here -->
-  <div class="media "><div class="media-img" data-par="0.04" style="background-image:url('/hero.png')"></div></div>
+  <div class="media "><div class="media-img" data-par="0.04" style="background-image:url('/media/home-1.jpg')"></div></div>
   <div class="hero-in">
     <h1><span class="rline"><span>Your best years.</span></span><span class="rline"><span><em>Starting now.</em></span></span></h1>
     <p class="hero-sub reveal">Early retirement on Spain's Mediterranean coast.</p>
@@ -193,7 +194,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   <div class="scroll-cue">Scroll</div>
 </header>
 
-<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2000&q=80')"></div></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
+<section class="chapter"><div class="media"><video class="media-img" data-par="0.08" autoplay muted loop playsinline preload="metadata" poster="/media/ronda-poster.jpg"><source src="/media/ronda.mp4" type="video/mp4"></video></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
 
 <section class="switch dark" id="life">
   <div class="switch-track"><div class="switch-sticky">
@@ -209,12 +210,12 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 <button class="sw-tab" data-i="9"><span class="sw-idx">10</span><span class="sw-name">The Sail</span></button>
 <button class="sw-tab" data-i="10"><span class="sw-idx">11</span><span class="sw-name">The Rhythm</span></button>
 <button class="sw-tab" data-i="11"><span class="sw-idx">12</span><span class="sw-name">The Ride</span></button></div>
-    <div class="sw-stage"><div class="sw-panel" data-i="0"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">01 / 12</span><h3>The Property</h3><p>Fincas and beachfront, at impossible prices.</p></div></div>
+    <div class="sw-stage"><div class="sw-panel" data-i="0"><div class="media-img" style="background-image:url('/media/home-3.jpg')"></div><div class="sw-copy"><span class="sw-c-idx">01 / 12</span><h3>The Property</h3><p>Fincas and beachfront, at impossible prices.</p></div></div>
 <div class="sw-panel" data-i="1"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">02 / 12</span><h3>The Table</h3><p>Markets, bodegas, the three-hour lunch.</p></div></div>
 <div class="sw-panel" data-i="2"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">03 / 12</span><h3>The Course</h3><p>Golf, three hundred days a year.</p></div></div>
 <div class="sw-panel" data-i="3"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">04 / 12</span><h3>The Paddle</h3><p>Padel — how community is built here.</p></div></div>
 <div class="sw-panel" data-i="4"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">05 / 12</span><h3>The Club</h3><p>The long, unhurried afternoon.</p></div></div>
-<div class="sw-panel" data-i="5"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">06 / 12</span><h3>The Horses</h3><p>Equestrian estates and working fincas.</p></div></div>
+<div class="sw-panel" data-i="5"><div class="media-img" style="background-image:url('/media/oliva-4.jpg')"></div><div class="sw-copy"><span class="sw-c-idx">06 / 12</span><h3>The Horses</h3><p>Equestrian estates and working fincas.</p></div></div>
 <div class="sw-panel" data-i="6"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">07 / 12</span><h3>The Continent</h3><p>Two hours to Paris, Rome, Lisbon.</p></div></div>
 <div class="sw-panel" data-i="7"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">08 / 12</span><h3>The Canvas</h3><p>Picasso to Gaudí. Beauty everywhere.</p></div></div>
 <div class="sw-panel" data-i="8"><div class="media-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80')"></div><div class="sw-copy"><span class="sw-c-idx">09 / 12</span><h3>The Land</h3><p>Mountains, coast, serious hiking.</p></div></div>
@@ -224,7 +225,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   </div></div>
 </section>
 
-<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=2000&q=80')"></div></div><h2><span class="rline"><span>This is</span></span><span class="rline"><span>Tuesday now.</span></span></h2></section>
+<section class="chapter"><div class="media "><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-3.jpg')"></div></div><h2><span class="rline"><span>This is</span></span><span class="rline"><span>Tuesday now.</span></span></h2></section>
 
 <section class="numbers dark pad" id="numbers"><div class="wrap">
   <div class="head"><span class="ovl">The Numbers</span><h2 class="reveal">What your equity actually buys</h2></div>
@@ -245,11 +246,11 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
    <div class="place-body reveal"><span class="ovl">Costa Blanca North</span><h3>Jávea &amp; Denia</h3><p>The most sophisticated stretch of the coast.</p><span class="place-price">From €280,000</span></div>
  </article>
 <article class="place">
-   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1600&q=85')"></div></div>
+   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.jpg')"></div></div>
    <div class="place-body reveal"><span class="ovl">City Life</span><h3>Valencia City</h3><p>Europe's most underrated city.</p><span class="place-price">From €180,000</span></div>
  </article>
 <article class="place">
-   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/oliva-cullera.jpg')"></div></div>
+   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/oliva-2.jpg')"></div></div>
    <div class="place-body reveal"><span class="ovl">Unspoiled Coast</span><h3>Oliva &amp; Cullera</h3><p>The coast that never got overbuilt.</p><span class="place-price">From €180,000</span></div>
  </article>
 <article class="place">
@@ -258,16 +259,16 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  </article>
 </div></section>
 
-<section class="chapter"><div class="media "><div class="media-img" data-par="0.12" style="background-image:url('https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=2000&q=80')"></div></div><h2><span class="rline"><span>Why wait for</span></span><span class="rline"><span>the AfterLife?</span></span></h2></section>
+<section class="chapter"><div class="media "><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-5.jpg')"></div></div><h2><span class="rline"><span>Why wait for</span></span><span class="rline"><span>the AfterLife?</span></span></h2></section>
 
 <section class="services pad" id="how"><div class="wrap">
   <div class="head"><span class="ovl">What we do</span><h2 class="reveal">The firm that makes<br>the move happen</h2></div>
   <article class="srow">
-   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/hero.png')"></div></div>
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-2.jpg')"></div></div>
    <div class="srow-body reveal"><span class="ovl">Residency</span><h3>Immigration Concierge</h3><p>Your legal right to live in Spain, handled end to end — visa, NIE, banking, tax registration.</p><div class="srow-foot"><span class="srow-fee">From €3,500</span><a class="srow-link" href="/immigration">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 <article class="srow">
-   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80')"></div></div>
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-1.jpg')"></div></div>
    <div class="srow-body reveal"><span class="ovl">Property</span><h3>Real Estate</h3><p>Full buyer's agency across the Valencia Community. We represent you, never the seller.</p><div class="srow-foot"><span class="srow-fee">€200K – €1.5M+</span><a class="srow-link" href="/real-estate">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 <article class="srow">
@@ -275,7 +276,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
    <div class="srow-body reveal"><span class="ovl">Everything</span><h3>The Full AfterLife</h3><p>Residency and property run as a single engagement — from the first call to the keys.</p><div class="srow-foot"><a class="srow-link" href="/fullafterlife">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 <article class="srow">
-   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/javea-denia.jpg')"></div></div>
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/home-3.jpg')"></div></div>
    <div class="srow-body reveal"><span class="ovl">Bespoke</span><h3>The Private Client</h3><p>The founder personally embedded from day one. Every call, every decision, beside you.</p><div class="srow-foot"><a class="srow-link" href="/private-client">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 </div></section>
@@ -304,7 +305,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 <section class="pad" id="contact"><div class="wrap">
   <div class="head"><span class="ovl">Start Here</span><h2 class="reveal">Find out if Spain is right for you.</h2></div>
   <div class="contact">
-  <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/javea-denia.jpg')"></div></div>
+  <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.jpg')"></div></div>
   <p class="lead" style="margin-top:1.6rem">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you — honestly.</p></div>
   <form class="cform" id="cform" novalidate>
     <div class="frow"><div class="field"><label>First Name</label><input name="first_name" required></div><div class="field"><label>Email</label><input type="email" name="email" required></div></div>
