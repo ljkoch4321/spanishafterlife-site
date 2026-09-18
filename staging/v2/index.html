@@ -32,6 +32,7 @@ section{position:relative}
 .hero .media,.chapter .media{position:absolute;inset:0}
 .media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform}
 video.media-img{width:100%;height:100%;object-fit:cover}
+.chapter video.media-img{inset:0;object-position:center top}
 .js .img-reveal .media-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
 .img-reveal.in .media-img{clip-path:inset(0 0 0 0)}
 
@@ -194,7 +195,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   <div class="scroll-cue">Scroll</div>
 </header>
 
-<section class="chapter"><div class="media"><video class="media-img" data-par="0.08" autoplay muted loop playsinline preload="metadata" poster="/media/ronda-poster.jpg"><source src="/media/ronda.mp4" type="video/mp4"></video></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
+<section class="chapter"><div class="media"><video class="media-img" autoplay muted loop playsinline preload="metadata" poster="/media/ronda-poster.jpg"><source src="/media/ronda.mp4" type="video/mp4"></video></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
 
 <section class="switch dark" id="life">
   <div class="switch-track"><div class="switch-sticky">
