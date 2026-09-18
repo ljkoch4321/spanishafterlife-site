@@ -32,7 +32,8 @@ section{position:relative}
 .hero .media,.chapter .media{position:absolute;inset:0}
 .media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform}
 video.media-img{width:100%;height:100%;object-fit:cover}
-.chapter video.media-img{inset:0;object-position:center top}
+.chapter video.media-img{inset:0;object-position:50% 30%;opacity:0;transition:opacity .9s var(--ease)}
+.chapter video.media-img.on{opacity:1}
 .js .img-reveal .media-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
 .img-reveal.in .media-img{clip-path:inset(0 0 0 0)}
 
@@ -195,7 +196,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   <div class="scroll-cue">Scroll</div>
 </header>
 
-<section class="chapter"><div class="media"><video class="media-img" autoplay muted loop playsinline preload="metadata" poster="/media/ronda-poster.jpg"><source src="/media/ronda.mp4" type="video/mp4"></video></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
+<section class="chapter"><div class="media vid" style="background:#141d31 url(&#39;/media/ronda-poster.jpg&#39;) 50% 30%/cover"><video class="media-img" autoplay muted loop playsinline preload="metadata" poster="/media/ronda-poster.jpg"><source src="/media/ronda.mp4" type="video/mp4"></video></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
 
 <section class="switch dark" id="life">
   <div class="switch-track"><div class="switch-sticky">
@@ -361,6 +362,11 @@ tick();addEventListener('resize',tick);
 const tg=document.getElementById('tg'),ni=document.getElementById('nintro'),lv=document.getElementById('leave'),D=NUMDATA;
 function setC(c){tg.classList.toggle('us',c==='us');tg.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.c===c));ni.textContent=D[c].intro;lv.innerHTML=D[c].rows.map(r=>`<div class="nrow"><span class="nk">${r[0]}</span><span class="nv">${r[1]}</span></div>`).join('');}
 tg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setC(b.dataset.c)));setC('ca');
+const _vids=[...document.querySelectorAll('video')];
+_vids.forEach(v=>v.addEventListener('playing',()=>v.classList.add('on')));
+const _play=()=>_vids.forEach(v=>{try{v.muted=true;const p=v.play();if(p)p.catch(()=>{});}catch(e){}});
+_play(); document.addEventListener('visibilitychange',()=>{if(!document.hidden)_play();});
+['touchstart','pointerdown','click','scroll'].forEach(ev=>addEventListener(ev,_play,{once:true,passive:true}));
 document.getElementById('gform').addEventListener('submit',e=>{e.preventDefault();/* TODO: Mailchimp list-manage subscribe endpoint */console.log('[STAGING v2] guide signup',{email:e.target.EMAIL.value});alert('STAGING — logged to console.');});
 document.getElementById('cform').addEventListener('submit',e=>{e.preventDefault();/* TODO: Formspree endpoint */console.log('[STAGING v2] consult',Object.fromEntries(new FormData(e.target)));alert('STAGING — logged to console.');});
 </script>
