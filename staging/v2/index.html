@@ -41,7 +41,7 @@ video.media-img{width:100%;height:100%;object-fit:cover}
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
 padding:1.15rem var(--pad);mix-blend-mode:difference;color:#fff}
 .brand{font-family:var(--serif);font-size:1.15rem} .brand b{font-weight:400}
-.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links{display:flex;gap:clamp(1rem,2.2vw,2rem);align-items:center}
 .nav-links a{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;opacity:.9}
 .nav-links a:hover{opacity:.5}
 .nav-cta{border:1px solid rgba(255,255,255,.5);padding:.5rem 1.05rem;border-radius:100px}
@@ -174,8 +174,8 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .foot-bot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;font-size:.7rem;color:var(--cream-soft)}
 #badge{position:fixed;left:1rem;bottom:1rem;z-index:90;background:#B4643C;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .8rem;border-radius:4px}
 
+@media(max-width:1080px){.nav-links{display:none}.burger{display:flex}}
 @media(max-width:900px){
- .nav-links{display:none}.burger{display:flex}
  .switch-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr}.switch-track{height:calc(12 * 26vh + 100vh)}
  .sw-list{flex-direction:row;overflow-x:auto;gap:1.1rem;padding:1rem var(--pad);background:#111a2c;scrollbar-width:none}
  .sw-list::-webkit-scrollbar{display:none}.sw-head{display:none}.sw-tab{flex:0 0 auto}.sw-tab.active .sw-name{transform:none}
@@ -190,9 +190,9 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 </style></head><body>
 <div id="badge">Staging v2 · ERA flow</div>
 <nav class="nav"><a class="brand" href="#top"><b>Spanish</b> AfterLife</a>
-<div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How</a><a class="nav-cta" href="#contact">Start Here</a></div>
+<div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="https://spanishafterlife.com/available-properties">Properties</a><a href="https://spanishafterlife.com/building-my-life-in-spain">Journal</a><a class="nav-cta" href="#contact">Start Here</a></div>
 <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
+<div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="https://spanishafterlife.com/available-properties">Properties</a><a href="https://spanishafterlife.com/building-my-life-in-spain">Journal</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
 
 <header class="hero" id="top">
   <!-- OVERLAY ANCHOR: hero media/video layer mounts here -->
