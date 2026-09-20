@@ -212,12 +212,16 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 .sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:rgba(243,243,236,.82)}
 
 /* numbers */
-.toggle{display:inline-flex;position:relative;border:1px solid var(--line-d);border-radius:100px;padding:4px;background:rgba(243,243,236,.04)}
+.toggle{display:inline-grid;grid-template-columns:1fr 1fr;position:relative;border:1px solid var(--line-d);border-radius:100px;padding:4px;background:rgba(243,243,236,.04)}
 .toggle button{position:relative;z-index:1;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.7rem;
 text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);padding:.65rem 1.4rem;border-radius:100px;transition:color .5s}
 .toggle button.on{color:var(--ink)} .toggle .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--cream);border-radius:100px;transition:transform .55s var(--ease)}
 .toggle.us .knob{transform:translateX(100%)}
-.n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:22ch;margin:2rem 0 3rem;min-height:3.6em}
+.nhead{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem);align-items:end;margin-bottom:clamp(3rem,8vh,5.5rem)}
+#numbers .head{max-width:none;margin-bottom:0}
+#numbers .head h2{max-width:16ch}
+.nside{display:flex;flex-direction:column;align-items:flex-start}
+.n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:30ch;margin:1.7rem 0 0;min-height:5.2em}
 .ncols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem)}
 .ncol .ovl{display:block;margin-bottom:1.4rem}
 .nrow{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line-d);align-items:baseline}
@@ -288,7 +292,12 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  .sw-list{flex-direction:row;overflow-x:auto;gap:1.1rem;padding:1rem var(--pad);background:#111a2c;scrollbar-width:none}
  .sw-list::-webkit-scrollbar{display:none}.sw-head{display:none}.sw-tab{flex:0 0 auto}.sw-tab.active .sw-name{transform:none}
  .ncols,.place,.place:nth-child(even) .place-media,.guide,.contact,.frow,.srow,.process{grid-template-columns:1fr}
- .place:nth-child(even) .place-media{order:0}.srow:nth-child(even) .srow-media{order:0}.n-intro{min-height:auto}.process-media{aspect-ratio:4/3;min-height:60vh}
+ .place:nth-child(even) .place-media{order:0}.srow:nth-child(even) .srow-media{order:0}.process-media{aspect-ratio:4/3;min-height:60vh}
+ .nhead{grid-template-columns:1fr;gap:clamp(1.8rem,5vh,2.6rem);align-items:start}
+ .ncols{gap:clamp(2.4rem,5vh,3.2rem)}
+ #numbers .head h2{max-width:none}
+ .n-intro{min-height:auto;max-width:34ch;margin-top:1.4rem}
+ .toggle{width:100%;max-width:22rem}
 }
 """
 
@@ -363,12 +372,16 @@ HTML=f"""<!doctype html><html lang="en"><head>
   </div></div>
 </section>
 
-<section class="chapter">{bg('/media/oliva-3.jpg','','0.1')}<h2>{rlines('This is|Tuesday now.')}</h2></section>
+<section class="chapter">{bg('/media/oliva-3.jpg','','0.1')}<h2>{rlines('This is|Every Day Now.')}</h2></section>
 
 <section class="numbers dark pad" id="numbers"><div class="wrap">
-  <div class="head"><span class="ovl">The Numbers</span><h2 class="reveal">What your equity actually buys</h2></div>
-  <div class="toggle" id="tg" role="tablist"><span class="knob"></span><button data-c="ca">Canada</button><button data-c="us">United States</button></div>
-  <p class="n-intro" id="nintro"></p>
+  <div class="nhead">
+    <div class="head"><span class="ovl">The Numbers</span><h2 class="reveal">What your equity actually buys</h2></div>
+    <div class="nside reveal">
+      <div class="toggle" id="tg" role="tablist"><span class="knob"></span><button data-c="ca">Canada</button><button data-c="us">United States</button></div>
+      <p class="n-intro" id="nintro"></p>
+    </div>
+  </div>
   <div class="ncols">
     <div class="ncol reveal"><span class="ovl">What's waiting — Spain</span>{rows(WAIT)}</div>
     <div class="ncol leave reveal"><span class="ovl">What you're leaving</span><div id="leave"></div></div>
