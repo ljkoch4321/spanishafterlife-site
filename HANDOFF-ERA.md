@@ -82,10 +82,36 @@ Two versions exist, both in the repo, both live:
   `staging/` on purpose so they are not deployed to the public preview.**
 - **Staging hygiene:** `staging/robots.txt` (disallow all), `staging/_headers` (`X-Robots-Tag: noindex`).
 
+## Cross-pages (v2)
+
+Two more pages were rebuilt in the v2 language so the nav has somewhere to go —
+they are the ERA versions of the live site's `/available-properties` and
+`/building-my-life-in-spain`:
+
+- **`staging/v2/properties/`** — Altaona Resort. Hero, featured partner, four
+  pillars, 5-image gallery, awards, then the **five villa collections with their
+  full price tables**, the WOW Longevity Hotel block, and the developer-partner note.
+- **`staging/v2/journal/`** — founder's note, six categories, six article cards,
+  list signup, closing CTA.
+- Generator: **`staging-src/gen_era_pages.py`** (writes both). It `import`s
+  `gen_era_v2` and reuses that file's `CSS`, so the three pages cannot drift
+  apart — do NOT copy the stylesheet. `gen_era_v2.py`'s write is now behind
+  `if __name__=="__main__"`, so importing it is side-effect free.
+- Media: `staging/media/altaona/*.webp` (9 files, ~1MB), copied from `origin/main`.
+- **Figures are verbatim** — all 16 prices were diffed against the production
+  source, none missing, none invented. Do not "tidy" them.
+- Nav/menu/footer on all three pages now carry production's seven items, with
+  Properties/Journal pointing at `/v2/properties/` and `/v2/journal/`. The `SITE`
+  constant in `gen_era_v2.py` is the switch if they ever need to be absolute again.
+- Note the tables use `.tscroll{overflow-x:auto}` so the 5-column price tables
+  scroll inside their own box on a phone instead of breaking the page.
+
 ## Live preview (noindex, non-production)
 
 - **v2:** https://era-staging.spanish-afterlife.pages.dev/v2/
 - **v1:** https://era-staging.spanish-afterlife.pages.dev/
+- **v2 properties:** https://era-staging.spanish-afterlife.pages.dev/v2/properties/
+- **v2 journal:** https://era-staging.spanish-afterlife.pages.dev/v2/journal/
 
 ## Build / edit workflow
 

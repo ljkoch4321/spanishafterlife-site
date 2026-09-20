@@ -62,7 +62,7 @@ STEPS=[("01","Strategy Call","Eligibility, structure, timeline. Free."),
 # Cross-page links. These pages are NOT part of the redesign and do not exist on the
 # era-staging preview, so they point at the live site to keep the prototype clickable.
 # AT PRODUCTION BUILD: set SITE="" so they resolve relative (/available-properties).
-SITE="https://spanishafterlife.com"
+SITE=""   # in-prototype pages live at /v2/properties/ and /v2/journal/
 LOCS=["Select country / province / state","Ontario","British Columbia","Alberta","Quebec","Other Canadian province","California","New York","Washington","Illinois","Texas","Florida","Other US state"]
 
 def bg(img,cls="",par="0.06"):
@@ -352,9 +352,9 @@ HTML=f"""<!doctype html><html lang="en"><head>
 <style>{CSS}</style></head><body>
 <div id="badge">Staging v2 · ERA flow</div>
 <nav class="nav"><a class="brand" href="#top"><b>Spanish</b> AfterLife</a>
-<div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="{SITE}/available-properties">Properties</a><a href="{SITE}/building-my-life-in-spain">Journal</a><a class="nav-cta" href="#contact">Start Here</a></div>
+<div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a class="nav-cta" href="#contact">Start Here</a></div>
 <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="{SITE}/available-properties">Properties</a><a href="{SITE}/building-my-life-in-spain">Journal</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
+<div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
 
 <header class="hero" id="top">
   <!-- OVERLAY ANCHOR: hero media/video layer mounts here -->
@@ -436,11 +436,12 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div></section>
 
 <footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
-<div class="foot-nav"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How</a><a href="#contact">Start Here</a></div></div>
+<div class="foot-nav"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="#contact">Start Here</a></div></div>
 <div class="foot-bot"><span>© 2025 LJ Koch Group Inc. · Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>
 
 <script>const NUMDATA={NUM};</script><script>{JS}</script>
 </body></html>"""
-os.makedirs(os.path.dirname(OUT),exist_ok=True)
-open(OUT,"w",encoding="utf-8").write(HTML)
-print("wrote",OUT,f"({len(HTML)//1024} KB)")
+if __name__=="__main__":
+    os.makedirs(os.path.dirname(OUT),exist_ok=True)
+    open(OUT,"w",encoding="utf-8").write(HTML)
+    print("wrote",OUT,f"({len(HTML)//1024} KB)")
