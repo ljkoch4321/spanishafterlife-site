@@ -218,10 +218,10 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);padding:.65rem 1.4rem;border-radius:100px;transition:color .5s}
 .toggle button.on{color:var(--ink)} .toggle .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--cream);border-radius:100px;transition:transform .55s var(--ease)}
 .toggle.us .knob{transform:translateX(100%)}
-.nhead{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem);align-items:end;margin-bottom:clamp(3rem,8vh,5.5rem)}
+.nhead{display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vh,3.4rem);margin-bottom:clamp(3rem,8vh,5.5rem)}
 #numbers .head{margin-bottom:0}
 .nside{display:flex;flex-direction:column;align-items:flex-start}
-.n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:30ch;margin:1.7rem 0 0;min-height:5.2em}
+.n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:none;margin:1.4rem 0 0;min-height:2.6em}
 .ncols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem)}
 .ncol .ovl{display:block;margin-bottom:1.4rem}
 .nrow{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line-d);align-items:baseline}
