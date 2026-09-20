@@ -4,6 +4,55 @@
 > a **throwaway evaluation prototype**, NOT production. The live production site
 > (spanishafterlife.com) is untouched and must stay that way.
 
+## Project state & timeline (whole picture)
+
+Work happened on **two tracks**: the **production site** (live on
+spanishafterlife.com) and the **ERA redesign prototype** (staging only — the main
+subject of this doc). Keep them straight: production ships by pushing/merging to
+`main` (auto-deploys live); the redesign ships only to the `era-staging` preview.
+
+**Timeline:**
+1. **www→root 301 redirect** created at Cloudflare — live.
+2. **SEO foundation** — created the GitHub repo from production; PR #1 (self-ref
+   non-www extension-less canonicals, per-page titles/meta ≤60/≤155,
+   Organization + Person JSON-LD, OG/Twitter, 13-URL sitemap, robots) → merged +
+   deployed. Kept the designed hero H1s.
+3. **GitHub Actions auto-deploy** — push to `main` → `wrangler pages deploy _site`
+   (a clean copy dir; `.assetsignore` proved unsupported so we exclude repo/docs
+   files via rsync). Secret `CLOUDFLARE_API_TOKEN` = the reused
+   `spanishafterlife-redirect-fix` token (Zone Single-Redirect/DNS/SSL **plus**
+   Account · Cloudflare Pages · Edit).
+4. **Homepage features** — PR #2: 12-pillar dim-until-hover + click-through modals
+   (~200-word overviews), 4 place-card dimming, **mobile touch fix** (hover gated
+   behind `@media (hover:hover)` so tiles open on first tap), region-coverage line
+   (Alicante/Murcia named without cards) → merged + deployed.
+5. **Main-site handoff** written → `HANDOFF.md`.
+6. **ERA redesign** — v1 → v2 (image-led, sparse text, cinematic), real owner
+   photography + Ronda video, desktop/mobile video fixes → **staging only**. (This doc.)
+
+**Where each thing lives:**
+
+| LIVE in production (spanishafterlife.com) | STAGING only (era-staging.*.pages.dev · noindex) | Repo only (never served) |
+|---|---|---|
+| www→root 301 · SEO foundation · pillar/place dim + modals · mobile touch fix · region line · auto-deploy pipeline | v1 (`staging/index.html`) + v2 (`staging/v2/index.html`) ERA prototype · real Spain media · Ronda video | `HANDOFF.md` · `HANDOFF-ERA.md` · `staging-src/` generators |
+
+**Open items — PRODUCTION track:**
+- **AI-crawler robots.txt (unfinished):** owner chose to *allow* AI crawlers, but
+  Cloudflare's zone-managed robots.txt still prepends AI-bot blocks (GPTBot,
+  ClaudeBot, Google-Extended…). Fix = disable Cloudflare's managed robots.txt /
+  **AI Crawl Control** in the dashboard (a toggle, not an API change). Was
+  mid-navigation to that page when the redesign work began.
+- **Place photos:** production Valencia City + Inland–Ontinyent cards still use
+  unverified stock; Jávea & Denia and Oliva & Cullera are the owner's real photos.
+- **Do NOT revoke** the `spanishafterlife-redirect-fix` API token — it now doubles
+  as the CI deploy token.
+- Owner has submitted the sitemap to Google Search Console.
+
+**Open items — REDESIGN track** (details later in this doc): video ~19MB needs
+ffmpeg compression; pillar switcher uses thematic stock for activity pillars;
+Ontinyent staging card is stock; and the whole thing is **awaiting the owner's
+decision on whether v2 is the approved direction** before any production build.
+
 ## What this is
 
 A homepage redesign of spanishafterlife.com in the visual language of
