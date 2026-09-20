@@ -76,7 +76,8 @@ font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;display:flex;flex
 .chapter h2{position:relative;z-index:2;max-width:16ch;padding:0 var(--pad);font-weight:360;font-size:clamp(2.9rem,7.5vw,6rem);line-height:1.02;text-shadow:0 4px 44px rgba(0,0,0,.5)}
 
 /* section intro */
-.head{max-width:22ch;margin-bottom:clamp(2.5rem,6vh,4.5rem)}
+.head{margin-bottom:clamp(2.5rem,6vh,4.5rem)}
+.head h2{max-width:16ch}
 .head .ovl{display:block;margin-bottom:1.2rem}
 
 /* pillar switcher */
@@ -106,8 +107,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .toggle button.on{color:var(--ink)} .toggle .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--cream);border-radius:100px;transition:transform .55s var(--ease)}
 .toggle.us .knob{transform:translateX(100%)}
 .nhead{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem);align-items:end;margin-bottom:clamp(3rem,8vh,5.5rem)}
-#numbers .head{max-width:none;margin-bottom:0}
-#numbers .head h2{max-width:16ch}
+#numbers .head{margin-bottom:0}
 .nside{display:flex;flex-direction:column;align-items:flex-start}
 .n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:30ch;margin:1.7rem 0 0;min-height:5.2em}
 .ncols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem)}
@@ -183,7 +183,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  .place:nth-child(even) .place-media{order:0}.srow:nth-child(even) .srow-media{order:0}.process-media{aspect-ratio:4/3;min-height:60vh}
  .nhead{grid-template-columns:1fr;gap:clamp(1.8rem,5vh,2.6rem);align-items:start}
  .ncols{gap:clamp(2.4rem,5vh,3.2rem)}
- #numbers .head h2{max-width:none}
+ .head h2{max-width:none}
  .n-intro{min-height:auto;max-width:34ch;margin-top:1.4rem}
  .toggle{width:100%;max-width:22rem}
 }
@@ -236,7 +236,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   </div></div>
 </section>
 
-<section class="chapter"><div class="media "><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-3.jpg')"></div></div><h2><span class="rline"><span>This is</span></span><span class="rline"><span>Every Day Now.</span></span></h2></section>
+<section class="chapter"><div class="media "><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-3.jpg')"></div></div><h2><span class="rline"><span>This is</span></span><span class="rline"><span>every day now.</span></span></h2></section>
 
 <section class="numbers dark pad" id="numbers"><div class="wrap">
   <div class="nhead">
