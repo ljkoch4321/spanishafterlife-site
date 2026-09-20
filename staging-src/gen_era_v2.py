@@ -64,8 +64,29 @@ LOCS=["Select country / province / state","Ontario","British Columbia","Alberta"
 def bg(img,cls="",par="0.06"):
     return f'<div class="media {cls}"><div class="media-img" data-par="{par}" style="background-image:url(\'{img}\')"></div></div>'
 
-def vbg(mp4,poster,par="0.08"):
-    return f'<div class="media vid" style="background:#141d31 url(&#39;{poster}&#39;) 50% 30%/cover"><video class="media-img" autoplay muted loop playsinline preload="metadata" poster="{poster}"><source src="{mp4}" type="video/mp4"></video></div>'
+def vbg(mp4,poster,par="0.08",webm=None):
+    """Full-bleed background video. Poster doubles as a CSS background so the still
+    always shows even when iOS blocks autoplay; the <video> fades in on 'playing'.
+
+    Media recipe. The source is HDR — 10-bit, BT.2020, HLG (arib-std-b67), Dolby Vision
+    profile 8. Feeding it straight to ffmpeg gives washed-out, flat colour: this ffmpeg
+    build has no zscale/libplacebo, so it cannot tone-map. Do the HDR->SDR conversion with
+    macOS avconvert (AVFoundation tone-maps DV/HLG correctly), then grade/cut in ffmpeg.
+
+      1. tone-map + trim (source = Ronda IMG_0486.mov, 1080x1920 HLG, 23.1s):
+         avconvert -s IMG_0486.mov -p Preset1920x1080 --start 13.6 --duration 9.0 -o sdr.mov --replace
+      2. filter: scale=864:1536 -> vibrance=intensity=0.18,eq=contrast=1.05:saturation=1.06
+         -> 1.5s self-crossfade at t=6.0 (head dissolved over tail) = seamless 7.5s loop
+      3. mp4:    -c:v libx264 -crf 26 -preset veryslow -profile:v main -level 4.0 \
+                 -colorspace bt709 -color_primaries bt709 -color_trc bt709 -movflags +faststart
+      4. webm:   -c:v libvpx-vp9 -crf 42 -b:v 0 -row-mt 1 -cpu-used 2
+      5. poster: -ss 5.8 -i sdr.mov -frames:v 1 -vf "scale=675:1200,<same grade>" -q:v 4
+    """
+    src = (f'<source src="{webm}" type="video/webm">' if webm else "") + \
+          f'<source src="{mp4}" type="video/mp4">'
+    return (f'<div class="media vid" style="background:#141d31 url(&#39;{poster}&#39;) 50% 30%/cover">'
+            f'<video class="media-img" autoplay muted loop playsinline preload="metadata" '
+            f'poster="{poster}">{src}</video></div>')
 
 def rlines(text):  # split a heading into animated lines by <br>
     return "".join(f'<span class="rline"><span>{p}</span></span>' for p in text.split("|"))
@@ -333,7 +354,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
   <div class="scroll-cue">Scroll</div>
 </header>
 
-<section class="chapter">{vbg('/media/ronda.mp4','/media/ronda-poster.jpg')}<h2>{rlines('A continent|at your door.')}</h2></section>
+<section class="chapter">{vbg('/media/ronda.mp4','/media/ronda-poster.jpg',webm='/media/ronda.webm')}<h2>{rlines('A continent|at your door.')}</h2></section>
 
 <section class="switch dark" id="life">
   <div class="switch-track"><div class="switch-sticky">

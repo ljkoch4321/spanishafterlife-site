@@ -144,7 +144,27 @@ wrangler pages deploy staging --project-name=spanish-afterlife --branch=era-stag
 
 ## Open items / TODO for production
 
-1. **Video weight (~19MB)** — too heavy for reliable mobile-cellular autoplay. `ffmpeg` is NOT installed on this Mac. For production: `brew install ffmpeg`, then re-encode `ronda.mp4` to ~2–3MB H.264 + a WebM, `+faststart`, and trim to the best 8–10s (ideally the Puente Nuevo bridge). Until then mobile shows the poster and plays where allowed.
+1. ~~**Video weight (~19MB)**~~ — **DONE (2026-09-20).** Now **1.3MB** WebM (VP9 crf42) +
+   **2.4MB** MP4 (H.264 crf26, `+faststart`), 864x1536, no audio, BT.709-tagged.
+   **19MB -> 1.3MB** for browsers that take the WebM; older Safari gets the MP4.
+   Trimmed to the Puente Nuevo reveal (**13.6s-22.6s** of the original) and built as a
+   **seamless 7.5s loop** — a 1.5s self-crossfade at t=6.0 dissolves the head back over the
+   tail, so it no longer jump-cuts on wrap. `ronda-poster.jpg` (149KB) re-pulled from
+   **t=5.8 inside the loop**, so the still is a settled-bridge frame that actually occurs
+   in the video. `vbg()` emits `<source>` WebM-before-MP4.
+
+   **⚠️ THE HDR TRAP — read before re-encoding any of this footage.** The source
+   `IMG_0486.mov` is **HDR**: 10-bit, BT.2020 primaries, **HLG** transfer (`arib-std-b67`),
+   Dolby Vision profile 8. The Homebrew `ffmpeg` on this Mac has **no `zscale` and no
+   `libplacebo`**, so it *cannot tone-map* — feeding the .mov straight to ffmpeg silently
+   reads HLG values as plain SDR gamma and yields **washed-out, hazy, desaturated** colour
+   (pale sky, grey-green foliage, flat stone). That is exactly what the first pass shipped
+   and what had to be redone. **Fix: do the HDR->SDR step in macOS `avconvert`**
+   (AVFoundation tone-maps DV/HLG correctly — it is why the old 19MB file looked right),
+   then grade and cut in ffmpeg. Full recipe lives in the `vbg()` docstring in
+   `staging-src/gen_era_v2.py`. Grade applied on top of the tone map:
+   `vibrance=intensity=0.18,eq=contrast=1.05:saturation=1.06` (a stronger grade was tried
+   and rejected — it crushed the gorge shadows and over-saturated the sky for this palette).
 2. **Pillar switcher** still uses thematic Unsplash for activity pillars (golf, padel, cycling, art, food) — the owner's library is coast/city so there's no real match. Real photos used everywhere they fit.
 3. **Ontinyent place** still Unsplash (no inland photo in the library).
 4. **If v2 is approved:** rebuild for production with real Lenis + GSAP ScrollTrigger, the compressed video, proper photography, and have it **replace `index.html`** (not live in `staging/`). Then re-run the SEO pass (canonical/title/meta/schema) on the new markup — see `HANDOFF.md` for the main-site SEO + deploy setup.
