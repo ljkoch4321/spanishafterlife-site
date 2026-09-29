@@ -79,11 +79,18 @@ def vbg(mp4,poster,par="0.08",webm=None):
       4. webm:   -c:v libvpx-vp9 -crf 42 -b:v 0 -row-mt 1 -cpu-used 2
       5. poster: -ss 5.8 -i sdr.mov -frames:v 1 -vf "scale=675:1200,<same grade>" -q:v 4
     """
-    src = (f'<source src="{webm}" type="video/webm">' if webm else "") + \
-          f'<source src="{mp4}" type="video/mp4">'
-    return (f'<div class="media vid" style="background:#141d31 url(&#39;{poster}&#39;) 50% 30%/cover">'
-            f'<video class="media-img" autoplay muted loop playsinline preload="metadata" '
-            f'poster="{poster}">{src}</video></div>')
+    # MOBILE FIRST. The phone-sized MP4 is listed first behind a media query so iOS
+    # never reaches the WebM: iOS 17.4+ reports WebM support but VP9 decode in <video>
+    # is unreliable, and once Safari commits to a source it does NOT fall back.
+    stem = poster.rsplit(".", 1)[0]
+    poster_sm = stem + "-sm.jpg"
+    mobile = mp4.rsplit(".", 1)[0] + "-mobile.mp4"
+    src = (f'<source src="{mobile}" type="video/mp4" media="(max-width:1024px)">'
+           + (f'<source src="{webm}" type="video/webm">' if webm else "")
+           + f'<source src="{mp4}" type="video/mp4">')
+    return (f'<div class="media vid" style="--bg:url(&#39;{poster}&#39;);--bg-sm:url(&#39;{poster_sm}&#39;)">'
+            f'<video class="media-img" autoplay muted loop playsinline preload="none" '
+            f'poster="{poster_sm}">{src}</video></div>')
 
 def rlines(text):  # split a heading into animated lines by <br>
     return "".join(f'<span class="rline"><span>{p}</span></span>' for p in text.split("|"))
@@ -209,6 +216,7 @@ section{position:relative}
 /* media + reveals */
 .media,.place-media,.srow-media,.guide-media,.contact-media{position:relative;overflow:hidden}
 .hero .media,.chapter .media{position:absolute;inset:0}
+.media.vid{background:#141d31 var(--bg) 50% 30%/cover}
 .media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform;background-image:var(--bg)}
 video.media-img{width:100%;height:100%;object-fit:cover}
 .chapter video.media-img{inset:0;object-position:50% 30%;opacity:0;transition:opacity .9s var(--ease)}
@@ -374,7 +382,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 #badge{position:fixed;left:1rem;bottom:1rem;z-index:90;background:#B4643C;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .8rem;border-radius:4px}
 
 @media(max-width:1080px){.nav-links{display:none}.burger{display:flex}}
-@media(max-width:900px){.media-img{background-image:var(--bg-sm,var(--bg))}}
+@media(max-width:900px){.media-img,.media.vid{background-image:var(--bg-sm,var(--bg))}}
 @media(max-width:900px){
  .switch-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr}.switch-track{height:calc(12 * 26vh + 100vh)}
  .sw-list{flex-direction:row;overflow-x:auto;gap:1.1rem;padding:1rem var(--pad);background:#111a2c;scrollbar-width:none}
@@ -384,6 +392,16 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  .ncols,.place,.place:nth-child(even) .place-media,.guide,.contact,.frow,.srow,.process{grid-template-columns:1fr}
  .place:nth-child(even) .place-media{order:0}.srow:nth-child(even) .srow-media{order:0}.process-media{aspect-ratio:4/3;min-height:60vh}
  .nhead{grid-template-columns:1fr;gap:clamp(1.8rem,5vh,2.6rem);align-items:start}
+ /* MOBILE-FIRST hero: the stats wrapped into a tall ragged block and the rhythm
+    pushed the CTA and figures below the fold. Tighten both; no copy changes. */
+ .hero{padding-top:clamp(6.5rem,13vh,8rem)}
+ .hero-sub{margin-top:1rem;font-size:1.02rem}
+ .hero-lede{margin-top:.85rem;font-size:.9rem;line-height:1.65}
+ .hero-cta{margin-top:1.7rem}
+ .hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:1.8rem}
+ .hstat-n{font-size:1.45rem}
+ .hstat-l{font-size:.58rem;letter-spacing:.1em;max-width:none;line-height:1.45}
+ .scroll-cue{display:none}
  .ncols{gap:clamp(2.4rem,5vh,3.2rem)}
  .head h2{max-width:none}
  .n-intro{min-height:auto;max-width:34ch;margin-top:1.4rem}
@@ -420,11 +438,21 @@ tick();addEventListener('resize',tick);
 const tg=document.getElementById('tg'),ni=document.getElementById('nintro'),lv=document.getElementById('leave'),D=NUMDATA;
 function setC(c){tg.classList.toggle('us',c==='us');tg.querySelectorAll('button').forEach(b=>{const on=b.dataset.c===c;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});ni.textContent=D[c].intro;lv.innerHTML=D[c].rows.map(r=>`<div class="nrow"><span class="nk">${r[0]}</span><span class="nv">${r[1]}</span></div>`).join('');}
 tg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setC(b.dataset.c)));setC('ca');
+/* Video is preload="none" and only fetched once it is near the viewport, so a phone
+   never spends data on a clip the visitor may not scroll to. Paused off-screen to
+   save battery. The poster stays visible whenever autoplay is refused (Low Power
+   Mode, Data Saver), which is the designed fallback. */
 const _vids=[...document.querySelectorAll('video')];
 _vids.forEach(v=>v.addEventListener('playing',()=>v.classList.add('on')));
-const _play=()=>_vids.forEach(v=>{try{v.muted=true;const p=v.play();if(p)p.catch(()=>{});}catch(e){}});
-_play(); document.addEventListener('visibilitychange',()=>{if(!document.hidden)_play();});
-['touchstart','pointerdown','click','scroll'].forEach(ev=>addEventListener(ev,_play,{once:true,passive:true}));
+const _inView=v=>{const r=v.getBoundingClientRect();return r.top<innerHeight*1.25&&r.bottom>-innerHeight*0.25;};
+const _tryPlay=v=>{try{v.muted=true;v.setAttribute('muted','');if(v.preload!=='auto'){v.preload='auto';v.load();}const p=v.play();if(p&&p.catch)p.catch(()=>{});}catch(e){}};
+if('IntersectionObserver' in window){
+  const vio=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)_tryPlay(x.target);else{try{x.target.pause();}catch(e){}}}),{rootMargin:'25% 0px',threshold:0.01});
+  _vids.forEach(v=>vio.observe(v));
+}else _vids.forEach(_tryPlay);
+const _nudge=()=>_vids.forEach(v=>{if(_inView(v))_tryPlay(v);});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)_nudge();});
+['touchstart','pointerdown','click'].forEach(ev=>addEventListener(ev,_nudge,{once:true,passive:true}));
 """
 
 HTML=f"""<!doctype html><html lang="en"><head>
