@@ -48,10 +48,10 @@ LEAVE={
     ("Weather","Five tolerable months.")]),
 }
 SERVICES=[
- ("Immigration Concierge","Your legal right to live in Spain, handled end to end — visa, NIE, banking, tax registration.","From €3,500","/immigration"),
- ("Real Estate","Full buyer's agency across the Valencia Community. We represent you, never the seller.","€200K – €1.5M+","/real-estate"),
- ("The Full AfterLife","Residency and property run as a single engagement — from the first call to the keys.","","/fullafterlife"),
- ("The Private Client","The founder personally embedded from day one. Every call, every decision, beside you.","","/private-client"),
+ ("Immigration Concierge","Your legal right to live in Spain, handled end to end — visa, NIE, banking, tax registration.","From €3,500","/v2/immigration/"),
+ ("Real Estate","Full buyer's agency across the Valencia Community. We represent you, never the seller.","€200K – €1.5M+","/v2/real-estate/"),
+ ("The Full AfterLife","Residency and property run as a single engagement — from the first call to the keys.","","/v2/fullafterlife/"),
+ ("The Private Client","The founder personally embedded from day one. Every call, every decision, beside you.","","/v2/private-client/"),
 ]
 SVC_IMGS=["/media/valencia-2.jpg","/media/valencia-1.jpg","/oliva-cullera.jpg","/media/home-3.jpg"]
 SVC_TAGS=["Residency","Property","Everything","Bespoke"]

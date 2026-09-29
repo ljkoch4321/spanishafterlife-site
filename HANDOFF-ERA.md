@@ -106,12 +106,51 @@ they are the ERA versions of the live site's `/available-properties` and
 - Note the tables use `.tscroll{overflow-x:auto}` so the 5-column price tables
   scroll inside their own box on a phone instead of breaking the page.
 
+## Service pages (v2)
+
+The four services the v2 homepage sells now exist inside the prototype, so the
+`#how` rows are no longer dead ends:
+
+- `staging/v2/immigration/` `staging/v2/real-estate/`
+  `staging/v2/fullafterlife/` `staging/v2/private-client/`
+
+**Two-stage build, on purpose — copy is never retyped:**
+
+1. `staging-src/extract_services.py` lifts the content out of the PRODUCTION pages
+   on `origin/main` into `staging-src/content/<slug>.json` (blocks, steps, includes,
+   cards, packages, tables, stats, callouts, FAQ, CTA).
+2. `staging-src/gen_era_services.py` renders those JSON files into the v2 language.
+   It imports `gen_era_pages` (hence `gen_era_v2`) so chrome and CSS are shared.
+
+Re-run stage 1 only if production copy changes; stage 2 for layout changes.
+
+**Two fidelity gates were used and both pass — re-run them after any change:**
+- *Figures*: every `€…` / `%` in the production source appears in the rebuilt page,
+  and nothing is invented. Parity is exact (13 / 6 / 6 / 16).
+- *Copy*: every `<p>/<li>/<h*>/<td>` and every label/price/note div from production
+  appears in the rebuilt page. The ONLY expected miss is production's own nav text,
+  which the v2 nav replaces.
+
+The second gate is the important one — the figure check alone passed while whole
+package cards, `<li>` bullets and label divs were still being dropped, because the
+prices happened to live somewhere else on the page too.
+
+**Gotchas that cost time here** (the source markup is inconsistent):
+- Class attributes carry variants (`feature-label terra`, `combine-card featured`),
+  so every component regex matches `class="X[^"]*"`, never `class="X"`.
+- Component lookaheads must NOT stop at `</section>` — private-client has only two
+  `<section>` elements and nests everything in divs. Chunk scope is the boundary.
+- Blocks are delimited by the `section-label` overline, not by `<section>`.
+- `.ptable` only right-aligns its last column with the `ralign` modifier — add it
+  when that column is money (From/Fee/Price), not for a Notes column.
+
 ## Live preview (noindex, non-production)
 
 - **v2:** https://era-staging.spanish-afterlife.pages.dev/v2/
 - **v1:** https://era-staging.spanish-afterlife.pages.dev/
 - **v2 properties:** https://era-staging.spanish-afterlife.pages.dev/v2/properties/
 - **v2 journal:** https://era-staging.spanish-afterlife.pages.dev/v2/journal/
+- **v2 services:** /v2/immigration/ · /v2/real-estate/ · /v2/fullafterlife/ · /v2/private-client/
 
 ## Build / edit workflow
 

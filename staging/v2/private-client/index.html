@@ -1,0 +1,378 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><script>document.documentElement.className='js';</script>
+<title>The Private Client &mdash; STAGING v2 (ERA flow)</title><meta name="description" content="Discreet, bespoke relocation and property acquisition in Spain for high-net-worth North Americans deploying newly realised wealth.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F3F3EC;--ink:#17233B;--stone:#5C5648;--ink-soft:rgba(23,35,59,.6);--cream-soft:rgba(243,243,236,.66);
+--line:rgba(23,35,59,.15);--line-d:rgba(243,243,236,.18);
+--serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
+--ease:cubic-bezier(.16,1,.3,1);--pad:clamp(1.25rem,5vw,6rem)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:340;letter-spacing:-.02em;line-height:1.02}
+h1{font-size:clamp(3rem,9vw,7rem)} h2{font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.05}
+h3{font-size:clamp(1.4rem,2.6vw,2.2rem);letter-spacing:-.015em}
+p{max-width:58ch} a{color:inherit;text-decoration:none}
+.ovl{font-family:var(--sans);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.24em;color:var(--ink-soft)}
+.script{font-family:var(--script)}
+section{position:relative}
+.pad{padding:clamp(5rem,13vh,11rem) var(--pad)} .wrap{max-width:1440px;margin:0 auto}
+.dark{background:var(--ink);color:var(--cream)} .dark .ovl{color:var(--cream-soft)} .dark p{color:var(--cream-soft)}
+.rline{display:block;overflow:hidden} .rline>span{display:block}
+.js .rline>span{transform:translateY(110%);transition:transform 1s var(--ease)}
+.in .rline>span,.rline.in>span{transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media(prefers-reduced-motion:reduce){.js .reveal,.js .rline>span{opacity:1!important;transform:none!important;filter:none!important;transition:none}}
+
+/* media + reveals */
+.media,.place-media,.srow-media,.guide-media,.contact-media{position:relative;overflow:hidden}
+.hero .media,.chapter .media{position:absolute;inset:0}
+.media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform}
+video.media-img{width:100%;height:100%;object-fit:cover}
+.chapter video.media-img{inset:0;object-position:50% 30%;opacity:0;transition:opacity .9s var(--ease)}
+.chapter video.media-img.on{opacity:1}
+.js .img-reveal .media-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
+.img-reveal.in .media-img{clip-path:inset(0 0 0 0)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
+padding:1.15rem var(--pad);mix-blend-mode:difference;color:#fff}
+.brand{font-family:var(--serif);font-size:1.15rem} .brand b{font-weight:400}
+.nav-links{display:flex;gap:clamp(1rem,2.2vw,2rem);align-items:center}
+.nav-links a{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;opacity:.9}
+.nav-links a:hover{opacity:.5}
+.nav-cta{border:1px solid rgba(255,255,255,.5);padding:.5rem 1.05rem;border-radius:100px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:1.5px;background:#fff}
+.menu{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;
+justify-content:center;padding:var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);pointer-events:none}
+.menu.open{clip-path:inset(0 0 0 0);pointer-events:auto}
+.menu a{font-family:var(--serif);font-size:clamp(2rem,9vw,3.4rem);padding:.3rem 0}
+.menu-sig{font-family:var(--script);font-size:2rem;margin-top:2rem;opacity:.7}
+
+/* hero */
+.hero{height:100svh;min-height:600px;position:relative;overflow:hidden;display:flex;align-items:center;color:var(--cream)}
+.hero .media-img{inset:-6% 0}
+.hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(23,35,59,.72) 0%,rgba(23,35,59,.42) 45%,rgba(23,35,59,.2) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.hero h1{max-width:14ch} .hero h1 em{font-style:italic;font-weight:300}
+.hero-sub{margin-top:1.4rem;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(243,243,236,.9);max-width:34ch}
+.hero-cta{margin-top:2.2rem;display:inline-flex;gap:.6rem;align-items:center;background:var(--cream);color:var(--ink);
+padding:1rem 1.9rem;border-radius:100px;font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;
+transition:background .5s,color .5s;border:1px solid var(--cream)}
+.hero-cta:hover{background:transparent;color:var(--cream)}
+.scroll-cue{position:absolute;left:50%;bottom:2rem;transform:translateX(-50%);z-index:2;color:var(--cream-soft);
+font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.scroll-cue::after{content:"";width:1px;height:38px;background:linear-gradient(var(--cream),transparent);animation:cue 2s var(--ease) infinite}
+@keyframes cue{0%{opacity:0;transform:scaleY(0);transform-origin:top}40%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(1);transform-origin:bottom}}
+
+/* full-bleed chapter */
+.chapter{height:100svh;min-height:540px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--cream);text-align:center}
+.chapter .media-img{inset:-12% 0}
+.chapter::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(23,35,59,.5) 0%,rgba(23,35,59,.7) 100%);z-index:1}
+.chapter h2{position:relative;z-index:2;max-width:16ch;padding:0 var(--pad);font-weight:360;font-size:clamp(2.9rem,7.5vw,6rem);line-height:1.02;text-shadow:0 4px 44px rgba(0,0,0,.5)}
+
+/* section intro */
+.head{margin-bottom:clamp(2.5rem,6vh,4.5rem)}
+.head h2{max-width:16ch}
+.head .ovl{display:block;margin-bottom:1.2rem}
+
+/* pillar switcher */
+.switch-track{height:calc(12 * 40vh + 100vh)}
+.switch-sticky{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:38% 1fr;overflow:hidden}
+.sw-list{align-self:center;padding:0 var(--pad);display:flex;flex-direction:column;gap:.05rem}
+.sw-head{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-soft);margin-bottom:1.5rem}
+.sw-tab{background:none;border:0;text-align:left;cursor:pointer;display:flex;gap:1rem;align-items:baseline;padding:.42rem 0;
+color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:var(--serif)}
+.sw-tab .sw-idx{font-family:var(--sans);font-size:.68rem;color:var(--cream-soft)}
+.sw-tab .sw-name{font-size:clamp(1.2rem,2.1vw,1.9rem);transition:transform .5s var(--ease)}
+.sw-tab.active{opacity:1}.sw-tab.active .sw-name{transform:translateX(12px)}
+.sw-stage{position:relative;background:#111a2c}
+.sw-panel{position:absolute;inset:0;opacity:0;transition:opacity .8s var(--ease)}
+.sw-panel.active{opacity:1}
+.sw-panel .media-img{inset:0;transition:transform 1.2s var(--ease)}
+.sw-panel.active .media-img{transform:scale(1.05)}
+.sw-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(17,26,44,.9))}
+.sw-copy{position:absolute;z-index:2;left:0;bottom:0;padding:clamp(1.5rem,4vw,3.5rem);color:var(--cream)}
+.sw-c-idx{font-size:.66rem;letter-spacing:.2em;color:var(--cream-soft)}
+.sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:rgba(243,243,236,.82)}
+
+/* numbers */
+.toggle{display:inline-grid;grid-template-columns:1fr 1fr;position:relative;border:1px solid var(--line-d);border-radius:100px;padding:4px;background:rgba(243,243,236,.04)}
+.toggle button{position:relative;z-index:1;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.7rem;
+text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);padding:.65rem 1.4rem;border-radius:100px;transition:color .5s}
+.toggle button.on{color:var(--ink)} .toggle .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--cream);border-radius:100px;transition:transform .55s var(--ease)}
+.toggle.us .knob{transform:translateX(100%)}
+.nhead{display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vh,3.4rem);margin-bottom:clamp(3rem,8vh,5.5rem)}
+#numbers .head{margin-bottom:0}
+.nside{display:flex;flex-direction:column;align-items:flex-start}
+.n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:none;margin:1.4rem 0 0;min-height:2.6em}
+.ncols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem)}
+.ncol .ovl{display:block;margin-bottom:1.4rem}
+.nrow{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line-d);align-items:baseline}
+.nk{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cream-soft)}
+.nv{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.4;color:var(--cream)}
+.ncol.leave .nv{color:rgba(243,243,236,.6)}
+
+/* places */
+.place{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center;padding:clamp(2.5rem,6vh,5rem) 0;border-top:1px solid var(--line)}
+.place:first-of-type{border-top:0}
+.place:nth-child(even) .place-media{order:2}
+.place-media{aspect-ratio:4/3}
+.place-body h3{margin:.6rem 0 .9rem} .place-body p{color:var(--stone);max-width:34ch}
+.place-price{font-family:var(--serif);font-size:1.2rem;margin-top:1.4rem;display:inline-block;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
+
+/* services — alternating image rows */
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center;padding:clamp(2.5rem,6vh,5rem) 0;border-top:1px solid var(--line)}
+.srow:first-of-type{border-top:0}
+.srow:nth-child(even) .srow-media{order:2}
+.srow-media{aspect-ratio:4/3}
+.srow-body h3{font-size:clamp(1.9rem,3.4vw,3rem);margin:.7rem 0 1rem}
+.srow-body p{color:var(--stone);max-width:40ch}
+.srow-foot{display:flex;gap:1.6rem;align-items:center;margin-top:1.5rem;flex-wrap:wrap}
+.srow-fee{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
+.srow-link{display:inline-flex;gap:.5rem;align-items:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:.3rem;transition:gap .4s var(--ease)}
+.srow-link:hover{gap:1rem}
+/* process — full-bleed split: image + steps */
+.process{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}
+.process-media{position:relative;overflow:hidden}.process-media .media-img{inset:0}
+.process-body{padding:clamp(3rem,8vh,7rem) var(--pad);display:flex;flex-direction:column;justify-content:center}
+.process-body .head{margin-bottom:clamp(2rem,5vh,3.5rem)}
+.process .step:first-child{border-top:0}
+.contact-media{aspect-ratio:3/4}
+
+/* steps */
+.steps{display:grid;gap:0} .step{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,3rem);padding:1.6rem 0;border-top:1px solid var(--line-d);align-items:baseline}
+.step-n{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--cream-soft)} .step p{color:rgba(243,243,236,.7)}
+
+/* guide + contact */
+.guide{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,5vw,5rem);align-items:center}
+.guide-media{aspect-ratio:4/5}
+.guide-body h2{margin-bottom:1rem} .guide-body p{color:rgba(243,243,236,.82)}
+.gform{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;max-width:480px}
+.gform input{flex:1;min-width:200px;background:transparent;border:0;border-bottom:1px solid var(--line-d);color:var(--cream);padding:.85rem .2rem;font-family:var(--sans);font-size:1rem}
+.gform input::placeholder{color:var(--cream-soft)} .gform input:focus{outline:none;border-color:var(--cream)}
+.gbtn{background:var(--cream);color:var(--ink);border:0;border-radius:100px;padding:.9rem 1.7rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
+.micro{font-size:.76rem;color:var(--cream-soft);margin-top:1rem}
+.contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.contact h2{margin-bottom:1.2rem} .contact .lead{color:var(--stone);max-width:32ch}
+.cform{display:grid;gap:1.3rem}.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field label{font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);font-weight:600}
+.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1px solid var(--line);padding:.7rem 0;font-family:var(--sans);font-size:1rem;color:var(--ink);border-radius:0}
+.field textarea{resize:vertical;min-height:80px} .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.cbtn{justify-self:start;background:var(--ink);color:var(--cream);border:0;border-radius:100px;padding:1rem 1.9rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
+
+/* footer + badge */
+.foot{padding:clamp(3rem,7vh,6rem) var(--pad) 2.5rem;background:var(--ink);color:var(--cream)}
+.foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:2.5rem;border-bottom:1px solid var(--line-d)}
+.foot-sig{font-family:var(--script);font-size:clamp(2rem,5vw,3.2rem)}
+.foot-nav{display:flex;gap:1.5rem;flex-wrap:wrap} .foot-nav a{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--cream-soft)}
+.foot-bot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;font-size:.7rem;color:var(--cream-soft)}
+#badge{position:fixed;left:1rem;bottom:1rem;z-index:90;background:#B4643C;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .8rem;border-radius:4px}
+
+@media(max-width:1080px){.nav-links{display:none}.burger{display:flex}}
+@media(max-width:900px){
+ .switch-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr}.switch-track{height:calc(12 * 26vh + 100vh)}
+ .sw-list{flex-direction:row;overflow-x:auto;gap:1.1rem;padding:1rem var(--pad);background:#111a2c;scrollbar-width:none}
+ .sw-list::-webkit-scrollbar{display:none}.sw-head{display:none}.sw-tab{flex:0 0 auto}.sw-tab.active .sw-name{transform:none}
+ .ncols,.place,.place:nth-child(even) .place-media,.guide,.contact,.frow,.srow,.process{grid-template-columns:1fr}
+ .place:nth-child(even) .place-media{order:0}.srow:nth-child(even) .srow-media{order:0}.process-media{aspect-ratio:4/3;min-height:60vh}
+ .nhead{grid-template-columns:1fr;gap:clamp(1.8rem,5vh,2.6rem);align-items:start}
+ .ncols{gap:clamp(2.4rem,5vh,3.2rem)}
+ .head h2{max-width:none}
+ .n-intro{min-height:auto;max-width:34ch;margin-top:1.4rem}
+ .toggle{width:100%;max-width:22rem}
+}
+
+/* --- cross-page: shared --- */
+.subhero{position:relative;min-height:74vh;display:flex;align-items:flex-end;padding:0 var(--pad) clamp(3rem,8vh,6rem);overflow:hidden;background:var(--ink);color:var(--cream)}
+.subhero .media{position:absolute;inset:0;z-index:0}
+.subhero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(23,35,59,.5) 0%,rgba(23,35,59,.2) 35%,rgba(23,35,59,.88) 100%)}
+.subhero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}
+.subhero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);max-width:15ch;line-height:1.02;font-weight:360}
+.subhero .ovl{color:var(--cream-soft);display:block;margin-bottom:1.4rem}
+.subhero .lead{max-width:58ch;margin-top:1.6rem;color:rgba(243,243,236,.82)}
+.pnote{font-size:.78rem;letter-spacing:.02em;color:var(--ink-soft);max-width:70ch}
+.dark .pnote{color:var(--cream-soft)}
+
+/* --- properties --- */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center}
+.feat-media{position:relative;overflow:hidden;aspect-ratio:4/3}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,2.5vw,2.4rem);margin-top:clamp(2.5rem,6vh,4rem)}
+.pillar{border-top:1px solid var(--line-d);padding-top:1.1rem}
+.pillar h4{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);margin-bottom:.7rem}
+.pillar p{font-size:.95rem;color:rgba(243,243,236,.8)}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:clamp(2.5rem,6vh,4rem)}
+.gal figure{position:relative;overflow:hidden;margin:0;aspect-ratio:4/3}
+.gal figure:nth-child(1),.gal figure:nth-child(2){grid-column:span 3;aspect-ratio:16/10}
+.gal figure:nth-child(n+3){grid-column:span 2}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:0;bottom:0;right:0;padding:1.4rem 1.1rem .8rem;font-size:.62rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.6))}
+.awards{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:clamp(2rem,5vh,3rem)}
+.award{border:1px solid var(--line-d);border-radius:100px;padding:.6rem 1.1rem;font-size:.7rem;letter-spacing:.06em;color:var(--cream)}
+.coll{border-top:1px solid var(--line);padding:clamp(2.5rem,6vh,4.5rem) 0}
+.coll-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:end;margin-bottom:clamp(1.6rem,4vh,2.6rem)}
+.coll-media{position:relative;overflow:hidden;aspect-ratio:16/9}
+.coll-media img{width:100%;height:100%;object-fit:cover;display:block}
+.coll h3{margin-bottom:.5rem}
+.coll-meta{font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--stone)}
+.coll-desc{margin-top:1rem;color:var(--stone)}
+.ptable{width:100%;border-collapse:collapse;margin-top:.4rem}
+.ptable th{font-family:var(--sans);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);text-align:left;padding:.7rem 1rem .7rem 0;border-bottom:1px solid var(--line)}
+.ptable td{font-family:var(--serif);font-size:1rem;padding:.9rem 1rem .9rem 0;border-bottom:1px solid var(--line);vertical-align:baseline}
+.ptable td:first-child{font-weight:500}
+.ptable.ralign td:last-child,.ptable.ralign th:last-child{text-align:right;padding-right:0;white-space:nowrap}
+.ptable tr:last-child td{border-bottom:0}
+.tscroll{overflow-x:auto}
+.wow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center}
+.wow-media{position:relative;overflow:hidden;aspect-ratio:4/3}
+.stats{display:flex;gap:clamp(1.5rem,4vw,3.5rem);margin-top:2rem;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:340;line-height:1}
+.stat span{font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft)}
+
+/* --- journal --- */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,3rem)}
+.cat{border-top:1px solid var(--line);padding-top:1.2rem}
+.cat-n{font-family:var(--serif);font-size:.95rem;color:var(--stone);display:block;margin-bottom:.8rem}
+.cat h3{font-size:clamp(1.15rem,1.8vw,1.5rem);margin-bottom:.6rem}
+.cat p{font-size:.95rem;color:var(--stone)}
+/* the categories grid sits on a .dark section: stone-on-navy is unreadable */
+.dark .cat{border-top-color:var(--line-d)}
+.dark .cat-n{color:var(--cream-soft)}
+.dark .cat p{color:rgba(243,243,236,.8)}
+.arts{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2rem,5vh,3rem)}
+.art{display:block;border:1px solid var(--line);padding:clamp(1.4rem,2.5vw,2rem);transition:background .5s var(--ease),border-color .5s var(--ease)}
+a.art:hover{background:rgba(23,35,59,.035);border-color:rgba(23,35,59,.3)}
+.art-meta{display:flex;justify-content:space-between;gap:1rem;font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);margin-bottom:1.1rem}
+.art h3{font-size:clamp(1.2rem,2vw,1.7rem);margin-bottom:.7rem}
+.art p{font-size:.95rem;color:var(--stone)}
+.art-more{display:inline-block;margin-top:1rem;font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:.25rem}
+.sig{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);margin-top:2rem}
+.founder p{margin-bottom:1.1rem}
+
+@media(max-width:900px){
+ .feat,.wow,.coll-head,.cats,.arts,.pillars{grid-template-columns:1fr}
+ .gal{grid-template-columns:1fr 1fr}
+ .gal figure:nth-child(1),.gal figure:nth-child(2),.gal figure:nth-child(n+3){grid-column:span 1;aspect-ratio:4/3}
+ .subhero{min-height:64vh}
+}
+
+/* --- service pages --- */
+.svc-p{max-width:62ch;color:var(--stone)}
+.dark .svc-p{color:rgba(243,243,236,.82)}
+.svc-p+.svc-p{margin-top:1rem}
+.inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(1.5rem,3vw,3rem);margin-top:clamp(2rem,5vh,3rem)}
+.inc{border-top:1px solid var(--line);padding-top:1.1rem}
+.dark .inc{border-top-color:var(--line-d)}
+.inc h4{font-family:var(--sans);font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);margin-bottom:1rem}
+.dark .inc h4{color:var(--cream-soft)}
+.inc ul{list-style:none}
+.inc li{font-size:.94rem;color:var(--stone);padding:.45rem 0 .45rem 1.1rem;position:relative;line-height:1.6}
+.dark .inc li{color:rgba(243,243,236,.8)}
+.inc li::before{content:"";position:absolute;left:0;top:.95rem;width:7px;height:1px;background:currentColor;opacity:.5}
+.svc-steps{margin-top:clamp(2rem,5vh,3rem);border-top:1px solid var(--line)}
+.dark .svc-steps{border-top-color:var(--line-d)}
+.svc-step{display:grid;grid-template-columns:70px 1fr;gap:clamp(1rem,2.5vw,2.5rem);padding:1.5rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dark .svc-step{border-bottom-color:var(--line-d)}
+.svc-step b{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--stone)}
+.dark .svc-step b{color:var(--cream-soft)}
+.svc-step h4{font-family:var(--serif);font-size:clamp(1.1rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.45rem}
+.svc-step p{font-size:.94rem;color:var(--stone);max-width:64ch}
+.dark .svc-step p{color:rgba(243,243,236,.78)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2rem,5vh,3rem)}
+.svc-card{border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.9rem)}
+.dark .svc-card{border-color:var(--line-d)}
+.svc-card .tag{display:block;font-family:var(--sans);font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;color:var(--ink-soft);margin-bottom:.9rem}
+.dark .svc-card .tag{color:var(--cream-soft)}
+.svc-card h4{font-family:var(--serif);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.6rem}
+.svc-card p{font-size:.94rem;color:var(--stone)}
+.dark .svc-card p{color:rgba(243,243,236,.8)}
+.money-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(1.5rem,4vw,4rem);margin-top:clamp(2rem,5vh,3rem)}
+.money-col h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.5rem}
+.money-col .amt{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:340;line-height:1;margin-bottom:1rem;color:var(--ink)}
+.dark .money-col .amt{color:var(--cream)}
+.faq-list{margin-top:clamp(2rem,5vh,3rem);border-top:1px solid var(--line)}
+.dark .faq-list{border-top-color:var(--line-d)}
+.faq-list details{border-bottom:1px solid var(--line)}
+.dark .faq-list details{border-bottom-color:var(--line-d)}
+.faq-list summary{list-style:none;cursor:pointer;padding:1.35rem 2.5rem 1.35rem 0;position:relative;font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:360;letter-spacing:-.01em}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";position:absolute;right:.25rem;top:50%;transform:translateY(-50%);font-family:var(--sans);font-size:1.1rem;color:var(--ink-soft);transition:transform .4s var(--ease)}
+.dark .faq-list summary::after{color:var(--cream-soft)}
+.faq-list details[open] summary::after{content:"\2013"}
+.faq-list .a{padding:0 2.5rem 1.5rem 0;font-size:.96rem;color:var(--stone);max-width:72ch}
+.dark .faq-list .a{color:rgba(243,243,236,.8)}
+.chips{display:flex;flex-wrap:wrap;gap:clamp(1.5rem,4vw,3.5rem);margin-top:2.2rem}
+.chip b{display:block;font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:340;line-height:1;color:var(--cream)}
+.chip span{font-size:.64rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft)}
+.pk-price{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:340;line-height:1;margin:.2rem 0 .9rem}
+.callout{margin-top:clamp(2rem,5vh,3rem);max-width:68ch;border-top:1px solid var(--line);padding-top:1.4rem}
+.dark .callout{border-top-color:var(--line-d)}
+.callout h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
+.callout p{font-size:.95rem;color:var(--stone);max-width:64ch}
+.dark .callout p{color:rgba(243,243,236,.8)}
+.callout p+p{margin-top:.8rem}
+.card-note{margin-top:.9rem;font-family:var(--sans);font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
+.dark .pk-price{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:340;line-height:1;margin:.2rem 0 .9rem}
+.callout{margin-top:clamp(2rem,5vh,3rem);max-width:68ch;border-top:1px solid var(--line);padding-top:1.4rem}
+.dark .callout{border-top-color:var(--line-d)}
+.callout h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
+.callout p{font-size:.95rem;color:var(--stone);max-width:64ch}
+.dark .callout p{color:rgba(243,243,236,.8)}
+.callout p+p{margin-top:.8rem}
+.card-note{color:var(--cream-soft)}
+.statblock{margin-top:clamp(2rem,5vh,3rem);border-top:1px solid var(--line);padding-top:1.6rem;max-width:68ch}
+.dark .statblock{border-top-color:var(--line-d)}
+.statblock b{display:block;font-family:var(--serif);font-size:clamp(3rem,7vw,5rem);font-weight:340;line-height:1;margin:.8rem 0 .6rem}
+.statblock .statlab{display:block;font-size:.9rem;color:var(--stone);max-width:52ch;margin-bottom:1.4rem}
+.dark .statblock .statlab{color:rgba(243,243,236,.8)}
+.statblock h3{margin-bottom:.8rem}
+@media(max-width:900px){.svc-step{grid-template-columns:1fr;gap:.4rem}}
+</style></head><body>
+<div id="badge">Staging v2 &middot; ERA flow</div>
+<nav class="nav"><a class="brand" href="/v2/"><b>Spanish</b> AfterLife</a>
+<div class="nav-links"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a class="nav-cta" href="/v2/#contact">Start Here</a></div>
+<button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<div class="menu" id="menu"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="/v2/#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div>
+</div>
+<header class="subhero" id="top">
+  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('/media/valencia-3.jpg')"></div></div>
+  <div class="subhero-in">
+    <span class="ovl">The Private Client</span>
+    <h1><span class="rline"><span>The full engagement. The founder. In Spain.</span></span></h1>
+    <p class="lead">Immigration, property, and lifestyle — coordinated end to end, with the founder directly involved at every stage. Not a tier. A different mode of engagement.</p>
+    <div class="chips"><div class="chip"><b>€9,500</b><span>Single</span></div><div class="chip"><b>€14,500</b><span>Couple</span></div><div class="chip"><b>Included</b><span>Beckham Law</span></div><div class="chip"><b>+ commission</b><span>Buyer's agency</span></div></div>
+  </div>
+</header>
+<section class="pad" id="s0"><div class="wrap"><div class="head"><span class="ovl">What this is</span><h2 class="reveal">Not a better version of the service. A different one.</h2></div><p class="svc-p reveal">Every Spanish AfterLife engagement is founder-led. The Private Client takes that further.</p><p class="svc-p reveal">This is for clients whose relocation complexity, transaction scale, or personal preference calls for something closer to a trusted advisor embedded in the process than a coordinated service they have engaged. The founder is physically present at the key moments. The lifestyle infrastructure is built alongside the legal and property work. The relationship continues for two years after arrival.</p><p class="svc-p reveal">Immigration and property outcomes are the same as every other engagement. The Private Client delivers those outcomes and everything around them — the orientation before the search, the weeks before and after completion, the social and lifestyle infrastructure that turns a good relocation into an exceptional one.</p></div></section>
+<section class="pad dark" id="s1"><div class="wrap"><div class="head"><span class="ovl">What's included</span><h2 class="reveal">Everything in The Full AfterLife, and everything beyond it.</h2></div><p class="svc-p reveal">Three to four days together in the Valencia Community before the property search formally opens. Not a viewing trip. A life trip.</p><p class="svc-p reveal">We move through the areas that fit your brief — the coast, the old towns, the inland hills, the city. We eat where you will eat. We show you the golf club, the padel courts, the market, the bodega, the beach club on a Tuesday morning. We introduce you to the people worth knowing. We show you what €350,000 buys in Oliva and what it buys in Jávea and why that difference matters to how you will actually live.</p><p class="svc-p reveal">You leave knowing — not assuming — which part of Spain fits your life and what you are actually looking for in a property. Then the search begins. With that clarity, it moves fast.</p><p class="svc-p reveal">Before you arrive for viewings, we have already been through every property worth seeing on your behalf. We view shortlisted properties ourselves — every room, natural light, structural condition, community character, neighbourhood context at different times of day. We produce detailed video and written assessments for each property.</p><p class="svc-p reveal">You arrive to a curated shortlist with our honest assessment already in hand. One trip to close, not three trips to look.</p><p class="svc-p reveal">We are in Spain for your first few days in the property. Not on the phone. Present.</p><p class="svc-p reveal">Utility walk-through, community administrator introduction, first trip to the bank, Hacienda visit if needed. We introduce you to the tradespeople and neighbours worth knowing. We make sure the things that are supposed to work do work, and the things that don't are already in motion.</p><p class="svc-p reveal">The first week in a new country in a new property is when the small things accumulate into something that feels overwhelming. We are there to make sure they don't.</p><p class="svc-p reveal">A 60-minute direct call with the founder at the 12-month and 24-month marks. Year one surfaces questions about residency renewal, Hacienda obligations, property management, and Beckham compliance. Year two typically raises questions about long-term tax residency planning, property values, lifestyle adjustments, and what comes next.</p><p class="svc-p reveal">Both calls are included. After year two, annual advisory is available at €500 per session.</p><div class="card-grid reveal"><div class="svc-card inc"><span class="tag">Always</span><h4>Founder-led throughout</h4><p>Your engagement is not delegated. Every call, every document review, every negotiation, every coordination point involves the founder directly. Not a team member working from a brief. The person who has personally lived this transition, in this country, through every step you are about to take.</p></div><div class="svc-card inc"><span class="tag">Before the search</span><h4>The Spain Orientation</h4><p>Three to four days together in the Valencia Community before the property search formally opens. Not a viewing trip. A life trip. We move through the areas that fit your brief — the coast, the old towns, the inland hills, the city. We eat where you will eat. We show you the golf club, the padel courts, the market, the bodega, the beach club on a Tuesday morning. We introduce you to the people worth knowing. We show you what €350,000 buys in Oliva and what it buys in Jávea and why that difference matters to how you will actually live. You leave knowing — not assuming — which part of Spain fits your life and what you are actually looking for in a property. Then the search begins. With that clarity, it moves fast.</p><p class="card-note">Travel and accommodation: client's cost. Time, curation, introductions, hospitality: included.</p></div><div class="svc-card inc"><span class="tag">Before you fly</span><h4>White-glove property sourcing</h4><p>Before you arrive for viewings, we have already been through every property worth seeing on your behalf. We view shortlisted properties ourselves — every room, natural light, structural condition, community character, neighbourhood context at different times of day. We produce detailed video and written assessments for each property. You arrive to a curated shortlist with our honest assessment already in hand. One trip to close, not three trips to look.</p></div><div class="svc-card inc"><span class="tag">After completion</span><h4>Post-arrival settlement</h4><p>We are in Spain for your first few days in the property. Not on the phone. Present. Utility walk-through, community administrator introduction, first trip to the bank, Hacienda visit if needed. We introduce you to the tradespeople and neighbours worth knowing. We make sure the things that are supposed to work do work, and the things that don't are already in motion. The first week in a new country in a new property is when the small things accumulate into something that feels overwhelming. We are there to make sure they don't.</p></div><div class="svc-card inc"><span class="tag">The life, not just the address</span><h4>Lifestyle infrastructure</h4><p>The AfterLife is not an address. It is a life — and that life has infrastructure that takes years to build on your own. For Private Client engagements, we build it with you from arrival.</p><ul><li>Golf — introduction to the right club for your level and social preference. The Valencia Community has exceptional courses at a fraction of what you're paying at home.</li><li>Padel — Spain's dominant sport. Clubs and coaching where the level and community are right for where you are.</li><li>Food and wine — personal introductions to the restaurants, bodegas, and markets that become the texture of daily life. Not the ones in the guidebook.</li><li>Social introduction — North Americans who have made this move ahead of you and are worth knowing, through our network.</li><li>Equestrian, where relevant — the inland Valencia region has significant equestrian infrastructure. For clients bringing horses or looking to ride, we have the relationships.</li></ul></div><div class="svc-card inc"><span class="tag">Tax planning</span><h4>Beckham Law — included</h4><p>The Beckham Law election is included in the Private Client engagement at no additional charge for all adult applicants. For clients at this level, the conversation about income structuring during the election period is part of the engagement from day one — not an add-on discovered at month four when the window is starting to close.</p><p class="card-note">€2,500 per person value — included for all adults</p></div><div class="svc-card inc"><span class="tag">Two years</span><h4>Annual advisory — included</h4><p>A 60-minute direct call with the founder at the 12-month and 24-month marks. Year one surfaces questions about residency renewal, Hacienda obligations, property management, and Beckham compliance. Year two typically raises questions about long-term tax residency planning, property values, lifestyle adjustments, and what comes next. Both calls are included. After year two, annual advisory is available at €500 per session.</p></div><div class="svc-card inc"><span class="tag">Always</span><h4>Priority calendar access</h4><p>Private Client engagements hold a reserved slot in the founder's schedule. Questions are answered the same day. Urgent matters — a critical document window, a property that needs a fast decision, a consulate issue that has emerged — are handled immediately. Not through a system. Directly.</p></div></div></div></section>
+<section class="pad" id="s2"><div class="wrap"><div class="head"><span class="ovl">Who this is for</span><h2 class="reveal">Some clients choose it because complexity demands it.</h2></div><p class="svc-p reveal">Some choose it because they have always worked this way and do not want to change that for the biggest lifestyle decision of their life. Both are the right reason.</p><p class="svc-p reveal">The property transaction is above €600,000 and the due diligence complexity warrants a higher level of direct involvement throughout.</p><p class="svc-p reveal">The relocation involves significant financial restructuring — retained property abroad, pension drawdown timing, investment portfolio repositioning — and the Beckham election needs to be designed alongside the broader plan.</p><p class="svc-p reveal">The client is relocating family, not just themselves — adult children, parents, or dependants whose situations add complexity and coordination requirements.</p><p class="svc-p reveal">The client simply prefers to engage at this level. They have operated with trusted advisors in finance, law, or business, and they want the same mode for this transition.</p></div></section>
+<section class="chapter">
+  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-5.jpg')"></div></div>
+  <h2><span class="rline"><span>The founder,</span></span><span class="rline"><span>beside you.</span></span></h2>
+</section>
+<section class="pad dark" id="s3"><div class="wrap"><div class="head"><span class="ovl">The financial picture</span><h2 class="reveal">Illustrative scenarios. Real numbers.</h2></div><p class="svc-p reveal">These are illustrations based on a 2.5% buyer's agency rate. Commission confirmed per transaction.</p><p class="svc-p reveal">Buyer's agency commission is vendor-funded at completion and does not constitute an additional client payment at the time of purchase. Immigration package and Beckham Law are the direct client costs in advance of property completion.</p><div class="tscroll reveal"><table class="ptable ralign"><thead><tr><th>Scenario</th><th>Private Client fee</th><th>Beckham</th><th>Buyer's agency</th><th>Total</th></tr></thead><tbody><tr><td>Single, €400k apartment, Valencia city</td><td>€9,500</td><td>Included</td><td>€10,000</td><td>€19,500</td></tr><tr><td>Couple, €700k coastal villa</td><td>€14,500</td><td>Included</td><td>€17,500</td><td>€32,000</td></tr><tr><td>Couple, €1.1m inland finca</td><td>€14,500</td><td>Included</td><td>€27,500</td><td>€42,000</td></tr><tr><td>Couple, immigration and Beckham only — no property</td><td>€14,500</td><td>Included</td><td>—</td><td>€14,500</td></tr></tbody></table></div></div></section>
+<section class="pad" id="s4"><div class="wrap"><div class="head"><span class="ovl">Availability</span><h2 class="reveal">The founder's time is the product.</h2></div><p class="svc-p reveal">Private Client engagements are capped. The founder's direct and active involvement is not something that can be scaled without changing what it is.</p><div class="callout inc reveal"><h4>When capacity is full</h4><p>New Private Client enquiries are offered The Full AfterLife or placed on a waiting list. We will tell you honestly where things stand when you enquire. We do not take Private Client engagements we cannot deliver properly.</p><p>If you are considering Private Client and have a specific timeline in mind, the earlier you enquire, the better. The eligibility call is the right starting point and costs nothing.</p></div></div></section>
+<section class="pad dark" id="s5"><div class="wrap"><div class="head"><span class="ovl">Common questions</span><h2 class="reveal">What people ask first.</h2></div><p class="svc-p reveal">The eligibility call is 60 minutes, no charge. We assess your financial profile, timeline, and situation. We tell you which engagement fits, and whether Private Client capacity is currently available. No pitch. Just an honest conversation about whether this makes sense.</p><p class="svc-p reveal">No charge. No obligation. We'll tell you honestly where we stand.</p><div class="faq-list reveal"><details><summary>How is The Private Client different from The Full AfterLife?</summary><div class="a">The Full AfterLife is a complete, professionally managed engagement — immigration, property search, legal coordination, post-arrival support. It is excellent. It is not a lite version of Private Client. The Private Client is a different mode of engagement for clients who want the founder directly involved and physically present at the key moments. It adds the Spain Orientation, white-glove property pre-scouting before you fly, post-arrival settlement in person for the first days in your property, lifestyle infrastructure setup, Beckham Law included for all adults, and two years of annual advisory. It also operates under capped availability — the founder's direct time is finite. If The Full AfterLife fits how you want to work, it is the right choice. Private Client is for clients who want something closer to a trusted advisor embedded in the process.</div></details><details><summary>What does "the founder is there" actually mean, practically?</summary><div class="a">It means the Spain Orientation is three to four days in the Valencia Community together — on the ground, in the areas, at the restaurants, meeting the people. It means every property on the shortlist has been physically walked by the founder before you arrive for viewings. It means the founder attends your viewings, your arras signing, your notary appointment, and is present in Spain for your first few days in the property. It means calls are answered same-day. It means every coordination point — legal, immigration, lifestyle — is handled directly rather than by a team member following a process.</div></details><details><summary>Is the Spain Orientation trip included in the price?</summary><div class="a">The orientation is included in the sense that the founder's time, curation, introductions, and all hospitality during the trip are part of the Private Client engagement. The client covers their own travel and accommodation. We advise on where to stay based on the areas we're covering together and what we're trying to understand about your preferences. Most clients find the orientation pays for itself immediately in time saved on the property search — you arrive knowing what you're looking for, which changes everything about how fast the search moves.</div></details><details><summary>Why is Beckham Law included rather than an add-on?</summary><div class="a">Because for Private Client clients, the conversation about income structuring during the Beckham election period is integral to the engagement from day one — not an add-on discovered at month four when the six-month window is already partially closed. At the income levels and transaction scales typical of Private Client, the Beckham decision needs to be designed alongside the broader arrival plan. Including it removes the decision and ensures it's handled correctly from the start.</div></details><details><summary>What if I don't want to buy property — just immigration?</summary><div class="a">Private Client immigration only — without property — is €14,500 for a couple. It delivers all the same immigration service as The Arrival — Two, plus the Spain Orientation, Beckham Law included, two years of annual advisory, and priority direct access. Some clients use Private Client for immigration and then return for the property search 12–18 months later when they are ready. The relationship continues.</div></details><details><summary>How many Private Client engagements do you take?</summary><div class="a">We do not publish the number. The honest answer is: not many. When capacity is full, we say so and offer The Full AfterLife or a waiting list. If you have a specific timeline in mind, enquire early. The eligibility call is free and takes 60 minutes — it is always the right starting point.</div></details></div></div></section>
+<section class="pad"><div class="wrap">
+  <div class="head"><span class="ovl">Next step</span><h2 class="reveal">Tell us what you're planning.</h2></div>
+  <p class="svc-p reveal">The eligibility call is 60 minutes, no charge. We assess your financial profile, timeline, and situation. We tell you which engagement fits, and whether Private Client capacity is currently available. No pitch. Just an honest conversation about whether this makes sense.</p>
+  <p class="reveal" style="margin-top:1.6rem"><a class="srow-link" href="/v2/#contact">Book your free call <span aria-hidden="true">&rarr;</span></a></p>
+  <p class="card-note reveal" style="margin-top:1.2rem">No charge. No obligation. We'll tell you honestly where we stand.</p>
+</div></section>
+<footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
+<div class="foot-nav"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="/v2/#contact">Start Here</a></div></div>
+<div class="foot-bot"><span>&copy; 2025 LJ Koch Group Inc. &middot; Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>
+<script>
+const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.style.overflow=o?'hidden':'';});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';}));
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
+</script>
+</body></html>

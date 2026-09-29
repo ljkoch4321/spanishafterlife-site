@@ -66,7 +66,7 @@ EXTRA = """
 .ptable th{font-family:var(--sans);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);text-align:left;padding:.7rem 1rem .7rem 0;border-bottom:1px solid var(--line)}
 .ptable td{font-family:var(--serif);font-size:1rem;padding:.9rem 1rem .9rem 0;border-bottom:1px solid var(--line);vertical-align:baseline}
 .ptable td:first-child{font-weight:500}
-.ptable td:last-child,.ptable th:last-child{text-align:right;padding-right:0;white-space:nowrap}
+.ptable.ralign td:last-child,.ptable.ralign th:last-child{text-align:right;padding-right:0;white-space:nowrap}
 .ptable tr:last-child td{border-bottom:0}
 .tscroll{overflow-x:auto}
 .wow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center}
@@ -197,7 +197,7 @@ def collection(name, meta, img, desc, rows):
            (f'<div class="reveal" style="max-width:62ch"><h3>{name}</h3><span class="coll-meta">{meta}</span>'
             f'<p class="coll-desc">{desc}</p></div>')
     body = "".join(f"<tr><td>{a}</td><td>{b}</td><td>{c}</td><td>{d}</td><td>{e}</td></tr>" for a,b,c,d,e in rows)
-    return (f'<div class="coll">{head}<div class="tscroll reveal"><table class="ptable">'
+    return (f'<div class="coll">{head}<div class="tscroll reveal"><table class="ptable ralign">'
             f'<thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th>From</th></tr></thead>'
             f'<tbody>{body}</tbody></table></div></div>')
 
