@@ -278,7 +278,7 @@ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.targ
 document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
 const par=[...document.querySelectorAll('[data-par]')];
 const track=document.querySelector('.switch-track'),tabs=[...document.querySelectorAll('.sw-tab')],panels=[...document.querySelectorAll('.sw-panel')];
-let cur=-1;const setP=i=>{if(i===cur)return;cur=i;tabs.forEach((t,n)=>t.classList.toggle('active',n===i));panels.forEach((p,n)=>p.classList.toggle('active',n===i));};setP(0);
+let cur=-1;const setP=i=>{if(i===cur)return;cur=i;tabs.forEach((t,n)=>{const on=n===i;t.classList.toggle('active',on);t.setAttribute('aria-pressed',on?'true':'false');});panels.forEach((p,n)=>{const on=n===i;p.classList.toggle('active',on);p.setAttribute('aria-hidden',on?'false':'true');});};setP(0);
 function tick(){const y=scrollY;
  for(const el of par){const r=el.getBoundingClientRect();const s=parseFloat(el.dataset.par);el.style.transform='translate3d(0,'+(-(r.top+r.height/2-innerHeight/2)*s).toFixed(1)+'px,0)';}
  if(track){const r=track.getBoundingClientRect();const tot=track.offsetHeight-innerHeight;const p=Math.min(1,Math.max(0,-r.top/tot));setP(Math.min(tabs.length-1,Math.floor(p*tabs.length)));}}

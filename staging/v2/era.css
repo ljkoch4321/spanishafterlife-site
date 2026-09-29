@@ -149,14 +149,17 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 .sw-panel .media-img{inset:0;transition:transform 1.2s var(--ease)}
 .sw-panel.active .media-img{transform:scale(1.05)}
 .sw-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(17,26,44,.9))}
-.sw-copy{position:absolute;z-index:2;left:0;bottom:0;padding:clamp(1.5rem,4vw,3.5rem);color:var(--cream)}
+.sw-copy{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:clamp(1.5rem,4vw,3.5rem);color:var(--cream);background:linear-gradient(180deg,transparent 0%,rgba(13,20,36,.62) 26%,rgba(13,20,36,.93) 62%)}
 .sw-c-idx{font-size:.66rem;letter-spacing:.2em;color:var(--cream-soft)}
 .sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:rgba(243,243,236,.82)}
 
 .region-line{max-width:70ch;color:var(--stone);margin-bottom:clamp(2rem,5vh,3rem)}
-.sw-lede{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.4;color:var(--cream)}
-.sw-full{margin-top:1.1rem;max-height:38vh;overflow-y:auto;padding-right:.8rem;scrollbar-width:thin}
-.sw-full p{font-size:.92rem;line-height:1.7;color:rgba(243,243,236,.78);max-width:62ch}
+.sw-lede{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.4;color:var(--cream);max-width:46ch}
+.sw-full{margin-top:1rem;max-height:min(30vh,15rem);overflow-y:auto;padding-right:1rem;scrollbar-width:thin;scrollbar-color:rgba(243,243,236,.35) transparent;-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%)}
+.sw-full::-webkit-scrollbar{width:3px}
+.sw-full::-webkit-scrollbar-thumb{background:rgba(243,243,236,.35);border-radius:3px}
+.sw-full:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
+.sw-full p{font-size:.92rem;line-height:1.7;color:rgba(243,243,236,.86);max-width:54ch}
 .sw-full p+p{margin-top:.7rem}
 .gform .consent{display:flex;align-items:flex-start;gap:.65rem;flex:1 0 100%;margin-top:1rem;padding:.5rem 0;font-size:.78rem;line-height:1.6;color:var(--cream-soft);cursor:pointer;max-width:52ch}
 .gform .consent>span{flex:1 1 auto;min-width:0}

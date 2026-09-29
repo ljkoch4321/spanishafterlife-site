@@ -1,0 +1,5 @@
+# The subscribe function redirects to production paths; on the preview those
+# pages live under /v2/. Production needs none of this.
+/thank-you        /v2/thank-you/        302
+/subscribed       /v2/subscribed/       302
+/message-received /v2/message-received/ 302
