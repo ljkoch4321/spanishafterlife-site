@@ -1,3 +1,30 @@
+# ERA v2 — SHIPPED TO PRODUCTION (2026-09-29)
+
+**v2 is approved and live on spanishafterlife.com.** This file is now history plus
+maintenance notes; the staging prototype under `staging/v2/` is no longer the
+source of truth for what visitors see.
+
+**How to change the live site now**
+1. Edit the generators in `staging-src/` **on `main`** (they ship there; `main` is
+   self-building). `python3 staging-src/build_prod.py .` rebuilds every page in place.
+2. Commit to a branch, PR to `main`. Merging deploys automatically.
+3. `staging-src/` and `staging/` are excluded from the deploy rsync, so the
+   generators are never published.
+
+**Two things that will bite you**
+- `era_seo.SRC_REF` pins the extractors to the pre-redesign commit `d0fd7bbf495c`.
+  They read the ORIGINAL production markup; `main` now holds the redesign, so
+  reading `origin/main:<slug>.html` would re-skin an already-skinned page.
+- `build_css.MOBILE_FLOOR` must stay the LAST block in the stylesheet. Media
+  queries add no specificity, so a mobile override placed earlier loses to any
+  later base rule with the same selector weight.
+
+**Still open**
+- Five activity pillars (golf, padel, cycling, art, food) and the Ontinyent card
+  use hotlinked Unsplash stock, pending the owner's own photography.
+
+---
+
 # HANDOFF — Spanish AfterLife "ERA" homepage redesign (staging prototype)
 
 > For a fresh session picking up the ERA-style redesign. Self-contained. This is
