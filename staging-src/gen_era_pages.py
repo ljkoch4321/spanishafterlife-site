@@ -36,7 +36,7 @@ EXTRA = """
 .subhero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}
 .subhero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);max-width:15ch;line-height:1.02;font-weight:360}
 .subhero .ovl{color:var(--cream-soft);display:block;margin-bottom:1.4rem}
-.subhero .lead{max-width:58ch;margin-top:1.6rem;color:rgba(243,243,236,.82)}
+.subhero .lead{max-width:58ch;margin-top:1.6rem;color:var(--on-dark)}
 .pnote{font-size:.78rem;letter-spacing:.02em;color:var(--ink-soft);max-width:70ch}
 .dark .pnote{color:var(--cream-soft)}
 
@@ -46,7 +46,7 @@ EXTRA = """
 .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,2.5vw,2.4rem);margin-top:clamp(2.5rem,6vh,4rem)}
 .pillar{border-top:1px solid var(--line-d);padding-top:1.1rem}
 .pillar h3{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);margin-bottom:.7rem}
-.pillar p{font-size:.95rem;color:rgba(243,243,236,.8)}
+.pillar p{font-size:.95rem;color:var(--on-dark)}
 .gal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:clamp(2.5rem,6vh,4rem)}
 .gal figure{position:relative;overflow:hidden;margin:0;aspect-ratio:4/3}
 .gal figure:nth-child(1),.gal figure:nth-child(2){grid-column:span 3;aspect-ratio:16/10}
@@ -85,10 +85,10 @@ EXTRA = """
 /* the categories grid sits on a .dark section: stone-on-navy is unreadable */
 .dark .cat{border-top-color:var(--line-d)}
 .dark .cat-n{color:var(--cream-soft)}
-.dark .cat p{color:rgba(243,243,236,.8)}
+.dark .cat p{color:var(--on-dark)}
 .arts{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2rem,5vh,3rem)}
 .art{display:block;border:1px solid var(--line);padding:clamp(1.4rem,2.5vw,2rem);transition:background .5s var(--ease),border-color .5s var(--ease)}
-a.art:hover{background:rgba(23,35,59,.035);border-color:rgba(23,35,59,.3)}
+a.art:hover{background:var(--tint);border-color:var(--tint-line)}
 .art-meta{display:flex;justify-content:space-between;gap:1rem;font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);margin-bottom:1.1rem}
 .art h3{font-size:clamp(1.2rem,2vw,1.7rem);margin-bottom:.7rem}
 .art p{font-size:.95rem;color:var(--stone)}
@@ -227,7 +227,7 @@ def build_properties():
 
     body = f"""
 <header class="subhero" id="top">
-  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('/media/altaona/altaona-aerial.webp')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.06" style="{SEO.bgv('/media/altaona/altaona-aerial.webp')}"></div></div>
   <div class="subhero-in">
     <span class="ovl">Available Properties</span>
     <h1>{rlines('Homes we can|get you into.')}</h1>
@@ -239,15 +239,15 @@ def build_properties():
   <div class="feat">
     <div class="reveal"><span class="ovl">Featured Development Partner</span>
       <h2 style="margin:1.2rem 0 1.2rem">Altaona Resort, Murcia</h2>
-      <p style="color:rgba(243,243,236,.82)">Spain's first longevity-focused resort development. New-build villas, an 18-hole golf course, world-class wellness facilities, and the upcoming WOW Longevity Hotel &mdash; built around one idea: living better, for longer. A development we work with directly and can introduce you to.</p>
+      <p style="color:var(--on-dark)">Spain's first longevity-focused resort development. New-build villas, an 18-hole golf course, world-class wellness facilities, and the upcoming WOW Longevity Hotel &mdash; built around one idea: living better, for longer. A development we work with directly and can introduce you to.</p>
     </div>
-    <div class="feat-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/altaona/altaona-resort.webp')"></div></div>
+    <div class="feat-media img-reveal"><div class="media-img" data-par="0.05" style="{SEO.bgv('/media/altaona/altaona-resort.webp')}"></div></div>
   </div>
 
   <div class="reveal" style="margin-top:clamp(3rem,8vh,5.5rem);max-width:62ch">
     <span class="ovl">Radiant lifestyle in Murcia, southern Spain</span>
     <h3 style="margin:1.1rem 0 1.1rem">The closest resort to Murcia centre &mdash; designed for wellbeing and longer living.</h3>
-    <p style="color:rgba(243,243,236,.8)">Altaona is built around three pillars that put health and lifestyle at the centre of everyday life: exclusive residential homes, the WOW Longevity Hotel, and a resort core of an 18-hole golf course, sports facilities and a world-class wellness centre &mdash; so movement, nature and recovery are part of daily life. Whether you want a home, an investment, or simply to live better for longer, Altaona is built for people who value quality of life.</p>
+    <p style="color:var(--on-dark)">Altaona is built around three pillars that put health and lifestyle at the centre of everyday life: exclusive residential homes, the WOW Longevity Hotel, and a resort core of an 18-hole golf course, sports facilities and a world-class wellness centre &mdash; so movement, nature and recovery are part of daily life. Whether you want a home, an investment, or simply to live better for longer, Altaona is built for people who value quality of life.</p>
   </div>
   <div class="pillars reveal">{pil}</div>
   <div class="gal">{gal}</div>
@@ -262,10 +262,10 @@ def build_properties():
 
 <section class="pad dark" id="wow"><div class="wrap">
   <div class="wow">
-    <div class="wow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/altaona/altaona-wow-hotel.webp')"></div></div>
+    <div class="wow-media img-reveal"><div class="media-img" data-par="0.05" style="{SEO.bgv('/media/altaona/altaona-wow-hotel.webp')}"></div></div>
     <div class="reveal"><span class="ovl">Coming Soon &mdash; Investment Opportunity</span>
       <h2 style="margin:1.2rem 0 1.2rem">WOW Longevity Hotel</h2>
-      <p style="color:rgba(243,243,236,.82)">Europe's first real estate project built around the science of longevity. Hotel suites from 54m&sup2; to 235m&sup2; with a fixed 7% net annual return under a long-term lease, plus 2% during construction. Investment backed by Altaona's award-winning resort infrastructure.</p>
+      <p style="color:var(--on-dark)">Europe's first real estate project built around the science of longevity. Hotel suites from 54m&sup2; to 235m&sup2; with a fixed 7% net annual return under a long-term lease, plus 2% during construction. Investment backed by Altaona's award-winning resort infrastructure.</p>
       <div class="stats">
         <div class="stat"><b>7%</b><span>Fixed net annual rent</span></div>
         <div class="stat"><b>&euro;270K</b><span>Studio Suite entry &mdash; from</span></div>
@@ -277,7 +277,7 @@ def build_properties():
 </div></section>
 
 <section class="chapter">
-  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('/media/altaona/altaona-golf-sunset.webp')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.1" style="{SEO.bgv('/media/altaona/altaona-golf-sunset.webp')}"></div></div>
   <h2>{rlines('Ask us for the|full price list.')}</h2>
 </section>
 
@@ -289,7 +289,7 @@ def build_properties():
 
 <section class="pad dark"><div class="wrap">
   <div class="head"><span class="ovl">The guide</span><h2 class="reveal">The honest cost of moving to Spain</h2></div>
-  <p class="svc-p reveal" style="color:rgba(243,243,236,.82)">The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
+  <p class="svc-p reveal" style="color:var(--on-dark)">The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
   {guide_form("v2:available-properties")}
 </div></section>
 """
@@ -335,7 +335,7 @@ def build_journal():
 
     body = f"""
 <header class="subhero" id="top">
-  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('/media/oliva-5.webp')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.06" style="{SEO.bgv('/media/oliva-5.webp')}"></div></div>
   <div class="subhero-in">
     <span class="ovl">Building My Life in Spain</span>
     <h1>{rlines('Notes from the other side|of the decision.')}</h1>
@@ -355,7 +355,7 @@ def build_journal():
 </div></section>
 
 <section class="chapter">
-  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-3.webp')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.1" style="{SEO.bgv('/media/oliva-3.webp')}"></div></div>
   <h2>{rlines('Written from here,|not from abroad.')}</h2>
 </section>
 
@@ -401,7 +401,7 @@ def build_journal():
 def build_404():
     body = f"""
 <header class="subhero" id="top">
-  <div class="media"><div class="media-img" style="background-image:url('/media/oliva-3.webp')"></div></div>
+  <div class="media"><div class="media-img" style="{SEO.bgv('/media/oliva-3.webp')}"></div></div>
   <div class="subhero-in">
     <span class="ovl">404</span>
     <h1>{rlines('That page|is not here.')}</h1>
@@ -427,7 +427,7 @@ def build_404():
 CSS_404 = (
   ".card-grid-404{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(2rem,5vh,3rem)}"
   ".svc-card404{display:block;border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.8rem);transition:background .5s var(--ease),border-color .5s var(--ease)}"
-  ".svc-card404:hover{background:rgba(23,35,59,.035);border-color:rgba(23,35,59,.3)}"
+  ".svc-card404:hover{background:var(--tint);border-color:var(--tint-line)}"
   ".svc-card404 h3{font-family:var(--serif);font-size:1.35rem;font-weight:360;margin-bottom:.5rem}"
   ".svc-card404 p{font-size:.94rem;color:var(--stone)}")
 

@@ -39,7 +39,7 @@ CHAPTER = {
 SVC_CSS = """
 /* --- service pages --- */
 .svc-p{max-width:62ch;color:var(--stone)}
-.dark .svc-p{color:rgba(243,243,236,.82)}
+.dark .svc-p{color:var(--on-dark)}
 .svc-p+.svc-p{margin-top:1rem}
 .inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(1.5rem,3vw,3rem);margin-top:clamp(2rem,5vh,3rem)}
 .inc{border-top:1px solid var(--line);padding-top:1.1rem}
@@ -48,7 +48,7 @@ SVC_CSS = """
 .dark .inc h3{color:var(--cream-soft)}
 .inc ul{list-style:none}
 .inc li{font-size:.94rem;color:var(--stone);padding:.45rem 0 .45rem 1.1rem;position:relative;line-height:1.6}
-.dark .inc li{color:rgba(243,243,236,.8)}
+.dark .inc li{color:var(--on-dark)}
 .inc li::before{content:"";position:absolute;left:0;top:.95rem;width:7px;height:1px;background:currentColor;opacity:.5}
 .svc-steps{margin-top:clamp(2rem,5vh,3rem);border-top:1px solid var(--line)}
 .dark .svc-steps{border-top-color:var(--line-d)}
@@ -58,7 +58,7 @@ SVC_CSS = """
 .dark .svc-step b{color:var(--cream-soft)}
 .svc-step h3{font-family:var(--serif);font-size:clamp(1.1rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.45rem}
 .svc-step p{font-size:.94rem;color:var(--stone);max-width:64ch}
-.dark .svc-step p{color:rgba(243,243,236,.78)}
+.dark .svc-step p{color:var(--on-dark)}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2rem,5vh,3rem)}
 .svc-card{border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.9rem)}
 .dark .svc-card{border-color:var(--line-d)}
@@ -66,7 +66,7 @@ SVC_CSS = """
 .dark .svc-card .tag{color:var(--cream-soft)}
 .svc-card h3{font-family:var(--serif);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.6rem}
 .svc-card p{font-size:.94rem;color:var(--stone)}
-.dark .svc-card p{color:rgba(243,243,236,.8)}
+.dark .svc-card p{color:var(--on-dark)}
 .money-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(1.5rem,4vw,4rem);margin-top:clamp(2rem,5vh,3rem)}
 .money-col h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.5rem}
 .money-col .amt{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:340;line-height:1;margin-bottom:1rem;color:var(--ink)}
@@ -81,7 +81,7 @@ SVC_CSS = """
 .dark .faq-list summary::after{color:var(--cream-soft)}
 .faq-list details[open] summary::after{content:"\\2013"}
 .faq-list .a{padding:0 2.5rem 1.5rem 0;font-size:.96rem;color:var(--stone);max-width:72ch}
-.dark .faq-list .a{color:rgba(243,243,236,.8)}
+.dark .faq-list .a{color:var(--on-dark)}
 .chips{display:flex;flex-wrap:wrap;gap:clamp(1.5rem,4vw,3.5rem);margin-top:2.2rem}
 .chip b{display:block;font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:340;line-height:1;color:var(--cream)}
 .chip span{font-size:.64rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft)}
@@ -90,7 +90,7 @@ SVC_CSS = """
 .dark .callout{border-top-color:var(--line-d)}
 .callout h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
 .callout p{font-size:.95rem;color:var(--stone);max-width:64ch}
-.dark .callout p{color:rgba(243,243,236,.8)}
+.dark .callout p{color:var(--on-dark)}
 .callout p+p{margin-top:.8rem}
 .card-note{margin-top:.9rem;font-family:var(--sans);font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
 .dark .pk-price{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:340;line-height:1;margin:.2rem 0 .9rem}
@@ -98,14 +98,14 @@ SVC_CSS = """
 .dark .callout{border-top-color:var(--line-d)}
 .callout h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
 .callout p{font-size:.95rem;color:var(--stone);max-width:64ch}
-.dark .callout p{color:rgba(243,243,236,.8)}
+.dark .callout p{color:var(--on-dark)}
 .callout p+p{margin-top:.8rem}
 .card-note{color:var(--cream-soft)}
 .statblock{margin-top:clamp(2rem,5vh,3rem);border-top:1px solid var(--line);padding-top:1.6rem;max-width:68ch}
 .dark .statblock{border-top-color:var(--line-d)}
 .statblock b{display:block;font-family:var(--serif);font-size:clamp(3rem,7vw,5rem);font-weight:340;line-height:1;margin:.8rem 0 .6rem}
 .statblock .statlab{display:block;font-size:.9rem;color:var(--stone);max-width:52ch;margin-bottom:1.4rem}
-.dark .statblock .statlab{color:rgba(243,243,236,.8)}
+.dark .statblock .statlab{color:var(--on-dark)}
 .statblock h3{margin-bottom:.8rem}
 @media(max-width:900px){.svc-step{grid-template-columns:1fr;gap:.4rem}}
 """
@@ -218,7 +218,7 @@ def build(slug):
             for l, a in d["prices"]) + '</div>'
 
     body = [f'''<header class="subhero" id="top">
-  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('{HERO[slug]}')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.06" style="{SEO.bgv(HERO[slug])}"></div></div>
   <div class="subhero-in">
     <span class="ovl">{esc(d["eyebrow"])}</span>
     <h1>{P.rlines(esc(d["h1"]))}</h1>
@@ -233,7 +233,7 @@ def build(slug):
         body.append(render_block(b, dark=(i % 2 == 1), idx=i))
         if i == half - 1:
             body.append(f'''<section class="chapter">
-  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('{chap_img}')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.1" style="{SEO.bgv(chap_img)}"></div></div>
   <h2>{P.rlines(chap_text)}</h2>
 </section>''')
 
@@ -251,7 +251,7 @@ def build(slug):
 
 <section class="pad dark"><div class="wrap">
   <div class="head"><span class="ovl">The guide</span><h2 class="reveal">Your complete guide to retiring in Spain</h2></div>
-  <p class="svc-p reveal" style="color:rgba(243,243,236,.82)">The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
+  <p class="svc-p reveal" style="color:var(--on-dark)">The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
   {P.guide_form("v2:" + slug)}
 </div></section>''')
 

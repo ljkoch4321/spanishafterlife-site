@@ -78,6 +78,17 @@ def head(slug, jsonld=False):
 <style>{CHROME_CSS}</style>"""
 
 
+def bgv(path):
+    """Background image as custom properties so CSS can swap in a smaller file on
+    narrow viewports. Inline background-image cannot be overridden by a media query;
+    a custom property can. Falls back to the full image when no -sm variant exists."""
+    if path.startswith("http"):
+        return f"background-image:url('{path}')"
+    stem, dot, ext = path.rpartition(".")
+    sm = f"{stem}-sm.{ext}" if dot else path
+    return f"--bg:url('{path}');--bg-sm:url('{sm}')"
+
+
 def css_link():
     """one cached stylesheet for the whole site instead of ~35KB inlined into every page"""
     return '<link rel="stylesheet" href="%s">' % ("/v2/era.css" if STAGING else "/era.css")
@@ -158,15 +169,15 @@ def footer(slug="home"):
 <div class="foot-grid">
   <div class="foot-brand"><div class="foot-mark"><b>Spanish</b> AfterLife</div>
     <p>Early retirement in Spain. Immigration concierge and buyer's agency for North Americans. Based in the Valencia Community. Operated by LJ Koch Group Inc.</p></div>
-  <div class="foot-col"><h4>The Life</h4>
+  <div class="foot-col"><h2>The Life</h2>
     <a href="{home('#life')}">The 12 Pillars</a><a href="{home('#places')}">The Places</a><a href="{home('#numbers')}">The Numbers</a><a href="{href('building-my-life-in-spain')}">Journal</a></div>
-  <div class="foot-col"><h4>How We Help</h4>
+  <div class="foot-col"><h2>How We Help</h2>
     <a href="{href('fullafterlife')}">The Full AfterLife</a><a href="{href('immigration')}">Immigration Concierge</a><a href="{href('real-estate')}">Real Estate</a><a href="{href('available-properties')}">Properties</a><a href="{href('private-client')}">Private Client</a><a href="{home('#contact')}">Free Consultation</a></div>
-  <div class="foot-col"><h4>Company</h4>
+  <div class="foot-col"><h2>Company</h2>
     <a href="/find-your-spain">Find Your Spain</a><a href="/about">About</a><a href="{home('#contact')}">Contact</a><a href="/privacy">Privacy Policy</a><a href="/guide">Free guide: the cost of moving to Spain</a><a href="/canada-quality-of-life">Retire in Spain from Canada</a><a href="/us-cash-out">Cash out &amp; retire in Spain (US)</a><a href="/us-sun-seekers">Retire somewhere warm (US)</a></div>
 </div>
 <div class="foot-signup">
-  <div><h4>Your Complete Guide to Retiring in Spain</h4><p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p></div>
+  <div><h2>Your Complete Guide to Retiring in Spain</h2><p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p></div>
   <form class="gform foot-form" action="/api/subscribe" method="post">
     <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
     <button class="gbtn" type="submit">Send me the guide</button>
@@ -184,11 +195,11 @@ CHROME_CSS = """
 .foot-mark{font-family:var(--serif);font-size:1.5rem;font-weight:360;margin-bottom:1rem}
 .foot-brand p{font-size:.86rem;line-height:1.7;color:var(--cream-soft);max-width:36ch}
 .foot-col{display:flex;flex-direction:column;gap:.55rem}
-.foot-col h4{font-family:var(--sans);font-size:.64rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--cream-soft);margin-bottom:.5rem}
+.foot-col h2{font-family:var(--sans);font-size:.64rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--cream-soft);margin-bottom:.5rem}
 .foot-col a{display:flex;align-items:center;min-height:44px;font-size:.9rem;color:var(--cream);opacity:.86;transition:opacity .3s}
 .foot-col a:hover{opacity:1;text-decoration:underline}
 .foot-signup{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:start;padding:clamp(2rem,5vh,3rem) 0;border-bottom:1px solid var(--line-d)}
-.foot-signup h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.6rem}
+.foot-signup h2{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.6rem}
 .foot-signup p{font-size:.88rem;color:var(--cream-soft)}
 .foot-form{margin-top:0}
 .foot-bot a{text-decoration:underline}

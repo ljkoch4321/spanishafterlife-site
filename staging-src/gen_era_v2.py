@@ -59,7 +59,7 @@ SITE=""   # in-prototype pages live at /v2/available-properties/ and /v2/buildin
 LOCS=["Select country / province / state","Ontario","British Columbia","Alberta","Quebec","Other Canadian province","California","New York","Washington","Illinois","Texas","Florida","Other US state"]
 
 def bg(img,cls="",par="0.06"):
-    return f'<div class="media {cls}"><div class="media-img" data-par="{par}" style="background-image:url(\'{img}\')"></div></div>'
+    return f'<div class="media {cls}"><div class="media-img" data-par="{par}" style="{SEO.bgv(img)}"></div></div>'
 
 def vbg(mp4,poster,par="0.08",webm=None):
     """Full-bleed background video. Poster doubles as a CSS background so the still
@@ -92,7 +92,7 @@ pillar_tabs="\n".join(f'<button type="button" class="sw-tab" data-i="{i}" aria-p
 PILLAR_IMG=[uimg(x,1400) for x in PILLAR_IDS]
 PILLAR_IMG[0]="/media/home-3.webp"; PILLAR_IMG[5]="/media/oliva-4.webp"
 pillar_panels="\n".join(
- f'<div class="sw-panel" data-i="{i}" aria-hidden="true"><div class="media-img" style="background-image:url(\'{PILLAR_IMG[i]}\')"></div>'
+ f'<div class="sw-panel" data-i="{i}" aria-hidden="true"><div class="media-img" style="{SEO.bgv(PILLAR_IMG[i])}"></div>'
  f'<div class="sw-copy"><span class="sw-c-idx">{i+1:02d} / 12</span><h3>{t}</h3><p class="sw-lede">{d}</p></div></div>'
  for i,(t,d) in enumerate(PILLARS))
 
@@ -102,7 +102,7 @@ def place_more(name):
     return '<details class="place-more"><summary>What it gives, what it asks</summary>'+"".join(f"<p>{x}</p>" for x in ps)+'</details>'
 places_html="\n".join(
  f'''<article class="place">
-   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('{img}')"></div></div>
+   <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="{SEO.bgv(img)}"></div></div>
    <div class="place-body reveal"><span class="ovl">{tag}</span><h3>{name}</h3><p>{HX["places_short"].get(name,line)}</p><span class="place-price">{price}</span>{place_more(name)}</div>
  </article>''' for tag,name,price,line,img in PLACES)
 
@@ -112,7 +112,7 @@ SVC_COPY=[tuple(HX["svc"][0]),tuple(HX["svc"][1]),
   ("The Private Client","The Private Client",HX["how"]["pc_line"])]
 services_html="\n".join(
  f'''<article class="srow">
-   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url(\'{SVC_IMGS[i]}\')"></div></div>
+   <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="{SEO.bgv(SVC_IMGS[i])}"></div></div>
    <div class="srow-body reveal"><span class="ovl">{SVC_COPY[i][0]}</span><h3>{SVC_COPY[i][1]}</h3><p>{SVC_COPY[i][2]}</p><div class="srow-foot">{f'<span class="srow-fee">{fee}</span>' if fee else ''}<a class="srow-link" href="{href}">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>''' for i,(n,d,fee,href) in enumerate(SERVICES))
 steps_html="\n".join(f'<div class="step reveal"><span class="step-n">{n}</span><div><h3>{t}</h3><p>{d}</p></div></div>' for n,t,d in STEPS)
@@ -135,7 +135,7 @@ html,body{overflow-x:clip}
 .hstats{display:flex;gap:clamp(1.4rem,4vw,3.5rem);margin-top:clamp(2.2rem,6vh,3.4rem);flex-wrap:wrap}
 .hstat{display:flex;flex-direction:column;gap:.3rem}
 .hstat-n{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:340}
-.hstat-l{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(243,243,236,.78);max-width:18ch}
+.hstat-l{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--on-dark);max-width:18ch}
 .calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,6rem);align-items:start}
 .calc-copy h2{margin:1.2rem 0 1.6rem;max-width:14ch}
 .calc-paras p{color:var(--stone);max-width:52ch;margin-bottom:1rem}
@@ -159,12 +159,12 @@ html,body{overflow-x:clip}
 .btn-ink{background:var(--ink);color:var(--cream)}
 .btn-line{color:var(--ink)}
 .srow-fee small{display:block;font-family:var(--sans);font-size:.74rem;color:var(--stone);margin-top:.3rem;letter-spacing:.02em}
-.proc-lede{color:rgba(243,243,236,.78);max-width:48ch;margin:-1rem 0 1.6rem}
-.founder-note{margin-top:2rem;font-size:.9rem;color:rgba(243,243,236,.7);max-width:60ch;border-top:1px solid var(--line-d);padding-top:1.4rem}
+.proc-lede{color:var(--on-dark);max-width:48ch;margin:-1rem 0 1.6rem}
+.founder-note{margin-top:2rem;font-size:.9rem;color:var(--on-dark-quiet);max-width:60ch;border-top:1px solid var(--line-d);padding-top:1.4rem}
 .founder-note strong{color:var(--cream)}
 .journal-feat .lead{color:var(--stone);max-width:56ch}
 .jfeat{display:block;margin-top:clamp(2rem,5vh,3rem);padding:clamp(1.6rem,3vw,2.6rem);border:1px solid var(--line);transition:background .5s var(--ease)}
-.jfeat:hover{background:rgba(23,35,59,.035)}
+.jfeat:hover{background:var(--tint)}
 .jmeta{font-size:.66rem;text-transform:uppercase;letter-spacing:.2em;font-weight:600;color:var(--ink-soft)}
 .jfeat h3{margin:.8rem 0;max-width:28ch}
 .jfeat p{color:var(--stone);max-width:60ch;margin-bottom:1.2rem}
@@ -180,6 +180,7 @@ html,body{overflow-x:clip}
 
 :root{--cream:#F3F3EC;--ink:#17233B;--stone:#5C5648;--ink-soft:rgba(23,35,59,.6);--cream-soft:rgba(243,243,236,.66);
 --line:rgba(23,35,59,.15);--line-d:rgba(243,243,236,.18);
+--on-dark:rgba(243,243,236,.84);--on-dark-quiet:rgba(243,243,236,.66);--tint:var(--tint);--tint-line:var(--tint-line);
 --serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
 --ease:cubic-bezier(.16,1,.3,1);--pad:clamp(1.25rem,5vw,6rem)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -208,7 +209,7 @@ section{position:relative}
 /* media + reveals */
 .media,.place-media,.srow-media,.guide-media,.contact-media{position:relative;overflow:hidden}
 .hero .media,.chapter .media{position:absolute;inset:0}
-.media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform}
+.media-img{position:absolute;inset:-8% 0;background-size:cover;background-position:center;will-change:transform;background-image:var(--bg)}
 video.media-img{width:100%;height:100%;object-fit:cover}
 .chapter video.media-img{inset:0;object-position:50% 30%;opacity:0;transition:opacity .9s var(--ease)}
 .chapter video.media-img.on{opacity:1}
@@ -224,7 +225,7 @@ background:linear-gradient(180deg,rgba(11,17,30,.62) 0%,rgba(11,17,30,.34) 55%,t
 .nav-links{display:flex;gap:clamp(1rem,2.2vw,2rem);align-items:center}
 .nav-links a{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;opacity:.9}
 .nav-links a:hover{opacity:.5}
-.nav-cta{border:1px solid rgba(255,255,255,.5);padding:.5rem 1.05rem;border-radius:100px}
+.nav-cta{display:inline-flex;align-items:center;min-height:44px;border:1px solid rgba(255,255,255,.5);padding:.5rem 1.05rem;border-radius:100px}
 .burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:0;cursor:pointer;min-width:44px;min-height:44px;margin-right:-.5rem}
 .burger span{width:26px;height:1.5px;background:#fff}
 .menu{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;
@@ -239,7 +240,7 @@ justify-content:center;padding:var(--pad);clip-path:inset(0 0 100% 0);transition
 .hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(23,35,59,.72) 0%,rgba(23,35,59,.42) 45%,rgba(23,35,59,.2) 100%)}
 .hero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--pad)}
 .hero h1{max-width:14ch} .hero h1 em{font-style:italic;font-weight:300}
-.hero-lede{margin-top:1rem;max-width:52ch;font-size:.95rem;color:rgba(243,243,236,.78)}
+.hero-lede{margin-top:1rem;max-width:52ch;font-size:.95rem;color:var(--on-dark)}
 .hero-sub{margin-top:1.4rem;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(243,243,236,.9);max-width:34ch}
 .hero-cta{margin-top:2.2rem;display:inline-flex;gap:.6rem;align-items:center;background:var(--cream);color:var(--ink);
 padding:1rem 1.9rem;border-radius:100px;font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;
@@ -283,7 +284,7 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 .sw-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(17,26,44,.9))}
 .sw-copy{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:clamp(1.5rem,4vw,3.5rem);color:var(--cream);background:linear-gradient(180deg,transparent 0%,rgba(13,20,36,.55) 45%,rgba(13,20,36,.88) 100%)}
 .sw-c-idx{font-size:.66rem;letter-spacing:.2em;color:var(--cream-soft)}
-.sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:rgba(243,243,236,.82)}
+.sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:var(--on-dark)}
 
 .region-line{max-width:70ch;color:var(--stone);margin-bottom:clamp(2rem,5vh,3rem)}
 .sw-lede{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.4;color:var(--cream);max-width:46ch}
@@ -291,7 +292,7 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 .sw-full::-webkit-scrollbar{width:3px}
 .sw-full::-webkit-scrollbar-thumb{background:rgba(243,243,236,.35);border-radius:3px}
 .sw-full:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
-.sw-full p{font-size:.92rem;line-height:1.7;color:rgba(243,243,236,.86);max-width:54ch}
+.sw-full p{font-size:.92rem;line-height:1.7;color:var(--on-dark);max-width:54ch}
 .sw-full p+p{margin-top:.7rem}
 .gform .consent{display:flex;align-items:flex-start;gap:.65rem;flex:1 0 100%;margin-top:1rem;padding:.5rem 0;font-size:.78rem;line-height:1.6;color:var(--cream-soft);cursor:pointer;max-width:52ch}
 .gform .consent>span{flex:1 1 auto;min-width:0}
@@ -313,7 +314,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .nrow{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line-d);align-items:baseline}
 .nk{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cream-soft)}
 .nv{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.4;color:var(--cream)}
-.ncol.leave .nv{color:rgba(243,243,236,.6)}
+.ncol.leave .nv{color:var(--on-dark-quiet)}
 
 /* places */
 .place{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4.5rem);align-items:center;padding:clamp(2.5rem,6vh,5rem) 0;border-top:1px solid var(--line)}
@@ -344,12 +345,12 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 
 /* steps */
 .steps{display:grid;gap:0} .step{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,3rem);padding:1.6rem 0;border-top:1px solid var(--line-d);align-items:baseline}
-.step-n{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--cream-soft)} .step p{color:rgba(243,243,236,.7)}
+.step-n{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--cream-soft)} .step p{color:var(--on-dark-quiet)}
 
 /* guide + contact */
 .guide{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,5vw,5rem);align-items:center}
 .guide-media{aspect-ratio:4/5}
-.guide-body h2{margin-bottom:1rem} .guide-body p{color:rgba(243,243,236,.82)}
+.guide-body h2{margin-bottom:1rem} .guide-body p{color:var(--on-dark)}
 .gform{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;max-width:480px}
 .gform input{flex:1;min-width:200px;min-height:44px;background:transparent;border:0;border-bottom:1px solid var(--line-d);color:var(--cream);padding:.85rem .2rem;font-family:var(--sans);font-size:1rem}
 .gform input::placeholder{color:var(--cream-soft)} .gform input:focus{outline:none;border-color:var(--cream)}
@@ -373,6 +374,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 #badge{position:fixed;left:1rem;bottom:1rem;z-index:90;background:#B4643C;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .8rem;border-radius:4px}
 
 @media(max-width:1080px){.nav-links{display:none}.burger{display:flex}}
+@media(max-width:900px){.media-img{background-image:var(--bg-sm,var(--bg))}}
 @media(max-width:900px){
  .switch-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr}.switch-track{height:calc(12 * 26vh + 100vh)}
  .sw-list{flex-direction:row;overflow-x:auto;gap:1.1rem;padding:1rem var(--pad);background:#111a2c;scrollbar-width:none}
@@ -505,7 +507,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div></section>
 
 <section class="process dark" id="process">
-  <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="background-image:url('/hero.webp')"></div></div>
+  <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="{SEO.bgv('/hero.webp')}"></div></div>
   <div class="process-body">
     <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">{HX["how"]["h2"]}</h2></div>
     <p class="proc-lede reveal">{HX["how"]["lede"]}</p>
@@ -522,7 +524,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div></section>
 
 <section class="dark pad" id="guide"><div class="wrap guide">
-  <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/guide-cover.webp')"></div></div>
+  <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="{SEO.bgv('/guide-cover.webp')}"></div></div>
   <div class="guide-body reveal">
     <span class="ovl">{HX["guide"]["ovl"]}</span>
     <h2>{HX["guide"]["h2"]}</h2>
@@ -542,7 +544,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 <section class="pad" id="contact"><div class="wrap">
   <div class="head"><span class="ovl">Start Here</span><h2 class="reveal">Find out if Spain is right for you.</h2></div>
   <div class="contact">
-  <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.webp')"></div></div>
+  <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="{SEO.bgv('/media/valencia-3.webp')}"></div></div>
   <div class="ccopy">{"".join(f'<p class="lead">{x}</p>' for x in C_["paras"])}<ol class="clist">{clist}</ol></div></div>
   <div><h3 class="box-h">{C_["box_h3"]}</h3><p class="box-p">{C_["box_p"]}</p>
   {SEO.contact_form()}</div>

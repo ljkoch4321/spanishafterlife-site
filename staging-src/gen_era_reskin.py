@@ -87,11 +87,11 @@ RS_CSS = r"""
 .btn{display:inline-flex;align-items:center;min-height:44px;padding:.9rem 1.7rem;border-radius:100px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border:1px solid currentColor;text-decoration:none}
 .btn-terra,.btn-white{background:var(--cream);color:var(--ink);border-color:var(--cream)}
 .rs:not(.dark) .btn-terra{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-.btn-outline-white,.btn-ghost-white{color:var(--cream);border-color:rgba(243,243,236,.6)}
+.btn-outline-white,.btn-ghost-white{color:var(--cream);border-color:var(--on-dark-quiet)}
 .rs-hero{min-height:68vh;padding-top:clamp(7rem,16vh,10rem)}
 .rs-hero .eyebrow{display:block;font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.24em;margin-bottom:1.4rem}
 .rs-hero h1{font-size:clamp(2.4rem,5.8vw,4.8rem);max-width:17ch;line-height:1.04;font-weight:340}
-.rs-hero .ph-desc,.rs-hero p{max-width:60ch;margin-top:1.4rem;color:rgba(243,243,236,.86);font-size:clamp(1rem,1.3vw,1.15rem)}
+.rs-hero .ph-desc,.rs-hero p{max-width:60ch;margin-top:1.4rem;color:var(--on-dark);font-size:clamp(1rem,1.3vw,1.15rem)}
 .rs-hero .ph-cta,.rs-hero p:has(.btn){display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
 .rs-hero .post-meta{display:flex;gap:.8rem;align-items:center;margin-top:1.4rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--cream-soft)}
 .rs-hero .dot{width:4px;height:4px;border-radius:50%;background:currentColor;display:inline-block}
@@ -136,7 +136,7 @@ RS_CSS = r"""
 .lm h1 em{font-style:italic;font-weight:300}
 .lm-left p{color:rgba(243,243,236,.84);max-width:52ch}
 .lm-list{list-style:none;margin-top:1.8rem}
-.lm-list li{padding:.8rem 0;border-top:1px solid var(--line-d);color:rgba(243,243,236,.86);font-size:.98rem}
+.lm-list li{padding:.8rem 0;border-top:1px solid var(--line-d);color:var(--on-dark);font-size:.98rem}
 .lm-right{display:flex;align-items:center;padding:clamp(3rem,8vh,5rem) var(--pad)}
 .lm-form-wrap{max-width:440px;width:100%}
 .lm-form-wrap h2{font-family:var(--serif);font-weight:340;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:.6rem}
@@ -169,7 +169,7 @@ def head_of(src):
 
 def hero(open_tag_inner, img):
     return (f'<header class="subhero rs-hero" id="top"><div class="media"><div class="media-img" '
-            f"style=\"background-image:url('{img}')\"></div></div><div class=\"subhero-in\">")
+            f"style=\"{SEO.bgv(img)}\"></div></div><div class=\"subhero-in\">")
 
 def body_standard(src, img):
     b = src[src.find("<body"):]
@@ -196,6 +196,27 @@ def body_standard(src, img):
     return c
 
 
+
+# Moves focus to the new screen when the quiz advances. Additive: it observes the
+# class change rather than touching the quiz's own logic.
+FYS_A11Y = """
+<script>
+(function(){
+  var seen=null;
+  function focusActive(){
+    var a=document.querySelector('.screen.active'); if(!a||a===seen) return; seen=a;
+    var t=a.querySelector('#q-prompt,h1,h2')||a;
+    if(!t.hasAttribute('tabindex')) t.setAttribute('tabindex','-1');
+    try{ t.focus({preventScroll:true}); }catch(e){ t.focus(); }
+  }
+  var mo=new MutationObserver(focusActive);
+  document.querySelectorAll('.screen').forEach(function(s){
+    mo.observe(s,{attributes:true,attributeFilter:['class']});
+  });
+})();
+</script>"""
+
+
 def demote_h4(html):
     """production nests h4 directly under h2 on these pages; promote to h3 (same look via .sub)"""
     def op(m):
@@ -216,13 +237,24 @@ def build(slug):
     if slug == "guide":
         b = src[src.find('<div class="lm-main">'):src.find('<div class="lm-foot">')]
         b = strip_styles(b).replace('<div class="lm-main">', '<main class="lm" id="main">', 1)
-        b = b.replace('<div class="lm-left">', f'<div class="lm-left"><div class="media"><div class="media-img" style="background-image:url(\'/media/oliva-3.webp\')"></div></div>', 1)
+        b = b.replace('<div class="lm-left">', f'<div class="lm-left"><div class="media"><div class="media-img" style="{SEO.bgv("/media/oliva-3.webp")}"></div></div>', 1)
         b = b[:b.rfind("</div>")] + "</main>"
         body = b
     elif slug == "find-your-spain":
         # the quiz keeps its own markup + script; only palette/typography change (see FYS_CSS)
         b = src[src.find('<div class="stage">'):src.rfind("</body>")]
-        body = f'<main id="main" class="fys">{b}</main>'
+        # the quiz swaps .screen elements with display:none/block, so a screen reader
+        # gets no announcement when the question changes, and focus is left on the
+        # option button that just disappeared.
+        b = b.replace('<div class="screen" id="screen-q">',
+                      '<div class="screen" id="screen-q" role="group" aria-live="polite" aria-atomic="true">')
+        b = b.replace('<div class="screen result" id="screen-result">',
+                      '<div class="screen result" id="screen-result" role="group" aria-live="polite">')
+        # the question text is the screen's heading; swap the whole element so the
+        # closing tag matches (it is empty in the source - the quiz fills it)
+        b = b.replace('<div class="q-prompt" id="q-prompt"></div>',
+                      '<h2 class="q-prompt" id="q-prompt" tabindex="-1"></h2>')
+        body = f'<main id="main" class="fys">{b}</main>' + FYS_A11Y
         orig_css = re.search(r'<style>(.*?)</style>', src, re.S).group(1)
         head += "\n<style>" + fys_css(orig_css) + "</style>"
     else:
