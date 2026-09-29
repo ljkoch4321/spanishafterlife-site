@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!doctype html><html lang="en"><head>
+<meta charset="UTF-8">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D870F788P"></script>
   <script>
@@ -26,188 +24,23 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Could Spain Be Your Answer? — Spanish AfterLife">
   <meta name="twitter:description" content="Four questions, two minutes. Tell us what you're looking for and we'll show you whether Spain — and which version of it — is the answer for you.">
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-garamond-normal-latin.woff2" crossorigin />
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-normal-latin.woff2" crossorigin />
-  <style>
-    /* ── SELF-HOSTED FONTS (variable weight, latin + latin-ext) ── */
-    @font-face {
-      font-family: 'Cormorant Garamond';
-      font-style: normal;
-      font-weight: 300 700;
-      font-display: swap;
-      src: url('/fonts/cormorant-garamond-normal-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: 'Cormorant Garamond';
-      font-style: normal;
-      font-weight: 300 700;
-      font-display: swap;
-      src: url('/fonts/cormorant-garamond-normal-latin-ext.woff2') format('woff2');
-      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
-    @font-face {
-      font-family: 'Cormorant Garamond';
-      font-style: italic;
-      font-weight: 300 700;
-      font-display: swap;
-      src: url('/fonts/cormorant-garamond-italic-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: 'Cormorant Garamond';
-      font-style: italic;
-      font-weight: 300 700;
-      font-display: swap;
-      src: url('/fonts/cormorant-garamond-italic-latin-ext.woff2') format('woff2');
-      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
-    @font-face {
-      font-family: 'DM Sans';
-      font-style: normal;
-      font-weight: 100 1000;
-      font-display: swap;
-      src: url('/fonts/dm-sans-normal-latin.woff2') format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    @font-face {
-      font-family: 'DM Sans';
-      font-style: normal;
-      font-weight: 100 1000;
-      font-display: swap;
-      src: url('/fonts/dm-sans-normal-latin-ext.woff2') format('woff2');
-      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
+<style>.fys{--terracotta:#F3F3EC;--linen:#F3F3EC;--olive:#17233B;--saffron:#d9cda9;--slate:#9aa3b5;--stone:#aab1bf;--white:#17233B;--linen-dark:#EAEAE0}
+.fys h1,.fys h2,.fys h3{font-family:var(--serif);font-weight:340}
+.stage{ min-height: 100vh; padding: 64px 1.5rem 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--olive); }.stage::before{ content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 78% 25%, rgba(243,243,236,0.16) 0%, transparent 55%), radial-gradient(ellipse at 18% 85%, rgba(243,243,236,0.13) 0%, transparent 55%); pointer-events: none; }.panel{ position: relative; width: 100%; max-width: 680px; padding: 2.5rem 0 4rem; }.progress{ display: flex; gap: 0.4rem; margin-bottom: 2.5rem; }.progress .pip{ height: 3px; flex: 1; background: rgba(245,239,228,0.18); border-radius: 2px; transition: background 0.3s; }.progress .pip.done{ background: var(--terracotta); }.progress .pip.current{ background: var(--saffron); }.screen{ display: none; animation: fade 0.45s ease both; }.screen.active{ display: block; }@keyframes fade{ from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }.q-eyebrow{ font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron); margin-bottom: 1rem; }.q-prompt{ font-size: clamp(1.8rem, 5vw, 2.7rem); color: var(--linen); font-style: italic; margin-bottom: 2rem; }.q-prompt em{ font-style: normal; color: var(--saffron); }.options{ display: grid; gap: 0.85rem; }.opt{ text-align: left; background: rgba(245,239,228,0.05); border: 1px solid rgba(245,239,228,0.18); color: var(--linen); padding: 1.1rem 1.35rem; border-radius: 3px; font-family: var(--sans); font-size: 1rem; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }.opt:hover{ border-color: var(--terracotta); background: rgba(243,243,236,0.12); transform: translateX(3px); }.opt .opt-label{ font-weight: 400; }.opt .opt-sub{ display: block; font-size: 0.78rem; color: var(--stone); margin-top: 0.15rem; }.opt .arr{ color: var(--terracotta); opacity: 0; transition: opacity 0.18s; font-size: 1.1rem; }.opt:hover .arr{ opacity: 1; }.controls{ display: flex; align-items: center; gap: 1.25rem; margin-top: 2rem; }.back-btn{ background: none; border: none; color: var(--stone); font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: color 0.2s; }.back-btn:hover{ color: var(--linen); }.step-count{ font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }.intro h1{ font-size: clamp(2.4rem, 7vw, 4rem); color: var(--linen); font-style: italic; margin-bottom: 1.25rem; }.intro h1 em{ font-style: normal; color: var(--saffron); }.intro p{ color: var(--stone); font-size: 1.05rem; font-weight: 300; max-width: 520px; margin-bottom: 2.25rem; }.start-btn{ display: inline-block; background: var(--terracotta); color: var(--white); border: none; padding: 1rem 2.4rem; border-radius: 2px; font-family: var(--sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }.start-btn:hover{ background: #ffffff; }.intro .tiny{ display: block; margin-top: 1rem; font-size: 0.75rem; color: var(--stone); letter-spacing: 0.05em; }.result .r-eyebrow{ font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron); margin-bottom: 1rem; }.result h2{ font-size: clamp(2rem, 5.5vw, 3rem); color: var(--linen); font-style: italic; margin-bottom: 1.5rem; }.result h2 em{ font-style: normal; color: var(--saffron); }.result p{ color: rgba(245,239,228,0.88); font-weight: 300; font-size: 1.05rem; margin-bottom: 1.25rem; }.result .geo-note{ color: var(--stone); font-size: 0.98rem; }.r-buys{ margin: 1.75rem 0; padding: 1.4rem 1.6rem; background: rgba(245,239,228,0.06); border-left: 3px solid var(--terracotta); border-radius: 2px; }.r-buys .lbl{ font-size: 0.64rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--saffron); display: block; margin-bottom: 0.4rem; }.r-buys p{ color: var(--linen); font-size: 1rem; margin: 0; font-weight: 400; }.r-cta-head{ color: var(--linen); font-family: var(--serif); font-size: 1.5rem; font-style: italic; margin: 2rem 0 1.25rem; }.r-actions{ display: flex; gap: 1rem; flex-wrap: wrap; }.btn{ display: inline-block; padding: 0.9rem 2rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; cursor: pointer; border: none; }.btn-terra{ background: var(--terracotta); color: var(--white); }.btn-terra:hover{ background: #ffffff; }.btn-outline{ background: transparent; color: var(--linen); border: 1px solid rgba(245,239,228,0.4); }.btn-outline:hover{ border-color: var(--linen); background: rgba(245,239,228,0.06); }.r-news{ margin-top: 1.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap; max-width: 440px; }.r-news input{ flex: 1; min-width: 200px; padding: 0.8rem 1rem; border: 1px solid rgba(245,239,228,0.25); background: rgba(245,239,228,0.06); color: var(--linen); font-family: var(--sans); font-size: 0.9rem; border-radius: 2px; }.r-news input::placeholder{ color: var(--stone); }.r-news input:focus{ outline: none; border-color: var(--saffron); }.r-news button{ padding: 0.8rem 1.3rem; background: var(--terracotta); color: #fff; border: none; border-radius: 2px; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }.r-restart{ margin-top: 2rem; }.r-restart button{ background: none; border: none; color: var(--stone); font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.06em; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }.r-restart button:hover{ color: var(--linen); }@media (max-width: 920px){}.lm-logo{font-weight:400}.lm-logo strong{font-weight:600;font-family:var(--serif),serif}
+.fys .stage{padding-top:5.5rem}
+</style>
+<script>document.documentElement.className='js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/era.css"></head><body>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --terracotta: #C4693A; --linen: #F5EFE4; --olive: #3D4C2E; --saffron: #E8B86D;
-      --slate: #4A6C82; --stone: #9E9488; --white: #FFFFFF; --linen-dark: #EDE6D8;
-    }
-    html { font-size: 18px; scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--olive); background: var(--linen); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; font-weight: 500; }
-
-    /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--olive); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--linen); text-decoration: none; letter-spacing: 0.02em; line-height: 1.1; }
-    .nav-logo span { display: block; font-weight: 400; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
-    .nav-links { display: flex; gap: 1.7rem; list-style: none; align-items: center; }
-    .nav-links a { color: var(--stone); text-decoration: none; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; white-space: nowrap; }
-    .nav-links a:hover, .nav-links a.active { color: var(--linen); }
-    .nav-links .nav-cta { background: var(--terracotta); color: var(--white); padding: 0.45rem 1.1rem; border-radius: 2px; font-size: 0.72rem; letter-spacing: 0.1em; transition: background 0.2s; }
-    .nav-links .nav-cta:hover { background: #b05a30; color: var(--white); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--linen); transition: all 0.3s; }
-    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--olive); padding: 1.5rem 2rem 2rem; z-index: 99; border-top: 1px solid rgba(255,255,255,0.08); }
-    .mobile-menu.open { display: block; }
-    .mobile-menu a { display: block; color: var(--stone); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover, .mobile-menu a.active { color: var(--linen); }
-    .mobile-menu .mob-cta { display: block; margin-top: 1rem; background: var(--terracotta); color: var(--white); text-align: center; padding: 0.75rem; border-radius: 2px; }
-
-    /* FUNNEL STAGE */
-    .stage { min-height: 100vh; padding: 64px 1.5rem 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--olive); }
-    .stage::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 78% 25%, rgba(196,105,58,0.16) 0%, transparent 55%), radial-gradient(ellipse at 18% 85%, rgba(74,108,130,0.13) 0%, transparent 55%); pointer-events: none; }
-    .panel { position: relative; width: 100%; max-width: 680px; padding: 2.5rem 0 4rem; }
-
-    .progress { display: flex; gap: 0.4rem; margin-bottom: 2.5rem; }
-    .progress .pip { height: 3px; flex: 1; background: rgba(245,239,228,0.18); border-radius: 2px; transition: background 0.3s; }
-    .progress .pip.done { background: var(--terracotta); }
-    .progress .pip.current { background: var(--saffron); }
-
-    .screen { display: none; animation: fade 0.45s ease both; }
-    .screen.active { display: block; }
-    @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-
-    .q-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron); margin-bottom: 1rem; }
-    .q-prompt { font-size: clamp(1.8rem, 5vw, 2.7rem); color: var(--linen); font-style: italic; margin-bottom: 2rem; }
-    .q-prompt em { font-style: normal; color: var(--saffron); }
-
-    .options { display: grid; gap: 0.85rem; }
-    .opt { text-align: left; background: rgba(245,239,228,0.05); border: 1px solid rgba(245,239,228,0.18); color: var(--linen); padding: 1.1rem 1.35rem; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 1rem; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .opt:hover { border-color: var(--terracotta); background: rgba(196,105,58,0.12); transform: translateX(3px); }
-    .opt .opt-label { font-weight: 400; }
-    .opt .opt-sub { display: block; font-size: 0.78rem; color: var(--stone); margin-top: 0.15rem; }
-    .opt .arr { color: var(--terracotta); opacity: 0; transition: opacity 0.18s; font-size: 1.1rem; }
-    .opt:hover .arr { opacity: 1; }
-
-    .controls { display: flex; align-items: center; gap: 1.25rem; margin-top: 2rem; }
-    .back-btn { background: none; border: none; color: var(--stone); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: color 0.2s; }
-    .back-btn:hover { color: var(--linen); }
-    .step-count { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
-
-    /* INTRO */
-    .intro h1 { font-size: clamp(2.4rem, 7vw, 4rem); color: var(--linen); font-style: italic; margin-bottom: 1.25rem; }
-    .intro h1 em { font-style: normal; color: var(--saffron); }
-    .intro p { color: var(--stone); font-size: 1.05rem; font-weight: 300; max-width: 520px; margin-bottom: 2.25rem; }
-    .start-btn { display: inline-block; background: var(--terracotta); color: var(--white); border: none; padding: 1rem 2.4rem; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
-    .start-btn:hover { background: #b05a30; }
-    .intro .tiny { display: block; margin-top: 1rem; font-size: 0.75rem; color: var(--stone); letter-spacing: 0.05em; }
-
-    /* RESULT */
-    .result .r-eyebrow { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--saffron); margin-bottom: 1rem; }
-    .result h2 { font-size: clamp(2rem, 5.5vw, 3rem); color: var(--linen); font-style: italic; margin-bottom: 1.5rem; }
-    .result h2 em { font-style: normal; color: var(--saffron); }
-    .result p { color: rgba(245,239,228,0.88); font-weight: 300; font-size: 1.05rem; margin-bottom: 1.25rem; }
-    .result .geo-note { color: var(--stone); font-size: 0.98rem; }
-    .r-buys { margin: 1.75rem 0; padding: 1.4rem 1.6rem; background: rgba(245,239,228,0.06); border-left: 3px solid var(--terracotta); border-radius: 2px; }
-    .r-buys .lbl { font-size: 0.64rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--saffron); display: block; margin-bottom: 0.4rem; }
-    .r-buys p { color: var(--linen); font-size: 1rem; margin: 0; font-weight: 400; }
-    .r-cta-head { color: var(--linen); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin: 2rem 0 1.25rem; }
-    .r-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn { display: inline-block; padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.2s; cursor: pointer; border: none; }
-    .btn-terra { background: var(--terracotta); color: var(--white); }
-    .btn-terra:hover { background: #b05a30; }
-    .btn-outline { background: transparent; color: var(--linen); border: 1px solid rgba(245,239,228,0.4); }
-    .btn-outline:hover { border-color: var(--linen); background: rgba(245,239,228,0.06); }
-    .r-news { margin-top: 1.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap; max-width: 440px; }
-    .r-news input { flex: 1; min-width: 200px; padding: 0.8rem 1rem; border: 1px solid rgba(245,239,228,0.25); background: rgba(245,239,228,0.06); color: var(--linen); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; border-radius: 2px; }
-    .r-news input::placeholder { color: var(--stone); }
-    .r-news input:focus { outline: none; border-color: var(--saffron); }
-    .r-news button { padding: 0.8rem 1.3rem; background: var(--terracotta); color: #fff; border: none; border-radius: 2px; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
-    .r-restart { margin-top: 2rem; }
-    .r-restart button { background: none; border: none; color: var(--stone); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.06em; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-    .r-restart button:hover { color: var(--linen); }
-
-    @media (max-width: 920px) { .nav-links { display: none; } .hamburger { display: flex; } }
-  
-    /* New wordmark — Spanish regular, AfterLife semibold, single tone */
-    .nav-logo{font-weight:400}
-    .nav-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
-    .footer-logo{font-weight:400}
-    .footer-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
-    .lm-logo{font-weight:400}
-    .lm-logo strong{font-weight:600;font-family:'Cormorant Garamond',serif}
-  </style>
-</head>
-<body>
-
-  <nav>
-    <a href="/" class="nav-logo">Spanish <strong>AfterLife</strong> <span>Valencia Community, Spain</span></a>
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/fullafterlife">The Full AfterLife</a></li>
-      <li><a href="/immigration">Immigration</a></li>
-      <li><a href="/real-estate">Real Estate</a></li>
-      <li><a href="/available-properties">Properties</a></li>
-      <li><a href="/private-client">Private Client</a></li>
-      <li><a href="/#contact" class="nav-cta">Get Started</a></li>
-    </ul>
-    <button class="hamburger" onclick="document.getElementById('mm').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
-  </nav>
-  <div class="mobile-menu" id="mm">
-    <a href="/">Home</a>
-    <a href="/fullafterlife">The Full AfterLife</a>
-    <a href="/immigration">Immigration</a>
-    <a href="/real-estate">Real Estate</a>
-    <a href="/available-properties">Properties</a>
-    <a href="/private-client">Private Client</a>
-    <a href="/building-my-life-in-spain">Journal</a>
-    <a href="/#contact" class="mob-cta">Get Started</a>
-  </div>
-
-  <div class="stage">
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav"><a class="brand" href="/"><b>Spanish</b> AfterLife</a>
+<div class="nav-links"><a href="/#life">The Life</a><a href="/#numbers">The Numbers</a><a href="/#places">Where</a><a href="/#how">How It Works</a><a href="/available-properties">Properties</a><a href="/building-my-life-in-spain">Journal</a><a class="nav-cta" href="/#contact">Start Here</a></div>
+<button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<div class="menu" id="menu"><a href="/#life">The Life</a><a href="/#numbers">The Numbers</a><a href="/#places">Where</a><a href="/#how">How It Works</a><a href="/available-properties">Properties</a><a href="/building-my-life-in-spain">Journal</a><a href="/#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div>
+</div>
+<main id="main" class="fys"><div class="stage">
     <div class="panel">
       <div class="progress" id="progress" style="visibility:hidden"></div>
 
@@ -220,9 +53,9 @@
       </div>
 
       <!-- QUESTION -->
-      <div class="screen" id="screen-q">
+      <div class="screen" id="screen-q" role="group" aria-live="polite" aria-atomic="true">
         <div class="q-eyebrow" id="q-eyebrow"></div>
-        <div class="q-prompt" id="q-prompt"></div>
+        <h2 class="q-prompt" id="q-prompt" tabindex="-1"></h2>
         <div class="options" id="q-options"></div>
         <div class="controls">
           <button class="back-btn" id="q-back" onclick="FUNNEL.back()">&larr; Back</button>
@@ -231,7 +64,7 @@
       </div>
 
       <!-- RESULT -->
-      <div class="screen result" id="screen-result">
+      <div class="screen result" id="screen-result" role="group" aria-live="polite">
         <div class="r-eyebrow">Your result</div>
         <h2 id="r-title"></h2>
         <p id="r-lead"></p>
@@ -392,5 +225,50 @@
     return { start, back, restart, _state:state };
   })();
   </script>
-</body>
-</html>
+</main>
+<script>
+(function(){
+  var seen=null;
+  function focusActive(){
+    var a=document.querySelector('.screen.active'); if(!a||a===seen) return; seen=a;
+    var t=a.querySelector('#q-prompt,h1,h2')||a;
+    if(!t.hasAttribute('tabindex')) t.setAttribute('tabindex','-1');
+    try{ t.focus({preventScroll:true}); }catch(e){ t.focus(); }
+  }
+  var mo=new MutationObserver(focusActive);
+  document.querySelectorAll('.screen').forEach(function(s){
+    mo.observe(s,{attributes:true,attributeFilter:['class']});
+  });
+})();
+</script>
+<footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div></div>
+<div class="foot-grid">
+  <div class="foot-brand"><div class="foot-mark"><b>Spanish</b> AfterLife</div>
+    <p>Early retirement in Spain. Immigration concierge and buyer's agency for North Americans. Based in the Valencia Community. Operated by LJ Koch Group Inc.</p></div>
+  <div class="foot-col"><h2>The Life</h2>
+    <a href="/#life">The 12 Pillars</a><a href="/#places">The Places</a><a href="/#numbers">The Numbers</a><a href="/building-my-life-in-spain">Journal</a></div>
+  <div class="foot-col"><h2>How We Help</h2>
+    <a href="/fullafterlife">The Full AfterLife</a><a href="/immigration">Immigration Concierge</a><a href="/real-estate">Real Estate</a><a href="/available-properties">Properties</a><a href="/private-client">Private Client</a><a href="/#contact">Free Consultation</a></div>
+  <div class="foot-col"><h2>Company</h2>
+    <a href="/find-your-spain">Find Your Spain</a><a href="/about">About</a><a href="/#contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="/guide">Free guide: the cost of moving to Spain</a><a href="/canada-quality-of-life">Retire in Spain from Canada</a><a href="/us-cash-out">Cash out &amp; retire in Spain (US)</a><a href="/us-sun-seekers">Retire somewhere warm (US)</a></div>
+</div>
+<div class="foot-signup">
+  <div><h2>Your Complete Guide to Retiring in Spain</h2><p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p></div>
+  <form class="gform foot-form" action="/api/subscribe" method="post">
+    <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
+    <button class="gbtn" type="submit">Send me the guide</button>
+    <label class="consent"><input type="checkbox" name="consent" required><span>Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
+    <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
+    <input type="hidden" name="intent" value="guide">
+    <input type="hidden" name="source" value="find-your-spain:fs-form">
+  </form>
+</div>
+<div class="foot-bot"><span>&copy; 2026 Spanish AfterLife / LJ Koch Group Inc. All rights reserved.</span><span><a href="/privacy">Privacy Policy</a> &middot; Valencia Community, Spain</span></div></footer>
+<script>
+const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.style.overflow=o?'hidden':'';});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';}));
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
+</script>
+</body></html>
