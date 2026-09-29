@@ -1,7 +1,23 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><script>document.documentElement.className='js';</script>
-<title>Available Properties &mdash; STAGING v2 (ERA flow)</title><meta name="description" content="A curated look at the developments and homes Spanish AfterLife works with directly, from the Valencia coast into the Region of Murcia.">
+<script>document.documentElement.className='js';</script>
+<title>Building My Life in Spain — A Founder's Journal — STAGING v2</title>
+<meta name="description" content="First-hand notes from LJ Koch on building a new life on Spain's Valencia coast — the moves, the lessons, what North Americans should know.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://spanishafterlife.com/building-my-life-in-spain">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spanish AfterLife">
+<meta property="og:title" content="Building My Life in Spain — A Founder's Journal">
+<meta property="og:description" content="First-hand notes from LJ Koch on building a new life on Spain's Valencia coast — the moves, the lessons, what North Americans should know.">
+<meta property="og:url" content="https://spanishafterlife.com/building-my-life-in-spain">
+<meta property="og:image" content="https://spanishafterlife.com/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building My Life in Spain — A Founder's Journal">
+<meta name="twitter:description" content="First-hand notes from LJ Koch on building a new life on Spain's Valencia coast — the moves, the lessons, what North Americans should know.">
+<meta name="twitter:image" content="https://spanishafterlife.com/hero.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
 <style>
@@ -18,6 +34,11 @@ p{max-width:58ch} a{color:inherit;text-decoration:none}
 .ovl{font-family:var(--sans);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.24em;color:var(--ink-soft)}
 .script{font-family:var(--script)}
 section{position:relative}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+.dark :focus-visible,.nav :focus-visible,.menu :focus-visible,.chapter :focus-visible,.hero :focus-visible{outline-color:var(--cream)}
+.gform input:focus-visible,.gform button:focus-visible{outline-color:var(--cream)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--cream);padding:.8rem 1.2rem;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+.skip:focus{left:0}
 .pad{padding:clamp(5rem,13vh,11rem) var(--pad)} .wrap{max-width:1440px;margin:0 auto}
 .dark{background:var(--ink);color:var(--cream)} .dark .ovl{color:var(--cream-soft)} .dark p{color:var(--cream-soft)}
 .rline{display:block;overflow:hidden} .rline>span{display:block}
@@ -39,13 +60,15 @@ video.media-img{width:100%;height:100%;object-fit:cover}
 
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
-padding:1.15rem var(--pad);mix-blend-mode:difference;color:#fff}
-.brand{font-family:var(--serif);font-size:1.15rem} .brand b{font-weight:400}
+padding:1.15rem var(--pad);color:#fff;text-shadow:0 1px 14px rgba(11,17,30,.55)}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+background:linear-gradient(180deg,rgba(11,17,30,.62) 0%,rgba(11,17,30,.34) 55%,transparent 100%)}
+.brand{font-family:var(--serif);font-size:1.15rem;display:inline-flex;align-items:center;min-height:44px} .brand b{font-weight:400}
 .nav-links{display:flex;gap:clamp(1rem,2.2vw,2rem);align-items:center}
 .nav-links a{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;opacity:.9}
 .nav-links a:hover{opacity:.5}
 .nav-cta{border:1px solid rgba(255,255,255,.5);padding:.5rem 1.05rem;border-radius:100px}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:0;cursor:pointer;min-width:44px;min-height:44px;margin-right:-.5rem}
 .burger span{width:26px;height:1.5px;background:#fff}
 .menu{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;
 justify-content:center;padding:var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);pointer-events:none}
@@ -100,6 +123,15 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 .sw-c-idx{font-size:.66rem;letter-spacing:.2em;color:var(--cream-soft)}
 .sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:rgba(243,243,236,.82)}
 
+.region-line{max-width:70ch;color:var(--stone);margin-bottom:clamp(2rem,5vh,3rem)}
+.sw-lede{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.4;color:var(--cream)}
+.sw-full{margin-top:1.1rem;max-height:38vh;overflow-y:auto;padding-right:.8rem;scrollbar-width:thin}
+.sw-full p{font-size:.92rem;line-height:1.7;color:rgba(243,243,236,.78);max-width:62ch}
+.sw-full p+p{margin-top:.7rem}
+.gform .consent{display:flex;align-items:flex-start;gap:.65rem;flex:1 0 100%;margin-top:1rem;padding:.5rem 0;font-size:.78rem;line-height:1.6;color:var(--cream-soft);cursor:pointer;max-width:52ch}
+.gform .consent>span{flex:1 1 auto;min-width:0}
+.gform .consent input[type=checkbox]{flex:0 0 auto;width:18px;height:18px;min-width:0;margin:.15rem 0 0;accent-color:var(--cream);cursor:pointer}
+.consent a{text-decoration:underline}
 /* numbers */
 .toggle{display:inline-grid;grid-template-columns:1fr 1fr;position:relative;border:1px solid var(--line-d);border-radius:100px;padding:4px;background:rgba(243,243,236,.04)}
 .toggle button{position:relative;z-index:1;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.7rem;
@@ -134,7 +166,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .srow-body p{color:var(--stone);max-width:40ch}
 .srow-foot{display:flex;gap:1.6rem;align-items:center;margin-top:1.5rem;flex-wrap:wrap}
 .srow-fee{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
-.srow-link{display:inline-flex;gap:.5rem;align-items:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:.3rem;transition:gap .4s var(--ease)}
+.srow-link{display:inline-flex;gap:.5rem;align-items:center;min-height:44px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:.3rem;transition:gap .4s var(--ease)}
 .srow-link:hover{gap:1rem}
 /* process — full-bleed split: image + steps */
 .process{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}
@@ -155,7 +187,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .gform{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;max-width:480px}
 .gform input{flex:1;min-width:200px;background:transparent;border:0;border-bottom:1px solid var(--line-d);color:var(--cream);padding:.85rem .2rem;font-family:var(--sans);font-size:1rem}
 .gform input::placeholder{color:var(--cream-soft)} .gform input:focus{outline:none;border-color:var(--cream)}
-.gbtn{background:var(--cream);color:var(--ink);border:0;border-radius:100px;padding:.9rem 1.7rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
+.gbtn{background:var(--cream);color:var(--ink);border:0;border-radius:100px;padding:.9rem 1.7rem;min-height:44px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
 .micro{font-size:.76rem;color:var(--cream-soft);margin-top:1rem}
 .contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:start}
 .contact h2{margin-bottom:1.2rem} .contact .lead{color:var(--stone);max-width:32ch}
@@ -263,75 +295,74 @@ a.art:hover{background:rgba(23,35,59,.035);border-color:rgba(23,35,59,.3)}
 }
 </style></head><body>
 <div id="badge">Staging v2 &middot; ERA flow</div>
+<a class="skip" href="#top">Skip to content</a>
 <nav class="nav"><a class="brand" href="/v2/"><b>Spanish</b> AfterLife</a>
-<div class="nav-links"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a class="nav-cta" href="/v2/#contact">Start Here</a></div>
+<div class="nav-links"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a class="nav-cta" href="/v2/#contact">Start Here</a></div>
 <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="menu" id="menu"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="/v2/#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div>
+<div class="menu" id="menu"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="/v2/#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div>
 </div>
 
 <header class="subhero" id="top">
-  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('/media/altaona/altaona-aerial.webp')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('/media/oliva-5.jpg')"></div></div>
   <div class="subhero-in">
-    <span class="ovl">Available Properties</span>
-    <h1><span class="rline"><span>Homes we can</span></span><span class="rline"><span>get you into.</span></span></h1>
-    <p class="lead">A curated look at the developments and homes we work with directly &mdash; from Spain's Valencia coast down into the Region of Murcia. We represent you through the whole purchase, and can make a direct introduction to the developers below.</p>
+    <span class="ovl">Building My Life in Spain</span>
+    <h1><span class="rline"><span>Notes from the other side</span></span><span class="rline"><span>of the decision.</span></span></h1>
+    <p class="lead">The guides, the money, the neighbourhoods, and the small true stories of building a life in the Valencia Community &mdash; written from here, not from abroad. For the people who have decided not to wait.</p>
   </div>
 </header>
 
-<section class="pad dark" id="altaona"><div class="wrap">
-  <div class="feat">
-    <div class="reveal"><span class="ovl">Featured Development Partner</span>
-      <h2 style="margin:1.2rem 0 1.2rem">Altaona Resort, Murcia</h2>
-      <p style="color:rgba(243,243,236,.82)">Spain's first longevity-focused resort development. New-build villas, an 18-hole golf course, world-class wellness facilities, and the upcoming WOW Longevity Hotel &mdash; built around one idea: living better, for longer. A development we work with directly and can introduce you to.</p>
-    </div>
-    <div class="feat-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/altaona/altaona-resort.webp')"></div></div>
+<section class="pad" id="founder"><div class="wrap">
+  <div class="head"><span class="ovl">From the founder</span><h2 class="reveal">Why this exists, and what you'll find in it.</h2></div>
+  <div class="founder reveal" style="max-width:66ch;color:var(--stone)">
+    <p>Almost everything written about moving to Spain is written by someone who hasn't. It is researched, aggregated, and translated from a press release &mdash; accurate enough, and useless exactly when you need it, which is at four in the afternoon when the consulate portal won't load and nobody can tell you why.</p>
+    <p>This is the other thing. I made the move myself &mdash; years on a tourist visa, then the Digital Nomad Visa, the NIE, the paperwork that never quite matches the checklist, and Spanish residency in 2025. I came to Spain by way of Mexico, where I'd lived since 2017. I wrote down what actually happened, where the official version and the real one diverged, and what I would tell a friend at my own kitchen table.</p>
+    <p>So that is what this is. Relocation guides that match reality. Neighbourhood profiles written by someone who has eaten there on a wet Tuesday in February. The money explained without the hand-waving. And the unglamorous true bits nobody warns you about &mdash; because those are the ones that matter.</p>
+    <p>No paradise. No promises. Just the move, honestly, from someone already on the far side of it.</p>
+    <div class="sig">LJ Koch &middot; Founder &middot; Spanish AfterLife &middot; Oliva Nova</div>
   </div>
-
-  <div class="reveal" style="margin-top:clamp(3rem,8vh,5.5rem);max-width:62ch">
-    <span class="ovl">Radiant lifestyle in Murcia, southern Spain</span>
-    <h3 style="margin:1.1rem 0 1.1rem">The closest resort to Murcia centre &mdash; designed for wellbeing and longer living.</h3>
-    <p style="color:rgba(243,243,236,.8)">Altaona is built around three pillars that put health and lifestyle at the centre of everyday life: exclusive residential homes, the WOW Longevity Hotel, and a resort core of an 18-hole golf course, sports facilities and a world-class wellness centre &mdash; so movement, nature and recovery are part of daily life. Whether you want a home, an investment, or simply to live better for longer, Altaona is built for people who value quality of life.</p>
-  </div>
-  <div class="pillars reveal"><div class="pillar"><h4>Residential homes</h4><p>Four villa collections, from two-bed Oasis homes to frontline-golf Fairway villas.</p></div><div class="pillar"><h4>Longevity &amp; wellness</h4><p>World-class wellness centre and medical spa, built around preventative health.</p></div><div class="pillar"><h4>Sport &amp; golf</h4><p>18-hole golf course, tennis and paddle academy, trails through open country.</p></div><div class="pillar"><h4>The location</h4><p>~20 min to Murcia city, ~30 min to Corvera airport, Mar Menor beaches nearby.</p></div></div>
-  <div class="gal"><figure class="img-reveal"><img src="/media/altaona/altaona-resort.webp" alt="18-hole Golf Resort" loading="lazy"><figcaption>18-hole Golf Resort</figcaption></figure><figure class="img-reveal"><img src="/media/altaona/altaona-las-vistas.webp" alt="New-Build Villas with Pool" loading="lazy"><figcaption>New-Build Villas with Pool</figcaption></figure><figure class="img-reveal"><img src="/media/altaona/altaona-aerial.webp" alt="Aerial View" loading="lazy"><figcaption>Aerial View</figcaption></figure><figure class="img-reveal"><img src="/media/altaona/altaona-interior.webp" alt="Contemporary Interiors" loading="lazy"><figcaption>Contemporary Interiors</figcaption></figure><figure class="img-reveal"><img src="/media/altaona/altaona-golf-sunset.webp" alt="Golf at Sunset" loading="lazy"><figcaption>Golf at Sunset</figcaption></figure></div>
-  <div class="reveal" style="margin-top:clamp(2.5rem,6vh,4rem)"><span class="ovl">European Property Awards 2025</span><div class="awards"><span class="award">&#127942; Best Leisure Development in Spain</span><span class="award">&#127942; Best Marketing Development Strategy in Spain</span><span class="award">&#127942; Best Real Estate Website in Spain</span></div></div>
-</div></section>
-
-<section class="pad" id="pricelist"><div class="wrap">
-  <div class="head"><span class="ovl">The Altaona Price List</span><h2 class="reveal">Four villa collections, one resort</h2></div>
-  <p class="pnote reveal">Every home is a new-build within the gated Altaona golf &amp; wellness resort, with a private pool, garden, aerothermal heating and air-conditioning, underfloor heating and an Italian kitchen (Energy Rating A). Figures are &ldquo;from&rdquo; starting prices &mdash; <strong>updated live and subject to availability</strong>. Ask us for the current plot list, floor plans and a branded brochure on any model below.</p>
-  <div class="coll"><div class="coll-head"><div class="reveal"><h3>Oasis Altaona</h3><span class="coll-meta">From &euro;443,500 &middot; 2&ndash;4 bed &middot; delivery Q2&ndash;Q3 2026</span><p class="coll-desc">Light-filled contemporary villas in the heart of the resort &mdash; bright two- to four-bedroom homes, each with a private pool, terrace and premium finishes. The accessible entry into resort life.</p></div><div class="coll-media img-reveal"><img src="/media/altaona/altaona-oasis.webp" alt="Oasis Altaona, Altaona Golf &amp; Wellness Resort, Murcia" loading="lazy"></div></div><div class="tscroll reveal"><table class="ptable ralign"><thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th>From</th></tr></thead><tbody><tr><td>Arin</td><td>2 / 2</td><td>143.6</td><td>470&ndash;498</td><td>&euro;443,500</td></tr><tr><td>Arin L</td><td>2&ndash;4 / 2&ndash;3</td><td>167.6&ndash;174</td><td>583&ndash;596</td><td>&euro;614,000</td></tr><tr><td>Nara</td><td>3 / 3</td><td>204</td><td>525</td><td>&euro;646,000</td></tr><tr><td>Nara XL</td><td>3 / 3</td><td>213.3</td><td>551</td><td>&euro;689,000</td></tr><tr><td>Arava</td><td>4 / 3</td><td>231.1</td><td>561</td><td>&euro;744,000</td></tr></tbody></table></div></div><div class="coll"><div class="coll-head"><div class="reveal"><h3>Las Vistas Altaona</h3><span class="coll-meta">From &euro;513,500 &middot; 3 bed &middot; final Phase II release</span><p class="coll-desc">Elevated plots on the final Phase II release, looking out over the resort and the open country beyond.</p></div><div class="coll-media img-reveal"><img src="/media/altaona/altaona-las-vistas.webp" alt="Las Vistas Altaona, Altaona Golf &amp; Wellness Resort, Murcia" loading="lazy"></div></div><div class="tscroll reveal"><table class="ptable ralign"><thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th>From</th></tr></thead><tbody><tr><td>Serenity</td><td>3 / 2</td><td>211.5</td><td>359&ndash;432</td><td>&euro;513,500</td></tr><tr><td>Balance</td><td>3 / 2</td><td>222.1</td><td>434&ndash;454</td><td>&euro;544,000</td></tr></tbody></table></div></div><div class="coll"><div class="coll-head"><div class="reveal"><h3>Villas Santolina</h3><span class="coll-meta">&euro;1,052,000&ndash;&euro;1,692,000 &middot; 3&ndash;6 bed &middot; bespoke</span><p class="coll-desc">Larger plots and bespoke architecture for buyers who want the house designed around them rather than chosen from a catalogue.</p></div><div class="coll-media img-reveal"><img src="/media/altaona/altaona-santolina.webp" alt="Villas Santolina, Altaona Golf &amp; Wellness Resort, Murcia" loading="lazy"></div></div><div class="tscroll reveal"><table class="ptable ralign"><thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th>From</th></tr></thead><tbody><tr><td>Campo</td><td>4 / 4</td><td>246</td><td>1,000</td><td>from &euro;1,052,000</td></tr><tr><td>Horizon</td><td>3 / 3</td><td>294</td><td>1,000</td><td>on request</td></tr><tr><td>Aqua</td><td>4 / 4</td><td>305</td><td>1,000&ndash;1,115</td><td>on request</td></tr><tr><td>Bespoke</td><td>3&ndash;6 / 4&ndash;5</td><td>up to 500</td><td>1,000+</td><td>to &euro;1,692,000</td></tr></tbody></table></div></div><div class="coll"><div class="coll-head"><div class="reveal"><h3>Villas Fairway</h3><span class="coll-meta">From &euro;816,000 &middot; 3&ndash;5 bed &middot; frontline golf</span><p class="coll-desc">The resort's signature collection: larger, architect-led villas on the most exclusive frontline-golf plots, up to 770 m&sup2;.</p></div><div class="coll-media img-reveal"><img src="/media/altaona/altaona-fairway.webp" alt="Villas Fairway, Altaona Golf &amp; Wellness Resort, Murcia" loading="lazy"></div></div><div class="tscroll reveal"><table class="ptable ralign"><thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th>From</th></tr></thead><tbody><tr><td>Breeze</td><td>3 / 3</td><td>200</td><td>793</td><td>&euro;816,000</td></tr><tr><td>Swing</td><td>4 / 4</td><td>300</td><td>1,000</td><td>&euro;1,007,000</td></tr><tr><td>Drive</td><td>4 / 4</td><td>435</td><td>1,000</td><td>&euro;1,103,000</td></tr><tr><td>Eagle</td><td>4 / 4</td><td>575</td><td>1,900</td><td>&euro;1,690,500</td></tr><tr><td>Woods</td><td>4 / 4</td><td>645</td><td>2,100</td><td>&euro;1,991,000</td></tr><tr><td>Birdie</td><td>5 / 5</td><td>770</td><td>2,500</td><td>&euro;3,625,000</td></tr></tbody></table></div></div><div class="coll"><div class="reveal" style="max-width:62ch"><h3>Villas Retama</h3><span class="coll-meta">Under construction &middot; 3&ndash;4 bed</span><p class="coll-desc">The newest Altaona collection, currently under construction &mdash; three- and four-bedroom villas with private pools on plots of 400&ndash;671 m&sup2;. Prices on release; ask us to be told first.</p></div><div class="tscroll reveal"><table class="ptable ralign"><thead><tr><th>Villa</th><th>Beds / Baths</th><th>Built m&sup2;</th><th>Plot m&sup2;</th><th>From</th></tr></thead><tbody><tr><td>Retama</td><td>3&ndash;4 / 3</td><td>151&ndash;223</td><td>400&ndash;671</td><td>on release</td></tr></tbody></table></div></div>
-</div></section>
-
-<section class="pad dark" id="wow"><div class="wrap">
-  <div class="wow">
-    <div class="wow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/altaona/altaona-wow-hotel.webp')"></div></div>
-    <div class="reveal"><span class="ovl">Coming Soon &mdash; Investment Opportunity</span>
-      <h2 style="margin:1.2rem 0 1.2rem">WOW Longevity Hotel</h2>
-      <p style="color:rgba(243,243,236,.82)">Europe's first real estate project built around the science of longevity. Hotel suites from 54m&sup2; to 235m&sup2; with a fixed 7% net annual return under a long-term lease, plus 2% during construction. Investment backed by Altaona's award-winning resort infrastructure.</p>
-      <div class="stats">
-        <div class="stat"><b>7%</b><span>Fixed net annual rent</span></div>
-        <div class="stat"><b>&euro;270K</b><span>Studio Suite entry &mdash; from</span></div>
-      </div>
-      <p style="margin-top:2rem"><a class="srow-link" href="/v2/#contact">Enquire via Spanish AfterLife <span aria-hidden="true">&rarr;</span></a></p>
-    </div>
-  </div>
-  <p class="pnote reveal" style="margin-top:clamp(3rem,7vh,5rem)"><strong>Developer partner.</strong> Spanish AfterLife works directly with Taolis &mdash; The Art of Living in Spain on the Altaona development. We handle immigration concierge for clients purchasing here and can make a direct introduction to the Taolis team. If Altaona interests you, mention it when you book your strategy call.</p>
 </div></section>
 
 <section class="chapter">
-  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('/media/altaona/altaona-golf-sunset.webp')"></div></div>
-  <h2><span class="rline"><span>Ask us for the</span></span><span class="rline"><span>full price list.</span></span></h2>
+  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-3.jpg')"></div></div>
+  <h2><span class="rline"><span>Written from here,</span></span><span class="rline"><span>not from abroad.</span></span></h2>
 </section>
 
-<section class="pad"><div class="wrap" style="text-align:left">
-  <div class="head"><span class="ovl">Next step</span><h2 class="reveal">Request the full price list</h2></div>
-  <p class="reveal" style="color:var(--stone)">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you &mdash; honestly.</p>
+<section class="pad dark" id="inside"><div class="wrap">
+  <div class="head"><span class="ovl">What's inside</span><h2 class="reveal">Six things worth getting right.</h2></div>
+  <div class="cats reveal"><div class="cat"><span class="cat-n">01</span><h3>Relocation Guides</h3><p>The process, step by step, in the order it actually happens &mdash; from the first document request to the residency card in your hand.</p></div><div class="cat"><span class="cat-n">02</span><h3>Early Retirement</h3><p>The arithmetic of going sooner. What your equity buys here, what it costs to stay, and why the timing question usually answers itself.</p></div><div class="cat"><span class="cat-n">03</span><h3>Visa &amp; Money</h3><p>The Non-Lucrative Visa, Beckham Law, tax residency, and the unromantic business of moving money across a border without losing your mind.</p></div><div class="cat"><span class="cat-n">04</span><h3>Neighbourhood Profiles</h3><p>Valencia city, J&aacute;vea, D&eacute;nia, Oliva, Cullera, Ontinyent &mdash; what each is really like to live in, off-season, when the visitors have gone home.</p></div><div class="cat"><span class="cat-n">05</span><h3>The Life</h3><p>Food, padel, golf, bodegas, the long lunch, the rhythm of a Spanish week &mdash; the part you came for, once the paperwork is behind you.</p></div><div class="cat"><span class="cat-n">06</span><h3>Personal Stories</h3><p>The things that went sideways, the things that went right, and the small daily proof that the decision was the correct one.</p></div></div>
+</div></section>
+
+<section class="pad" id="first"><div class="wrap">
+  <div class="head"><span class="ovl">First issues</span><h2 class="reveal">What's coming first.</h2></div>
+  <p class="reveal" style="color:var(--stone);max-width:62ch">The inaugural lineup is in production now. Each piece is written from direct experience, not assembled from elsewhere. Join the list below and we'll send you the first one the day it goes up.</p>
+  <div class="arts"><a class="art" href="https://spanishafterlife.com/building-my-life-in-spain/non-lucrative-vs-digital-nomad-visa-spain"><div class="art-meta"><span>Visa &amp; Money</span><span>Jul 2026</span></div><h3>Non-Lucrative vs Digital Nomad Visa: which Spain route?</h3><p>The two routes onto Spanish residency, how they differ, and who each one really suits &mdash; the shape of the choice before the numbers.</p><span class="art-more">Read <span aria-hidden="true">&rarr;</span></span></a><div class="art"><div class="art-meta"><span>Early Retirement</span><span>In production</span></div><h3>The maths that made waiting feel reckless</h3><p>What a Toronto or Bay Area sale converts into on the Valencia coast &mdash; and what every extra year at home quietly costs you.</p></div><div class="art"><div class="art-meta"><span>Neighbourhood Profiles</span><span>In production</span></div><h3>J&aacute;vea vs. D&eacute;nia: choosing your stretch of coast</h3><p>Two towns, twenty minutes apart, completely different lives. Who each one suits, and what you give up either way.</p></div><div class="art"><div class="art-meta"><span>Visa &amp; Money</span><span>In production</span></div><h3>Beckham Law and the six-month window</h3><p>The flat-rate tax regime worth real money &mdash; and the deadline that closes it for good if you blink.</p></div><div class="art"><div class="art-meta"><span>Relocation Guides</span><span>In production</span></div><h3>Opening a Spanish bank account: the honest version</h3><p>What to bring, which bank, how many visits it really takes, and the order that keeps the whole thing from stalling.</p></div><div class="art"><div class="art-meta"><span>Personal Stories</span><span>In production</span></div><h3>Two years on the coast, by way of Mexico</h3><p>Tourist-visa limbo, a seasonal apartment in Oliva Nova, and what living here off-season teaches you that a holiday never will.</p></div></div>
+</div></section>
+
+<section class="guide pad dark" id="list"><div class="wrap">
+  <div class="guide-body">
+    <span class="ovl">The list</span>
+    <h2 style="margin:1.1rem 0 1rem">Be the first to read them.</h2>
+    <p>One email when something worth your time goes up. The guides, the profiles, the honest bits. Nothing else, and nothing sold.</p>
+    <form class="gform" action="/api/subscribe" method="post" style="margin-top:1.8rem">
+      <input type="email" name="EMAIL" placeholder="Your email" required aria-label="Email address">
+      <button class="gbtn" type="submit">Keep me posted</button>
+      <label class="consent"><input type="checkbox" name="consent" required><span>Email me when something worth my time goes up. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
+      <input type="hidden" name="intent" value="newsletter">
+      <input type="hidden" name="source" value="v2:journal-list">
+    </form>
+    <p class="pnote" style="margin-top:1rem">No spam. Unsubscribe whenever. We never share your address.</p>
+  </div>
+</div></section>
+
+<section class="pad"><div class="wrap">
+  <div class="head"><span class="ovl">Already decided?</span><h2 class="reveal">Then let's talk about the move.</h2></div>
+  <p class="reveal" style="color:var(--stone);max-width:58ch">If you've read enough to know Spain is the next chapter, the next step is a free 45-minute call &mdash; eligibility, finances, property, timeline. No pitch, just clarity.</p>
   <p class="reveal" style="margin-top:1.6rem"><a class="srow-link" href="/v2/#contact">Book your free call <span aria-hidden="true">&rarr;</span></a></p>
 </div></section>
 
 <footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
-<div class="foot-nav"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="/v2/#contact">Start Here</a></div></div>
+<div class="foot-nav"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="/v2/#contact">Start Here</a></div></div>
 <div class="foot-bot"><span>&copy; 2025 LJ Koch Group Inc. &middot; Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>
 <script>
 const burger=document.querySelector('.burger'),menu=document.getElementById('menu');

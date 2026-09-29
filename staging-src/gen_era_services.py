@@ -17,6 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import gen_era_v2 as V2
 import gen_era_pages as P
+import era_seo as SEO
 
 ROOT = os.path.join(os.path.dirname(HERE), "staging", "v2")
 CONTENT = os.path.join(HERE, "content")
@@ -110,9 +111,9 @@ SVC_CSS = """
 """
 
 
-def shell(title, desc, body):
+def shell(slug, body):
     """same as gen_era_pages.shell but with the service CSS appended"""
-    return P.shell(title, desc, body).replace("</style>", SVC_CSS + "</style>")
+    return P.shell(slug, body).replace("</style>", SVC_CSS + "</style>")
 
 
 def esc(s):
@@ -246,10 +247,15 @@ def build(slug):
   <p class="svc-p reveal">{lead}</p>
   <p class="reveal" style="margin-top:1.6rem"><a class="srow-link" href="/v2/#contact">Book your free call <span aria-hidden="true">&rarr;</span></a></p>
   {note}
+</div></section>
+
+<section class="pad dark"><div class="wrap">
+  <div class="head"><span class="ovl">The guide</span><h2 class="reveal">Your complete guide to retiring in Spain</h2></div>
+  <p class="svc-p reveal" style="color:rgba(243,243,236,.82)">The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
+  {P.guide_form("v2:" + slug)}
 </div></section>''')
 
-    return shell(f'{esc(d["eyebrow"] or slug)} &mdash; STAGING v2 (ERA flow)',
-                 esc(d["meta"])[:300], "\n".join(body))
+    return shell(slug, "\n".join(body))
 
 
 if __name__ == "__main__":

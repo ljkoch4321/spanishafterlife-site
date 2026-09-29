@@ -144,6 +144,46 @@ prices happened to live somewhere else on the page too.
 - `.ptable` only right-aligns its last column with the `ralign` modifier — add it
   when that column is money (From/Fee/Price), not for a Notes column.
 
+## Production-parity layer (audit follow-up)
+
+An audit against the live site found the prototype was a *design* prototype, not a
+functional one. Fixed:
+
+- **`staging-src/era_seo.py` is the single switch.** `STAGING = True` -> `noindex` +
+  the badge, pages under `/v2/`. Set it `False` for the production build: pages
+  index, badge disappears, paths become the production ones.
+- **Titles/descriptions/og images are PRODUCTION'S, verbatim**, read from
+  `staging-src/content/prod_meta.json` (extracted from `origin/main`). Never
+  hand-write them — invented snippets would change what Google shows. Canonicals
+  always point at the production URL.
+- **Slugs match production**: `/available-properties` and `/building-my-life-in-spain`
+  (NOT /properties, /journal). No indexed URL needs a 301.
+- **`staging/sitemap.xml` is an exact 15-URL match** for the live sitemap: the 7
+  rebuilt pages plus the 8 that keep their current design.
+- **`staging/404.html`** — unknown paths used to return HTTP 200 serving the V1
+  prototype, which hid broken links. Now a real 404.
+- Restored from production: the 12 pillar overviews (`content/pillars.json`, shown in
+  the switcher panel rather than a modal) and the Alicante/Murcia region line.
+- a11y: `focus-visible` rings (there were none), a skip link, 44px touch targets,
+  and the nav's `mix-blend-mode:difference` replaced with a scrim (it washed out
+  over bright hero imagery).
+
+### ⚠️ The signup endpoint is NOT live on the preview
+
+Every form now carries production's real markup — `action="/api/subscribe"`, honeypot
+`website`, `consent`, `intent`, `source` — and the contact form posts to the same
+Formspree endpoint as production. **But `/api/subscribe` returns 404 on the preview.**
+
+Cloudflare Pages resolves `functions/` from the **working directory**, not from the
+assets directory, which is why production keeps it at the repo root while deploying
+`_site`. Putting it in `staging/functions/` does nothing.
+
+The function is parked at **`staging-src/functions/api/subscribe.js`**. To make signups
+work, move it to a repo-root `functions/api/subscribe.js` and redeploy — that deploy
+stands up a live MailerLite capture endpoint, so it needs the owner's go-ahead, and
+`MAILERLITE_API_KEY` / `ML_GROUP_GUIDE` / `ML_GROUP_NEWSLETTER` must be set on the
+Pages project for the Preview environment too, not just Production.
+
 ## Live preview (noindex, non-production)
 
 - **v2:** https://era-staging.spanish-afterlife.pages.dev/v2/

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""staging/v2/properties/ and staging/v2/journal/ — the two cross-page links from the
+"""staging/v2/available-properties/ and staging/v2/building-my-life-in-spain/ — the two cross-page links from the
 v2 nav, rebuilt in the ERA v2 design language.
 
 Content is ported verbatim from the production pages (available-properties.html and
@@ -9,21 +9,22 @@ plot sizes, yields and dates must not be altered.
 Reuses the CSS/JS from gen_era_v2.py so the three pages stay visually identical;
 run that generator's module import, not a copy of its stylesheet.
 """
-import os, sys
+import os, sys, io
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gen_era_v2 as V2
+import era_seo as SEO
 
 ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "staging", "v2")
 
 # ---------------------------------------------------------------- shared chrome
 NAV = """<nav class="nav"><a class="brand" href="/v2/"><b>Spanish</b> AfterLife</a>
-<div class="nav-links"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a class="nav-cta" href="/v2/#contact">Start Here</a></div>
+<div class="nav-links"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a class="nav-cta" href="/v2/#contact">Start Here</a></div>
 <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="menu" id="menu"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="/v2/#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div>
+<div class="menu" id="menu"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="/v2/#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div>
 </div>"""
 
 FOOT = """<footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
-<div class="foot-nav"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="/v2/#contact">Start Here</a></div></div>
+<div class="foot-nav"><a href="/v2/#life">The Life</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/#places">Where</a><a href="/v2/#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="/v2/#contact">Start Here</a></div></div>
 <div class="foot-bot"><span>&copy; 2025 LJ Koch Group Inc. &middot; Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>"""
 
 # page-specific CSS layered on top of the shared v2 stylesheet
@@ -113,20 +114,33 @@ document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(e
 """
 
 
-def shell(title, desc, body, favicon_note=""):
+def shell(slug, body, jsonld=False):
     return f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><script>document.documentElement.className='js';</script>
-<title>{title}</title><meta name="description" content="{desc}">
+<script>document.documentElement.className='js';</script>
+{SEO.head(slug, jsonld=jsonld)}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
 <style>{V2.CSS}{EXTRA}</style></head><body>
-<div id="badge">Staging v2 &middot; ERA flow</div>
+{SEO.badge()}
+<a class="skip" href="#top">Skip to content</a>
 {NAV}
 {body}
 {FOOT}
 <script>{JS}</script>
 </body></html>"""
+
+
+def guide_form(source):
+    """the same /api/subscribe signup production runs on every page"""
+    return f'''<form class="gform" action="/api/subscribe" method="post">
+      <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
+      <button class="gbtn" type="submit">Send me the guide</button>
+      <label class="consent"><input type="checkbox" name="consent" required><span>Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
+      <input type="hidden" name="intent" value="guide">
+      <input type="hidden" name="source" value="{source}">
+    </form>'''
 
 
 def rlines(text):
@@ -270,10 +284,14 @@ def build_properties():
   <p class="reveal" style="color:var(--stone)">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you &mdash; honestly.</p>
   <p class="reveal" style="margin-top:1.6rem"><a class="srow-link" href="/v2/#contact">Book your free call <span aria-hidden="true">&rarr;</span></a></p>
 </div></section>
+
+<section class="pad dark"><div class="wrap">
+  <div class="head"><span class="ovl">The guide</span><h2 class="reveal">The honest cost of moving to Spain</h2></div>
+  <p class="svc-p reveal" style="color:rgba(243,243,236,.82)">The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p>
+  {guide_form("v2:available-properties")}
+</div></section>
 """
-    return shell("Available Properties &mdash; STAGING v2 (ERA flow)",
-                 "A curated look at the developments and homes Spanish AfterLife works with directly, from the Valencia coast into the Region of Murcia.",
-                 body)
+    return shell("available-properties", body)
 
 
 # ============================================================ JOURNAL
@@ -355,9 +373,13 @@ def build_journal():
     <span class="ovl">The list</span>
     <h2 style="margin:1.1rem 0 1rem">Be the first to read them.</h2>
     <p>One email when something worth your time goes up. The guides, the profiles, the honest bits. Nothing else, and nothing sold.</p>
-    <form class="gform" id="gform" novalidate style="margin-top:1.8rem">
-      <input type="email" name="EMAIL" placeholder="Your email" required>
+    <form class="gform" action="/api/subscribe" method="post" style="margin-top:1.8rem">
+      <input type="email" name="EMAIL" placeholder="Your email" required aria-label="Email address">
       <button class="gbtn" type="submit">Keep me posted</button>
+      <label class="consent"><input type="checkbox" name="consent" required><span>Email me when something worth my time goes up. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
+      <input type="hidden" name="intent" value="newsletter">
+      <input type="hidden" name="source" value="v2:journal-list">
     </form>
     <p class="pnote" style="margin-top:1rem">No spam. Unsubscribe whenever. We never share your address.</p>
   </div>
@@ -369,20 +391,49 @@ def build_journal():
   <p class="reveal" style="margin-top:1.6rem"><a class="srow-link" href="/v2/#contact">Book your free call <span aria-hidden="true">&rarr;</span></a></p>
 </div></section>
 """
-    html = shell("Building My Life in Spain &mdash; STAGING v2 (ERA flow)",
-                 "The guides, the money, the neighbourhoods and the true stories of building a life in the Valencia Community.",
-                 body)
+    html = shell("building-my-life-in-spain", body)
     # the journal page has a signup form; stub it like the v2 index does
-    html = html.replace("<script>" + JS,
-        "<script>" + JS + """
-const gf=document.getElementById('gform');
-if(gf)gf.addEventListener('submit',e=>{e.preventDefault();/* TODO: Mailchimp list-manage subscribe endpoint */console.log('[STAGING v2] journal signup',{email:e.target.EMAIL.value});alert('STAGING — logged to console.');});
-""")
     return html
 
 
+def build_404():
+    body = f"""
+<header class="subhero" id="top">
+  <div class="media"><div class="media-img" style="background-image:url('/media/oliva-3.jpg')"></div></div>
+  <div class="subhero-in">
+    <span class="ovl">404</span>
+    <h1>{rlines('That page|is not here.')}</h1>
+    <p class="lead">The link may be old, or the address slightly off. Everything below is where people usually mean to go.</p>
+  </div>
+</header>
+
+<section class="pad"><div class="wrap">
+  <div class="head"><span class="ovl">Try one of these</span><h2 class="reveal">Where you were probably headed</h2></div>
+  <div class="card-grid-404">
+    <a class="svc-card404" href="{SEO.href('home')}"><h4>The AfterLife</h4><p>What the move actually looks like, and what your equity buys here.</p></a>
+    <a class="svc-card404" href="{SEO.href('immigration')}"><h4>Immigration Concierge</h4><p>Eligibility through arrival, handled end to end.</p></a>
+    <a class="svc-card404" href="{SEO.href('real-estate')}"><h4>Real Estate</h4><p>Full buyer's agency. We represent you, never the seller.</p></a>
+    <a class="svc-card404" href="{SEO.href('available-properties')}"><h4>Available Properties</h4><p>The developments and homes we work with directly.</p></a>
+    <a class="svc-card404" href="{SEO.href('building-my-life-in-spain')}"><h4>The Journal</h4><p>Guides, neighbourhoods and the honest bits.</p></a>
+    <a class="svc-card404" href="{SEO.href('home')}#contact"><h4>Start Here</h4><p>A free 45-minute call. No pitch, just clarity.</p></a>
+  </div>
+</div></section>
+"""
+    return shell("404", body).replace("</style>",
+      ".card-grid-404{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(2rem,5vh,3rem)}"
+      ".svc-card404{display:block;border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.8rem);transition:background .5s var(--ease),border-color .5s var(--ease)}"
+      ".svc-card404:hover{background:rgba(23,35,59,.035);border-color:rgba(23,35,59,.3)}"
+      ".svc-card404 h4{font-family:var(--serif);font-size:1.35rem;font-weight:360;margin-bottom:.5rem}"
+      ".svc-card404 p{font-size:.94rem;color:var(--stone)}</style>")
+
+
 if __name__ == "__main__":
-    for sub, html in (("properties", build_properties()), ("journal", build_journal())):
+    root = os.path.dirname(ROOT)
+    io.open(os.path.join(root, "404.html"), "w", encoding="utf-8").write(build_404())
+    print("wrote 404.html")
+    io.open(os.path.join(root, "sitemap.xml"), "w", encoding="utf-8").write(SEO.sitemap())
+    print("wrote sitemap.xml (%d urls)" % SEO.sitemap().count("<loc>"))
+    for sub, html in (("available-properties", build_properties()), ("building-my-life-in-spain", build_journal())):
         d = os.path.join(ROOT, sub)
         os.makedirs(d, exist_ok=True)
         p = os.path.join(d, "index.html")

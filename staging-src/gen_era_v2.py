@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 # staging/v2/index.html — ERA-flow v2: image-led, sparse text, cinematic scroll.
-import os, json
+import os, json, io as _io, sys as _sys
 import os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import era_seo as SEO
 OUT=_os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),"staging","v2","index.html")
+PILLAR_FULL=json.load(_io.open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),"content","pillars.json"),encoding="utf-8"))
+REGION_LINE=_io.open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),"content","region.txt"),encoding="utf-8").read().strip()
 U="https://images.unsplash.com/"
 def uimg(id,w=1600,q=80): return f"{U}{id}?w={w}&q={q}"
 
@@ -62,7 +66,7 @@ STEPS=[("01","Strategy Call","Eligibility, structure, timeline. Free."),
 # Cross-page links. These pages are NOT part of the redesign and do not exist on the
 # era-staging preview, so they point at the live site to keep the prototype clickable.
 # AT PRODUCTION BUILD: set SITE="" so they resolve relative (/available-properties).
-SITE=""   # in-prototype pages live at /v2/properties/ and /v2/journal/
+SITE=""   # in-prototype pages live at /v2/available-properties/ and /v2/building-my-life-in-spain/
 LOCS=["Select country / province / state","Ontario","British Columbia","Alberta","Quebec","Other Canadian province","California","New York","Washington","Illinois","Texas","Florida","Other US state"]
 
 def bg(img,cls="",par="0.06"):
@@ -100,7 +104,8 @@ PILLAR_IMG=[uimg(x,1400) for x in PILLAR_IDS]
 PILLAR_IMG[0]="/media/home-3.jpg"; PILLAR_IMG[5]="/media/oliva-4.jpg"
 pillar_panels="\n".join(
  f'<div class="sw-panel" data-i="{i}"><div class="media-img" style="background-image:url(\'{PILLAR_IMG[i]}\')"></div>'
- f'<div class="sw-copy"><span class="sw-c-idx">{i+1:02d} / 12</span><h3>{t}</h3><p>{d}</p></div></div>'
+ f'<div class="sw-copy"><span class="sw-c-idx">{i+1:02d} / 12</span><h3>{t}</h3><p class="sw-lede">{d}</p>'
+ f'<div class="sw-full">{"".join(f"<p>{x}</p>" for x in PILLAR_FULL[i]["full"])}</div></div></div>'
  for i,(t,d) in enumerate(PILLARS))
 
 places_html="\n".join(
@@ -134,6 +139,11 @@ p{max-width:58ch} a{color:inherit;text-decoration:none}
 .ovl{font-family:var(--sans);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.24em;color:var(--ink-soft)}
 .script{font-family:var(--script)}
 section{position:relative}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+.dark :focus-visible,.nav :focus-visible,.menu :focus-visible,.chapter :focus-visible,.hero :focus-visible{outline-color:var(--cream)}
+.gform input:focus-visible,.gform button:focus-visible{outline-color:var(--cream)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--cream);padding:.8rem 1.2rem;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+.skip:focus{left:0}
 .pad{padding:clamp(5rem,13vh,11rem) var(--pad)} .wrap{max-width:1440px;margin:0 auto}
 .dark{background:var(--ink);color:var(--cream)} .dark .ovl{color:var(--cream-soft)} .dark p{color:var(--cream-soft)}
 .rline{display:block;overflow:hidden} .rline>span{display:block}
@@ -155,13 +165,15 @@ video.media-img{width:100%;height:100%;object-fit:cover}
 
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
-padding:1.15rem var(--pad);mix-blend-mode:difference;color:#fff}
-.brand{font-family:var(--serif);font-size:1.15rem} .brand b{font-weight:400}
+padding:1.15rem var(--pad);color:#fff;text-shadow:0 1px 14px rgba(11,17,30,.55)}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+background:linear-gradient(180deg,rgba(11,17,30,.62) 0%,rgba(11,17,30,.34) 55%,transparent 100%)}
+.brand{font-family:var(--serif);font-size:1.15rem;display:inline-flex;align-items:center;min-height:44px} .brand b{font-weight:400}
 .nav-links{display:flex;gap:clamp(1rem,2.2vw,2rem);align-items:center}
 .nav-links a{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;font-weight:500;opacity:.9}
 .nav-links a:hover{opacity:.5}
 .nav-cta{border:1px solid rgba(255,255,255,.5);padding:.5rem 1.05rem;border-radius:100px}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:0;cursor:pointer;min-width:44px;min-height:44px;margin-right:-.5rem}
 .burger span{width:26px;height:1.5px;background:#fff}
 .menu{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;
 justify-content:center;padding:var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);pointer-events:none}
@@ -216,6 +228,15 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 .sw-c-idx{font-size:.66rem;letter-spacing:.2em;color:var(--cream-soft)}
 .sw-copy h3{font-size:clamp(2rem,3.6vw,3.2rem);margin:.5rem 0 .5rem} .sw-copy p{color:rgba(243,243,236,.82)}
 
+.region-line{max-width:70ch;color:var(--stone);margin-bottom:clamp(2rem,5vh,3rem)}
+.sw-lede{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.4;color:var(--cream)}
+.sw-full{margin-top:1.1rem;max-height:38vh;overflow-y:auto;padding-right:.8rem;scrollbar-width:thin}
+.sw-full p{font-size:.92rem;line-height:1.7;color:rgba(243,243,236,.78);max-width:62ch}
+.sw-full p+p{margin-top:.7rem}
+.gform .consent{display:flex;align-items:flex-start;gap:.65rem;flex:1 0 100%;margin-top:1rem;padding:.5rem 0;font-size:.78rem;line-height:1.6;color:var(--cream-soft);cursor:pointer;max-width:52ch}
+.gform .consent>span{flex:1 1 auto;min-width:0}
+.gform .consent input[type=checkbox]{flex:0 0 auto;width:18px;height:18px;min-width:0;margin:.15rem 0 0;accent-color:var(--cream);cursor:pointer}
+.consent a{text-decoration:underline}
 /* numbers */
 .toggle{display:inline-grid;grid-template-columns:1fr 1fr;position:relative;border:1px solid var(--line-d);border-radius:100px;padding:4px;background:rgba(243,243,236,.04)}
 .toggle button{position:relative;z-index:1;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.7rem;
@@ -250,7 +271,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .srow-body p{color:var(--stone);max-width:40ch}
 .srow-foot{display:flex;gap:1.6rem;align-items:center;margin-top:1.5rem;flex-wrap:wrap}
 .srow-fee{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--ink-soft)}
-.srow-link{display:inline-flex;gap:.5rem;align-items:center;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:.3rem;transition:gap .4s var(--ease)}
+.srow-link{display:inline-flex;gap:.5rem;align-items:center;min-height:44px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:.3rem;transition:gap .4s var(--ease)}
 .srow-link:hover{gap:1rem}
 /* process — full-bleed split: image + steps */
 .process{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}
@@ -271,7 +292,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .gform{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;max-width:480px}
 .gform input{flex:1;min-width:200px;background:transparent;border:0;border-bottom:1px solid var(--line-d);color:var(--cream);padding:.85rem .2rem;font-family:var(--sans);font-size:1rem}
 .gform input::placeholder{color:var(--cream-soft)} .gform input:focus{outline:none;border-color:var(--cream)}
-.gbtn{background:var(--cream);color:var(--ink);border:0;border-radius:100px;padding:.9rem 1.7rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
+.gbtn{background:var(--cream);color:var(--ink);border:0;border-radius:100px;padding:.9rem 1.7rem;min-height:44px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
 .micro{font-size:.76rem;color:var(--cream-soft);margin-top:1rem}
 .contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:start}
 .contact h2{margin-bottom:1.2rem} .contact .lead{color:var(--stone);max-width:32ch}
@@ -339,22 +360,21 @@ _vids.forEach(v=>v.addEventListener('playing',()=>v.classList.add('on')));
 const _play=()=>_vids.forEach(v=>{try{v.muted=true;const p=v.play();if(p)p.catch(()=>{});}catch(e){}});
 _play(); document.addEventListener('visibilitychange',()=>{if(!document.hidden)_play();});
 ['touchstart','pointerdown','click','scroll'].forEach(ev=>addEventListener(ev,_play,{once:true,passive:true}));
-document.getElementById('gform').addEventListener('submit',e=>{e.preventDefault();/* TODO: Mailchimp list-manage subscribe endpoint */console.log('[STAGING v2] guide signup',{email:e.target.EMAIL.value});alert('STAGING — logged to console.');});
-document.getElementById('cform').addEventListener('submit',e=>{e.preventDefault();/* TODO: Formspree endpoint */console.log('[STAGING v2] consult',Object.fromEntries(new FormData(e.target)));alert('STAGING — logged to console.');});
 """
 
 HTML=f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><script>document.documentElement.className='js';</script>
-<title>Spanish AfterLife — STAGING v2 (ERA flow)</title>
+<script>document.documentElement.className='js';</script>
+{SEO.head("home", jsonld=True)}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body>
-<div id="badge">Staging v2 · ERA flow</div>
+{SEO.badge()}
+<a class="skip" href="#life">Skip to content</a>
 <nav class="nav"><a class="brand" href="#top"><b>Spanish</b> AfterLife</a>
-<div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a class="nav-cta" href="#contact">Start Here</a></div>
+<div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a class="nav-cta" href="#contact">Start Here</a></div>
 <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
+<div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
 
 <header class="hero" id="top">
   <!-- OVERLAY ANCHOR: hero media/video layer mounts here -->
@@ -394,6 +414,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 
 <section class="places pad" id="places"><div class="wrap">
   <div class="head"><span class="ovl">Where We Work</span><h2 class="reveal">The Valencia Community</h2></div>
+  <p class="region-line reveal">{REGION_LINE}</p>
   {places_html}
 </div></section>
 
@@ -417,7 +438,14 @@ HTML=f"""<!doctype html><html lang="en"><head>
   <div class="guide-body reveal">
     <h2>The honest cost of moving to Spain</h2>
     <p>The visa, the property, the real numbers — written from the coast, not from abroad.</p>
-    <form class="gform" id="gform" novalidate><input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email"><button class="gbtn" type="submit">Send me the guide</button></form>
+    <form class="gform" id="gform" action="/api/subscribe" method="post">
+      <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
+      <button class="gbtn" type="submit">Send me the guide</button>
+      <label class="consent"><input type="checkbox" name="consent" required><span>Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
+      <input type="hidden" name="intent" value="guide">
+      <input type="hidden" name="source" value="v2:guide-form">
+    </form>
     <p class="micro">Free. No obligation. Straight to your inbox.</p>
   </div>
 </div></section>
@@ -427,16 +455,19 @@ HTML=f"""<!doctype html><html lang="en"><head>
   <div class="contact">
   <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.jpg')"></div></div>
   <p class="lead" style="margin-top:1.6rem">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you — honestly.</p></div>
-  <form class="cform" id="cform" novalidate>
-    <div class="frow"><div class="field"><label>First Name</label><input name="first_name" required></div><div class="field"><label>Email</label><input type="email" name="email" required></div></div>
-    <div class="field"><label>Where are you based?</label><select name="location">{locopts}</select></div>
-    <div class="field"><label>Anything that would help us prepare</label><textarea name="message" placeholder="Budget, timeline, areas of interest..."></textarea></div>
+  <form class="cform" id="cform" action="https://formspree.io/f/xvzeevnb" method="POST">
+    <input type="hidden" name="_subject" value="New enquiry — spanishafterlife.com">
+    <input type="hidden" name="_next" value="https://spanishafterlife.com/message-received">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-5000px">
+    <div class="frow"><div class="field"><label for="cf-first">First Name</label><input id="cf-first" name="first_name" required></div><div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required></div></div>
+    <div class="field"><label for="cf-loc">Where are you based?</label><select id="cf-loc" name="location" required>{locopts}</select></div>
+    <div class="field"><label for="cf-msg">Anything that would help us prepare</label><textarea id="cf-msg" name="message" placeholder="Budget, timeline, areas of interest..."></textarea></div>
     <button class="cbtn" type="submit">Book my free call</button>
   </form>
 </div></section>
 
 <footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
-<div class="foot-nav"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/properties/">Properties</a><a href="/v2/journal/">Journal</a><a href="#contact">Start Here</a></div></div>
+<div class="foot-nav"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="#contact">Start Here</a></div></div>
 <div class="foot-bot"><span>© 2025 LJ Koch Group Inc. · Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>
 
 <script>const NUMDATA={NUM};</script><script>{JS}</script>
