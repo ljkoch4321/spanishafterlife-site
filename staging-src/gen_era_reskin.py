@@ -127,7 +127,7 @@ RS_CSS = r"""
 .news-consent a{text-decoration:underline}
 .news-note{font-size:.76rem;margin-top:.8rem}
 /* guide landing page */
-.lm{display:grid;grid-template-columns:1.1fr .9fr;min-height:100svh}
+.lm{display:grid;grid-template-columns:1.1fr .9fr;min-height:100svh;padding-top:clamp(5rem,10vh,6rem)}
 .lm-right{padding-top:clamp(6rem,12vh,8rem)!important}\n.lm-left{position:relative;background:var(--ink);color:var(--cream);padding:clamp(6rem,14vh,9rem) var(--pad) clamp(3rem,8vh,5rem);display:flex;align-items:center;overflow:hidden}
 .lm-left .media{position:absolute;inset:0;opacity:.28}
 .lm-left-inner{position:relative;z-index:1;max-width:560px}

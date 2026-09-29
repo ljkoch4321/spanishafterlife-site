@@ -30,7 +30,7 @@ FOOT = """<footer class="foot"><div class="foot-top"><div class="foot-sig">Why w
 # page-specific CSS layered on top of the shared v2 stylesheet
 EXTRA = """
 /* --- cross-page: shared --- */
-.subhero{position:relative;min-height:74vh;display:flex;align-items:flex-end;padding:0 var(--pad) clamp(3rem,8vh,6rem);overflow:hidden;background:var(--ink);color:var(--cream)}
+.subhero{position:relative;min-height:74vh;display:flex;align-items:flex-end;padding:clamp(7rem,14vh,9rem) var(--pad) clamp(3rem,8vh,6rem);overflow:hidden;background:var(--ink);color:var(--cream)}
 .subhero .media{position:absolute;inset:0;z-index:0}
 .subhero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(23,35,59,.5) 0%,rgba(23,35,59,.2) 35%,rgba(23,35,59,.88) 100%)}
 .subhero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}

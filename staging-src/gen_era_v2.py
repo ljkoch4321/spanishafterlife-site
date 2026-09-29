@@ -191,7 +191,7 @@ html,body{overflow-x:clip}
 --serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
 --ease:cubic-bezier(.16,1,.3,1);--pad:clamp(1.25rem,5vw,6rem)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:clip;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 h1,h2,h3{font-family:var(--serif);font-weight:340;letter-spacing:-.02em;line-height:1.02}
 h1{font-size:clamp(3rem,9vw,7rem)} h2{font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.05}
 h3{font-size:clamp(1.4rem,2.6vw,2.2rem);letter-spacing:-.015em}
@@ -400,7 +400,8 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  .hero-cta{margin-top:1.7rem}
  .hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:1.8rem}
  .hstat-n{font-size:1.45rem}
- .hstat-l{font-size:.58rem;letter-spacing:.1em;max-width:none;line-height:1.45}
+ .hstat-l{font-size:.64rem;letter-spacing:.1em;max-width:none;line-height:1.45}
+
  .scroll-cue{display:none}
  .ncols{gap:clamp(2.4rem,5vh,3.2rem)}
  .head h2{max-width:none}

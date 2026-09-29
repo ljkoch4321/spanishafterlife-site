@@ -55,7 +55,7 @@ html,body{overflow-x:clip}
 --serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
 --ease:cubic-bezier(.16,1,.3,1);--pad:clamp(1.25rem,5vw,6rem)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:clip;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 h1,h2,h3{font-family:var(--serif);font-weight:340;letter-spacing:-.02em;line-height:1.02}
 h1{font-size:clamp(3rem,9vw,7rem)} h2{font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.05}
 h3{font-size:clamp(1.4rem,2.6vw,2.2rem);letter-spacing:-.015em}
@@ -264,7 +264,8 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  .hero-cta{margin-top:1.7rem}
  .hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:1.8rem}
  .hstat-n{font-size:1.45rem}
- .hstat-l{font-size:.58rem;letter-spacing:.1em;max-width:none;line-height:1.45}
+ .hstat-l{font-size:.64rem;letter-spacing:.1em;max-width:none;line-height:1.45}
+
  .scroll-cue{display:none}
  .ncols{gap:clamp(2.4rem,5vh,3.2rem)}
  .head h2{max-width:none}
@@ -273,7 +274,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 }
 
 /* --- cross-page: shared --- */
-.subhero{position:relative;min-height:74vh;display:flex;align-items:flex-end;padding:0 var(--pad) clamp(3rem,8vh,6rem);overflow:hidden;background:var(--ink);color:var(--cream)}
+.subhero{position:relative;min-height:74vh;display:flex;align-items:flex-end;padding:clamp(7rem,14vh,9rem) var(--pad) clamp(3rem,8vh,6rem);overflow:hidden;background:var(--ink);color:var(--cream)}
 .subhero .media{position:absolute;inset:0;z-index:0}
 .subhero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(23,35,59,.5) 0%,rgba(23,35,59,.2) 35%,rgba(23,35,59,.88) 100%)}
 .subhero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}
@@ -526,7 +527,7 @@ a.art:hover{background:var(--tint);border-color:var(--tint-line)}
 .news-consent a{text-decoration:underline}
 .news-note{font-size:.76rem;margin-top:.8rem}
 /* guide landing page */
-.lm{display:grid;grid-template-columns:1.1fr .9fr;min-height:100svh}
+.lm{display:grid;grid-template-columns:1.1fr .9fr;min-height:100svh;padding-top:clamp(5rem,10vh,6rem)}
 .lm-right{padding-top:clamp(6rem,12vh,8rem)!important}\n.lm-left{position:relative;background:var(--ink);color:var(--cream);padding:clamp(6rem,14vh,9rem) var(--pad) clamp(3rem,8vh,5rem);display:flex;align-items:center;overflow:hidden}
 .lm-left .media{position:absolute;inset:0;opacity:.28}
 .lm-left-inner{position:relative;z-index:1;max-width:560px}
@@ -547,3 +548,11 @@ a.art:hover{background:var(--tint);border-color:var(--tint-line)}
 .lm-trust{font-size:.8rem;color:var(--stone);margin-top:1.6rem;line-height:1.6}
 @media(max-width:900px){.mirror,.compare,.lm{grid-template-columns:1fr}.compare .row{grid-template-columns:1fr;gap:.3rem}}
 .card-grid-404{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(2rem,5vh,3rem)}.svc-card404{display:block;border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.8rem);transition:background .5s var(--ease),border-color .5s var(--ease)}.svc-card404:hover{background:var(--tint);border-color:var(--tint-line)}.svc-card404 h3{font-family:var(--serif);font-size:1.35rem;font-weight:360;margin-bottom:.5rem}.svc-card404 p{font-size:.94rem;color:var(--stone)}
+@media(max-width:900px){
+ /* uppercase micro-labels read fine at 10px on a desktop and are a strain on a
+    phone; lift the floor without changing the typographic device */
+ .ovl{font-size:.72rem}
+ .svc-card .tag,.svc-card404 .tag,.art-meta,.coll-meta,.nk,.card-note,.sw-c-idx,.place-tag,.srow-fee,.micro{font-size:.7rem}
+ .ptable th{font-size:.68rem}
+ .inc h3,.pillar h3{font-size:.72rem}
+}
