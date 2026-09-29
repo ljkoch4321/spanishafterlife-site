@@ -78,6 +78,11 @@ def head(slug, jsonld=False):
 <style>{CHROME_CSS}</style>"""
 
 
+def css_link():
+    """one cached stylesheet for the whole site instead of ~35KB inlined into every page"""
+    return '<link rel="stylesheet" href="%s">' % ("/v2/era.css" if STAGING else "/era.css")
+
+
 def badge():
     return '<div id="badge">Staging v2 &middot; ERA flow</div>' if STAGING else ""
 
@@ -180,7 +185,7 @@ CHROME_CSS = """
 .foot-brand p{font-size:.86rem;line-height:1.7;color:var(--cream-soft);max-width:36ch}
 .foot-col{display:flex;flex-direction:column;gap:.55rem}
 .foot-col h4{font-family:var(--sans);font-size:.64rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--cream-soft);margin-bottom:.5rem}
-.foot-col a{font-size:.9rem;color:var(--cream);opacity:.86;transition:opacity .3s}
+.foot-col a{display:flex;align-items:center;min-height:44px;font-size:.9rem;color:var(--cream);opacity:.86;transition:opacity .3s}
 .foot-col a:hover{opacity:1;text-decoration:underline}
 .foot-signup{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:start;padding:clamp(2rem,5vh,3rem) 0;border-bottom:1px solid var(--line-d)}
 .foot-signup h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.6rem}

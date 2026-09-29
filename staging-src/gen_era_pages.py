@@ -45,7 +45,7 @@ EXTRA = """
 .feat-media{position:relative;overflow:hidden;aspect-ratio:4/3}
 .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,2.5vw,2.4rem);margin-top:clamp(2.5rem,6vh,4rem)}
 .pillar{border-top:1px solid var(--line-d);padding-top:1.1rem}
-.pillar h4{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);margin-bottom:.7rem}
+.pillar h3{font-family:var(--sans);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);margin-bottom:.7rem}
 .pillar p{font-size:.95rem;color:rgba(243,243,236,.8)}
 .gal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:clamp(2.5rem,6vh,4rem)}
 .gal figure{position:relative;overflow:hidden;margin:0;aspect-ratio:4/3}
@@ -121,11 +121,13 @@ def shell(slug, body, jsonld=False):
 {SEO.head(slug, jsonld=jsonld)}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
-<style>{V2.CSS}{EXTRA}</style></head><body>
+{SEO.css_link()}</head><body>
 {SEO.badge()}
-<a class="skip" href="#top">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 {NAV}
+<main id="main">
 {body}
+</main>
 {SEO.footer(slug)}
 <script>{JS}</script>
 </body></html>"""
@@ -219,7 +221,7 @@ def collection(name, meta, img, desc, rows):
 def build_properties():
     gal = "".join(f'<figure class="img-reveal"><img src="{s}" alt="{c}" loading="lazy"><figcaption>{c}</figcaption></figure>'
                   for s, c in GALLERY)
-    pil = "".join(f'<div class="pillar"><h4>{t}</h4><p>{d}</p></div>' for t, d in PILLARS)
+    pil = "".join(f'<div class="pillar"><h3>{t}</h3><p>{d}</p></div>' for t, d in PILLARS)
     awd = "".join(f'<span class="award">&#127942; {a}</span>' for a in AWARDS)
     colls = "".join(collection(*c) for c in COLLECTIONS)
 
@@ -333,7 +335,7 @@ def build_journal():
 
     body = f"""
 <header class="subhero" id="top">
-  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('/media/oliva-5.jpg')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.06" style="background-image:url('/media/oliva-5.webp')"></div></div>
   <div class="subhero-in">
     <span class="ovl">Building My Life in Spain</span>
     <h1>{rlines('Notes from the other side|of the decision.')}</h1>
@@ -353,7 +355,7 @@ def build_journal():
 </div></section>
 
 <section class="chapter">
-  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-3.jpg')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-3.webp')"></div></div>
   <h2>{rlines('Written from here,|not from abroad.')}</h2>
 </section>
 
@@ -399,7 +401,7 @@ def build_journal():
 def build_404():
     body = f"""
 <header class="subhero" id="top">
-  <div class="media"><div class="media-img" style="background-image:url('/media/oliva-3.jpg')"></div></div>
+  <div class="media"><div class="media-img" style="background-image:url('/media/oliva-3.webp')"></div></div>
   <div class="subhero-in">
     <span class="ovl">404</span>
     <h1>{rlines('That page|is not here.')}</h1>
@@ -410,21 +412,24 @@ def build_404():
 <section class="pad"><div class="wrap">
   <div class="head"><span class="ovl">Try one of these</span><h2 class="reveal">Where you were probably headed</h2></div>
   <div class="card-grid-404">
-    <a class="svc-card404" href="{SEO.href('home')}"><h4>The AfterLife</h4><p>What the move actually looks like, and what your equity buys here.</p></a>
-    <a class="svc-card404" href="{SEO.href('immigration')}"><h4>Immigration Concierge</h4><p>Eligibility through arrival, handled end to end.</p></a>
-    <a class="svc-card404" href="{SEO.href('real-estate')}"><h4>Real Estate</h4><p>Full buyer's agency. We represent you, never the seller.</p></a>
-    <a class="svc-card404" href="{SEO.href('available-properties')}"><h4>Available Properties</h4><p>The developments and homes we work with directly.</p></a>
-    <a class="svc-card404" href="{SEO.href('building-my-life-in-spain')}"><h4>The Journal</h4><p>Guides, neighbourhoods and the honest bits.</p></a>
-    <a class="svc-card404" href="{SEO.href('home')}#contact"><h4>Start Here</h4><p>A free 45-minute call. No pitch, just clarity.</p></a>
+    <a class="svc-card404" href="{SEO.href('home')}"><h3>The AfterLife</h3><p>What the move actually looks like, and what your equity buys here.</p></a>
+    <a class="svc-card404" href="{SEO.href('immigration')}"><h3>Immigration Concierge</h3><p>Eligibility through arrival, handled end to end.</p></a>
+    <a class="svc-card404" href="{SEO.href('real-estate')}"><h3>Real Estate</h3><p>Full buyer's agency. We represent you, never the seller.</p></a>
+    <a class="svc-card404" href="{SEO.href('available-properties')}"><h3>Available Properties</h3><p>The developments and homes we work with directly.</p></a>
+    <a class="svc-card404" href="{SEO.href('building-my-life-in-spain')}"><h3>The Journal</h3><p>Guides, neighbourhoods and the honest bits.</p></a>
+    <a class="svc-card404" href="{SEO.href('home')}#contact"><h3>Start Here</h3><p>A free 45-minute call. No pitch, just clarity.</p></a>
   </div>
 </div></section>
 """
-    return shell("404", body).replace("</style>",
-      ".card-grid-404{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(2rem,5vh,3rem)}"
-      ".svc-card404{display:block;border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.8rem);transition:background .5s var(--ease),border-color .5s var(--ease)}"
-      ".svc-card404:hover{background:rgba(23,35,59,.035);border-color:rgba(23,35,59,.3)}"
-      ".svc-card404 h4{font-family:var(--serif);font-size:1.35rem;font-weight:360;margin-bottom:.5rem}"
-      ".svc-card404 p{font-size:.94rem;color:var(--stone)}</style>")
+    return shell("404", body)
+
+
+CSS_404 = (
+  ".card-grid-404{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(2rem,5vh,3rem)}"
+  ".svc-card404{display:block;border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.8rem);transition:background .5s var(--ease),border-color .5s var(--ease)}"
+  ".svc-card404:hover{background:rgba(23,35,59,.035);border-color:rgba(23,35,59,.3)}"
+  ".svc-card404 h3{font-family:var(--serif);font-size:1.35rem;font-weight:360;margin-bottom:.5rem}"
+  ".svc-card404 p{font-size:.94rem;color:var(--stone)}")
 
 
 if __name__ == "__main__":

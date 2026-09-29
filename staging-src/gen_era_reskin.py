@@ -14,17 +14,17 @@ import gen_era_v2 as V2
 import gen_era_pages as P
 
 PAGES = {  # slug (= production path without .html) : hero image
-    "about": "/media/xabia-1.jpg",
-    "privacy": "/media/valencia-1.jpg",
-    "canada-quality-of-life": "/media/oliva-1.jpg",
-    "us-cash-out": "/media/home-2.jpg",
-    "us-sun-seekers": "/media/oliva-2.jpg",
-    "thank-you": "/media/oliva-3.jpg",
-    "message-received": "/media/oliva-3.jpg",
-    "subscribed": "/media/oliva-3.jpg",
-    "building-my-life-in-spain/non-lucrative-vs-digital-nomad-visa-spain": "/media/valencia-2.jpg",
+    "about": "/media/xabia-1.webp",
+    "privacy": "/media/valencia-1.webp",
+    "canada-quality-of-life": "/media/oliva-1.webp",
+    "us-cash-out": "/media/home-2.webp",
+    "us-sun-seekers": "/media/oliva-2.webp",
+    "thank-you": "/media/oliva-3.webp",
+    "message-received": "/media/oliva-3.webp",
+    "subscribed": "/media/oliva-3.webp",
+    "building-my-life-in-spain/non-lucrative-vs-digital-nomad-visa-spain": "/media/valencia-2.webp",
     "guide": "/guide-cover.png",
-    "find-your-spain": "/media/oliva-5.jpg",
+    "find-your-spain": "/media/oliva-5.webp",
 }
 
 def prod(slug):
@@ -45,7 +45,7 @@ RS_CSS = r"""
 .rs h2,.rs .heading{font-family:var(--serif);font-weight:340;font-size:clamp(1.9rem,4vw,3.2rem);line-height:1.08;margin-bottom:1.6rem;max-width:22ch}
 .rs h2 em,.rs-hero h1 em{font-style:italic;font-weight:300}
 .rs h3{font-family:var(--serif);font-weight:360;font-size:clamp(1.3rem,2vw,1.7rem);margin:2rem 0 .8rem}
-.rs h4{font-family:var(--serif);font-weight:380;font-size:1.2rem;margin-bottom:.4rem}
+.rs h3.sub{font-family:var(--serif);font-weight:380;font-size:1.2rem;margin-bottom:.4rem;margin-top:0}
 .rs p{color:var(--stone);margin-bottom:1rem;max-width:66ch}
 .dark.rs p{color:var(--cream-soft)}
 .rs p.lede{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.45;color:var(--ink)}
@@ -195,31 +195,48 @@ def body_standard(src, img):
     c = re.sub(r'<section class="([^"]+)">', sec, c)
     return c
 
+
+def demote_h4(html):
+    """production nests h4 directly under h2 on these pages; promote to h3 (same look via .sub)"""
+    def op(m):
+        attrs = m.group(1) or ""
+        if 'class="' in attrs:
+            attrs = attrs.replace('class="', 'class="sub ', 1)
+        else:
+            attrs += ' class="sub"'
+        return "<h3" + attrs + ">"
+    html = re.sub(r'<h4([^>]*)>', op, html)
+    return html.replace("</h4>", "</h3>")
+
+
 def build(slug):
     src = prod(slug)
     img = PAGES[slug]
     head = head_of(src)
     if slug == "guide":
         b = src[src.find('<div class="lm-main">'):src.find('<div class="lm-foot">')]
-        b = strip_styles(b).replace('<div class="lm-main">', '<main class="lm" id="top">', 1)
-        b = b.replace('<div class="lm-left">', f'<div class="lm-left"><div class="media"><div class="media-img" style="background-image:url(\'/media/oliva-3.jpg\')"></div></div>', 1)
+        b = strip_styles(b).replace('<div class="lm-main">', '<main class="lm" id="main">', 1)
+        b = b.replace('<div class="lm-left">', f'<div class="lm-left"><div class="media"><div class="media-img" style="background-image:url(\'/media/oliva-3.webp\')"></div></div>', 1)
         b = b[:b.rfind("</div>")] + "</main>"
         body = b
     elif slug == "find-your-spain":
         # the quiz keeps its own markup + script; only palette/typography change (see FYS_CSS)
         b = src[src.find('<div class="stage">'):src.rfind("</body>")]
-        body = f'<main id="top" class="fys">{b}</main>'
+        body = f'<main id="main" class="fys">{b}</main>'
         orig_css = re.search(r'<style>(.*?)</style>', src, re.S).group(1)
         head += "\n<style>" + fys_css(orig_css) + "</style>"
     else:
         body = body_standard(src, img)
+    body = demote_h4(body)
+    if "<main" not in body:                       # every page needs the landmark the skip link targets
+        body = f'<main id="main">\n{body}\n</main>'
     html = f"""<!doctype html><html lang="en"><head>
 {head}
 <script>document.documentElement.className='js';</script>
 {FONTS}
-<style>{V2.CSS}{P.EXTRA}{SEO.CHROME_CSS}{RS_CSS}</style></head><body>
+{SEO.css_link()}</head><body>
 {SEO.badge()}
-<a class="skip" href="#top">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 {P.NAV}
 {body}
 {SEO.footer(slug)}

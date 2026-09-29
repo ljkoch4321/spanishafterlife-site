@@ -33,9 +33,9 @@ PILLARS=[  # (title, ~6-word essence)
  ("The Ride","Road, gravel, mountain — from your door."),
 ]
 PLACES=[  # tag, name, price, short line, image
- ("Costa Blanca North","Jávea &amp; Denia","From €280,000","The most sophisticated stretch of the coast.","/javea-denia.jpg"),
- ("City Life","Valencia City","From €180,000","Europe's most underrated city.","/media/valencia-3.jpg"),
- ("Unspoiled Coast","Oliva &amp; Cullera","From €180,000","The coast that never got overbuilt.","/media/oliva-2.jpg"),
+ ("Costa Blanca North","Jávea &amp; Denia","From €280,000","The most sophisticated stretch of the coast.","/javea-denia.webp"),
+ ("City Life","Valencia City","From €180,000","Europe's most underrated city.","/media/valencia-3.webp"),
+ ("Unspoiled Coast","Oliva &amp; Cullera","From €180,000","The coast that never got overbuilt.","/media/oliva-2.webp"),
  ("Finca Country","Inland — Ontinyent","From €120,000","Olive groves at inland prices.",uimg("photo-1474979266404-7eaacbcd87c5",1600,85)),
 ]
 # Numbers — lean: 3 contrasts. Spain constant; home switches. Figures verbatim.
@@ -48,7 +48,7 @@ SERVICES=[
  ("The Full AfterLife","Residency and property run as a single engagement — from the first call to the keys.","","/v2/fullafterlife/"),
  ("The Private Client","The founder personally embedded from day one. Every call, every decision, beside you.","","/v2/private-client/"),
 ]
-SVC_IMGS=["/media/valencia-2.jpg","/media/valencia-1.jpg","/oliva-cullera.jpg","/media/home-3.jpg"]
+SVC_IMGS=["/media/valencia-2.webp","/media/valencia-1.webp","/oliva-cullera.webp","/media/home-3.webp"]
 SVC_TAGS=["Residency","Property","Everything","Bespoke"]
 STEPS=[tuple(x) for x in HX["how"]["steps"]]
 
@@ -88,13 +88,13 @@ def vbg(mp4,poster,par="0.08",webm=None):
 def rlines(text):  # split a heading into animated lines by <br>
     return "".join(f'<span class="rline"><span>{p}</span></span>' for p in text.split("|"))
 
-pillar_tabs="\n".join(f'<button class="sw-tab" data-i="{i}"><span class="sw-idx">{i+1:02d}</span><span class="sw-name">{t}</span></button>' for i,(t,_) in enumerate(PILLARS))
+pillar_tabs="\n".join(f'<button type="button" class="sw-tab" data-i="{i}" aria-pressed="false"><span class="sw-idx">{i+1:02d}</span><span class="sw-name">{t}</span></button>' for i,(t,_) in enumerate(PILLARS))
 PILLAR_IMG=[uimg(x,1400) for x in PILLAR_IDS]
-PILLAR_IMG[0]="/media/home-3.jpg"; PILLAR_IMG[5]="/media/oliva-4.jpg"
+PILLAR_IMG[0]="/media/home-3.webp"; PILLAR_IMG[5]="/media/oliva-4.webp"
 pillar_panels="\n".join(
- f'<div class="sw-panel" data-i="{i}"><div class="media-img" style="background-image:url(\'{PILLAR_IMG[i]}\')"></div>'
+ f'<div class="sw-panel" data-i="{i}" aria-hidden="true"><div class="media-img" style="background-image:url(\'{PILLAR_IMG[i]}\')"></div>'
  f'<div class="sw-copy"><span class="sw-c-idx">{i+1:02d} / 12</span><h3>{t}</h3><p class="sw-lede">{d}</p>'
- f'<div class="sw-full">{"".join(f"<p>{x}</p>" for x in PILLAR_FULL[i]["full"])}</div></div></div>'
+ f'<div class="sw-full" tabindex="0" role="region" aria-label="More on {t}">{"".join(f"<p>{x}</p>" for x in PILLAR_FULL[i]["full"])}</div></div></div>'
  for i,(t,d) in enumerate(PILLARS))
 
 def place_more(name):
@@ -269,7 +269,7 @@ font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;display:flex;flex
 .sw-deck{display:block;margin-top:.8rem;font-family:var(--serif);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--cream)}
 .sw-head{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-soft);margin-bottom:1.5rem}
 .sw-tab{background:none;border:0;text-align:left;cursor:pointer;display:flex;gap:1rem;align-items:baseline;padding:.42rem 0;
-color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:var(--serif)}
+color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:var(--serif);min-height:44px;display:flex;align-items:center}
 .sw-tab .sw-idx{font-family:var(--sans);font-size:.68rem;color:var(--cream-soft)}
 .sw-tab .sw-name{font-size:clamp(1.2rem,2.1vw,1.9rem);transition:transform .5s var(--ease)}
 .sw-tab.active{opacity:1}.sw-tab.active .sw-name{transform:translateX(12px)}
@@ -294,7 +294,7 @@ color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:va
 .consent a{text-decoration:underline}
 /* numbers */
 .toggle{display:inline-grid;grid-template-columns:1fr 1fr;position:relative;border:1px solid var(--line-d);border-radius:100px;padding:4px;background:rgba(243,243,236,.04)}
-.toggle button{position:relative;z-index:1;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.7rem;
+.toggle button{position:relative;z-index:1;background:none;border:0;cursor:pointer;min-height:44px;font-family:var(--sans);font-size:.7rem;
 text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-soft);padding:.65rem 1.4rem;border-radius:100px;transition:color .5s}
 .toggle button.on{color:var(--ink)} .toggle .knob{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--cream);border-radius:100px;transition:transform .55s var(--ease)}
 .toggle.us .knob{transform:translateX(100%)}
@@ -346,7 +346,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .guide-media{aspect-ratio:4/5}
 .guide-body h2{margin-bottom:1rem} .guide-body p{color:rgba(243,243,236,.82)}
 .gform{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;max-width:480px}
-.gform input{flex:1;min-width:200px;background:transparent;border:0;border-bottom:1px solid var(--line-d);color:var(--cream);padding:.85rem .2rem;font-family:var(--sans);font-size:1rem}
+.gform input{flex:1;min-width:200px;min-height:44px;background:transparent;border:0;border-bottom:1px solid var(--line-d);color:var(--cream);padding:.85rem .2rem;font-family:var(--sans);font-size:1rem}
 .gform input::placeholder{color:var(--cream-soft)} .gform input:focus{outline:none;border-color:var(--cream)}
 .gbtn{background:var(--cream);color:var(--ink);border:0;border-radius:100px;padding:.9rem 1.7rem;min-height:44px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
 .micro{font-size:.76rem;color:var(--cream-soft);margin-top:1rem}
@@ -355,7 +355,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 .cform{display:grid;gap:1.3rem}.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
 .field{display:flex;flex-direction:column;gap:.5rem}
 .field label{font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);font-weight:600}
-.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1px solid var(--line);padding:.7rem 0;font-family:var(--sans);font-size:1rem;color:var(--ink);border-radius:0}
+.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1px solid var(--line);padding:.7rem 0;min-height:44px;font-family:var(--sans);font-size:1rem;color:var(--ink);border-radius:0}
 .field textarea{resize:vertical;min-height:80px} .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
 .cbtn{justify-self:start;background:var(--ink);color:var(--cream);border:0;border-radius:100px;padding:1rem 1.9rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;cursor:pointer}
 
@@ -409,7 +409,7 @@ function tick(){const y=scrollY;
 tabs.forEach((t,i)=>t.addEventListener('click',()=>{const tot=track.offsetHeight-innerHeight;goto(track.getBoundingClientRect().top+scrollY+(i+.5)/tabs.length*tot);}));
 tick();addEventListener('resize',tick);
 const tg=document.getElementById('tg'),ni=document.getElementById('nintro'),lv=document.getElementById('leave'),D=NUMDATA;
-function setC(c){tg.classList.toggle('us',c==='us');tg.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.c===c));ni.textContent=D[c].intro;lv.innerHTML=D[c].rows.map(r=>`<div class="nrow"><span class="nk">${r[0]}</span><span class="nv">${r[1]}</span></div>`).join('');}
+function setC(c){tg.classList.toggle('us',c==='us');tg.querySelectorAll('button').forEach(b=>{const on=b.dataset.c===c;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});ni.textContent=D[c].intro;lv.innerHTML=D[c].rows.map(r=>`<div class="nrow"><span class="nk">${r[0]}</span><span class="nv">${r[1]}</span></div>`).join('');}
 tg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setC(b.dataset.c)));setC('ca');
 const _vids=[...document.querySelectorAll('video')];
 _vids.forEach(v=>v.addEventListener('playing',()=>v.classList.add('on')));
@@ -424,17 +424,18 @@ HTML=f"""<!doctype html><html lang="en"><head>
 {SEO.head("home", jsonld=True)}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
-<style>{CSS}</style></head><body>
+{SEO.css_link()}</head><body>
 {SEO.badge()}
-<a class="skip" href="#life">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 <nav class="nav"><a class="brand" href="#top"><b>Spanish</b> AfterLife</a>
 <div class="nav-links"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a class="nav-cta" href="#contact">Start Here</a></div>
 <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
 <div class="menu" id="menu"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="#contact">Start Here</a><div class="menu-sig">Why wait for the AfterLife?</div></div>
 
+<main id="main">
 <header class="hero" id="top">
   <!-- OVERLAY ANCHOR: hero media/video layer mounts here -->
-  {bg('/media/home-1.jpg','','0.04')}
+  {bg('/media/home-1.webp','','0.04')}
   <div class="hero-in">
     <h1>{rlines('Your best years.|<em>Starting now.</em>')}</h1>
     <p class="hero-sub reveal">Early retirement on Spain's Mediterranean coast.</p>
@@ -459,13 +460,13 @@ HTML=f"""<!doctype html><html lang="en"><head>
   </div></div>
 </section>
 
-<section class="chapter">{bg('/media/oliva-3.jpg','','0.1')}<h2>{rlines('This is|every day now.')}</h2></section>
+<section class="chapter">{bg('/media/oliva-3.webp','','0.1')}<h2>{rlines('This is|every day now.')}</h2></section>
 
 <section class="numbers dark pad" id="numbers"><div class="wrap">
   <div class="nhead">
     <div class="head"><span class="ovl">The Numbers</span><h2 class="reveal">What your equity actually buys</h2></div>
     <div class="nside reveal">
-      <div class="toggle" id="tg" role="tablist"><span class="knob"></span><button data-c="ca">Canada</button><button data-c="us">United States</button></div>
+      <div class="toggle" id="tg" role="group" aria-label="Compare Spain with"><span class="knob" aria-hidden="true"></span><button type="button" data-c="ca" aria-pressed="true">Canada</button><button type="button" data-c="us" aria-pressed="false">United States</button></div>
       <p class="n-intro" id="nintro"></p>
     </div>
   </div>
@@ -489,7 +490,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
   <div class="dec-ctas reveal"><a class="btn-ink" href="{D_["ctas"][0][0]}">{D_["ctas"][0][1]}</a><a class="btn-line" href="#contact">{D_["ctas"][1][1]}</a></div>
 </div></section>
 
-<section class="chapter">{bg('/media/oliva-5.jpg','','0.1')}<h2>{rlines('Why wait for|the AfterLife?')}</h2></section>
+<section class="chapter">{bg('/media/oliva-5.webp','','0.1')}<h2>{rlines('Why wait for|the AfterLife?')}</h2></section>
 
 <section class="services pad" id="how"><div class="wrap">
   <div class="head"><span class="ovl">What we do</span><h2 class="reveal">The firm that makes<br>the move happen</h2></div>
@@ -497,7 +498,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div></section>
 
 <section class="process dark" id="process">
-  <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="background-image:url('/hero.png')"></div></div>
+  <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="background-image:url('/hero.webp')"></div></div>
   <div class="process-body">
     <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">{HX["how"]["h2"]}</h2></div>
     <p class="proc-lede reveal">{HX["how"]["lede"]}</p>
@@ -514,7 +515,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div></section>
 
 <section class="dark pad" id="guide"><div class="wrap guide">
-  <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/guide-cover.png')"></div></div>
+  <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/guide-cover.webp')"></div></div>
   <div class="guide-body reveal">
     <span class="ovl">{HX["guide"]["ovl"]}</span>
     <h2>{HX["guide"]["h2"]}</h2>
@@ -534,12 +535,13 @@ HTML=f"""<!doctype html><html lang="en"><head>
 <section class="pad" id="contact"><div class="wrap">
   <div class="head"><span class="ovl">Start Here</span><h2 class="reveal">Find out if Spain is right for you.</h2></div>
   <div class="contact">
-  <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.jpg')"></div></div>
+  <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.webp')"></div></div>
   <div class="ccopy">{"".join(f'<p class="lead">{x}</p>' for x in C_["paras"])}<ol class="clist">{clist}</ol></div></div>
   <div><h3 class="box-h">{C_["box_h3"]}</h3><p class="box-p">{C_["box_p"]}</p>
   {SEO.contact_form()}</div>
 </div></section>
 
+</main>
 {SEO.footer("home")}
 
 <script>const NUMDATA={NUM};</script><script>{JS}</script>

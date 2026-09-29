@@ -15,6 +15,7 @@ import gen_era_v2 as V2
 import gen_era_pages as P
 import gen_era_services as S
 import gen_era_reskin as R
+import build_css as CSS
 
 OUT = os.path.abspath(sys.argv[1])
 ROOTS = ["available-properties", "building-my-life-in-spain", "immigration", "real-estate",
@@ -42,6 +43,9 @@ for slug in ("immigration", "real-estate", "fullafterlife", "private-client"):
     write(slug + ".html", S.build(slug))
 for slug in R.PAGES:
     write(slug + ".html", R.build(slug))
+
+_p, _n = CSS.write(OUT)
+print("wrote era.css", _n // 1024, "KB")
 
 src = os.path.join(os.path.dirname(HERE), "staging", "media")
 dst = os.path.join(OUT, "media")

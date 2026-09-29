@@ -24,16 +24,16 @@ CONTENT = os.path.join(HERE, "content")
 
 # hero image per page — the owner's own photography, one each so they read distinct
 HERO = {
-    "immigration":    "/media/valencia-2.jpg",
-    "real-estate":    "/media/home-3.jpg",
-    "fullafterlife":  "/media/oliva-2.jpg",
-    "private-client": "/media/valencia-3.jpg",
+    "immigration":    "/media/valencia-2.webp",
+    "real-estate":    "/media/home-3.webp",
+    "fullafterlife":  "/media/oliva-2.webp",
+    "private-client": "/media/valencia-3.webp",
 }
 CHAPTER = {
-    "immigration":    ("/media/valencia-1.jpg", "Your legal right|to live here."),
-    "real-estate":    ("/media/oliva-2.jpg",    "We represent you.|Never the seller."),
-    "fullafterlife":  ("/media/home-1.jpg",     "One relationship,|start to finish."),
-    "private-client": ("/media/oliva-5.jpg",    "The founder,|beside you."),
+    "immigration":    ("/media/valencia-1.webp", "Your legal right|to live here."),
+    "real-estate":    ("/media/oliva-2.webp",    "We represent you.|Never the seller."),
+    "fullafterlife":  ("/media/home-1.webp",     "One relationship,|start to finish."),
+    "private-client": ("/media/oliva-5.webp",    "The founder,|beside you."),
 }
 
 SVC_CSS = """
@@ -44,8 +44,8 @@ SVC_CSS = """
 .inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(1.5rem,3vw,3rem);margin-top:clamp(2rem,5vh,3rem)}
 .inc{border-top:1px solid var(--line);padding-top:1.1rem}
 .dark .inc{border-top-color:var(--line-d)}
-.inc h4{font-family:var(--sans);font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);margin-bottom:1rem}
-.dark .inc h4{color:var(--cream-soft)}
+.inc h3{font-family:var(--sans);font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--ink-soft);margin-bottom:1rem}
+.dark .inc h3{color:var(--cream-soft)}
 .inc ul{list-style:none}
 .inc li{font-size:.94rem;color:var(--stone);padding:.45rem 0 .45rem 1.1rem;position:relative;line-height:1.6}
 .dark .inc li{color:rgba(243,243,236,.8)}
@@ -56,7 +56,7 @@ SVC_CSS = """
 .dark .svc-step{border-bottom-color:var(--line-d)}
 .svc-step b{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--stone)}
 .dark .svc-step b{color:var(--cream-soft)}
-.svc-step h4{font-family:var(--serif);font-size:clamp(1.1rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.45rem}
+.svc-step h3{font-family:var(--serif);font-size:clamp(1.1rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.45rem}
 .svc-step p{font-size:.94rem;color:var(--stone);max-width:64ch}
 .dark .svc-step p{color:rgba(243,243,236,.78)}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.2rem,2.5vw,2rem);margin-top:clamp(2rem,5vh,3rem)}
@@ -64,11 +64,11 @@ SVC_CSS = """
 .dark .svc-card{border-color:var(--line-d)}
 .svc-card .tag{display:block;font-family:var(--sans);font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;color:var(--ink-soft);margin-bottom:.9rem}
 .dark .svc-card .tag{color:var(--cream-soft)}
-.svc-card h4{font-family:var(--serif);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.6rem}
+.svc-card h3{font-family:var(--serif);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:360;letter-spacing:-.015em;margin-bottom:.6rem}
 .svc-card p{font-size:.94rem;color:var(--stone)}
 .dark .svc-card p{color:rgba(243,243,236,.8)}
 .money-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(1.5rem,4vw,4rem);margin-top:clamp(2rem,5vh,3rem)}
-.money-col h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.5rem}
+.money-col h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.5rem}
 .money-col .amt{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:340;line-height:1;margin-bottom:1rem;color:var(--ink)}
 .dark .money-col .amt{color:var(--cream)}
 .faq-list{margin-top:clamp(2rem,5vh,3rem);border-top:1px solid var(--line)}
@@ -88,7 +88,7 @@ SVC_CSS = """
 .pk-price{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:340;line-height:1;margin:.2rem 0 .9rem}
 .callout{margin-top:clamp(2rem,5vh,3rem);max-width:68ch;border-top:1px solid var(--line);padding-top:1.4rem}
 .dark .callout{border-top-color:var(--line-d)}
-.callout h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
+.callout h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
 .callout p{font-size:.95rem;color:var(--stone);max-width:64ch}
 .dark .callout p{color:rgba(243,243,236,.8)}
 .callout p+p{margin-top:.8rem}
@@ -96,7 +96,7 @@ SVC_CSS = """
 .dark .pk-price{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:340;line-height:1;margin:.2rem 0 .9rem}
 .callout{margin-top:clamp(2rem,5vh,3rem);max-width:68ch;border-top:1px solid var(--line);padding-top:1.4rem}
 .dark .callout{border-top-color:var(--line-d)}
-.callout h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
+.callout h3{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.7rem}
 .callout p{font-size:.95rem;color:var(--stone);max-width:64ch}
 .dark .callout p{color:rgba(243,243,236,.8)}
 .callout p+p{margin-top:.8rem}
@@ -113,7 +113,7 @@ SVC_CSS = """
 
 def shell(slug, body):
     """same as gen_era_pages.shell but with the service CSS appended"""
-    return P.shell(slug, body).replace("</style>", SVC_CSS + "</style>")
+    return P.shell(slug, body)
 
 
 def esc(s):
@@ -139,7 +139,7 @@ def render_block(b, dark, idx):
         out.append('<div class="inc-grid reveal">')
         for lab, items in b["includes"]:
             lis = "".join(f"<li>{esc(i)}</li>" for i in items)
-            out.append(f'<div class="inc"><h4>{esc(lab)}</h4><ul>{lis}</ul></div>')
+            out.append(f'<div class="inc"><h3>{esc(lab)}</h3><ul>{lis}</ul></div>')
         out.append('</div>')
 
     if b.get("packages"):
@@ -149,11 +149,11 @@ def render_block(b, dark, idx):
             price = f'<span class="pk-price">{esc(pk["price"])}</span>' if pk["price"] else ""
             desc = f'<p>{rich(pk["desc"])}</p>' if pk["desc"] else ""
             note = f'<p class="card-note">{esc(pk["note"])}</p>' if pk["note"] else ""
-            out.append(f'<div class="svc-card pk">{tag}<h4>{esc(pk["name"])}</h4>{price}{desc}{note}</div>')
+            out.append(f'<div class="svc-card pk">{tag}<h3>{esc(pk["name"])}</h3>{price}{desc}{note}</div>')
         out.append('</div>')
 
     for co in b.get("callouts", []):
-        ti = f'<h4>{esc(co["title"])}</h4>' if co["title"] else ""
+        ti = f'<h3>{esc(co["title"])}</h3>' if co["title"] else ""
         ps = "".join(f'<p>{rich(x)}</p>' for x in co["paras"])
         lis = ("<ul>" + "".join(f"<li>{esc(x)}</li>" for x in co["items"]) + "</ul>") if co["items"] else ""
         out.append(f'<div class="callout inc reveal">{ti}{ps}{lis}</div>')
@@ -165,14 +165,14 @@ def render_block(b, dark, idx):
             desc = f'<p>{rich(c["desc"])}</p>' if c.get("desc") else ""
             items = ("<ul>" + "".join(f"<li>{esc(x)}</li>" for x in c["items"]) + "</ul>") if c.get("items") else ""
             note = f'<p class="card-note">{esc(c["note"])}</p>' if c.get("note") else ""
-            out.append(f'<div class="svc-card inc">{tag}<h4>{esc(c["title"])}</h4>{desc}{items}{note}</div>')
+            out.append(f'<div class="svc-card inc">{tag}<h3>{esc(c["title"])}</h3>{desc}{items}{note}</div>')
         out.append('</div>')
 
     if b["money"]:
         out.append('<div class="money-grid reveal">')
         for title, amt, items in b["money"]:
             lis = "".join(f"<li>{esc(i)}</li>" for i in items)
-            out.append(f'<div class="money-col inc"><h4>{esc(title)}</h4>'
+            out.append(f'<div class="money-col inc"><h3>{esc(title)}</h3>'
                        f'<span class="amt">{esc(amt)}</span><ul>{lis}</ul></div>')
         out.append('</div>')
 
@@ -196,7 +196,7 @@ def render_block(b, dark, idx):
         out.append('<div class="svc-steps reveal">')
         for n, title, desc in b["steps"]:
             p = f"<p>{rich(desc)}</p>" if desc else ""
-            out.append(f'<div class="svc-step"><b>{esc(n)}</b><div><h4>{esc(title)}</h4>{p}</div></div>')
+            out.append(f'<div class="svc-step"><b>{esc(n)}</b><div><h3>{esc(title)}</h3>{p}</div></div>')
         out.append('</div>')
 
     if b["faq"]:
