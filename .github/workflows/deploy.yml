@@ -38,6 +38,9 @@ jobs:
             --exclude='.assetsignore' \
             --exclude='README.md' \
             --exclude='HANDOFF.md' \
+            --exclude='HANDOFF-ERA.md' \
+            --exclude='staging-src' \
+            --exclude='staging' \
             --exclude='blog/_template.html' \
             ./ _site/
 

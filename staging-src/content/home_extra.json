@@ -1,0 +1,267 @@
+{
+ "hero_stats": [
+  [
+   "300",
+   "Days of sun per year"
+  ],
+  [
+   "€200K",
+   "Beachfront entry, Valencia coast"
+  ],
+  [
+   "2 hrs",
+   "To Paris, Madrid, Rome, Lisbon"
+  ]
+ ],
+ "hero_lede": "Mediterranean weather. World-class food. A continent at your door. Property that makes your home market look like a bad joke. This is what the other side of the decision looks like.",
+ "calc": {
+  "ovl": "The Calculation",
+  "h2": "You built a life.<br>Now build a <em>better</em> one.",
+  "paras": [
+   "You're not retiring. You're redeploying. Taking the equity you've accumulated — the house, the pension, the portfolio — and converting it into access to a world most people only visit.",
+   "Spain isn't a compromise. It's an upgrade. Better food, better weather, better healthcare, better pace — at prices your current market would find embarrassing.",
+   "The only question is timing. And the answer is usually: sooner than you think."
+  ],
+  "stats": [
+   [
+    "€3,200",
+    "Average price per m², Jávea — Spain's St. Tropez"
+   ],
+   [
+    "€28,800",
+    "Annual passive income that qualifies you for the Non-Lucrative Visa"
+   ],
+   [
+    "420+",
+    "Golf courses across Spain. Playable year-round."
+   ],
+   [
+    "€900",
+    "Average price per m², inland finca country"
+   ]
+  ]
+ },
+ "num_intro": {
+  "ca": "The client selling a $1.5M Toronto semi or a $2M Vancouver townhouse arrives in Spain with genuinely transformative purchasing power.",
+  "us": "The client selling a $1.5M Bay Area bungalow or a $1.3M Seattle craftsman arrives in Spain with genuinely transformative purchasing power."
+ },
+ "num_spain": [
+  [
+   "both",
+   "Property",
+   "€400K buys a beachfront villa with a pool. €280K buys a finca with two hectares of olive groves. Your equity goes further than you think."
+  ],
+  [
+   "both",
+   "Cost of living",
+   "Dinner for two with wine: €40. Fresh produce markets that make the supermarket obsolete. Utilities at a fraction of what you pay now."
+  ],
+  [
+   "both",
+   "Healthcare",
+   "Spain ranks among the top healthcare systems in the world. Private cover for a couple: €200–€400 per month. English-speaking providers throughout the Valencia Community."
+  ],
+  [
+   "both",
+   "Tax",
+   "On the Non-Lucrative Visa you become a Spanish resident, taxed on investment income at the savings-base rates — 19% on the first &euro;6,000, 21% to &euro;50,000, then 23%. Double-taxation treaties with the US and Canada keep the same income from being taxed twice."
+  ],
+  [
+   "both",
+   "Weather",
+   "300 days of sun. Mild winters. Sea swimming from April to November. The kind of January that makes the move feel obvious in retrospect."
+  ]
+ ],
+ "num_home": [
+  [
+   "ca",
+   "Property",
+   "$1.5M buys a semi-detached on a street of 50 neighbours. No land. No pool. Maintenance that costs more every year."
+  ],
+  [
+   "us",
+   "Property",
+   "$1.5M buys a mid-century ranch a long drive from the coast. No land. No pool. Property tax that climbs with every assessment."
+  ],
+  [
+   "both",
+   "Cost of living",
+   "Groceries, restaurants, utilities, services — priced for a market that decided affordability was someone else's problem."
+  ],
+  [
+   "ca",
+   "Healthcare",
+   "Public system under strain. Private insurance that costs more and covers less every renewal cycle."
+  ],
+  [
+   "us",
+   "Healthcare",
+   "Premiums, deductibles, and a network you check before every appointment. Coverage that costs more the year you'll lean on it."
+  ],
+  [
+   "ca",
+   "Tax rate",
+   "Up to 53% marginal in Ontario and B.C. More every budget cycle."
+  ],
+  [
+   "us",
+   "Tax rate",
+   "Up to 37% federal — plus 13.3% in California or 10.9% in New York. More every cycle."
+  ],
+  [
+   "both",
+   "Weather",
+   "Five tolerable months. Seven months of something you've stopped pretending to enjoy."
+  ]
+ ],
+ "places_full": {
+  "Valencia City": [
+   "Spain's third city, and the one that keeps getting overlooked in favour of Madrid and Barcelona. That is the opportunity.",
+   "The shape of it is unusual. The river was diverted after the 1957 flood and the old bed became a nine-kilometre park that runs through the middle of the city — you can cross Valencia end to end under the trees, on foot or by bike, without meeting a car. It ends at the Ciutat de les Arts i les Ciències.",
+   "The barrios each behave differently. Ruzafa is where the design crowd went. El Carmen is the medieval quarter, narrow and loud. The Eixample is where you find the tall ceilings and the wrought-iron balconies. And the beach is on a tram line from the centre, which is not true of most Mediterranean cities.",
+   "What it asks of you: you are trading the garden for the street. Flats, not fincas. Summer nights are noisy, parking is a negotiation, and August in the city is genuinely hot.",
+   "What it gives you: an international airport, a serious food culture, and a life you can live without a car."
+  ],
+  "Jávea &amp; Denia": [
+   "This is the most sophisticated stretch of coast in Spain, and the prices reflect it — this is the top of our range.",
+   "Montgó sits between the two towns: a limestone mass that is a natural park, which is why the coastline here was never carpeted the way places further south were. Jávea has the arenal, the port, and the old town, and they function almost as three separate villages. Dénia has the castle, the ferry to the Balearics, and a food scene serious enough that UNESCO named it a Creative City of Gastronomy.",
+   "The community is the real asset. It is deep, international and long-established — Dutch, German, British, Scandinavian, and increasingly North American. Sailing is central. So is the fact that people here mostly chose it after looking at everywhere else first.",
+   "What it asks of you: money, and patience in August, when the population multiplies and the roads know it.",
+   "What it gives you: the version of the coast that people who did the research end up choosing — and rarely leave. If you only have one weekend to look, spend it here."
+  ],
+  "Oliva &amp; Cullera": [
+   "The coast that did not get built. That is the entire proposition.",
+   "Between Oliva and Cullera the development ran out before it ruined anything. You get dune systems, pine behind the sand, and beaches wide enough that August never feels like August. Oliva Nova has the golf and the marina; behind it the town is still a Valencian town that happens to be near the sea, rather than a resort with a town attached.",
+   "The value gap with Jávea is real and it is not a quality gap. It is a fashion gap. You are an hour further from the Costa Blanca's centre of gravity and the market prices that in.",
+   "This is also where our founder lives, in Oliva Nova — so the local knowledge here is not researched, it is daily.",
+   "What it asks of you: a car, some Spanish, and comfort with a quieter winter. The international infrastructure is thinner than in Jávea.",
+   "What it gives you: the Mediterranean at a pace and a price the famous stretches stopped offering twenty years ago."
+  ],
+  "Inland — Ontinyent": [
+   "Go forty minutes inland and the arithmetic changes completely.",
+   "Ontinyent sits in the Vall d'Albaida, ringed by sierra. This is finca country — olive and almond terraces, dry-stone walls, farmhouses with thick walls and courtyards, and land in quantities that make no sense on the coast. Budgets that buy an apartment near the sea buy a house with hectares here.",
+   "It is a working Spanish town, not an expat one. There is a textile industry, a Thursday market, and a football club people care about. The sierra behind it is walking and cycling country that most visitors never see.",
+   "What it asks of you — and this is the honest part — is commitment. You will need a car. You will need Spanish, because English will not carry you. You are forty-five minutes from the coast and over an hour from an airport. The winter nights are properly cold, and an old finca is a project, not a purchase.",
+   "What it gives you: land, silence, and a life that is unmistakably Spanish rather than international. For the right person it is the only answer. For the wrong person it is a lonely mistake — and we will tell you which you are."
+  ]
+ },
+ "places_intro": "We are based here. We know what each area gives you and what it asks of you.",
+ "decision": {
+  "ovl": "Is This You?",
+  "h2": "This is for people who act<br>while others <em>wait.</em>",
+  "deck": "Spanish AfterLife exists for a specific kind of person. You'll know immediately if this is you.",
+  "traits": [
+   "You're 50–65 and your best years are in front of you, not behind",
+   "You're selling a high-value home and want to redeploy that equity intelligently",
+   "You've been thinking about this for a while — and you're tired of just thinking",
+   "You want the full life — food, culture, sport, travel, property — not a managed resort",
+   "You make smart moves early, before the window closes",
+   "You want someone who has already done this, not someone who has read about it"
+  ],
+  "ctas": [
+   [
+    "/find-your-spain",
+    "See If Spain Is Your Answer"
+   ],
+   [
+    "#contact",
+    "Or talk to us directly"
+   ]
+  ]
+ },
+ "how": {
+  "h2": "We handle everything between the decision and the first morning.",
+  "lede": "Spanish AfterLife is the firm that makes the move happen. Immigration, property, banking, settlement — one relationship, start to finish.",
+  "steps": [
+   [
+    "01",
+    "Strategy Call",
+    "Visa eligibility, financial structure, property goals, timeline. Free. No obligation. Just clarity."
+   ],
+   [
+    "02",
+    "Immigration",
+    "Non-Lucrative Visa, NIE, empadronamiento, CaixaBank, Beckham Law. Done properly the first time."
+   ],
+   [
+    "03",
+    "Property",
+    "Full buyer's agency. We represent you, not the seller. Commission paid by the seller's agent."
+   ],
+   [
+    "04",
+    "Settlement",
+    "Keys in hand. Utilities connected. Neighbours introduced. Your AfterLife begins."
+   ]
+  ],
+  "fees": [
+   [
+    "Fixed fee from",
+    "&euro;3,500",
+    "Single applicant / &euro;5,500 couple"
+   ],
+   [
+    "Transaction range",
+    "€200K – €1.5M+",
+    "Buyer representation costs you nothing extra"
+   ]
+  ],
+  "fa_line": "Most people want both — residency and property, run as <strong>one engagement, start to finish.</strong> That is The Full AfterLife.",
+  "pc_line": "And some want the founder personally embedded from day one — <em>every call, every decision, two years of advisory beside you.</em> A different mode of engagement.",
+  "founder": "Our founder made the move personally — from Mexico to Spain, through the tourist-visa years, the Digital Nomad Visa, and Spanish residency — and lives on the Valencia coast today. Every piece of guidance comes from experience, not research. We are based in Spain — not advising from abroad."
+ },
+ "journal": {
+  "ovl": "From the journal",
+  "h2": "Building my life in Spain.",
+  "deck": "The honest field notes &mdash; visas, property, money, and the day-to-day of actually moving here. Written from the Valencia coast, not from abroad.",
+  "href": "journal-feature reveal\" href=\"/building-my-life-in-spain/non-lucrative-vs-digital-nomad-visa-spain\"",
+  "cat": "Visa &amp; Money",
+  "date": "Jul 2026",
+  "h3": "Non-Lucrative vs Digital Nomad Visa: which Spain route?",
+  "p": "The two routes onto Spanish residency, how they differ, and who each one really suits &mdash; the shape of the choice before the numbers."
+ },
+ "contact": {
+  "paras": [
+   "A free 45-minute call. We cover your visa eligibility, what your money buys here, the timeline, and whether Spain is actually the right move for your situation.",
+   "If it isn't, we'll tell you that too."
+  ],
+  "list": [
+   "Visa eligibility — NLV income requirements, Beckham Law, what changes when you arrive",
+   "Financial picture — what your equity buys here and how to structure the move",
+   "Property goals — which area, which property type, which budget makes sense",
+   "Realistic timeline — from the decision you've already made to the morning you wake up here"
+  ],
+  "box_h3": "Book your free call",
+  "box_p": "We respond within one business day. All enquiries confidential.",
+  "note": "No sales pitch. No obligation. Just an honest conversation."
+ },
+ "places_short": {
+  "Valencia City": "Spain's third city. Birthplace of paella. World-class food scene, extraordinary architecture, beach tram from the centre. Europe's most underrated city.",
+  "Jávea &amp; Denia": "The most sophisticated stretch of coastline in Spain. Sailing culture, serious restaurants, deep community. Where people who've done the research end up.",
+  "Oliva &amp; Cullera": "Where the coastline hasn't been overdeveloped. Extraordinary beaches, local pace, genuine value &mdash; and where our founder lives, in Oliva Nova.",
+  "Inland — Ontinyent": "The best-kept secret in European real estate. Fincas with olive groves at prices that bear no relation to the coast. Real Spain, for buyers seeking space and quiet."
+ },
+ "life_deck": "Not a holiday. A life. Here is what it actually looks like.",
+ "num_h3": [
+  "The market you're moving to",
+  "The market you know"
+ ],
+ "svc": [
+  [
+   "Immigration Concierge",
+   "Your legal right to live here, handled.",
+   "NLV, NIE, empadronamiento, CaixaBank, Beckham Law, tax registration. Managed through our vetted legal partner — you deal with us throughout."
+  ],
+  [
+   "Real Estate — Buyer's Agency",
+   "The market you don't know yet. We do.",
+   "Full buyer's representation across the Valencia Community. Fincas, beach apartments, equestrian estates, city properties. We know what locals know."
+  ]
+ ],
+ "guide": {
+  "ovl": "The free guide",
+  "h2": "Your Complete Guide to <em>Retiring in Spain</em>",
+  "p": "The visa, the property, and the honest cost of the life &mdash; the numbers most people never run. Written from the Valencia coast, not from abroad.",
+  "note": "Free. No obligation. Straight to your inbox."
+ }
+}
