@@ -6,6 +6,7 @@ _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import era_seo as SEO
 OUT=_os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))),"staging","v2","index.html")
 PILLAR_FULL=json.load(_io.open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),"content","pillars.json"),encoding="utf-8"))
+HX=json.load(_io.open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),"content","home_extra.json"),encoding="utf-8"))
 REGION_LINE=_io.open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),"content","region.txt"),encoding="utf-8").read().strip()
 U="https://images.unsplash.com/"
 def uimg(id,w=1600,q=80): return f"{U}{id}?w={w}&q={q}"
@@ -38,31 +39,19 @@ PLACES=[  # tag, name, price, short line, image
  ("Finca Country","Inland — Ontinyent","From €120,000","Olive groves at inland prices.",uimg("photo-1474979266404-7eaacbcd87c5",1600,85)),
 ]
 # Numbers — lean: 3 contrasts. Spain constant; home switches. Figures verbatim.
-WAIT=[("Property","€400K buys a beachfront villa with a pool."),
-      ("Tax","Investment income taxed at 19–23%."),
-      ("Weather","300 days of sun.")]
-LEAVE={
- "ca":("The client selling a $1.5M Toronto semi arrives in Spain with genuinely transformative purchasing power.",
-   [("Property","$1.5M buys a semi-detached. No land. No pool."),
-    ("Tax","Up to 53% marginal in Ontario and B.C."),
-    ("Weather","Five tolerable months.")]),
- "us":("The client selling a $1.5M Bay Area bungalow arrives in Spain with genuinely transformative purchasing power.",
-   [("Property","$1.5M buys a mid-century ranch, far from the coast."),
-    ("Tax","Up to 37% federal — plus 13.3% in California."),
-    ("Weather","Five tolerable months.")]),
-}
+# Numbers — production's rows, verbatim (content/home_extra.json). Spain constant; home switches.
+WAIT=[(k,v) for g,k,v in HX["num_spain"]]
+LEAVE={c:(HX["num_intro"][c],[(k,v) for g,k,v in HX["num_home"] if g in (c,"both")]) for c in ("ca","us")}
 SERVICES=[
- ("Immigration Concierge","Your legal right to live in Spain, handled end to end — visa, NIE, banking, tax registration.","From €3,500","/v2/immigration/"),
- ("Real Estate","Full buyer's agency across the Valencia Community. We represent you, never the seller.","€200K – €1.5M+","/v2/real-estate/"),
+ ("Immigration Concierge","Your legal right to live in Spain, handled end to end — visa, NIE, banking, tax registration.","Fixed fee from &euro;3,500<small>Single applicant / &euro;5,500 couple</small>","/v2/immigration/"),
+ ("Real Estate","Full buyer's agency across the Valencia Community. We represent you, never the seller.","&euro;200K – &euro;1.5M+<small>Buyer representation costs you nothing extra</small>","/v2/real-estate/"),
  ("The Full AfterLife","Residency and property run as a single engagement — from the first call to the keys.","","/v2/fullafterlife/"),
  ("The Private Client","The founder personally embedded from day one. Every call, every decision, beside you.","","/v2/private-client/"),
 ]
 SVC_IMGS=["/media/valencia-2.jpg","/media/valencia-1.jpg","/oliva-cullera.jpg","/media/home-3.jpg"]
 SVC_TAGS=["Residency","Property","Everything","Bespoke"]
-STEPS=[("01","Strategy Call","Eligibility, structure, timeline. Free."),
- ("02","Immigration","NLV, NIE, banking. Done properly."),
- ("03","Property","We represent you, not the seller."),
- ("04","Settlement","Keys in hand. Your AfterLife begins.")]
+STEPS=[tuple(x) for x in HX["how"]["steps"]]
+
 # Cross-page links. These pages are NOT part of the redesign and do not exist on the
 # era-staging preview, so they point at the live site to keep the prototype clickable.
 # AT PRODUCTION BUILD: set SITE="" so they resolve relative (/available-properties).
@@ -108,24 +97,88 @@ pillar_panels="\n".join(
  f'<div class="sw-full">{"".join(f"<p>{x}</p>" for x in PILLAR_FULL[i]["full"])}</div></div></div>'
  for i,(t,d) in enumerate(PILLARS))
 
+def place_more(name):
+    ps=HX["places_full"].get(name)
+    if not ps: return ""
+    return '<details class="place-more"><summary>What it gives, what it asks</summary>'+"".join(f"<p>{x}</p>" for x in ps)+'</details>'
 places_html="\n".join(
  f'''<article class="place">
    <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('{img}')"></div></div>
-   <div class="place-body reveal"><span class="ovl">{tag}</span><h3>{name}</h3><p>{line}</p><span class="place-price">{price}</span></div>
+   <div class="place-body reveal"><span class="ovl">{tag}</span><h3>{name}</h3><p>{HX["places_short"].get(name,line)}</p><span class="place-price">{price}</span>{place_more(name)}</div>
  </article>''' for tag,name,price,line,img in PLACES)
 
 def rows(rs): return "\n".join(f'<div class="nrow"><span class="nk">{k}</span><span class="nv">{v}</span></div>' for k,v in rs)
+SVC_COPY=[tuple(HX["svc"][0]),tuple(HX["svc"][1]),
+  ("The Full AfterLife","The Full AfterLife",HX["how"]["fa_line"]),
+  ("The Private Client","The Private Client",HX["how"]["pc_line"])]
 services_html="\n".join(
  f'''<article class="srow">
    <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url(\'{SVC_IMGS[i]}\')"></div></div>
-   <div class="srow-body reveal"><span class="ovl">{SVC_TAGS[i]}</span><h3>{n}</h3><p>{d}</p><div class="srow-foot">{f'<span class="srow-fee">{fee}</span>' if fee else ''}<a class="srow-link" href="{href}">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+   <div class="srow-body reveal"><span class="ovl">{SVC_COPY[i][0]}</span><h3>{SVC_COPY[i][1]}</h3><p>{SVC_COPY[i][2]}</p><div class="srow-foot">{f'<span class="srow-fee">{fee}</span>' if fee else ''}<a class="srow-link" href="{href}">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>''' for i,(n,d,fee,href) in enumerate(SERVICES))
 steps_html="\n".join(f'<div class="step reveal"><span class="step-n">{n}</span><div><h3>{t}</h3><p>{d}</p></div></div>' for n,t,d in STEPS)
 def _o(i,o): return '<option'+(' value=""' if i==0 else '')+'>'+o+'</option>'
 locopts="\n".join(_o(i,o) for i,o in enumerate(LOCS))
+hero_stats="".join(f'<div class="hstat"><span class="hstat-n">{n}</span><span class="hstat-l">{l}</span></div>' for n,l in HX["hero_stats"])
+calc_stats="".join(f'<div class="cstat reveal"><span class="cstat-n">{n}</span><span class="cstat-l">{l}</span></div>' for n,l in HX["calc"]["stats"])
+calc_paras="".join(f"<p>{x}</p>" for x in HX["calc"]["paras"])
+D_=HX["decision"]
+traits="".join(f'<li class="reveal"><span class="tick" aria-hidden="true">&check;</span>{t}</li>' for t in D_["traits"])
+J_=HX["journal"]; J_HREF=J_["href"].split('href="')[1].rstrip('"')
+C_=HX["contact"]
+clist="".join(f'<li><span class="cl-n">{i+1:02d}</span><span>{x}</span></li>' for i,x in enumerate(C_["list"]))
 NUM=json.dumps({"ca":{"intro":LEAVE["ca"][0],"rows":LEAVE["ca"][1]},"us":{"intro":LEAVE["us"][0],"rows":LEAVE["us"][1]}},ensure_ascii=False)
 
 CSS=r"""
+/* --- production-parity blocks --- */
+html,body{overflow-x:clip}
+.lm-consent input,.news-consent input{margin-right:.5rem;vertical-align:-2px}
+.hstats{display:flex;gap:clamp(1.4rem,4vw,3.5rem);margin-top:clamp(2.2rem,6vh,3.4rem);flex-wrap:wrap}
+.hstat{display:flex;flex-direction:column;gap:.3rem}
+.hstat-n{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:340}
+.hstat-l{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(243,243,236,.78);max-width:18ch}
+.calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+.calc-copy h2{margin:1.2rem 0 1.6rem;max-width:14ch}
+.calc-paras p{color:var(--stone);max-width:52ch;margin-bottom:1rem}
+.calc-stats{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cstat{padding:1.6rem 1.2rem 1.6rem 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.5rem}
+.cstat-n{font-family:var(--serif);font-size:clamp(2rem,3.6vw,3rem);font-weight:320;line-height:1}
+.cstat-l{font-size:.86rem;color:var(--stone);max-width:24ch}
+.place-more{margin-top:1.4rem;max-width:52ch}
+.place-more summary{cursor:pointer;font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;list-style:none;display:inline-flex;gap:.5rem;align-items:center;min-height:44px}
+.place-more summary::-webkit-details-marker{display:none}
+.place-more summary::after{content:"+";font-size:1rem}
+.place-more[open] summary::after{content:"\2212"}
+.place-more p{color:var(--stone);font-size:.95rem;margin-top:.9rem}
+.places-intro{color:var(--stone);max-width:52ch;margin-bottom:1rem}
+.decision .lead{color:var(--stone);max-width:52ch}
+.traits{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(1.5rem,4vw,4rem);margin:clamp(2rem,5vh,3rem) 0}
+.traits li{display:flex;gap:1rem;padding:1.2rem 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.4}
+.tick{font-family:var(--sans);font-size:.9rem;color:var(--ink-soft);padding-top:.2rem}
+.dec-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-ink,.btn-line{display:inline-flex;align-items:center;min-height:44px;padding:.9rem 1.7rem;border-radius:100px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border:1px solid var(--ink)}
+.btn-ink{background:var(--ink);color:var(--cream)}
+.btn-line{color:var(--ink)}
+.srow-fee small{display:block;font-family:var(--sans);font-size:.74rem;color:var(--stone);margin-top:.3rem;letter-spacing:.02em}
+.proc-lede{color:rgba(243,243,236,.78);max-width:48ch;margin:-1rem 0 1.6rem}
+.founder-note{margin-top:2rem;font-size:.9rem;color:rgba(243,243,236,.7);max-width:60ch;border-top:1px solid var(--line-d);padding-top:1.4rem}
+.founder-note strong{color:var(--cream)}
+.journal-feat .lead{color:var(--stone);max-width:56ch}
+.jfeat{display:block;margin-top:clamp(2rem,5vh,3rem);padding:clamp(1.6rem,3vw,2.6rem);border:1px solid var(--line);transition:background .5s var(--ease)}
+.jfeat:hover{background:rgba(23,35,59,.035)}
+.jmeta{font-size:.66rem;text-transform:uppercase;letter-spacing:.2em;font-weight:600;color:var(--ink-soft)}
+.jfeat h3{margin:.8rem 0;max-width:28ch}
+.jfeat p{color:var(--stone);max-width:60ch;margin-bottom:1.2rem}
+.jall{display:inline-block;margin-top:1.4rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;min-height:44px}
+.ccopy{margin-top:1.6rem}
+.ccopy .lead{color:var(--stone);max-width:40ch;margin-bottom:.8rem}
+.clist{list-style:none;margin-top:1.4rem}
+.clist li{display:grid;grid-template-columns:2.4rem 1fr;gap:.6rem;padding:.9rem 0;border-top:1px solid var(--line);font-size:.95rem;color:var(--stone)}
+.cl-n{font-family:var(--serif);color:var(--ink)}
+.box-h{margin-bottom:.4rem}
+.box-p{color:var(--stone);font-size:.9rem;margin-bottom:1.6rem}
+@media(max-width:900px){.calc-grid,.traits{grid-template-columns:1fr}}
+
 :root{--cream:#F3F3EC;--ink:#17233B;--stone:#5C5648;--ink-soft:rgba(23,35,59,.6);--cream-soft:rgba(243,243,236,.66);
 --line:rgba(23,35,59,.15);--line-d:rgba(243,243,236,.18);
 --serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
@@ -187,6 +240,7 @@ justify-content:center;padding:var(--pad);clip-path:inset(0 0 100% 0);transition
 .hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(23,35,59,.72) 0%,rgba(23,35,59,.42) 45%,rgba(23,35,59,.2) 100%)}
 .hero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--pad)}
 .hero h1{max-width:14ch} .hero h1 em{font-style:italic;font-weight:300}
+.hero-lede{margin-top:1rem;max-width:52ch;font-size:.95rem;color:rgba(243,243,236,.78)}
 .hero-sub{margin-top:1.4rem;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(243,243,236,.9);max-width:34ch}
 .hero-cta{margin-top:2.2rem;display:inline-flex;gap:.6rem;align-items:center;background:var(--cream);color:var(--ink);
 padding:1rem 1.9rem;border-radius:100px;font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;
@@ -212,6 +266,7 @@ font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;display:flex;flex
 .switch-track{height:calc(12 * 40vh + 100vh)}
 .switch-sticky{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:38% 1fr;overflow:hidden}
 .sw-list{align-self:center;padding:0 var(--pad);display:flex;flex-direction:column;gap:.05rem}
+.sw-deck{display:block;margin-top:.8rem;font-family:var(--serif);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--cream)}
 .sw-head{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-soft);margin-bottom:1.5rem}
 .sw-tab{background:none;border:0;text-align:left;cursor:pointer;display:flex;gap:1rem;align-items:baseline;padding:.42rem 0;
 color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:var(--serif)}
@@ -247,6 +302,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 #numbers .head{margin-bottom:0}
 .nside{display:flex;flex-direction:column;align-items:flex-start}
 .n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:none;margin:1.4rem 0 0;min-height:2.6em}
+.ncol-h{font-size:clamp(1.3rem,2vw,1.7rem);margin:-.4rem 0 1.2rem}
 .ncols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem)}
 .ncol .ovl{display:block;margin-bottom:1.4rem}
 .nrow{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line-d);align-items:baseline}
@@ -382,16 +438,23 @@ HTML=f"""<!doctype html><html lang="en"><head>
   <div class="hero-in">
     <h1>{rlines('Your best years.|<em>Starting now.</em>')}</h1>
     <p class="hero-sub reveal">Early retirement on Spain's Mediterranean coast.</p>
+    <p class="hero-lede reveal">{HX["hero_lede"]}</p>
     <a class="hero-cta reveal" href="#contact">Start here <span aria-hidden="true">&rarr;</span></a>
+    <div class="hstats reveal">{hero_stats}</div>
   </div>
   <div class="scroll-cue">Scroll</div>
 </header>
 
 <section class="chapter">{vbg('/media/ronda.mp4','/media/ronda-poster.jpg',webm='/media/ronda.webm')}<h2>{rlines('A continent|at your door.')}</h2></section>
 
+<section class="pad calc" id="calc"><div class="wrap calc-grid">
+  <div class="calc-copy"><span class="ovl">{HX["calc"]["ovl"]}</span><h2 class="reveal">{HX["calc"]["h2"]}</h2><div class="calc-paras reveal">{calc_paras}</div></div>
+  <div class="calc-stats">{calc_stats}</div>
+</div></section>
+
 <section class="switch dark" id="life">
   <div class="switch-track"><div class="switch-sticky">
-    <div class="sw-list"><div class="sw-head">Twelve reasons this is the right move</div>{pillar_tabs}</div>
+    <div class="sw-list"><div class="sw-head">Twelve reasons this is the right move<span class="sw-deck">{HX["life_deck"]}</span></div>{pillar_tabs}</div>
     <div class="sw-stage">{pillar_panels}</div>
   </div></div>
 </section>
@@ -407,15 +470,23 @@ HTML=f"""<!doctype html><html lang="en"><head>
     </div>
   </div>
   <div class="ncols">
-    <div class="ncol reveal"><span class="ovl">What's waiting — Spain</span>{rows(WAIT)}</div>
-    <div class="ncol leave reveal"><span class="ovl">What you're leaving</span><div id="leave"></div></div>
+    <div class="ncol reveal"><span class="ovl">What's waiting — Spain</span><h3 class="ncol-h">{HX["num_h3"][0]}</h3>{rows(WAIT)}</div>
+    <div class="ncol leave reveal"><span class="ovl">What you're leaving</span><h3 class="ncol-h">{HX["num_h3"][1]}</h3><div id="leave"></div></div>
   </div>
 </div></section>
 
 <section class="places pad" id="places"><div class="wrap">
   <div class="head"><span class="ovl">Where We Work</span><h2 class="reveal">The Valencia Community</h2></div>
+  <p class="lead places-intro reveal">{HX["places_intro"]}</p>
   <p class="region-line reveal">{REGION_LINE}</p>
   {places_html}
+</div></section>
+
+<section class="pad decision" id="decision"><div class="wrap">
+  <div class="head"><span class="ovl">{D_["ovl"]}</span><h2 class="reveal">{D_["h2"]}</h2></div>
+  <p class="lead reveal">{D_["deck"]}</p>
+  <ul class="traits">{traits}</ul>
+  <div class="dec-ctas reveal"><a class="btn-ink" href="{D_["ctas"][0][0]}">{D_["ctas"][0][1]}</a><a class="btn-line" href="#contact">{D_["ctas"][1][1]}</a></div>
 </div></section>
 
 <section class="chapter">{bg('/media/oliva-5.jpg','','0.1')}<h2>{rlines('Why wait for|the AfterLife?')}</h2></section>
@@ -428,25 +499,35 @@ HTML=f"""<!doctype html><html lang="en"><head>
 <section class="process dark" id="process">
   <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="background-image:url('/hero.png')"></div></div>
   <div class="process-body">
-    <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">One relationship,<br>start to finish</h2></div>
+    <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">{HX["how"]["h2"]}</h2></div>
+    <p class="proc-lede reveal">{HX["how"]["lede"]}</p>
     <div class="steps">{steps_html}</div>
+    <p class="founder-note reveal"><strong>Why we built this.</strong> {HX["how"]["founder"]}</p>
   </div>
 </section>
+
+<section class="pad journal-feat" id="journal"><div class="wrap">
+  <div class="head"><span class="ovl">{J_["ovl"]}</span><h2 class="reveal">{J_["h2"]}</h2></div>
+  <p class="lead reveal">{J_["deck"]}</p>
+  <a class="jfeat reveal" href="{J_HREF}"><span class="jmeta">{J_["cat"]} &middot; {J_["date"]}</span><h3>{J_["h3"]}</h3><p>{J_["p"]}</p><span class="srow-link">Read the piece <span aria-hidden="true">&rarr;</span></span></a>
+  <a class="jall reveal" href="/v2/building-my-life-in-spain/">All journal entries &rarr;</a>
+</div></section>
 
 <section class="dark pad" id="guide"><div class="wrap guide">
   <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/guide-cover.png')"></div></div>
   <div class="guide-body reveal">
-    <h2>The honest cost of moving to Spain</h2>
-    <p>The visa, the property, the real numbers — written from the coast, not from abroad.</p>
+    <span class="ovl">{HX["guide"]["ovl"]}</span>
+    <h2>{HX["guide"]["h2"]}</h2>
+    <p>{HX["guide"]["p"]}</p>
     <form class="gform" id="gform" action="/api/subscribe" method="post">
       <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
       <button class="gbtn" type="submit">Send me the guide</button>
       <label class="consent"><input type="checkbox" name="consent" required><span>Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
       <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
       <input type="hidden" name="intent" value="guide">
-      <input type="hidden" name="source" value="v2:guide-form">
+      <input type="hidden" name="source" value="index:guide-form">
     </form>
-    <p class="micro">Free. No obligation. Straight to your inbox.</p>
+    <p class="micro">{HX["guide"]["note"]}</p>
   </div>
 </div></section>
 
@@ -454,21 +535,12 @@ HTML=f"""<!doctype html><html lang="en"><head>
   <div class="head"><span class="ovl">Start Here</span><h2 class="reveal">Find out if Spain is right for you.</h2></div>
   <div class="contact">
   <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.jpg')"></div></div>
-  <p class="lead" style="margin-top:1.6rem">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you — honestly.</p></div>
-  <form class="cform" id="cform" action="https://formspree.io/f/xvzeevnb" method="POST">
-    <input type="hidden" name="_subject" value="New enquiry — spanishafterlife.com">
-    <input type="hidden" name="_next" value="https://spanishafterlife.com/message-received">
-    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-5000px">
-    <div class="frow"><div class="field"><label for="cf-first">First Name</label><input id="cf-first" name="first_name" required></div><div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required></div></div>
-    <div class="field"><label for="cf-loc">Where are you based?</label><select id="cf-loc" name="location" required>{locopts}</select></div>
-    <div class="field"><label for="cf-msg">Anything that would help us prepare</label><textarea id="cf-msg" name="message" placeholder="Budget, timeline, areas of interest..."></textarea></div>
-    <button class="cbtn" type="submit">Book my free call</button>
-  </form>
+  <div class="ccopy">{"".join(f'<p class="lead">{x}</p>' for x in C_["paras"])}<ol class="clist">{clist}</ol></div></div>
+  <div><h3 class="box-h">{C_["box_h3"]}</h3><p class="box-p">{C_["box_p"]}</p>
+  {SEO.contact_form()}</div>
 </div></section>
 
-<footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
-<div class="foot-nav"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="#contact">Start Here</a></div></div>
-<div class="foot-bot"><span>© 2025 LJ Koch Group Inc. · Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>
+{SEO.footer("home")}
 
 <script>const NUMDATA={NUM};</script><script>{JS}</script>
 </body></html>"""

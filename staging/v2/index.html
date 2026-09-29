@@ -27,9 +27,75 @@
 "areaServed":"Valencia Community, Spain",
 "founder":{"@type":"Person","@id":"https://spanishafterlife.com/#ljkoch","name":"LJ Koch"}
 }</script>
+<style>
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:clamp(1.6rem,4vw,4rem);padding:clamp(2.2rem,5vh,3.5rem) 0;border-bottom:1px solid var(--line-d)}
+.foot-mark{font-family:var(--serif);font-size:1.5rem;font-weight:360;margin-bottom:1rem}
+.foot-brand p{font-size:.86rem;line-height:1.7;color:var(--cream-soft);max-width:36ch}
+.foot-col{display:flex;flex-direction:column;gap:.55rem}
+.foot-col h4{font-family:var(--sans);font-size:.64rem;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--cream-soft);margin-bottom:.5rem}
+.foot-col a{font-size:.9rem;color:var(--cream);opacity:.86;transition:opacity .3s}
+.foot-col a:hover{opacity:1;text-decoration:underline}
+.foot-signup{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:start;padding:clamp(2rem,5vh,3rem) 0;border-bottom:1px solid var(--line-d)}
+.foot-signup h4{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:360;margin-bottom:.6rem}
+.foot-signup p{font-size:.88rem;color:var(--cream-soft)}
+.foot-form{margin-top:0}
+.foot-bot a{text-decoration:underline}
+.form-note{font-size:.8rem;color:var(--stone);margin-top:.2rem}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}.foot-signup{grid-template-columns:1fr}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
 <style>
+/* --- production-parity blocks --- */
+html,body{overflow-x:clip}
+.lm-consent input,.news-consent input{margin-right:.5rem;vertical-align:-2px}
+.hstats{display:flex;gap:clamp(1.4rem,4vw,3.5rem);margin-top:clamp(2.2rem,6vh,3.4rem);flex-wrap:wrap}
+.hstat{display:flex;flex-direction:column;gap:.3rem}
+.hstat-n{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:340}
+.hstat-l{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(243,243,236,.78);max-width:18ch}
+.calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+.calc-copy h2{margin:1.2rem 0 1.6rem;max-width:14ch}
+.calc-paras p{color:var(--stone);max-width:52ch;margin-bottom:1rem}
+.calc-stats{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cstat{padding:1.6rem 1.2rem 1.6rem 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.5rem}
+.cstat-n{font-family:var(--serif);font-size:clamp(2rem,3.6vw,3rem);font-weight:320;line-height:1}
+.cstat-l{font-size:.86rem;color:var(--stone);max-width:24ch}
+.place-more{margin-top:1.4rem;max-width:52ch}
+.place-more summary{cursor:pointer;font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;list-style:none;display:inline-flex;gap:.5rem;align-items:center;min-height:44px}
+.place-more summary::-webkit-details-marker{display:none}
+.place-more summary::after{content:"+";font-size:1rem}
+.place-more[open] summary::after{content:"\2212"}
+.place-more p{color:var(--stone);font-size:.95rem;margin-top:.9rem}
+.places-intro{color:var(--stone);max-width:52ch;margin-bottom:1rem}
+.decision .lead{color:var(--stone);max-width:52ch}
+.traits{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(1.5rem,4vw,4rem);margin:clamp(2rem,5vh,3rem) 0}
+.traits li{display:flex;gap:1rem;padding:1.2rem 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.4}
+.tick{font-family:var(--sans);font-size:.9rem;color:var(--ink-soft);padding-top:.2rem}
+.dec-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-ink,.btn-line{display:inline-flex;align-items:center;min-height:44px;padding:.9rem 1.7rem;border-radius:100px;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600;border:1px solid var(--ink)}
+.btn-ink{background:var(--ink);color:var(--cream)}
+.btn-line{color:var(--ink)}
+.srow-fee small{display:block;font-family:var(--sans);font-size:.74rem;color:var(--stone);margin-top:.3rem;letter-spacing:.02em}
+.proc-lede{color:rgba(243,243,236,.78);max-width:48ch;margin:-1rem 0 1.6rem}
+.founder-note{margin-top:2rem;font-size:.9rem;color:rgba(243,243,236,.7);max-width:60ch;border-top:1px solid var(--line-d);padding-top:1.4rem}
+.founder-note strong{color:var(--cream)}
+.journal-feat .lead{color:var(--stone);max-width:56ch}
+.jfeat{display:block;margin-top:clamp(2rem,5vh,3rem);padding:clamp(1.6rem,3vw,2.6rem);border:1px solid var(--line);transition:background .5s var(--ease)}
+.jfeat:hover{background:rgba(23,35,59,.035)}
+.jmeta{font-size:.66rem;text-transform:uppercase;letter-spacing:.2em;font-weight:600;color:var(--ink-soft)}
+.jfeat h3{margin:.8rem 0;max-width:28ch}
+.jfeat p{color:var(--stone);max-width:60ch;margin-bottom:1.2rem}
+.jall{display:inline-block;margin-top:1.4rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;min-height:44px}
+.ccopy{margin-top:1.6rem}
+.ccopy .lead{color:var(--stone);max-width:40ch;margin-bottom:.8rem}
+.clist{list-style:none;margin-top:1.4rem}
+.clist li{display:grid;grid-template-columns:2.4rem 1fr;gap:.6rem;padding:.9rem 0;border-top:1px solid var(--line);font-size:.95rem;color:var(--stone)}
+.cl-n{font-family:var(--serif);color:var(--ink)}
+.box-h{margin-bottom:.4rem}
+.box-p{color:var(--stone);font-size:.9rem;margin-bottom:1.6rem}
+@media(max-width:900px){.calc-grid,.traits{grid-template-columns:1fr}}
+
 :root{--cream:#F3F3EC;--ink:#17233B;--stone:#5C5648;--ink-soft:rgba(23,35,59,.6);--cream-soft:rgba(243,243,236,.66);
 --line:rgba(23,35,59,.15);--line-d:rgba(243,243,236,.18);
 --serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
@@ -91,6 +157,7 @@ justify-content:center;padding:var(--pad);clip-path:inset(0 0 100% 0);transition
 .hero .media::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(23,35,59,.72) 0%,rgba(23,35,59,.42) 45%,rgba(23,35,59,.2) 100%)}
 .hero-in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--pad)}
 .hero h1{max-width:14ch} .hero h1 em{font-style:italic;font-weight:300}
+.hero-lede{margin-top:1rem;max-width:52ch;font-size:.95rem;color:rgba(243,243,236,.78)}
 .hero-sub{margin-top:1.4rem;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(243,243,236,.9);max-width:34ch}
 .hero-cta{margin-top:2.2rem;display:inline-flex;gap:.6rem;align-items:center;background:var(--cream);color:var(--ink);
 padding:1rem 1.9rem;border-radius:100px;font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;font-weight:600;
@@ -116,6 +183,7 @@ font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;display:flex;flex
 .switch-track{height:calc(12 * 40vh + 100vh)}
 .switch-sticky{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:38% 1fr;overflow:hidden}
 .sw-list{align-self:center;padding:0 var(--pad);display:flex;flex-direction:column;gap:.05rem}
+.sw-deck{display:block;margin-top:.8rem;font-family:var(--serif);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--cream)}
 .sw-head{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-soft);margin-bottom:1.5rem}
 .sw-tab{background:none;border:0;text-align:left;cursor:pointer;display:flex;gap:1rem;align-items:baseline;padding:.42rem 0;
 color:var(--cream);opacity:.38;transition:opacity .5s var(--ease);font-family:var(--serif)}
@@ -151,6 +219,7 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
 #numbers .head{margin-bottom:0}
 .nside{display:flex;flex-direction:column;align-items:flex-start}
 .n-intro{font-family:var(--serif);font-weight:340;font-size:clamp(1.4rem,2.8vw,2.3rem);line-height:1.28;max-width:none;margin:1.4rem 0 0;min-height:2.6em}
+.ncol-h{font-size:clamp(1.3rem,2vw,1.7rem);margin:-.4rem 0 1.2rem}
 .ncols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,5vw,5rem)}
 .ncol .ovl{display:block;margin-bottom:1.4rem}
 .nrow{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:1.15rem 0;border-top:1px solid var(--line-d);align-items:baseline}
@@ -242,16 +311,23 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   <div class="hero-in">
     <h1><span class="rline"><span>Your best years.</span></span><span class="rline"><span><em>Starting now.</em></span></span></h1>
     <p class="hero-sub reveal">Early retirement on Spain's Mediterranean coast.</p>
+    <p class="hero-lede reveal">Mediterranean weather. World-class food. A continent at your door. Property that makes your home market look like a bad joke. This is what the other side of the decision looks like.</p>
     <a class="hero-cta reveal" href="#contact">Start here <span aria-hidden="true">&rarr;</span></a>
+    <div class="hstats reveal"><div class="hstat"><span class="hstat-n">300</span><span class="hstat-l">Days of sun per year</span></div><div class="hstat"><span class="hstat-n">€200K</span><span class="hstat-l">Beachfront entry, Valencia coast</span></div><div class="hstat"><span class="hstat-n">2 hrs</span><span class="hstat-l">To Paris, Madrid, Rome, Lisbon</span></div></div>
   </div>
   <div class="scroll-cue">Scroll</div>
 </header>
 
 <section class="chapter"><div class="media vid" style="background:#141d31 url(&#39;/media/ronda-poster.jpg&#39;) 50% 30%/cover"><video class="media-img" autoplay muted loop playsinline preload="metadata" poster="/media/ronda-poster.jpg"><source src="/media/ronda.webm" type="video/webm"><source src="/media/ronda.mp4" type="video/mp4"></video></div><h2><span class="rline"><span>A continent</span></span><span class="rline"><span>at your door.</span></span></h2></section>
 
+<section class="pad calc" id="calc"><div class="wrap calc-grid">
+  <div class="calc-copy"><span class="ovl">The Calculation</span><h2 class="reveal">You built a life.<br>Now build a <em>better</em> one.</h2><div class="calc-paras reveal"><p>You're not retiring. You're redeploying. Taking the equity you've accumulated — the house, the pension, the portfolio — and converting it into access to a world most people only visit.</p><p>Spain isn't a compromise. It's an upgrade. Better food, better weather, better healthcare, better pace — at prices your current market would find embarrassing.</p><p>The only question is timing. And the answer is usually: sooner than you think.</p></div></div>
+  <div class="calc-stats"><div class="cstat reveal"><span class="cstat-n">€3,200</span><span class="cstat-l">Average price per m², Jávea — Spain's St. Tropez</span></div><div class="cstat reveal"><span class="cstat-n">€28,800</span><span class="cstat-l">Annual passive income that qualifies you for the Non-Lucrative Visa</span></div><div class="cstat reveal"><span class="cstat-n">420+</span><span class="cstat-l">Golf courses across Spain. Playable year-round.</span></div><div class="cstat reveal"><span class="cstat-n">€900</span><span class="cstat-l">Average price per m², inland finca country</span></div></div>
+</div></section>
+
 <section class="switch dark" id="life">
   <div class="switch-track"><div class="switch-sticky">
-    <div class="sw-list"><div class="sw-head">Twelve reasons this is the right move</div><button class="sw-tab" data-i="0"><span class="sw-idx">01</span><span class="sw-name">The Property</span></button>
+    <div class="sw-list"><div class="sw-head">Twelve reasons this is the right move<span class="sw-deck">Not a holiday. A life. Here is what it actually looks like.</span></div><button class="sw-tab" data-i="0"><span class="sw-idx">01</span><span class="sw-name">The Property</span></button>
 <button class="sw-tab" data-i="1"><span class="sw-idx">02</span><span class="sw-name">The Table</span></button>
 <button class="sw-tab" data-i="2"><span class="sw-idx">03</span><span class="sw-name">The Course</span></button>
 <button class="sw-tab" data-i="3"><span class="sw-idx">04</span><span class="sw-name">The Paddle</span></button>
@@ -289,32 +365,42 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
     </div>
   </div>
   <div class="ncols">
-    <div class="ncol reveal"><span class="ovl">What's waiting — Spain</span><div class="nrow"><span class="nk">Property</span><span class="nv">€400K buys a beachfront villa with a pool.</span></div>
-<div class="nrow"><span class="nk">Tax</span><span class="nv">Investment income taxed at 19–23%.</span></div>
-<div class="nrow"><span class="nk">Weather</span><span class="nv">300 days of sun.</span></div></div>
-    <div class="ncol leave reveal"><span class="ovl">What you're leaving</span><div id="leave"></div></div>
+    <div class="ncol reveal"><span class="ovl">What's waiting — Spain</span><h3 class="ncol-h">The market you're moving to</h3><div class="nrow"><span class="nk">Property</span><span class="nv">€400K buys a beachfront villa with a pool. €280K buys a finca with two hectares of olive groves. Your equity goes further than you think.</span></div>
+<div class="nrow"><span class="nk">Cost of living</span><span class="nv">Dinner for two with wine: €40. Fresh produce markets that make the supermarket obsolete. Utilities at a fraction of what you pay now.</span></div>
+<div class="nrow"><span class="nk">Healthcare</span><span class="nv">Spain ranks among the top healthcare systems in the world. Private cover for a couple: €200–€400 per month. English-speaking providers throughout the Valencia Community.</span></div>
+<div class="nrow"><span class="nk">Tax</span><span class="nv">On the Non-Lucrative Visa you become a Spanish resident, taxed on investment income at the savings-base rates — 19% on the first &euro;6,000, 21% to &euro;50,000, then 23%. Double-taxation treaties with the US and Canada keep the same income from being taxed twice.</span></div>
+<div class="nrow"><span class="nk">Weather</span><span class="nv">300 days of sun. Mild winters. Sea swimming from April to November. The kind of January that makes the move feel obvious in retrospect.</span></div></div>
+    <div class="ncol leave reveal"><span class="ovl">What you're leaving</span><h3 class="ncol-h">The market you know</h3><div id="leave"></div></div>
   </div>
 </div></section>
 
 <section class="places pad" id="places"><div class="wrap">
   <div class="head"><span class="ovl">Where We Work</span><h2 class="reveal">The Valencia Community</h2></div>
+  <p class="lead places-intro reveal">We are based here. We know what each area gives you and what it asks of you.</p>
   <p class="region-line reveal">Our region runs from the city of Valencia south down the Costa Blanca through Alicante, and on into the Region of Murcia — the full sweep of coast, and the inland country behind it. The four areas below are where most clients land; they are not the limit.</p>
   <article class="place">
    <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/javea-denia.jpg')"></div></div>
-   <div class="place-body reveal"><span class="ovl">Costa Blanca North</span><h3>Jávea &amp; Denia</h3><p>The most sophisticated stretch of the coast.</p><span class="place-price">From €280,000</span></div>
+   <div class="place-body reveal"><span class="ovl">Costa Blanca North</span><h3>Jávea &amp; Denia</h3><p>The most sophisticated stretch of coastline in Spain. Sailing culture, serious restaurants, deep community. Where people who've done the research end up.</p><span class="place-price">From €280,000</span><details class="place-more"><summary>What it gives, what it asks</summary><p>This is the most sophisticated stretch of coast in Spain, and the prices reflect it — this is the top of our range.</p><p>Montgó sits between the two towns: a limestone mass that is a natural park, which is why the coastline here was never carpeted the way places further south were. Jávea has the arenal, the port, and the old town, and they function almost as three separate villages. Dénia has the castle, the ferry to the Balearics, and a food scene serious enough that UNESCO named it a Creative City of Gastronomy.</p><p>The community is the real asset. It is deep, international and long-established — Dutch, German, British, Scandinavian, and increasingly North American. Sailing is central. So is the fact that people here mostly chose it after looking at everywhere else first.</p><p>What it asks of you: money, and patience in August, when the population multiplies and the roads know it.</p><p>What it gives you: the version of the coast that people who did the research end up choosing — and rarely leave. If you only have one weekend to look, spend it here.</p></details></div>
  </article>
 <article class="place">
    <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.jpg')"></div></div>
-   <div class="place-body reveal"><span class="ovl">City Life</span><h3>Valencia City</h3><p>Europe's most underrated city.</p><span class="place-price">From €180,000</span></div>
+   <div class="place-body reveal"><span class="ovl">City Life</span><h3>Valencia City</h3><p>Spain's third city. Birthplace of paella. World-class food scene, extraordinary architecture, beach tram from the centre. Europe's most underrated city.</p><span class="place-price">From €180,000</span><details class="place-more"><summary>What it gives, what it asks</summary><p>Spain's third city, and the one that keeps getting overlooked in favour of Madrid and Barcelona. That is the opportunity.</p><p>The shape of it is unusual. The river was diverted after the 1957 flood and the old bed became a nine-kilometre park that runs through the middle of the city — you can cross Valencia end to end under the trees, on foot or by bike, without meeting a car. It ends at the Ciutat de les Arts i les Ciències.</p><p>The barrios each behave differently. Ruzafa is where the design crowd went. El Carmen is the medieval quarter, narrow and loud. The Eixample is where you find the tall ceilings and the wrought-iron balconies. And the beach is on a tram line from the centre, which is not true of most Mediterranean cities.</p><p>What it asks of you: you are trading the garden for the street. Flats, not fincas. Summer nights are noisy, parking is a negotiation, and August in the city is genuinely hot.</p><p>What it gives you: an international airport, a serious food culture, and a life you can live without a car.</p></details></div>
  </article>
 <article class="place">
    <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/oliva-2.jpg')"></div></div>
-   <div class="place-body reveal"><span class="ovl">Unspoiled Coast</span><h3>Oliva &amp; Cullera</h3><p>The coast that never got overbuilt.</p><span class="place-price">From €180,000</span></div>
+   <div class="place-body reveal"><span class="ovl">Unspoiled Coast</span><h3>Oliva &amp; Cullera</h3><p>Where the coastline hasn't been overdeveloped. Extraordinary beaches, local pace, genuine value &mdash; and where our founder lives, in Oliva Nova.</p><span class="place-price">From €180,000</span><details class="place-more"><summary>What it gives, what it asks</summary><p>The coast that did not get built. That is the entire proposition.</p><p>Between Oliva and Cullera the development ran out before it ruined anything. You get dune systems, pine behind the sand, and beaches wide enough that August never feels like August. Oliva Nova has the golf and the marina; behind it the town is still a Valencian town that happens to be near the sea, rather than a resort with a town attached.</p><p>The value gap with Jávea is real and it is not a quality gap. It is a fashion gap. You are an hour further from the Costa Blanca's centre of gravity and the market prices that in.</p><p>This is also where our founder lives, in Oliva Nova — so the local knowledge here is not researched, it is daily.</p><p>What it asks of you: a car, some Spanish, and comfort with a quieter winter. The international infrastructure is thinner than in Jávea.</p><p>What it gives you: the Mediterranean at a pace and a price the famous stretches stopped offering twenty years ago.</p></details></div>
  </article>
 <article class="place">
    <div class="place-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1600&q=85')"></div></div>
-   <div class="place-body reveal"><span class="ovl">Finca Country</span><h3>Inland — Ontinyent</h3><p>Olive groves at inland prices.</p><span class="place-price">From €120,000</span></div>
+   <div class="place-body reveal"><span class="ovl">Finca Country</span><h3>Inland — Ontinyent</h3><p>The best-kept secret in European real estate. Fincas with olive groves at prices that bear no relation to the coast. Real Spain, for buyers seeking space and quiet.</p><span class="place-price">From €120,000</span><details class="place-more"><summary>What it gives, what it asks</summary><p>Go forty minutes inland and the arithmetic changes completely.</p><p>Ontinyent sits in the Vall d'Albaida, ringed by sierra. This is finca country — olive and almond terraces, dry-stone walls, farmhouses with thick walls and courtyards, and land in quantities that make no sense on the coast. Budgets that buy an apartment near the sea buy a house with hectares here.</p><p>It is a working Spanish town, not an expat one. There is a textile industry, a Thursday market, and a football club people care about. The sierra behind it is walking and cycling country that most visitors never see.</p><p>What it asks of you — and this is the honest part — is commitment. You will need a car. You will need Spanish, because English will not carry you. You are forty-five minutes from the coast and over an hour from an airport. The winter nights are properly cold, and an old finca is a project, not a purchase.</p><p>What it gives you: land, silence, and a life that is unmistakably Spanish rather than international. For the right person it is the only answer. For the wrong person it is a lonely mistake — and we will tell you which you are.</p></details></div>
  </article>
+</div></section>
+
+<section class="pad decision" id="decision"><div class="wrap">
+  <div class="head"><span class="ovl">Is This You?</span><h2 class="reveal">This is for people who act<br>while others <em>wait.</em></h2></div>
+  <p class="lead reveal">Spanish AfterLife exists for a specific kind of person. You'll know immediately if this is you.</p>
+  <ul class="traits"><li class="reveal"><span class="tick" aria-hidden="true">&check;</span>You're 50–65 and your best years are in front of you, not behind</li><li class="reveal"><span class="tick" aria-hidden="true">&check;</span>You're selling a high-value home and want to redeploy that equity intelligently</li><li class="reveal"><span class="tick" aria-hidden="true">&check;</span>You've been thinking about this for a while — and you're tired of just thinking</li><li class="reveal"><span class="tick" aria-hidden="true">&check;</span>You want the full life — food, culture, sport, travel, property — not a managed resort</li><li class="reveal"><span class="tick" aria-hidden="true">&check;</span>You make smart moves early, before the window closes</li><li class="reveal"><span class="tick" aria-hidden="true">&check;</span>You want someone who has already done this, not someone who has read about it</li></ul>
+  <div class="dec-ctas reveal"><a class="btn-ink" href="/find-your-spain">See If Spain Is Your Answer</a><a class="btn-line" href="#contact">Or talk to us directly</a></div>
 </div></section>
 
 <section class="chapter"><div class="media "><div class="media-img" data-par="0.1" style="background-image:url('/media/oliva-5.jpg')"></div></div><h2><span class="rline"><span>Why wait for</span></span><span class="rline"><span>the AfterLife?</span></span></h2></section>
@@ -323,45 +409,55 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   <div class="head"><span class="ovl">What we do</span><h2 class="reveal">The firm that makes<br>the move happen</h2></div>
   <article class="srow">
    <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-2.jpg')"></div></div>
-   <div class="srow-body reveal"><span class="ovl">Residency</span><h3>Immigration Concierge</h3><p>Your legal right to live in Spain, handled end to end — visa, NIE, banking, tax registration.</p><div class="srow-foot"><span class="srow-fee">From €3,500</span><a class="srow-link" href="/v2/immigration/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+   <div class="srow-body reveal"><span class="ovl">Immigration Concierge</span><h3>Your legal right to live here, handled.</h3><p>NLV, NIE, empadronamiento, CaixaBank, Beckham Law, tax registration. Managed through our vetted legal partner — you deal with us throughout.</p><div class="srow-foot"><span class="srow-fee">Fixed fee from &euro;3,500<small>Single applicant / &euro;5,500 couple</small></span><a class="srow-link" href="/v2/immigration/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 <article class="srow">
    <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-1.jpg')"></div></div>
-   <div class="srow-body reveal"><span class="ovl">Property</span><h3>Real Estate</h3><p>Full buyer's agency across the Valencia Community. We represent you, never the seller.</p><div class="srow-foot"><span class="srow-fee">€200K – €1.5M+</span><a class="srow-link" href="/v2/real-estate/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+   <div class="srow-body reveal"><span class="ovl">Real Estate — Buyer's Agency</span><h3>The market you don't know yet. We do.</h3><p>Full buyer's representation across the Valencia Community. Fincas, beach apartments, equestrian estates, city properties. We know what locals know.</p><div class="srow-foot"><span class="srow-fee">&euro;200K – &euro;1.5M+<small>Buyer representation costs you nothing extra</small></span><a class="srow-link" href="/v2/real-estate/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 <article class="srow">
    <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/oliva-cullera.jpg')"></div></div>
-   <div class="srow-body reveal"><span class="ovl">Everything</span><h3>The Full AfterLife</h3><p>Residency and property run as a single engagement — from the first call to the keys.</p><div class="srow-foot"><a class="srow-link" href="/v2/fullafterlife/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+   <div class="srow-body reveal"><span class="ovl">The Full AfterLife</span><h3>The Full AfterLife</h3><p>Most people want both — residency and property, run as <strong>one engagement, start to finish.</strong> That is The Full AfterLife.</p><div class="srow-foot"><a class="srow-link" href="/v2/fullafterlife/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 <article class="srow">
    <div class="srow-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/home-3.jpg')"></div></div>
-   <div class="srow-body reveal"><span class="ovl">Bespoke</span><h3>The Private Client</h3><p>The founder personally embedded from day one. Every call, every decision, beside you.</p><div class="srow-foot"><a class="srow-link" href="/v2/private-client/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
+   <div class="srow-body reveal"><span class="ovl">The Private Client</span><h3>The Private Client</h3><p>And some want the founder personally embedded from day one — <em>every call, every decision, two years of advisory beside you.</em> A different mode of engagement.</p><div class="srow-foot"><a class="srow-link" href="/v2/private-client/">Explore <span aria-hidden="true">&rarr;</span></a></div></div>
  </article>
 </div></section>
 
 <section class="process dark" id="process">
   <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="background-image:url('/hero.png')"></div></div>
   <div class="process-body">
-    <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">One relationship,<br>start to finish</h2></div>
-    <div class="steps"><div class="step reveal"><span class="step-n">01</span><div><h3>Strategy Call</h3><p>Eligibility, structure, timeline. Free.</p></div></div>
-<div class="step reveal"><span class="step-n">02</span><div><h3>Immigration</h3><p>NLV, NIE, banking. Done properly.</p></div></div>
-<div class="step reveal"><span class="step-n">03</span><div><h3>Property</h3><p>We represent you, not the seller.</p></div></div>
-<div class="step reveal"><span class="step-n">04</span><div><h3>Settlement</h3><p>Keys in hand. Your AfterLife begins.</p></div></div></div>
+    <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">We handle everything between the decision and the first morning.</h2></div>
+    <p class="proc-lede reveal">Spanish AfterLife is the firm that makes the move happen. Immigration, property, banking, settlement — one relationship, start to finish.</p>
+    <div class="steps"><div class="step reveal"><span class="step-n">01</span><div><h3>Strategy Call</h3><p>Visa eligibility, financial structure, property goals, timeline. Free. No obligation. Just clarity.</p></div></div>
+<div class="step reveal"><span class="step-n">02</span><div><h3>Immigration</h3><p>Non-Lucrative Visa, NIE, empadronamiento, CaixaBank, Beckham Law. Done properly the first time.</p></div></div>
+<div class="step reveal"><span class="step-n">03</span><div><h3>Property</h3><p>Full buyer's agency. We represent you, not the seller. Commission paid by the seller's agent.</p></div></div>
+<div class="step reveal"><span class="step-n">04</span><div><h3>Settlement</h3><p>Keys in hand. Utilities connected. Neighbours introduced. Your AfterLife begins.</p></div></div></div>
+    <p class="founder-note reveal"><strong>Why we built this.</strong> Our founder made the move personally — from Mexico to Spain, through the tourist-visa years, the Digital Nomad Visa, and Spanish residency — and lives on the Valencia coast today. Every piece of guidance comes from experience, not research. We are based in Spain — not advising from abroad.</p>
   </div>
 </section>
+
+<section class="pad journal-feat" id="journal"><div class="wrap">
+  <div class="head"><span class="ovl">From the journal</span><h2 class="reveal">Building my life in Spain.</h2></div>
+  <p class="lead reveal">The honest field notes &mdash; visas, property, money, and the day-to-day of actually moving here. Written from the Valencia coast, not from abroad.</p>
+  <a class="jfeat reveal" href="/building-my-life-in-spain/non-lucrative-vs-digital-nomad-visa-spain"><span class="jmeta">Visa &amp; Money &middot; Jul 2026</span><h3>Non-Lucrative vs Digital Nomad Visa: which Spain route?</h3><p>The two routes onto Spanish residency, how they differ, and who each one really suits &mdash; the shape of the choice before the numbers.</p><span class="srow-link">Read the piece <span aria-hidden="true">&rarr;</span></span></a>
+  <a class="jall reveal" href="/v2/building-my-life-in-spain/">All journal entries &rarr;</a>
+</div></section>
 
 <section class="dark pad" id="guide"><div class="wrap guide">
   <div class="guide-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/guide-cover.png')"></div></div>
   <div class="guide-body reveal">
-    <h2>The honest cost of moving to Spain</h2>
-    <p>The visa, the property, the real numbers — written from the coast, not from abroad.</p>
+    <span class="ovl">The free guide</span>
+    <h2>Your Complete Guide to <em>Retiring in Spain</em></h2>
+    <p>The visa, the property, and the honest cost of the life &mdash; the numbers most people never run. Written from the Valencia coast, not from abroad.</p>
     <form class="gform" id="gform" action="/api/subscribe" method="post">
       <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
       <button class="gbtn" type="submit">Send me the guide</button>
       <label class="consent"><input type="checkbox" name="consent" required><span>Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
       <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
       <input type="hidden" name="intent" value="guide">
-      <input type="hidden" name="source" value="v2:guide-form">
+      <input type="hidden" name="source" value="index:guide-form">
     </form>
     <p class="micro">Free. No obligation. Straight to your inbox.</p>
   </div>
@@ -371,35 +467,47 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
   <div class="head"><span class="ovl">Start Here</span><h2 class="reveal">Find out if Spain is right for you.</h2></div>
   <div class="contact">
   <div class="reveal"><div class="contact-media img-reveal"><div class="media-img" data-par="0.05" style="background-image:url('/media/valencia-3.jpg')"></div></div>
-  <p class="lead" style="margin-top:1.6rem">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you — honestly.</p></div>
+  <div class="ccopy"><p class="lead">A free 45-minute call. We cover your visa eligibility, what your money buys here, the timeline, and whether Spain is actually the right move for your situation.</p><p class="lead">If it isn't, we'll tell you that too.</p><ol class="clist"><li><span class="cl-n">01</span><span>Visa eligibility — NLV income requirements, Beckham Law, what changes when you arrive</span></li><li><span class="cl-n">02</span><span>Financial picture — what your equity buys here and how to structure the move</span></li><li><span class="cl-n">03</span><span>Property goals — which area, which property type, which budget makes sense</span></li><li><span class="cl-n">04</span><span>Realistic timeline — from the decision you've already made to the morning you wake up here</span></li></ol></div></div>
+  <div><h3 class="box-h">Book your free call</h3><p class="box-p">We respond within one business day. All enquiries confidential.</p>
   <form class="cform" id="cform" action="https://formspree.io/f/xvzeevnb" method="POST">
     <input type="hidden" name="_subject" value="New enquiry — spanishafterlife.com">
     <input type="hidden" name="_next" value="https://spanishafterlife.com/message-received">
     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-5000px">
-    <div class="frow"><div class="field"><label for="cf-first">First Name</label><input id="cf-first" name="first_name" required></div><div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" required></div></div>
-    <div class="field"><label for="cf-loc">Where are you based?</label><select id="cf-loc" name="location" required><option value="">Select country / province / state</option>
-<option>Ontario</option>
-<option>British Columbia</option>
-<option>Alberta</option>
-<option>Quebec</option>
-<option>Other Canadian province</option>
-<option>California</option>
-<option>New York</option>
-<option>Washington</option>
-<option>Illinois</option>
-<option>Texas</option>
-<option>Florida</option>
-<option>Other US state</option></select></div>
-    <div class="field"><label for="cf-msg">Anything that would help us prepare</label><textarea id="cf-msg" name="message" placeholder="Budget, timeline, areas of interest..."></textarea></div>
-    <button class="cbtn" type="submit">Book my free call</button>
-  </form>
+    <div class="frow"><div class="field"><label for="cf-first">First Name</label><input id="cf-first" type="text" name="first_name" required></div><div class="field"><label for="cf-last">Last Name</label><input id="cf-last" type="text" name="last_name" required></div></div>
+    <div class="field"><label for="cf-email">Email Address</label><input id="cf-email" type="email" name="email" required></div>
+    <div class="field"><label for="cf-loc">Where are you based?</label><select id="cf-loc" name="location" required><option value="">Select country / province / state</option><optgroup label="Canada"><option>Ontario</option><option>British Columbia</option><option>Alberta</option><option>Quebec</option><option>Other Canadian province</option></optgroup><optgroup label="United States"><option>California</option><option>New York</option><option>Washington</option><option>Illinois</option><option>Texas</option><option>Florida</option><option>Other US state</option></optgroup></select></div>
+    <div class="field"><label for="cf-int">What's driving the move?</label><select id="cf-int" name="interest" required><option value="">Select one</option><option>Ready to move — need visa + property help</option><option>Serious about it — want to understand the process</option><option>Property only — already have residency sorted</option><option>Visa only — property sorted</option><option>Early stages — still doing the research</option></select></div>
+    <div class="field"><label for="cf-msg">Anything that would help us prepare</label><textarea id="cf-msg" name="message" placeholder="Budget, timeline, areas of interest, questions you already have..."></textarea></div>
+    <button class="cbtn" type="submit">Book My Free Consultation</button>
+    <p class="form-note">No sales pitch. No obligation. Just an honest conversation.</p>
+  </form></div>
 </div></section>
 
-<footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div>
-<div class="foot-nav"><a href="#life">The Life</a><a href="#numbers">The Numbers</a><a href="#places">Where</a><a href="#how">How It Works</a><a href="/v2/available-properties/">Properties</a><a href="/v2/building-my-life-in-spain/">Journal</a><a href="#contact">Start Here</a></div></div>
-<div class="foot-bot"><span>© 2025 LJ Koch Group Inc. · Spanish AfterLife</span><span>Valencia Community, Spain</span></div></footer>
+<footer class="foot"><div class="foot-top"><div class="foot-sig">Why wait for the AfterLife?</div></div>
+<div class="foot-grid">
+  <div class="foot-brand"><div class="foot-mark"><b>Spanish</b> AfterLife</div>
+    <p>Early retirement in Spain. Immigration concierge and buyer's agency for North Americans. Based in the Valencia Community. Operated by LJ Koch Group Inc.</p></div>
+  <div class="foot-col"><h4>The Life</h4>
+    <a href="/v2/#life">The 12 Pillars</a><a href="/v2/#places">The Places</a><a href="/v2/#numbers">The Numbers</a><a href="/v2/building-my-life-in-spain/">Journal</a></div>
+  <div class="foot-col"><h4>How We Help</h4>
+    <a href="/v2/fullafterlife/">The Full AfterLife</a><a href="/v2/immigration/">Immigration Concierge</a><a href="/v2/real-estate/">Real Estate</a><a href="/v2/available-properties/">Properties</a><a href="/v2/private-client/">Private Client</a><a href="/v2/#contact">Free Consultation</a></div>
+  <div class="foot-col"><h4>Company</h4>
+    <a href="/find-your-spain">Find Your Spain</a><a href="/about">About</a><a href="/v2/#contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="/guide">Free guide: the cost of moving to Spain</a><a href="/canada-quality-of-life">Retire in Spain from Canada</a><a href="/us-cash-out">Cash out &amp; retire in Spain (US)</a><a href="/us-sun-seekers">Retire somewhere warm (US)</a></div>
+</div>
+<div class="foot-signup">
+  <div><h4>Your Complete Guide to Retiring in Spain</h4><p>The visa, the property, and the honest cost of the life &mdash; free, straight to your inbox.</p></div>
+  <form class="gform foot-form" action="/api/subscribe" method="post">
+    <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email address">
+    <button class="gbtn" type="submit">Send me the guide</button>
+    <label class="consent"><input type="checkbox" name="consent" required><span>Email me the guide and the occasional honest update. I accept the <a href="/privacy">Privacy Policy</a> and can unsubscribe anytime.</span></label>
+    <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="website" tabindex="-1" autocomplete="off" value=""></div>
+    <input type="hidden" name="intent" value="guide">
+    <input type="hidden" name="source" value="index:hs-form">
+  </form>
+</div>
+<div class="foot-bot"><span>&copy; 2026 Spanish AfterLife / LJ Koch Group Inc. All rights reserved.</span><span><a href="/privacy">Privacy Policy</a> &middot; Valencia Community, Spain</span></div></footer>
 
-<script>const NUMDATA={"ca": {"intro": "The client selling a $1.5M Toronto semi arrives in Spain with genuinely transformative purchasing power.", "rows": [["Property", "$1.5M buys a semi-detached. No land. No pool."], ["Tax", "Up to 53% marginal in Ontario and B.C."], ["Weather", "Five tolerable months."]]}, "us": {"intro": "The client selling a $1.5M Bay Area bungalow arrives in Spain with genuinely transformative purchasing power.", "rows": [["Property", "$1.5M buys a mid-century ranch, far from the coast."], ["Tax", "Up to 37% federal — plus 13.3% in California."], ["Weather", "Five tolerable months."]]}};</script><script>
+<script>const NUMDATA={"ca": {"intro": "The client selling a $1.5M Toronto semi or a $2M Vancouver townhouse arrives in Spain with genuinely transformative purchasing power.", "rows": [["Property", "$1.5M buys a semi-detached on a street of 50 neighbours. No land. No pool. Maintenance that costs more every year."], ["Cost of living", "Groceries, restaurants, utilities, services — priced for a market that decided affordability was someone else's problem."], ["Healthcare", "Public system under strain. Private insurance that costs more and covers less every renewal cycle."], ["Tax rate", "Up to 53% marginal in Ontario and B.C. More every budget cycle."], ["Weather", "Five tolerable months. Seven months of something you've stopped pretending to enjoy."]]}, "us": {"intro": "The client selling a $1.5M Bay Area bungalow or a $1.3M Seattle craftsman arrives in Spain with genuinely transformative purchasing power.", "rows": [["Property", "$1.5M buys a mid-century ranch a long drive from the coast. No land. No pool. Property tax that climbs with every assessment."], ["Cost of living", "Groceries, restaurants, utilities, services — priced for a market that decided affordability was someone else's problem."], ["Healthcare", "Premiums, deductibles, and a network you check before every appointment. Coverage that costs more the year you'll lean on it."], ["Tax rate", "Up to 37% federal — plus 13.3% in California or 10.9% in New York. More every cycle."], ["Weather", "Five tolerable months. Seven months of something you've stopped pretending to enjoy."]]}};</script><script>
 const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
 burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.style.overflow=o?'hidden':'';});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';}));

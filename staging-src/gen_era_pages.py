@@ -126,7 +126,7 @@ def shell(slug, body, jsonld=False):
 <a class="skip" href="#top">Skip to content</a>
 {NAV}
 {body}
-{FOOT}
+{SEO.footer(slug)}
 <script>{JS}</script>
 </body></html>"""
 
@@ -159,12 +159,12 @@ COLLECTIONS = [
    ("Arava","4 / 3","231.1","561","&euro;744,000")]),
  ("Las Vistas Altaona", "From &euro;513,500 &middot; 3 bed &middot; final Phase II release",
   "/media/altaona/altaona-las-vistas.webp",
-  "Elevated plots on the final Phase II release, looking out over the resort and the open country beyond.",
+  "Single-storey villas that frame long views across the resort, the golf course and the Murcian sierra &mdash; larger plots and generous open-plan living.",
   [("Serenity","3 / 2","211.5","359&ndash;432","&euro;513,500"),
    ("Balance","3 / 2","222.1","434&ndash;454","&euro;544,000")]),
  ("Villas Santolina", "&euro;1,052,000&ndash;&euro;1,692,000 &middot; 3&ndash;6 bed &middot; bespoke",
   "/media/altaona/altaona-santolina.webp",
-  "Larger plots and bespoke architecture for buyers who want the house designed around them rather than chosen from a catalogue.",
+  "Bespoke villas: bold modern architecture on full 1,000 m&sup2;-plus plots, floor-to-ceiling glass flowing to a large private pool and garden. Configurable from three to six bedrooms, up to 500 m&sup2; built.",
   [("Campo","4 / 4","246","1,000","from &euro;1,052,000"),
    ("Horizon","3 / 3","294","1,000","on request"),
    ("Aqua","4 / 4","305","1,000&ndash;1,115","on request"),
@@ -268,10 +268,10 @@ def build_properties():
         <div class="stat"><b>7%</b><span>Fixed net annual rent</span></div>
         <div class="stat"><b>&euro;270K</b><span>Studio Suite entry &mdash; from</span></div>
       </div>
-      <p style="margin-top:2rem"><a class="srow-link" href="/v2/#contact">Enquire via Spanish AfterLife <span aria-hidden="true">&rarr;</span></a></p>
+      <p style="margin-top:2rem;display:flex;gap:2rem;flex-wrap:wrap"><a class="srow-link" href="/v2/#contact">Enquire via Spanish AfterLife <span aria-hidden="true">&rarr;</span></a><a class="srow-link" href="https://taolis.com/longevity-hotel-apartments/" target="_blank" rel="noopener">View WOW Hotel <span aria-hidden="true">&nearr;</span></a></p>
     </div>
   </div>
-  <p class="pnote reveal" style="margin-top:clamp(3rem,7vh,5rem)"><strong>Developer partner.</strong> Spanish AfterLife works directly with Taolis &mdash; The Art of Living in Spain on the Altaona development. We handle immigration concierge for clients purchasing here and can make a direct introduction to the Taolis team. If Altaona interests you, mention it when you book your strategy call.</p>
+  <p class="pnote reveal" style="margin-top:clamp(3rem,7vh,5rem)"><strong>Developer partner.</strong> Spanish AfterLife works directly with <a href="https://taolis.com" target="_blank" rel="noopener" style="text-decoration:underline">Taolis &mdash; The Art of Living in Spain</a> on the Altaona development. We handle immigration concierge for clients purchasing here and can make a direct introduction to the Taolis team. If Altaona interests you, mention it when you book your strategy call.</p>
 </div></section>
 
 <section class="chapter">
@@ -282,7 +282,7 @@ def build_properties():
 <section class="pad"><div class="wrap" style="text-align:left">
   <div class="head"><span class="ovl">Next step</span><h2 class="reveal">Request the full price list</h2></div>
   <p class="reveal" style="color:var(--stone)">A free 45-minute call. Your eligibility, what your money buys here, and whether the move is right for you &mdash; honestly.</p>
-  <p class="reveal" style="margin-top:1.6rem"><a class="srow-link" href="/v2/#contact">Book your free call <span aria-hidden="true">&rarr;</span></a></p>
+  <p class="reveal" style="margin-top:1.6rem;display:flex;gap:2rem;flex-wrap:wrap"><a class="srow-link" href="/v2/#contact">Request the full price list <span aria-hidden="true">&rarr;</span></a><a class="srow-link" href="https://taolis.com" target="_blank" rel="noopener">Explore Altaona <span aria-hidden="true">&nearr;</span></a></p>
 </div></section>
 
 <section class="pad dark"><div class="wrap">
@@ -388,7 +388,7 @@ def build_journal():
 <section class="pad"><div class="wrap">
   <div class="head"><span class="ovl">Already decided?</span><h2 class="reveal">Then let's talk about the move.</h2></div>
   <p class="reveal" style="color:var(--stone);max-width:58ch">If you've read enough to know Spain is the next chapter, the next step is a free 45-minute call &mdash; eligibility, finances, property, timeline. No pitch, just clarity.</p>
-  <p class="reveal" style="margin-top:1.6rem"><a class="srow-link" href="/v2/#contact">Book your free call <span aria-hidden="true">&rarr;</span></a></p>
+  <p class="reveal" style="margin-top:1.6rem;display:flex;gap:2rem;flex-wrap:wrap"><a class="srow-link" href="/v2/#contact">Request the full price list <span aria-hidden="true">&rarr;</span></a><a class="srow-link" href="https://taolis.com" target="_blank" rel="noopener">Explore Altaona <span aria-hidden="true">&nearr;</span></a></p>
 </div></section>
 """
     html = shell("building-my-life-in-spain", body)
