@@ -1,3 +1,7 @@
 .DS_Store
 .wrangler/
 .claude/
+
+# Build output. The generators write the staging preview here; production is
+# built to the repo root by staging-src/build_prod.py and the deploy excludes it.
+staging/
