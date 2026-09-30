@@ -29,7 +29,11 @@ def prodlinks(html):
     assert "/v2/" not in html, re.findall(r'.{40}/v2/.{40}', html)[:3]
     return html
 
+WROTE = []
+
+
 def write(rel, html):
+    WROTE.append(rel)
     p = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     html = prodlinks(html).replace('href="/era.css"', f'href="/era.css?v={_CSS_V}"')
@@ -62,3 +66,20 @@ for dp, dn, fn in os.walk(src):
         if f != "ronda.mp4" or True:
             shutil.copy2(a, b)
 print("copied media/")
+
+# A missing image does not fail loudly - it paints an empty box, and only on the
+# viewport whose variant is absent, so it survives every desktop review. Four of
+# these reached production. Fail the build instead.
+_IMG = re.compile(r"url\('(/[^']+)'\)")
+_missing, _seen = [], set()
+for _rel in WROTE:                       # only what THIS build produced
+        _html = io.open(os.path.join(OUT, _rel), encoding="utf-8").read()
+        for _u in _IMG.findall(_html) + re.findall(r'src="(/media/[^"]+)"', _html):
+            if _u in _seen:
+                continue
+            _seen.add(_u)
+            if not os.path.isfile(os.path.join(OUT, _u.lstrip("/"))):
+                _missing.append(_u)
+if _missing:
+    raise SystemExit("BUILD FAILED - referenced but not on disk:\n  " + "\n  ".join(sorted(_missing)))
+print(f"verified {len(_seen)} image references, all present")
