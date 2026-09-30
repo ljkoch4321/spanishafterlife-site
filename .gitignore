@@ -5,3 +5,7 @@
 # Build output. The generators write the staging preview here; production is
 # built to the repo root by staging-src/build_prod.py and the deploy excludes it.
 staging/
+
+# Guide build artifacts (intermediate HTML + print-sized JPEGs)
+staging-src/_guide.html
+staging-src/_print/
