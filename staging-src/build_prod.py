@@ -58,14 +58,20 @@ for slug in R.PAGES:
     write(slug + ".html", R.build(slug))
 
 src = os.path.join(os.path.dirname(HERE), "staging", "media")
+# os.walk on a missing directory yields nothing and says nothing. On main the
+# media lives at media/ already, so this legitimately copies zero files - but a
+# silent no-op is how a real missing-asset problem would look too.
+if not os.path.isdir(src):
+    print("note: no staging/media to copy (media/ is tracked at the repo root)")
 dst = os.path.join(OUT, "media")
+_copied = 0
 for dp, dn, fn in os.walk(src):
     for f in fn:
         a = os.path.join(dp, f); b = os.path.join(dst, os.path.relpath(a, src))
         os.makedirs(os.path.dirname(b), exist_ok=True)
-        if f != "ronda.mp4" or True:
-            shutil.copy2(a, b)
-print("copied media/")
+        shutil.copy2(a, b)
+        _copied += 1
+print(f"copied {_copied} file(s) to media/")
 
 # A missing image does not fail loudly - it paints an empty box, and only on the
 # viewport whose variant is absent, so it survives every desktop review. Four of
