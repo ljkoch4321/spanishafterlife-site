@@ -569,10 +569,15 @@ a.art:hover{background:var(--tint);border-color:var(--tint-line)}
 @media(max-width:900px){.mirror,.compare,.lm{grid-template-columns:1fr}.compare .row{grid-template-columns:1fr;gap:.3rem}}
 .card-grid-404{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(2rem,5vh,3rem)}.svc-card404{display:block;border:1px solid var(--line);padding:clamp(1.3rem,2.4vw,1.8rem);transition:background .5s var(--ease),border-color .5s var(--ease)}.svc-card404:hover{background:var(--tint);border-color:var(--tint-line)}.svc-card404 h3{font-family:var(--serif);font-size:1.35rem;font-weight:360;margin-bottom:.5rem}.svc-card404 p{font-size:.94rem;color:var(--stone)}
 @media(max-width:900px){
- /* uppercase micro-labels read fine at 10px on a desktop and are a strain on a
-    phone; lift the floor without changing the typographic device */
- .ovl{font-size:.72rem}
- .svc-card .tag,.svc-card404 .tag,.art-meta,.coll-meta,.nk,.card-note,.sw-c-idx,.place-tag,.srow-fee,.micro{font-size:.7rem}
- .ptable th{font-size:.68rem}
- .inc h3,.pillar h3{font-size:.72rem}
+ /* One 12px floor for every uppercase micro-label. Letter-spaced caps below that
+    stop being legible on a phone, and the earlier per-selector values had drifted
+    as low as 10.24px (footer headings, the subhero chips). Measured on the live
+    site at 375px: .chip span and .foot-col h2 at 10.24, .ptable th at 10.88. */
+ .ovl,
+ .svc-card .tag,.svc-card404 .tag,.art-meta,.coll-meta,.nk,.card-note,.sw-c-idx,.place-tag,.srow-fee,.micro,
+ .ptable th,.inc h3,.pillar h3,
+ .chip span,.foot-col h2,.foot-bot,.foot-bot span,.foot-bot a,
+ .gbtn,.lm-submit{font-size:.75rem}
+ /* 13x13 is not a tap target; the label row around it already gives 44px of height */
+ input[type=checkbox]{width:20px;height:20px;flex:0 0 20px}
 }

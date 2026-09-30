@@ -33,12 +33,17 @@ def stylesheet():
 # earlier block loses to any later base rule with the same selector weight.
 MOBILE_FLOOR = """
 @media(max-width:900px){
- /* uppercase micro-labels read fine at 10px on a desktop and are a strain on a
-    phone; lift the floor without changing the typographic device */
- .ovl{font-size:.72rem}
- .svc-card .tag,.svc-card404 .tag,.art-meta,.coll-meta,.nk,.card-note,.sw-c-idx,.place-tag,.srow-fee,.micro{font-size:.7rem}
- .ptable th{font-size:.68rem}
- .inc h3,.pillar h3{font-size:.72rem}
+ /* One 12px floor for every uppercase micro-label. Letter-spaced caps below that
+    stop being legible on a phone, and the earlier per-selector values had drifted
+    as low as 10.24px (footer headings, the subhero chips). Measured on the live
+    site at 375px: .chip span and .foot-col h2 at 10.24, .ptable th at 10.88. */
+ .ovl,
+ .svc-card .tag,.svc-card404 .tag,.art-meta,.coll-meta,.nk,.card-note,.sw-c-idx,.place-tag,.srow-fee,.micro,
+ .ptable th,.inc h3,.pillar h3,
+ .chip span,.foot-col h2,.foot-bot,.foot-bot span,.foot-bot a,
+ .gbtn,.lm-submit{font-size:.75rem}
+ /* 13x13 is not a tap target; the label row around it already gives 44px of height */
+ input[type=checkbox]{width:20px;height:20px;flex:0 0 20px}
 }"""
 
 
