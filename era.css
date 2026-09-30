@@ -55,6 +55,7 @@ html,body{overflow-x:clip}
 --serif:"Fraunces",Georgia,serif;--sans:"Archivo",Arial,sans-serif;--script:"Ephesis",cursive;
 --ease:cubic-bezier(.16,1,.3,1);--pad:clamp(1.25rem,5vw,6rem)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
 body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:clip;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 h1,h2,h3{font-family:var(--serif);font-weight:340;letter-spacing:-.02em;line-height:1.02}
 h1{font-size:clamp(3rem,9vw,7rem)} h2{font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.05}
@@ -258,7 +259,11 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  .nhead{grid-template-columns:1fr;gap:clamp(1.8rem,5vh,2.6rem);align-items:start}
  /* MOBILE-FIRST hero: the stats wrapped into a tall ragged block and the rhythm
     pushed the CTA and figures below the fold. Tighten both; no copy changes. */
- .hero{padding-top:clamp(6.5rem,13vh,8rem)}
+ /* the fixed bar was 81px - 12% of a 664px phone screen - and the wordmark
+    carried it. Trim the bar, not the 44px tap targets inside it. */
+ .nav{padding:.5rem var(--pad)}
+ .brand{font-size:1rem}
+ .hero{padding-top:clamp(5.5rem,11vh,7rem)}
  .hero-sub{margin-top:1rem;font-size:1.02rem}
  .hero-lede{margin-top:.85rem;font-size:.9rem;line-height:1.65}
  .hero-cta{margin-top:1.7rem}
