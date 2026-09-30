@@ -32,8 +32,17 @@ def prodlinks(html):
 def write(rel, html):
     p = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
-    io.open(p, "w", encoding="utf-8").write(prodlinks(html))
+    html = prodlinks(html).replace('href="/era.css"', f'href="/era.css?v={_CSS_V}"')
+    io.open(p, "w", encoding="utf-8").write(html)
     print("wrote", rel, len(html) // 1024, "KB")
+
+_p, _n = CSS.write(OUT)
+# era.css is not content-hashed, so a returning visitor can get NEW html with an
+# OLD stylesheet until their cache expires (Pages serves it max-age=14400). Stamp
+# the link with a hash of the file so every change is a new URL.
+import hashlib
+_CSS_V = hashlib.sha1(io.open(_p, "rb").read()).hexdigest()[:8]
+print("wrote era.css", _n // 1024, "KB  version", _CSS_V)
 
 write("index.html", V2.HTML)
 write("available-properties.html", P.build_properties())
@@ -43,9 +52,6 @@ for slug in ("immigration", "real-estate", "fullafterlife", "private-client"):
     write(slug + ".html", S.build(slug))
 for slug in R.PAGES:
     write(slug + ".html", R.build(slug))
-
-_p, _n = CSS.write(OUT)
-print("wrote era.css", _n // 1024, "KB")
 
 src = os.path.join(os.path.dirname(HERE), "staging", "media")
 dst = os.path.join(OUT, "media")
