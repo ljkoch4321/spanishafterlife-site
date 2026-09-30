@@ -69,7 +69,10 @@ section{position:relative}
 .gform input:focus-visible,.gform button:focus-visible{outline-color:var(--cream)}
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--cream);padding:.8rem 1.2rem;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
 .skip:focus{left:0}
-.pad{padding:clamp(5rem,13vh,11rem) var(--pad)} .wrap{max-width:1440px;margin:0 auto}
+.pad{padding:clamp(5rem,13vh,11rem) var(--pad)}
+/* The nav is fixed (81px desktop, 60px phone) and every in-page link jumps a
+   section's top to viewport 0, so without this the overline lands under it. */
+section[id]{scroll-margin-top:6rem} .wrap{max-width:1440px;margin:0 auto}
 .dark{background:var(--ink);color:var(--cream)} .dark .ovl{color:var(--cream-soft)} .dark p{color:var(--cream-soft)}
 .rline{display:block;overflow:hidden} .rline>span{display:block}
 .js .rline>span{transform:translateY(110%);transition:transform 1s var(--ease)}
@@ -262,6 +265,14 @@ text-transform:uppercase;letter-spacing:.16em;font-weight:600;color:var(--cream-
  /* the fixed bar was 81px - 12% of a 664px phone screen - and the wordmark
     carried it. Trim the bar, not the 44px tap targets inside it. */
  .nav{padding:.5rem var(--pad)}
+ /* 149px of dead space sat above every section heading on a 664px phone - 22% of
+    the screen before you reach the title. Most of it was .pad's 86px top and a
+    43px gap between the overline and the h2. */
+ .pad{padding:clamp(3.2rem,7vh,4.5rem) var(--pad)}
+ section[id]{scroll-margin-top:4.75rem}
+ .head{margin-bottom:clamp(1.5rem,4vh,2.2rem)}
+ .head .ovl{margin-bottom:.5rem;line-height:1.35}
+ .ovl{line-height:1.35}
  .brand{font-size:1rem}
  .hero{padding-top:clamp(5.5rem,11vh,7rem)}
  .hero-sub{margin-top:1rem;font-size:1.02rem}
