@@ -578,6 +578,9 @@ a.art:hover{background:var(--tint);border-color:var(--tint-line)}
  .ptable th,.inc h3,.pillar h3,
  .chip span,.foot-col h2,.foot-bot,.foot-bot span,.foot-bot a,
  .gbtn,.lm-submit{font-size:.75rem}
- /* 13x13 is not a tap target; the label row around it already gives 44px of height */
- input[type=checkbox]{width:20px;height:20px;flex:0 0 20px}
+ /* 13x13 is not a tap target; the label row around it already gives 44px of height.
+    The consent box needs the full .gform .consent weight - a bare
+    input[type=checkbox] is (0,1,1) and loses to it however late it is placed. */
+ .gform .consent input[type=checkbox],
+ input[type=checkbox]{width:22px;height:22px;flex:0 0 22px}
 }
