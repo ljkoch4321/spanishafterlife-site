@@ -27,7 +27,7 @@
 <script>document.documentElement.className='js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/era.css?v=28018eae"></head><body>
+<link rel="stylesheet" href="/era.css?v=ac331d8c"></head><body>
 
 <a class="skip" href="#main">Skip to content</a>
 <nav class="nav"><a class="brand" href="/"><b>Spanish</b> AfterLife</a>
@@ -157,6 +157,11 @@ const burger=document.querySelector('.burger'),menu=document.getElementById('men
 burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.style.overflow=o?'hidden':'';});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';}));
 const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
+let _rv=[...document.querySelectorAll('.reveal,.rline,.img-reveal')];
+_rv.forEach(el=>io.observe(el));
+/* See gen_era_v2: a missed reveal leaves a blank hole, so scroll guarantees it. */
+function _rvCheck(){if(!_rv.length)return;_rv=_rv.filter(el=>{const r=el.getBoundingClientRect();
+ if(r.top<innerHeight*0.9&&r.bottom>0){el.classList.add('in');io.unobserve(el);return false;}return true;});}
+addEventListener('scroll',_rvCheck,{passive:true});addEventListener('resize',_rvCheck);_rvCheck();
 </script>
 </body></html>

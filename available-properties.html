@@ -46,7 +46,7 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..460;1,9..144,300..400&family=Archivo:wght@400;500;600&family=Ephesis&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/era.css?v=28018eae"></head><body>
+<link rel="stylesheet" href="/era.css?v=ac331d8c"></head><body>
 
 <a class="skip" href="#main">Skip to content</a>
 <nav class="nav"><a class="brand" href="/"><b>Spanish</b> AfterLife</a>
@@ -57,7 +57,7 @@
 <main id="main">
 
 <header class="subhero" id="top">
-  <div class="media"><div class="media-img" data-par="0.06" style="--bg:url('/media/altaona/altaona-aerial.webp');--bg-sm:url('/media/altaona/altaona-aerial-sm.webp')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.06" style="--bg:url('/media/altaona/altaona-aerial.webp')"></div></div>
   <div class="subhero-in">
     <span class="ovl">Available Properties</span>
     <h1><span class="rline"><span>Homes we can</span></span><span class="rline"><span>get you into.</span></span></h1>
@@ -71,7 +71,7 @@
       <h2 style="margin:1.2rem 0 1.2rem">Altaona Resort, Murcia</h2>
       <p style="color:var(--on-dark)">Spain's first longevity-focused resort development. New-build villas, an 18-hole golf course, world-class wellness facilities, and the upcoming WOW Longevity Hotel &mdash; built around one idea: living better, for longer. A development we work with directly and can introduce you to.</p>
     </div>
-    <div class="feat-media img-reveal"><div class="media-img" data-par="0.05" style="--bg:url('/media/altaona/altaona-resort.webp');--bg-sm:url('/media/altaona/altaona-resort-sm.webp')"></div></div>
+    <div class="feat-media img-reveal"><div class="media-img" data-par="0.05" style="--bg:url('/media/altaona/altaona-resort.webp')"></div></div>
   </div>
 
   <div class="reveal" style="margin-top:clamp(3rem,8vh,5.5rem);max-width:62ch">
@@ -92,7 +92,7 @@
 
 <section class="pad dark" id="wow"><div class="wrap">
   <div class="wow">
-    <div class="wow-media img-reveal"><div class="media-img" data-par="0.05" style="--bg:url('/media/altaona/altaona-wow-hotel.webp');--bg-sm:url('/media/altaona/altaona-wow-hotel-sm.webp')"></div></div>
+    <div class="wow-media img-reveal"><div class="media-img" data-par="0.05" style="--bg:url('/media/altaona/altaona-wow-hotel.webp')"></div></div>
     <div class="reveal"><span class="ovl">Coming Soon &mdash; Investment Opportunity</span>
       <h2 style="margin:1.2rem 0 1.2rem">WOW Longevity Hotel</h2>
       <p style="color:var(--on-dark)">Europe's first real estate project built around the science of longevity. Hotel suites from 54m&sup2; to 235m&sup2; with a fixed 7% net annual return under a long-term lease, plus 2% during construction. Investment backed by Altaona's award-winning resort infrastructure.</p>
@@ -107,7 +107,7 @@
 </div></section>
 
 <section class="chapter">
-  <div class="media"><div class="media-img" data-par="0.1" style="--bg:url('/media/altaona/altaona-golf-sunset.webp');--bg-sm:url('/media/altaona/altaona-golf-sunset-sm.webp')"></div></div>
+  <div class="media"><div class="media-img" data-par="0.1" style="--bg:url('/media/altaona/altaona-golf-sunset.webp')"></div></div>
   <h2><span class="rline"><span>Ask us for the</span></span><span class="rline"><span>full price list.</span></span></h2>
 </section>
 
@@ -159,6 +159,11 @@ const burger=document.querySelector('.burger'),menu=document.getElementById('men
 burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.style.overflow=o?'hidden':'';});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';}));
 const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
+let _rv=[...document.querySelectorAll('.reveal,.rline,.img-reveal')];
+_rv.forEach(el=>io.observe(el));
+/* See gen_era_v2: a missed reveal leaves a blank hole, so scroll guarantees it. */
+function _rvCheck(){if(!_rv.length)return;_rv=_rv.filter(el=>{const r=el.getBoundingClientRect();
+ if(r.top<innerHeight*0.9&&r.bottom>0){el.classList.add('in');io.unobserve(el);return false;}return true;});}
+addEventListener('scroll',_rvCheck,{passive:true});addEventListener('resize',_rvCheck);_rvCheck();
 </script>
 </body></html>

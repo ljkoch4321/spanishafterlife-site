@@ -110,7 +110,12 @@ const burger=document.querySelector('.burger'),menu=document.getElementById('men
 burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.style.overflow=o?'hidden':'';});
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');document.body.style.overflow='';}));
 const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
+let _rv=[...document.querySelectorAll('.reveal,.rline,.img-reveal')];
+_rv.forEach(el=>io.observe(el));
+/* See gen_era_v2: a missed reveal leaves a blank hole, so scroll guarantees it. */
+function _rvCheck(){if(!_rv.length)return;_rv=_rv.filter(el=>{const r=el.getBoundingClientRect();
+ if(r.top<innerHeight*0.9&&r.bottom>0){el.classList.add('in');io.unobserve(el);return false;}return true;});}
+addEventListener('scroll',_rvCheck,{passive:true});addEventListener('resize',_rvCheck);_rvCheck();
 """
 
 

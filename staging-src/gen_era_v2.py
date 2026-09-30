@@ -215,7 +215,7 @@ section[id]{scroll-margin-top:6rem} .wrap{max-width:1440px;margin:0 auto}
 .in .rline>span,.rline.in>span{transform:none}
 .js .reveal{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
 .reveal.in{opacity:1;transform:none;filter:none}
-@media(prefers-reduced-motion:reduce){.js .reveal,.js .rline>span{opacity:1!important;transform:none!important;filter:none!important;transition:none}}
+@media(prefers-reduced-motion:reduce){.js .reveal,.js .rline>span{opacity:1!important;transform:none!important;filter:none!important;transition:none}.js .img-reveal{clip-path:none!important;transition:none}}
 
 /* media + reveals */
 .media,.place-media,.srow-media,.guide-media,.contact-media{position:relative;overflow:hidden}
@@ -225,8 +225,12 @@ section[id]{scroll-margin-top:6rem} .wrap{max-width:1440px;margin:0 auto}
 video.media-img{width:100%;height:100%;object-fit:cover}
 .chapter video.media-img{inset:0;object-position:50% 30%;opacity:0;transition:opacity .9s var(--ease)}
 .chapter video.media-img.on{opacity:1}
-.js .img-reveal .media-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
-.img-reveal.in .media-img{clip-path:inset(0 0 0 0)}
+/* The clip belongs on the WRAPPER, never on .media-img. The parallax gives
+   .media-img an inline translate3d(), and WebKit rasterises a composited 3D layer
+   with the clip baked in - the transition to inset(0 0 0 0) never repaints and the
+   image stays invisible forever. The wrapper carries no transform, so it is safe. */
+.js .img-reveal{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
+.img-reveal.in{clip-path:inset(0 0 0 0)}
 
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
@@ -443,15 +447,40 @@ if(smooth){
 const goto=y=>{if(smooth){target=Math.max(0,Math.min(maxS(),y));kick();}else scrollTo({top:y,behavior:'smooth'});};
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const el=document.querySelector(a.getAttribute('href'));if(!el)return;e.preventDefault();goto(el.getBoundingClientRect().top+scrollY);}));
 const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('.reveal,.rline,.img-reveal').forEach(el=>io.observe(el));
+let _rv=[...document.querySelectorAll('.reveal,.rline,.img-reveal')];
+_rv.forEach(el=>io.observe(el));
+/* Safety net. A reveal that never fires leaves the element permanently invisible -
+   a blank hole in the page, which is far worse than an un-animated entrance. The
+   observer stays the trigger; the scroll tick guarantees anything already inside
+   the viewport is shown whatever the observer does. */
+function _rvCheck(){if(!_rv.length)return;_rv=_rv.filter(el=>{const r=el.getBoundingClientRect();
+ if(r.top<innerHeight*0.9&&r.bottom>0){el.classList.add('in');io.unobserve(el);return false;}return true;});}
 const par=[...document.querySelectorAll('[data-par]')];
+let _par=innerWidth>900;
 const track=document.querySelector('.switch-track'),tabs=[...document.querySelectorAll('.sw-tab')],panels=[...document.querySelectorAll('.sw-panel')];
 let cur=-1;const setP=i=>{if(i===cur)return;cur=i;tabs.forEach((t,n)=>{const on=n===i;t.classList.toggle('active',on);t.setAttribute('aria-pressed',on?'true':'false');});panels.forEach((p,n)=>{const on=n===i;p.classList.toggle('active',on);p.setAttribute('aria-hidden',on?'false':'true');});};setP(0);
 function tick(){const y=scrollY;
- for(const el of par){const r=el.getBoundingClientRect();const s=parseFloat(el.dataset.par);el.style.transform='translate3d(0,'+(-(r.top+r.height/2-innerHeight/2)*s).toFixed(1)+'px,0)';}
- if(track){const r=track.getBoundingClientRect();const tot=track.offsetHeight-innerHeight;const p=Math.min(1,Math.max(0,-r.top/tot));setP(Math.min(tabs.length-1,Math.floor(p*tabs.length)));}}
+ for(const el of par){
+  if(!_par){el.style.transform='';continue;}
+  const r=el.getBoundingClientRect(),h=el.offsetHeight,s=parseFloat(el.dataset.par);
+  /* .media-img sits at inset:-8%, so it has ~7% of its height to travel before it
+     tears away from its frame. Clamp: a stale value - one computed while the
+     section was still thousands of px below the fold, because tick() had not run
+     since - used to translate the image clean out of its overflow:hidden box and
+     leave a blank hole. Never trust the offset, bound it. */
+  const lim=h*0.07,d=Math.max(-lim,Math.min(lim,-(r.top+r.height/2-innerHeight/2)*s));
+  el.style.transform='translate3d(0,'+d.toFixed(1)+'px,0)';}
+ if(track){const r=track.getBoundingClientRect();const tot=track.offsetHeight-innerHeight;const p=Math.min(1,Math.max(0,-r.top/tot));setP(Math.min(tabs.length-1,Math.floor(p*tabs.length)));}
+ _rvCheck();}
 tabs.forEach((t,i)=>t.addEventListener('click',()=>{const tot=track.offsetHeight-innerHeight;goto(track.getBoundingClientRect().top+scrollY+(i+.5)/tabs.length*tot);}));
-tick();addEventListener('resize',tick);
+tick();
+addEventListener('resize',()=>{_par=innerWidth>900;tick();});
+/* Reveals must not depend on tick() running. Bind them to scroll directly, and
+   recompute once everything has settled - a late image or webfont moves the page
+   under a transform that was correct when it was written. */
+addEventListener('scroll',_rvCheck,{passive:true});
+addEventListener('load',()=>{_par=innerWidth>900;tick();});
+addEventListener('pageshow',()=>{_par=innerWidth>900;tick();});
 const tg=document.getElementById('tg'),ni=document.getElementById('nintro'),lv=document.getElementById('leave'),D=NUMDATA;
 function setC(c){tg.classList.toggle('us',c==='us');tg.querySelectorAll('button').forEach(b=>{const on=b.dataset.c===c;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});ni.textContent=D[c].intro;lv.innerHTML=D[c].rows.map(r=>`<div class="nrow"><span class="nk">${r[0]}</span><span class="nv">${r[1]}</span></div>`).join('');}
 tg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setC(b.dataset.c)));setC('ca');
@@ -552,7 +581,7 @@ HTML=f"""<!doctype html><html lang="en"><head>
 </div></section>
 
 <section class="process dark" id="process">
-  <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="{SEO.bgv('/hero.webp')}"></div></div>
+  <div class="process-media img-reveal"><div class="media-img" data-par="0.06" style="{SEO.bgv('/hero-bg.webp')}"></div></div>
   <div class="process-body">
     <div class="head"><span class="ovl">How We Work</span><h2 class="reveal">{HX["how"]["h2"]}</h2></div>
     <p class="proc-lede reveal">{HX["how"]["lede"]}</p>

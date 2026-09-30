@@ -11,6 +11,10 @@ Slugs deliberately match production (/available-properties, /building-my-life-in
 so no indexed URL needs a 301 when this replaces the live site.
 """
 
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 STAGING = True
 BASE = "https://spanishafterlife.com"
 
@@ -90,7 +94,15 @@ def bgv(path):
     if path.startswith("http"):
         return f"background-image:url('{path}')"
     stem, dot, ext = path.rpartition(".")
-    sm = f"{stem}-sm.{ext}" if dot else path
+    if not dot:
+        return f"--bg:url('{path}')"
+    sm = f"{stem}-sm.{ext}"
+    # Only declare --bg-sm when the file is really there. var(--bg-sm,var(--bg))
+    # falls back when the property is UNDEFINED, not when its URL 404s - so naming
+    # a variant that does not exist does not degrade to the full image, it paints
+    # nothing. Every phone-only blank box on the site came from exactly that.
+    if not os.path.isfile(os.path.join(ROOT, sm.lstrip("/"))):
+        return f"--bg:url('{path}')"
     return f"--bg:url('{path}');--bg-sm:url('{sm}')"
 
 
