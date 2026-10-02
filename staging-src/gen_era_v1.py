@@ -91,7 +91,7 @@ PLACE_IMGS={
 }
 HERO_IMG="/hero.png"
 JOURNAL_IMG=U+"photo-1512753360435-329c4535a9a7?w=1400&q=80"
-GUIDE_IMG="/guide-cover.png"
+GUIDE_IMG="/guide-cover.webp"
 LOCATIONS = ["Select country / province / state","Ontario","British Columbia","Alberta","Quebec","Other Canadian province","California","New York","Washington","Illinois","Texas","Florida","Other US state"]
 
 # ---- build fragments ----

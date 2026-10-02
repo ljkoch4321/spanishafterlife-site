@@ -23,7 +23,7 @@ PAGES = {  # slug (= production path without .html) : hero image
     "message-received": "/media/oliva-3.webp",
     "subscribed": "/media/oliva-3.webp",
     "building-my-life-in-spain/non-lucrative-vs-digital-nomad-visa-spain": "/media/valencia-2.webp",
-    "guide": "/guide-cover.png",
+    "guide": "/guide-cover.webp",
     "find-your-spain": "/media/oliva-5.webp",
 }
 
